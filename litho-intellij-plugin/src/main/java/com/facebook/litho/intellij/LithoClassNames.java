@@ -15,27 +15,30 @@
  */
 package com.facebook.litho.intellij;
 
-/** Contains Litho class names. */
+/**
+ * Contains Litho class names.
+ */
 public class LithoClassNames {
-  private LithoClassNames() {}
-
-  // litho-core module
-  public static final String CLICK_EVENT_CLASS_NAME = "com.facebook.litho.ClickEvent";
-  public static final String COMPONENT_CONTEXT_CLASS_NAME = "com.facebook.litho.ComponentContext";
-  // litho-sections-core module
-  public static final String SECTION_CONTEXT_CLASS_NAME =
-      "com.facebook.litho.sections.SectionContext";
-  public static final String SECTION_CLASS_NAME = "com.facebook.litho.sections.Section";
-
-  /**
-   * @param qualifiedName is one of the constants from the {@link LithoClassNames}
-   * @return short name. For {@link LithoClassNames#CLICK_EVENT_CLASS_NAME} it would be ClickEvent.
-   */
-  public static String shortName(String qualifiedName) {
-    int indexAfterlastDot = qualifiedName.lastIndexOf('.') + 1;
-    if (indexAfterlastDot >= qualifiedName.length()) {
-      return qualifiedName;
+    private LithoClassNames() {
     }
-    return qualifiedName.substring(indexAfterlastDot);
-  }
+
+    // litho-core module
+    public static final String CLICK_EVENT_CLASS_NAME       = "com.facebook.litho.ClickEvent";
+    public static final String COMPONENT_CONTEXT_CLASS_NAME = "com.facebook.litho.component.ComponentContext";
+    // litho-sections-core module
+    public static final String SECTION_CONTEXT_CLASS_NAME   =
+        "com.facebook.litho.sections.SectionContext";
+    public static final String SECTION_CLASS_NAME           = "com.facebook.litho.sections.Section";
+
+    /**
+     * @param qualifiedName is one of the constants from the {@link LithoClassNames}
+     * @return short name. For {@link LithoClassNames#CLICK_EVENT_CLASS_NAME} it would be ClickEvent.
+     */
+    public static String shortName(String qualifiedName) {
+        int indexAfterlastDot = qualifiedName.lastIndexOf('.') + 1;
+        if (indexAfterlastDot >= qualifiedName.length()) {
+            return qualifiedName;
+        }
+        return qualifiedName.substring(indexAfterlastDot);
+    }
 }

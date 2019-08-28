@@ -20,6 +20,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
+import com.facebook.litho.geometry.SizeSpec;
+import com.facebook.litho.layout.LayoutState;
+
 public class DoubleMeasureFixUtil {
 
   // Required to determine whether device used is a Chromebook.

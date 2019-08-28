@@ -26,7 +26,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.it.R;
 import com.facebook.litho.testing.helper.ComponentTestHelper;

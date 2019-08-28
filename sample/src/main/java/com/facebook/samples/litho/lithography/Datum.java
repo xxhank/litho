@@ -12,7 +12,7 @@
 
 package com.facebook.samples.litho.lithography;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.widget.RenderInfo;
 
 /**

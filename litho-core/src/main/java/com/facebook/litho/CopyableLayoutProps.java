@@ -15,4 +15,6 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.layout.LayoutProps;
+
 public interface CopyableLayoutProps extends LayoutProps, Copyable<LayoutProps> {}

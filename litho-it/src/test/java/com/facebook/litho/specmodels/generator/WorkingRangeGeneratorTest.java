@@ -19,7 +19,7 @@ package com.facebook.litho.specmodels.generator;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnEnteredRange;
 import com.facebook.litho.annotations.OnExitedRange;
@@ -84,7 +84,7 @@ public class WorkingRangeGeneratorTest {
         .isEqualTo(
             "@java.lang.Override\n"
                 + "public void dispatchOnEnteredRange(java.lang.String name) {\n"
-                + "  com.facebook.litho.ComponentContext c = getScopedContext();\n"
+                + "  com.facebook.litho.component.ComponentContext c = getScopedContext();\n"
                 + "  switch (name) {\n"
                 + "    case \"enter\": {\n"
                 + "      testEnteredRangeMethod(c);\n"
@@ -104,7 +104,7 @@ public class WorkingRangeGeneratorTest {
         .isEqualTo(
             "@java.lang.Override\n"
                 + "public void dispatchOnExitedRange(java.lang.String name) {\n"
-                + "  com.facebook.litho.ComponentContext c = getScopedContext();\n"
+                + "  com.facebook.litho.component.ComponentContext c = getScopedContext();\n"
                 + "  switch (name) {\n"
                 + "    case \"exit\": {\n"
                 + "      testExitedRangeMethod(c);\n"
@@ -127,36 +127,36 @@ public class WorkingRangeGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "private void testEnteredRangeMethod(com.facebook.litho.ComponentContext c) {\n"
+            "private void testEnteredRangeMethod(com.facebook.litho.component.ComponentContext c) {\n"
                 + "  TestSpec.testEnteredRangeMethod(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (boolean) arg0,\n"
                 + "    (int) mStateContainer.arg1);\n"
                 + "}\n");
 
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "private void testExitedRangeMethod(com.facebook.litho.ComponentContext c) {\n"
+            "private void testExitedRangeMethod(com.facebook.litho.component.ComponentContext c) {\n"
                 + "  TestSpec.testExitedRangeMethod(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (T) arg2,\n"
                 + "    (int) arg3);\n"
                 + "}\n");
 
     assertThat(dataHolder.getMethodSpecs().get(2).toString())
         .isEqualTo(
-            "private void testEnteredPrefetchMethod(com.facebook.litho.ComponentContext c) {\n"
+            "private void testEnteredPrefetchMethod(com.facebook.litho.component.ComponentContext c) {\n"
                 + "  TestSpec.testEnteredPrefetchMethod(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (boolean) arg0,\n"
                 + "    (int) mStateContainer.arg1);\n"
                 + "}\n");
 
     assertThat(dataHolder.getMethodSpecs().get(3).toString())
         .isEqualTo(
-            "private void testExitedPrefetchMethod(com.facebook.litho.ComponentContext c) {\n"
+            "private void testExitedPrefetchMethod(com.facebook.litho.component.ComponentContext c) {\n"
                 + "  TestSpec.testExitedPrefetchMethod(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (T) arg2,\n"
                 + "    (int) arg3);\n"
                 + "}\n");
@@ -170,34 +170,34 @@ public class WorkingRangeGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "static void registerEnterWorkingRange(com.facebook.litho.ComponentContext c,\n"
-                + "    com.facebook.litho.WorkingRange workingRange) {\n"
+            "static void registerEnterWorkingRange(com.facebook.litho.component.ComponentContext c,\n"
+                + "    com.facebook.litho.WorkingRange.WorkingRange workingRange) {\n"
                 + "  if (workingRange == null) {\n"
                 + "    return;\n"
                 + "  }\n"
-                + "  com.facebook.litho.Component component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component component = c.getComponentScope();\n"
                 + "  registerWorkingRange(\"enter\", workingRange, component);\n"
                 + "}\n");
 
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "static void registerExitWorkingRange(com.facebook.litho.ComponentContext c,\n"
-                + "    com.facebook.litho.WorkingRange workingRange) {\n"
+            "static void registerExitWorkingRange(com.facebook.litho.component.ComponentContext c,\n"
+                + "    com.facebook.litho.WorkingRange.WorkingRange workingRange) {\n"
                 + "  if (workingRange == null) {\n"
                 + "    return;\n"
                 + "  }\n"
-                + "  com.facebook.litho.Component component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component component = c.getComponentScope();\n"
                 + "  registerWorkingRange(\"exit\", workingRange, component);\n"
                 + "}\n");
 
     assertThat(dataHolder.getMethodSpecs().get(2).toString())
         .isEqualTo(
-            "static void registerPrefetchWorkingRange(com.facebook.litho.ComponentContext c,\n"
-                + "    com.facebook.litho.WorkingRange workingRange) {\n"
+            "static void registerPrefetchWorkingRange(com.facebook.litho.component.ComponentContext c,\n"
+                + "    com.facebook.litho.WorkingRange.WorkingRange workingRange) {\n"
                 + "  if (workingRange == null) {\n"
                 + "    return;\n"
                 + "  }\n"
-                + "  com.facebook.litho.Component component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component component = c.getComponentScope();\n"
                 + "  registerWorkingRange(\"prefetch\", workingRange, component);\n"
                 + "}\n");
   }

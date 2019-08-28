@@ -16,7 +16,7 @@
 
 package com.facebook.litho.widget;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 
 /** A factory used to create {@link LithoView}s in {@link RecyclerBinder}. */

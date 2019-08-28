@@ -17,7 +17,7 @@
 package com.facebook.litho.sections.widget;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.ComponentLogParams;
+import com.facebook.litho.component.ComponentLogParams;
 import com.facebook.litho.LithoHandler;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.config.LayoutThreadPoolConfiguration;

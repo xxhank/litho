@@ -23,7 +23,7 @@ import android.util.Log;
 import android.util.Property;
 import android.view.View;
 import com.facebook.litho.AnimationsDebug;
-import com.facebook.litho.Transition;
+import com.facebook.litho.transition.Transition;
 import com.facebook.litho.dataflow.ConstantNode;
 import com.facebook.litho.dataflow.InterpolatorNode;
 import com.facebook.litho.dataflow.MappingNode;

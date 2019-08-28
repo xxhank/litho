@@ -11,7 +11,7 @@
  */
 package com.fblitho.lithoktsample.logging
 
-import com.facebook.litho.PerfEvent
+import com.facebook.litho.event.PerfEvent
 
 /**
  * The Litho logging system is designed to be stateless and have batches of data

@@ -12,14 +12,14 @@
 
 package com.facebook.samples.litho;
 
-import static com.facebook.litho.ComponentContext.withComponentScope;
+import static com.facebook.litho.component.ComponentContext.withComponentScope;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.robolectric.Shadows.shadowOf;
 
 import android.content.Intent;
-import com.facebook.litho.ClickEvent;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.helper.ComponentTestHelper;

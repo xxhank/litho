@@ -38,6 +38,12 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.graphics.Rect;
 import android.view.ViewGroup;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
+import com.facebook.litho.event.PerfEvent;
 import com.facebook.litho.testing.TestComponent;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.TestViewComponent;

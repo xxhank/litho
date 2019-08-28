@@ -18,173 +18,200 @@ package com.facebook.litho;
 import android.animation.StateListAnimator;
 import android.util.SparseArray;
 import android.view.ViewOutlineProvider;
+
 import androidx.annotation.AttrRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.Px;
 import androidx.annotation.StyleRes;
+
 import com.facebook.infer.annotation.ThreadConfined;
 import com.facebook.litho.drawable.ComparableDrawable;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.event.DispatchPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.FocusChangedEvent;
+import com.facebook.litho.event.FocusedVisibleEvent;
+import com.facebook.litho.event.FullImpressionVisibleEvent;
+import com.facebook.litho.event.InterceptTouchEvent;
+import com.facebook.litho.event.InvisibleEvent;
+import com.facebook.litho.event.LongClickEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityEventEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityNodeInfoEvent;
+import com.facebook.litho.event.OnPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.OnRequestSendAccessibilityEventEvent;
+import com.facebook.litho.event.PerformAccessibilityActionEvent;
+import com.facebook.litho.event.SendAccessibilityEventEvent;
+import com.facebook.litho.event.SendAccessibilityEventUncheckedEvent;
+import com.facebook.litho.event.TouchEvent;
+import com.facebook.litho.event.UnfocusedVisibleEvent;
+import com.facebook.litho.event.VisibilityChangedEvent;
+import com.facebook.litho.event.VisibleEvent;
+import com.facebook.litho.geometry.Border;
+import com.facebook.litho.layout.LayoutProps;
+import com.facebook.litho.transition.Transition;
 import com.facebook.yoga.YogaEdge;
 
-/** Common props that are accessible outside of the framework. */
+/**
+ * Common props that are accessible outside of the framework.
+ */
 @ThreadConfined(ThreadConfined.ANY)
 public interface CommonProps extends CommonPropsCopyable, LayoutProps {
 
-  @Nullable
-  EventHandler<ClickEvent> getClickHandler();
+    @Nullable
+    EventHandler<ClickEvent> getClickHandler();
 
-  @Nullable
-  EventHandler<LongClickEvent> getLongClickHandler();
+    @Nullable
+    EventHandler<LongClickEvent> getLongClickHandler();
 
-  @Nullable
-  EventHandler<FocusChangedEvent> getFocusChangeHandler();
+    @Nullable
+    EventHandler<FocusChangedEvent> getFocusChangeHandler();
 
-  @Nullable
-  EventHandler<TouchEvent> getTouchHandler();
+    @Nullable
+    EventHandler<TouchEvent> getTouchHandler();
 
-  @Nullable
-  EventHandler<InterceptTouchEvent> getInterceptTouchHandler();
+    @Nullable
+    EventHandler<InterceptTouchEvent> getInterceptTouchHandler();
 
-  boolean getFocusable();
+    boolean getFocusable();
 
-  @Nullable
-  String getTransitionKey();
+    @Nullable
+    String getTransitionKey();
 
-  void setStyle(@AttrRes int defStyleAttr, @StyleRes int defStyleRes);
+    void setStyle(@AttrRes int defStyleAttr, @StyleRes int defStyleRes);
 
-  void background(@Nullable ComparableDrawable background);
+    void background(@Nullable ComparableDrawable background);
 
-  void testKey(String testKey);
+    void testKey(String testKey);
 
-  void wrapInView();
+    void wrapInView();
 
-  void importantForAccessibility(int importantForAccessibility);
+    void importantForAccessibility(int importantForAccessibility);
 
-  void duplicateParentState(boolean duplicateParentState);
+    void duplicateParentState(boolean duplicateParentState);
 
-  void border(Border border);
+    void border(Border border);
 
-  void stateListAnimator(@Nullable StateListAnimator stateListAnimator);
+    void stateListAnimator(@Nullable StateListAnimator stateListAnimator);
 
-  void stateListAnimatorRes(@DrawableRes int resId);
+    void stateListAnimatorRes(@DrawableRes int resId);
 
-  void touchExpansionPx(@Nullable YogaEdge edge, @Px int touchExpansion);
+    void touchExpansionPx(@Nullable YogaEdge edge, @Px int touchExpansion);
 
-  void foreground(@Nullable ComparableDrawable foreground);
+    void foreground(@Nullable ComparableDrawable foreground);
 
-  void clickHandler(EventHandler<ClickEvent> clickHandler);
+    void clickHandler(EventHandler<ClickEvent> clickHandler);
 
-  @Nullable
-  ComparableDrawable getBackground();
+    @Nullable
+    ComparableDrawable getBackground();
 
-  void longClickHandler(EventHandler<LongClickEvent> longClickHandler);
+    void longClickHandler(EventHandler<LongClickEvent> longClickHandler);
 
-  void focusChangeHandler(EventHandler<FocusChangedEvent> focusChangeHandler);
+    void focusChangeHandler(EventHandler<FocusChangedEvent> focusChangeHandler);
 
-  void touchHandler(EventHandler<TouchEvent> touchHandler);
+    void touchHandler(EventHandler<TouchEvent> touchHandler);
 
-  void interceptTouchHandler(EventHandler<InterceptTouchEvent> interceptTouchHandler);
+    void interceptTouchHandler(EventHandler<InterceptTouchEvent> interceptTouchHandler);
 
-  void focusable(boolean isFocusable);
+    void focusable(boolean isFocusable);
 
-  void clickable(boolean isClickable);
+    void clickable(boolean isClickable);
 
-  void enabled(boolean isEnabled);
+    void enabled(boolean isEnabled);
 
-  void selected(boolean isSelected);
+    void selected(boolean isSelected);
 
-  void accessibilityHeading(boolean isHeading);
+    void accessibilityHeading(boolean isHeading);
 
-  void visibleHeightRatio(float visibleHeightRatio);
+    void visibleHeightRatio(float visibleHeightRatio);
 
-  void visibleWidthRatio(float visibleWidthRatio);
+    void visibleWidthRatio(float visibleWidthRatio);
 
-  void visibleHandler(@Nullable EventHandler<VisibleEvent> visibleHandler);
+    void visibleHandler(@Nullable EventHandler<VisibleEvent> visibleHandler);
 
-  void focusedHandler(@Nullable EventHandler<FocusedVisibleEvent> focusedHandler);
+    void focusedHandler(@Nullable EventHandler<FocusedVisibleEvent> focusedHandler);
 
-  void unfocusedHandler(@Nullable EventHandler<UnfocusedVisibleEvent> unfocusedHandler);
+    void unfocusedHandler(@Nullable EventHandler<UnfocusedVisibleEvent> unfocusedHandler);
 
-  void fullImpressionHandler(
-      @Nullable EventHandler<FullImpressionVisibleEvent> fullImpressionHandler);
+    void fullImpressionHandler(
+        @Nullable EventHandler<FullImpressionVisibleEvent> fullImpressionHandler);
 
-  void invisibleHandler(@Nullable EventHandler<InvisibleEvent> invisibleHandler);
+    void invisibleHandler(@Nullable EventHandler<InvisibleEvent> invisibleHandler);
 
-  void visibilityChangedHandler(
-      @Nullable EventHandler<VisibilityChangedEvent> visibilityChangedHandler);
+    void visibilityChangedHandler(
+        @Nullable EventHandler<VisibilityChangedEvent> visibilityChangedHandler);
 
-  void contentDescription(@Nullable CharSequence contentDescription);
+    void contentDescription(@Nullable CharSequence contentDescription);
 
-  void viewTag(@Nullable Object viewTag);
+    void viewTag(@Nullable Object viewTag);
 
-  void viewTags(@Nullable SparseArray<Object> viewTags);
+    void viewTags(@Nullable SparseArray<Object> viewTags);
 
-  void shadowElevationPx(float shadowElevation);
+    void shadowElevationPx(float shadowElevation);
 
-  void outlineProvider(@Nullable ViewOutlineProvider outlineProvider);
+    void outlineProvider(@Nullable ViewOutlineProvider outlineProvider);
 
-  void clipToOutline(boolean clipToOutline);
+    void clipToOutline(boolean clipToOutline);
 
-  void clipChildren(boolean clipChildren);
+    void clipChildren(boolean clipChildren);
 
-  void accessibilityRole(@Nullable @AccessibilityRole.AccessibilityRoleType String role);
+    void accessibilityRole(@Nullable @AccessibilityRole.AccessibilityRoleType String role);
 
-  void accessibilityRoleDescription(@Nullable CharSequence roleDescription);
+    void accessibilityRoleDescription(@Nullable CharSequence roleDescription);
 
-  void dispatchPopulateAccessibilityEventHandler(
-      @Nullable
-          EventHandler<DispatchPopulateAccessibilityEventEvent>
-              dispatchPopulateAccessibilityEventHandler);
+    void dispatchPopulateAccessibilityEventHandler(
+        @Nullable
+            EventHandler<DispatchPopulateAccessibilityEventEvent>
+            dispatchPopulateAccessibilityEventHandler);
 
-  void onInitializeAccessibilityEventHandler(
-      @Nullable
-          EventHandler<OnInitializeAccessibilityEventEvent> onInitializeAccessibilityEventHandler);
+    void onInitializeAccessibilityEventHandler(
+        @Nullable
+            EventHandler<OnInitializeAccessibilityEventEvent> onInitializeAccessibilityEventHandler);
 
-  void onInitializeAccessibilityNodeInfoHandler(
-      @Nullable
-          EventHandler<OnInitializeAccessibilityNodeInfoEvent>
-              onInitializeAccessibilityNodeInfoHandler);
+    void onInitializeAccessibilityNodeInfoHandler(
+        @Nullable
+            EventHandler<OnInitializeAccessibilityNodeInfoEvent>
+            onInitializeAccessibilityNodeInfoHandler);
 
-  void onPopulateAccessibilityEventHandler(
-      @Nullable
-          EventHandler<OnPopulateAccessibilityEventEvent> onPopulateAccessibilityEventHandler);
+    void onPopulateAccessibilityEventHandler(
+        @Nullable
+            EventHandler<OnPopulateAccessibilityEventEvent> onPopulateAccessibilityEventHandler);
 
-  void onRequestSendAccessibilityEventHandler(
-      @Nullable
-          EventHandler<OnRequestSendAccessibilityEventEvent>
-              onRequestSendAccessibilityEventHandler);
+    void onRequestSendAccessibilityEventHandler(
+        @Nullable
+            EventHandler<OnRequestSendAccessibilityEventEvent>
+            onRequestSendAccessibilityEventHandler);
 
-  void performAccessibilityActionHandler(
-      @Nullable EventHandler<PerformAccessibilityActionEvent> performAccessibilityActionHandler);
+    void performAccessibilityActionHandler(
+        @Nullable EventHandler<PerformAccessibilityActionEvent> performAccessibilityActionHandler);
 
-  void sendAccessibilityEventHandler(
-      @Nullable EventHandler<SendAccessibilityEventEvent> sendAccessibilityEventHandler);
+    void sendAccessibilityEventHandler(
+        @Nullable EventHandler<SendAccessibilityEventEvent> sendAccessibilityEventHandler);
 
-  void sendAccessibilityEventUncheckedHandler(
-      @Nullable
-          EventHandler<SendAccessibilityEventUncheckedEvent>
-              sendAccessibilityEventUncheckedHandler);
+    void sendAccessibilityEventUncheckedHandler(
+        @Nullable
+            EventHandler<SendAccessibilityEventUncheckedEvent>
+            sendAccessibilityEventUncheckedHandler);
 
-  void scale(float scale);
+    void scale(float scale);
 
-  void alpha(float alpha);
+    void alpha(float alpha);
 
-  void rotation(float rotation);
+    void rotation(float rotation);
 
-  void rotationX(float rotationX);
+    void rotationX(float rotationX);
 
-  void rotationY(float rotationY);
+    void rotationY(float rotationY);
 
-  void transitionKey(@Nullable String key);
+    void transitionKey(@Nullable String key);
 
-  void transitionKeyType(@Nullable Transition.TransitionKeyType type);
+    void transitionKeyType(@Nullable Transition.TransitionKeyType type);
 
-  @Nullable
-  Transition.TransitionKeyType getTransitionKeyType();
+    @Nullable
+    Transition.TransitionKeyType getTransitionKeyType();
 
-  @Nullable
-  NodeInfo getNullableNodeInfo();
+    @Nullable
+    NodeInfo getNullableNodeInfo();
 
-  NodeInfo getOrCreateNodeInfo();
+    NodeInfo getOrCreateNodeInfo();
 }

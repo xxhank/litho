@@ -19,6 +19,8 @@ package com.facebook.litho;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.graphics.Rect;
+
+import com.facebook.litho.test.TestOutput;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;

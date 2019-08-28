@@ -15,9 +15,9 @@ package com.fblitho.lithoktsample.animations.expandableelement
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.Transition
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.transition.Transition
 import com.facebook.litho.widget.Text
 import com.facebook.yoga.YogaAlign
 import com.facebook.yoga.YogaEdge
@@ -40,9 +40,9 @@ object ExpandableElementUtil {
   }
 
   fun maybeCreateBottomDetailComponent(
-      c: ComponentContext,
-      expanded: Boolean,
-      seen: Boolean
+          c: ComponentContext,
+          expanded: Boolean,
+          seen: Boolean
   ): Component.Builder<*>? = if (!expanded) {
     null
   } else {
@@ -57,9 +57,9 @@ object ExpandableElementUtil {
   }
 
   fun maybeCreateTopDetailComponent(
-      c: ComponentContext,
-      expanded: Boolean,
-      timestamp: String
+          c: ComponentContext,
+          expanded: Boolean,
+          timestamp: String
   ): Component.Builder<*>? = if (!expanded) {
     null
   } else {

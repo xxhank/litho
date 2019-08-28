@@ -16,6 +16,9 @@
 
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.layout.LayoutOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,128 +26,128 @@ import java.util.List;
  * A lightweight representation of a layout node, used to cache measurements between two Layout tree
  * calculations.
  */
-class DiffNode implements Cloneable {
+public class DiffNode implements Cloneable {
 
-  static final int UNSPECIFIED = -1;
+    static final int UNSPECIFIED = -1;
 
-  private LayoutOutput mContent;
-  private LayoutOutput mBackground;
-  private LayoutOutput mForeground;
-  private LayoutOutput mBorder;
-  private LayoutOutput mHost;
-  private VisibilityOutput mVisibilityOutput;
-  private Component mComponent;
-  private float mLastMeasuredWidth;
-  private float mLastMeasuredHeight;
-  private int mLastWidthSpec;
-  private int mLastHeightSpec;
-  private final List<DiffNode> mChildren;
+    private       LayoutOutput     mContent;
+    private       LayoutOutput     mBackground;
+    private       LayoutOutput     mForeground;
+    private       LayoutOutput     mBorder;
+    private       LayoutOutput     mHost;
+    private       VisibilityOutput mVisibilityOutput;
+    private       Component        mComponent;
+    private       float            mLastMeasuredWidth;
+    private       float            mLastMeasuredHeight;
+    private       int              mLastWidthSpec;
+    private       int              mLastHeightSpec;
+    private final List<DiffNode>   mChildren;
 
-  DiffNode() {
-    mChildren = new ArrayList<>(4);
-  }
+    public DiffNode() {
+        mChildren = new ArrayList<>(4);
+    }
 
-  int getChildCount() {
-    return mChildren == null ? 0 : mChildren.size();
-  }
+    public int getChildCount() {
+        return mChildren == null ? 0 : mChildren.size();
+    }
 
-  DiffNode getChildAt(int i) {
-    return mChildren.get(i);
-  }
+    public DiffNode getChildAt(int i) {
+        return mChildren.get(i);
+    }
 
-  Component getComponent() {
-    return mComponent;
-  }
+    public Component getComponent() {
+        return mComponent;
+    }
 
-  void setComponent(Component component) {
-    mComponent = component;
-  }
+    public void setComponent(Component component) {
+        mComponent = component;
+    }
 
-  float getLastMeasuredWidth() {
-    return mLastMeasuredWidth;
-  }
+    public float getLastMeasuredWidth() {
+        return mLastMeasuredWidth;
+    }
 
-  void setLastMeasuredWidth(float lastMeasuredWidth) {
-    mLastMeasuredWidth = lastMeasuredWidth;
-  }
+    public void setLastMeasuredWidth(float lastMeasuredWidth) {
+        mLastMeasuredWidth = lastMeasuredWidth;
+    }
 
-  float getLastMeasuredHeight() {
-    return mLastMeasuredHeight;
-  }
+    public float getLastMeasuredHeight() {
+        return mLastMeasuredHeight;
+    }
 
-  void setLastMeasuredHeight(float lastMeasuredHeight) {
-    mLastMeasuredHeight = lastMeasuredHeight;
-  }
+    public void setLastMeasuredHeight(float lastMeasuredHeight) {
+        mLastMeasuredHeight = lastMeasuredHeight;
+    }
 
-  int getLastWidthSpec() {
-    return mLastWidthSpec;
-  }
+    public int getLastWidthSpec() {
+        return mLastWidthSpec;
+    }
 
-  int getLastHeightSpec() {
-    return mLastHeightSpec;
-  }
+    public int getLastHeightSpec() {
+        return mLastHeightSpec;
+    }
 
-  void setLastWidthSpec(int widthSpec) {
-    mLastWidthSpec = widthSpec;
-  }
+    public void setLastWidthSpec(int widthSpec) {
+        mLastWidthSpec = widthSpec;
+    }
 
-  void setLastHeightSpec(int heightSpec) {
-    mLastHeightSpec = heightSpec;
-  }
+    public void setLastHeightSpec(int heightSpec) {
+        mLastHeightSpec = heightSpec;
+    }
 
-  List<DiffNode> getChildren() {
-    return mChildren;
-  }
+    public List<DiffNode> getChildren() {
+        return mChildren;
+    }
 
-  void addChild(DiffNode node) {
-    mChildren.add(node);
-  }
+    public void addChild(DiffNode node) {
+        mChildren.add(node);
+    }
 
-  LayoutOutput getContent() {
-    return mContent;
-  }
+    public LayoutOutput getContent() {
+        return mContent;
+    }
 
-  void setContent(LayoutOutput content) {
-    mContent = content;
-  }
+    public void setContent(LayoutOutput content) {
+        mContent = content;
+    }
 
-  VisibilityOutput getVisibilityOutput() {
-    return mVisibilityOutput;
-  }
+    public VisibilityOutput getVisibilityOutput() {
+        return mVisibilityOutput;
+    }
 
-  void setVisibilityOutput(VisibilityOutput visibilityOutput) {
-    mVisibilityOutput = visibilityOutput;
-  }
+    public void setVisibilityOutput(VisibilityOutput visibilityOutput) {
+        mVisibilityOutput = visibilityOutput;
+    }
 
-  LayoutOutput getBackground() {
-    return mBackground;
-  }
+    public LayoutOutput getBackground() {
+        return mBackground;
+    }
 
-  void setBackground(LayoutOutput background) {
-    mBackground = background;
-  }
+    public void setBackground(LayoutOutput background) {
+        mBackground = background;
+    }
 
-  LayoutOutput getForeground() {
-    return mForeground;
-  }
+    public LayoutOutput getForeground() {
+        return mForeground;
+    }
 
-  void setForeground(LayoutOutput foreground) {
-    mForeground = foreground;
-  }
+    public void setForeground(LayoutOutput foreground) {
+        mForeground = foreground;
+    }
 
-  LayoutOutput getBorder() {
-    return mBorder;
-  }
+    public LayoutOutput getBorder() {
+        return mBorder;
+    }
 
-  void setBorder(LayoutOutput border) {
-    mBorder = border;
-  }
+    public void setBorder(LayoutOutput border) {
+        mBorder = border;
+    }
 
-  LayoutOutput getHost() {
-    return mHost;
-  }
+    public LayoutOutput getHost() {
+        return mHost;
+    }
 
-  void setHost(LayoutOutput host) {
-    mHost = host;
-  }
+    public void setHost(LayoutOutput host) {
+        mHost = host;
+    }
 }

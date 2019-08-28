@@ -15,22 +15,30 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.FocusChangedEvent;
+import com.facebook.litho.event.InterceptTouchEvent;
+import com.facebook.litho.event.LongClickEvent;
+import com.facebook.litho.event.TouchEvent;
+
 import javax.annotation.Nullable;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.Is;
 
 /**
  * Base class used to share common properties used in TestSpec builders. Mirrors relevant properties
- * from {@link com.facebook.litho.Component.Builder}.
+ * from {@link Component.Builder}.
  */
 public abstract class BaseMatcher<T extends BaseMatcher<T>> {
-  @Nullable Matcher<EventHandler<ClickEvent>> mClickHandlerMatcher;
-  @Nullable Matcher<EventHandler<LongClickEvent>> mLongClickHandlerMatcher;
-  @Nullable Matcher<EventHandler<FocusChangedEvent>> mFocusChangeHandlerMatcher;
-  @Nullable Matcher<EventHandler<TouchEvent>> mTouchEventHandlerMatcher;
+  @Nullable Matcher<EventHandler<ClickEvent>>          mClickHandlerMatcher;
+  @Nullable Matcher<EventHandler<LongClickEvent>>      mLongClickHandlerMatcher;
+  @Nullable Matcher<EventHandler<FocusChangedEvent>>   mFocusChangeHandlerMatcher;
+  @Nullable Matcher<EventHandler<TouchEvent>>          mTouchEventHandlerMatcher;
   @Nullable Matcher<EventHandler<InterceptTouchEvent>> mInterceptTouchHandlerMatcher;
-  @Nullable Matcher<Boolean> mFocusable;
-  @Nullable Matcher<String> mTransitionKey;
+  @Nullable Matcher<Boolean>                           mFocusable;
+  @Nullable Matcher<String>                            mTransitionKey;
 
   public T clickHandler(EventHandler<ClickEvent> clickHandler) {
     mClickHandlerMatcher = Is.is(clickHandler);

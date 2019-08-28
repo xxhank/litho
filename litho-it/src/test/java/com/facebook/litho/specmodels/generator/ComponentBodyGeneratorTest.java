@@ -21,9 +21,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.Row;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnBind;
@@ -243,7 +243,7 @@ public class ComponentBodyGeneratorTest {
                 + "@com.facebook.litho.annotations.Comparable(\n"
                 + "    type = 10\n"
                 + ")\n"
-                + "com.facebook.litho.Component arg4;\n");
+                + "com.facebook.litho.component.Component arg4;\n");
 
     dataHolder = ComponentBodyGenerator.generateProps(mMountSpecModelDI);
     assertThat(dataHolder.getFieldSpecs()).hasSize(6);
@@ -309,7 +309,7 @@ public class ComponentBodyGeneratorTest {
     TypeSpecDataHolder dataHolder = ComponentBodyGenerator.generateEventHandlers(specModel);
     assertThat(dataHolder.getFieldSpecs()).hasSize(1);
     assertThat(dataHolder.getFieldSpecs().get(0).toString())
-        .isEqualTo("com.facebook.litho.EventHandler objectHandler;\n");
+        .isEqualTo("com.facebook.litho.event.EventHandler objectHandler;\n");
   }
 
   @Test
@@ -317,7 +317,7 @@ public class ComponentBodyGeneratorTest {
     assertThat(ComponentBodyGenerator.generateIsEquivalentMethod(mMountSpecModelDI).toString())
         .isEqualTo(
             "@java.lang.Override\n"
-                + "public boolean isEquivalentTo(com.facebook.litho.Component other) {\n"
+                + "public boolean isEquivalentTo(com.facebook.litho.component.Component other) {\n"
                 + "  if (this == other) {\n"
                 + "    return true;\n"
                 + "  }\n"
@@ -338,8 +338,8 @@ public class ComponentBodyGeneratorTest {
                 + "    if (mountTestRef.arg5 == null || arg5.size() != mountTestRef.arg5.size()) {\n"
                 + "      return false;\n"
                 + "    }\n"
-                + "    java.util.Iterator<com.facebook.litho.Component> _e1_1 = arg5.iterator();\n"
-                + "    java.util.Iterator<com.facebook.litho.Component> _e2_1 = mountTestRef.arg5.iterator();\n"
+                + "    java.util.Iterator<com.facebook.litho.component.Component> _e1_1 = arg5.iterator();\n"
+                + "    java.util.Iterator<com.facebook.litho.component.Component> _e2_1 = mountTestRef.arg5.iterator();\n"
                 + "    while (_e1_1.hasNext() && _e2_1.hasNext()) {\n"
                 + "      if (!_e1_1.next().isEquivalentTo(_e2_1.next())) {\n"
                 + "        return false;\n"
@@ -364,14 +364,14 @@ public class ComponentBodyGeneratorTest {
                 + "    if (mountTestRef.arg7 == null || arg7.size() != mountTestRef.arg7.size()) {\n"
                 + "      return false;\n"
                 + "    }\n"
-                + "    java.util.Iterator<java.util.List<com.facebook.litho.Row>> _e1_2 = arg7.iterator();\n"
-                + "    java.util.Iterator<java.util.List<com.facebook.litho.Row>> _e2_2 = mountTestRef.arg7.iterator();\n"
+                + "    java.util.Iterator<java.util.List<com.facebook.litho.component.Row>> _e1_2 = arg7.iterator();\n"
+                + "    java.util.Iterator<java.util.List<com.facebook.litho.component.Row>> _e2_2 = mountTestRef.arg7.iterator();\n"
                 + "    while (_e1_2.hasNext() && _e2_2.hasNext()) {\n"
                 + "      if (_e1_2.next().size() != _e2_2.next().size()) {\n"
                 + "        return false;\n"
                 + "      }\n"
-                + "      java.util.Iterator<com.facebook.litho.Row> _e1_1 = _e1_2.next().iterator();\n"
-                + "      java.util.Iterator<com.facebook.litho.Row> _e2_1 = _e2_2.next().iterator();\n"
+                + "      java.util.Iterator<com.facebook.litho.component.Row> _e1_1 = _e1_2.next().iterator();\n"
+                + "      java.util.Iterator<com.facebook.litho.component.Row> _e2_1 = _e2_2.next().iterator();\n"
                 + "      while (_e1_1.hasNext() && _e2_1.hasNext()) {\n"
                 + "        if (!_e1_1.next().isEquivalentTo(_e2_1.next())) {\n"
                 + "          return false;\n"

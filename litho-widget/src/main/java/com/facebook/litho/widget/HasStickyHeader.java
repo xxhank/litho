@@ -16,7 +16,7 @@
 
 package com.facebook.litho.widget;
 
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.ComponentTree;
 
 public interface HasStickyHeader extends ViewportInfo {
   /**

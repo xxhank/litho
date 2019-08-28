@@ -19,6 +19,11 @@ package com.facebook.litho;
 import android.graphics.Rect;
 import androidx.annotation.Nullable;
 
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.InvisibleEvent;
+import com.facebook.litho.event.UnfocusedVisibleEvent;
+import com.facebook.litho.event.VisibilityChangedEvent;
+
 /**
  * Holds information about a VisibilityOutput (that is, about a component for which a visibility
  * event handler has been set). This class is justified by the fact that VisibilityOutput should be
@@ -32,14 +37,14 @@ class VisibilityItem {
   private static final int FLAG_BOTTOM_EDGE_VISIBLE = 1 << 4;
   private static final int FLAG_FOCUSED_RANGE = 1 << 5;
 
-  private final String mGlobalKey;
-  private int mFlags;
+  private final           String                               mGlobalKey;
+  private                 int                                  mFlags;
   // The invisible event and unfocused event handlers are required to make it possible to dispatch
   // the corresponding event when unbind is called or when the MountState is reset.
-  @Nullable private EventHandler<InvisibleEvent> mInvisibleHandler;
-  @Nullable private EventHandler<UnfocusedVisibleEvent> mUnfocusedHandler;
+  @Nullable private       EventHandler<InvisibleEvent>         mInvisibleHandler;
+  @Nullable private       EventHandler<UnfocusedVisibleEvent>  mUnfocusedHandler;
   private @Nullable final EventHandler<VisibilityChangedEvent> mVisibilityChangedHandler;
-  private boolean mDoNotClearInThisPass;
+  private                 boolean                              mDoNotClearInThisPass;
 
   public VisibilityItem(
       String globalKey,

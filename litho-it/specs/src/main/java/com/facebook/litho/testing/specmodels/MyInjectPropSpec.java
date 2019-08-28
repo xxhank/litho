@@ -15,9 +15,9 @@
  */
 package com.facebook.litho.testing.specmodels;
 
-import com.facebook.litho.Column;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.InjectProp;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;

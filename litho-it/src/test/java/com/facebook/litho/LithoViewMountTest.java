@@ -16,7 +16,7 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
 import static com.facebook.litho.testing.helper.ComponentTestHelper.mountComponent;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.spy;
@@ -25,6 +25,13 @@ import static org.mockito.Mockito.verify;
 
 import android.content.Context;
 import android.graphics.Rect;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.geometry.SizeSpec;
+import com.facebook.litho.mount.MountState;
 import com.facebook.litho.testing.TestComponent;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.TestViewComponent;

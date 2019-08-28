@@ -11,7 +11,7 @@
  */
 package com.fblitho.lithoktsample.logging
 
-import com.facebook.litho.PerfEvent
+import com.facebook.litho.event.PerfEvent
 
 class SamplePerfEvent(private val markerId: Int, private val instanceKey: Int) : PerfEvent {
 

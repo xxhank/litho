@@ -22,7 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import com.facebook.infer.annotation.ThreadConfined;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.debug.DebugComponent;
+import com.facebook.litho.debug.DebugComponentDescriptionHelper;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.test.TestItem;
 import com.facebook.proguard.annotations.DoNotStrip;
 import java.util.Deque;
 

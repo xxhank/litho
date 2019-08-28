@@ -13,9 +13,8 @@
 package com.fblitho.lithoktsample.animations.animatedbadge
 
 import android.os.Bundle
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.LithoView
-import com.facebook.litho.config.ComponentsConfiguration
 import com.fblitho.lithoktsample.NavigatableDemoActivity
 
 class AnimatedBadgeActivity : NavigatableDemoActivity() {

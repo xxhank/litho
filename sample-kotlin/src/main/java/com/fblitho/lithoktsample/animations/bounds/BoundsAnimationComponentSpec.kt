@@ -14,13 +14,13 @@ package com.fblitho.lithoktsample.animations.bounds
 
 import android.graphics.Color
 import android.graphics.Typeface
-import com.facebook.litho.ClickEvent
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.Row
+import com.facebook.litho.event.ClickEvent
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.component.Row
 import com.facebook.litho.StateValue
-import com.facebook.litho.Transition
+import com.facebook.litho.transition.Transition
 import com.facebook.litho.animation.AnimatedProperties
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
@@ -55,12 +55,12 @@ object BoundsAnimationComponentSpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @State autoBoundsTransitionEnabled: Boolean,
-      @State flag1: Boolean,
-      @State flag2: Boolean,
-      @State flag3: Boolean,
-      @State flag4: Boolean
+          c: ComponentContext,
+          @State autoBoundsTransitionEnabled: Boolean,
+          @State flag1: Boolean,
+          @State flag2: Boolean,
+          @State flag3: Boolean,
+          @State flag4: Boolean
   ): Component = Column.create(c)
       .backgroundColor(Color.WHITE)
       .alignItems(YogaAlign.CENTER)

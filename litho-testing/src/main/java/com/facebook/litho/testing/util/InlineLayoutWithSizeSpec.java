@@ -16,8 +16,8 @@
 
 package com.facebook.litho.testing.util;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.EventHandler;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
 
 /** Like {@link InlineLayoutSpec} but uses onCreateLayoutWithSizeSpec */
 public abstract class InlineLayoutWithSizeSpec extends Component {

@@ -20,8 +20,8 @@ import static org.assertj.core.data.Index.atIndex;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assume.assumeThat;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.subcomponents.InspectableComponent;

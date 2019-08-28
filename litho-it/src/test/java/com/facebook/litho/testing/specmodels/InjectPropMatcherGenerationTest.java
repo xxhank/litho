@@ -21,7 +21,7 @@ import static com.facebook.litho.testing.assertj.SubComponentDeepExtractor.deepS
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assume.assumeThat;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.subcomponents.InspectableComponent;

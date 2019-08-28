@@ -21,7 +21,7 @@ Then, add a predefined Litho `Text` widget to an activity that displays "Hello W
 
 ```java
 [MyActivity.java]
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 
 public class MyActivity extends Activity {

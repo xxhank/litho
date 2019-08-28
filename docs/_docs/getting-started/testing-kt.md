@@ -19,7 +19,7 @@ Then, add a predefined Litho `Text` widget to an activity that displays "Hello W
 
 ```kotlin
 [MyActivity.kt]
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.LithoView
 
 class MyActivity : AppCompatActivity() {

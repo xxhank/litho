@@ -25,6 +25,9 @@ import static com.facebook.yoga.YogaEdge.ALL;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.view.ContextThemeWrapper;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.it.R;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
@@ -38,8 +41,8 @@ import org.robolectric.RuntimeEnvironment;
 @RunWith(ComponentsTestRunner.class)
 @org.junit.Ignore("t16280359")
 public class ComponentStyleTest {
-  private int mDimen;
-  private int mLargeDimen;
+  private int              mDimen;
+  private int              mLargeDimen;
   private ComponentContext mContext;
 
   @Rule public ComponentsRule mComponentsRule = new ComponentsRule();
@@ -68,8 +71,8 @@ public class ComponentStyleTest {
 
   @Test
   public void testStyleLayout() {
-    Component component = Text.create(mContext, 0, PaddingStyle).text("text").build();
-    InternalNode node = (InternalNode) component.resolve(mContext);
+    Component    component = Text.create(mContext, 0, PaddingStyle).text("text").build();
+    InternalNode node      = (InternalNode) component.resolve(mContext);
     node.calculateLayout();
     assertThat(node.getPaddingLeft()).isEqualTo(mDimen);
   }

@@ -18,7 +18,7 @@ package com.facebook.litho.specmodels.generator;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import com.facebook.litho.StateValue;
-import com.facebook.litho.Transition;
+import com.facebook.litho.transition.Transition;
 import com.facebook.litho.animation.AnimatedProperties;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
@@ -161,7 +161,7 @@ public class StateContainerGeneratorTest {
             "@androidx.annotation.VisibleForTesting(\n"
                 + "    otherwise = 2\n"
                 + ")\n"
-                + "static class TestWithStateWithTransitionStateContainer<T extends java.lang.CharSequence> extends com.facebook.litho.StateContainer implements com.facebook.litho.ComponentLifecycle.TransitionContainer {\n"
+                + "static class TestWithStateWithTransitionStateContainer<T extends java.lang.CharSequence> extends com.facebook.litho.StateContainer implements com.facebook.litho.component.ComponentLifecycle.TransitionContainer {\n"
                 + "  @com.facebook.litho.annotations.State\n"
                 + "  @com.facebook.litho.annotations.Comparable(\n"
                 + "      type = 3\n"
@@ -174,12 +174,12 @@ public class StateContainerGeneratorTest {
                 + "  )\n"
                 + "  boolean arg4;\n"
                 + "\n"
-                + "  com.facebook.litho.Transition _transition;\n"
+                + "  com.facebook.litho.transition.Transition _transition;\n"
                 + "\n"
                 + "  @java.lang.Override\n"
                 + "  @androidx.annotation.Nullable\n"
-                + "  public com.facebook.litho.Transition consumeTransition() {\n"
-                + "    com.facebook.litho.Transition transitionCopy = _transition;\n"
+                + "  public com.facebook.litho.transition.Transition consumeTransition() {\n"
+                + "    com.facebook.litho.transition.Transition transitionCopy = _transition;\n"
                 + "    _transition = null;\n"
                 + "    return transitionCopy;\n"
                 + "  }\n"
@@ -210,7 +210,7 @@ public class StateContainerGeneratorTest {
             "@androidx.annotation.VisibleForTesting(\n"
                 + "    otherwise = 2\n"
                 + ")\n"
-                + "static class TestWithBothMethodsStateContainer<T extends java.lang.CharSequence> extends com.facebook.litho.StateContainer implements com.facebook.litho.ComponentLifecycle.TransitionContainer {\n"
+                + "static class TestWithBothMethodsStateContainer<T extends java.lang.CharSequence> extends com.facebook.litho.StateContainer implements com.facebook.litho.component.ComponentLifecycle.TransitionContainer {\n"
                 + "  @com.facebook.litho.annotations.State\n"
                 + "  @com.facebook.litho.annotations.Comparable(\n"
                 + "      type = 3\n"
@@ -223,12 +223,12 @@ public class StateContainerGeneratorTest {
                 + "  )\n"
                 + "  boolean arg4;\n"
                 + "\n"
-                + "  com.facebook.litho.Transition _transition;\n"
+                + "  com.facebook.litho.transition.Transition _transition;\n"
                 + "\n"
                 + "  @java.lang.Override\n"
                 + "  @androidx.annotation.Nullable\n"
-                + "  public com.facebook.litho.Transition consumeTransition() {\n"
-                + "    com.facebook.litho.Transition transitionCopy = _transition;\n"
+                + "  public com.facebook.litho.transition.Transition consumeTransition() {\n"
+                + "    com.facebook.litho.transition.Transition transitionCopy = _transition;\n"
                 + "    _transition = null;\n"
                 + "    return transitionCopy;\n"
                 + "  }\n"

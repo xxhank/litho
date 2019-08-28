@@ -18,104 +18,108 @@ package com.facebook.litho;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
 import com.facebook.litho.drawable.ComparableDrawable;
 
-class DrawableComponent<T extends Drawable> extends Component {
+public class DrawableComponent<T extends Drawable> extends Component {
 
-  ComparableDrawable mDrawable;
-  int mDrawableWidth;
-  int mDrawableHeight;
+    public ComparableDrawable mDrawable;
+    public int                mDrawableWidth;
+    public int                mDrawableHeight;
 
-  private DrawableComponent(ComparableDrawable drawable) {
-    super("DrawableComponent");
-    mDrawable = drawable;
-  }
-
-  @Override
-  protected void onBoundsDefined(ComponentContext c, ComponentLayout layout) {
-    setDrawableWidth(layout.getWidth());
-    setDrawableHeight(layout.getHeight());
-  }
-
-  @Override
-  protected Object onCreateMountContent(Context c) {
-    return new MatrixDrawable();
-  }
-
-  @Override
-  protected void onMount(ComponentContext context, Object content) {
-    MatrixDrawable drawable = (MatrixDrawable) content;
-
-    drawable.mount(getDrawable());
-  }
-
-  @Override
-  protected void onBind(ComponentContext c, Object mountedContent) {
-    final MatrixDrawable mountedDrawable = (MatrixDrawable) mountedContent;
-
-    mountedDrawable.bind(getDrawableWidth(), getDrawableHeight());
-  }
-
-  @Override
-  protected void onUnmount(ComponentContext context, Object mountedContent) {
-    final MatrixDrawable<T> matrixDrawable = (MatrixDrawable<T>) mountedContent;
-    matrixDrawable.unmount();
-  }
-
-  @Override
-  protected boolean isPureRender() {
-    return true;
-  }
-
-  @Override
-  public MountType getMountType() {
-    return MountType.DRAWABLE;
-  }
-
-  public static DrawableComponent create(ComparableDrawable drawable) {
-    return new DrawableComponent<>(drawable);
-  }
-
-  @Override
-  protected boolean shouldUpdate(Component previous, Component next) {
-    final ComparableDrawable previousDrawable = ((DrawableComponent) previous).getDrawable();
-    final ComparableDrawable nextDrawable = ((DrawableComponent) next).getDrawable();
-
-    return !previousDrawable.isEquivalentTo(nextDrawable);
-  }
-
-  private ComparableDrawable getDrawable() {
-    return mDrawable;
-  }
-
-  @Override
-  public boolean isEquivalentTo(Component o) {
-    if (this == o) {
-      return true;
+    private DrawableComponent(ComparableDrawable drawable) {
+        super("DrawableComponent");
+        mDrawable = drawable;
     }
 
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+    @Override
+    public void onBoundsDefined(ComponentContext c, ComponentLayout layout) {
+        setDrawableWidth(layout.getWidth());
+        setDrawableHeight(layout.getHeight());
     }
 
-    DrawableComponent drawableComponent = (DrawableComponent) o;
+    @Override
+    protected Object onCreateMountContent(Context c) {
+        return new MatrixDrawable();
+    }
 
-    return mDrawable.equals(drawableComponent.mDrawable);
-  }
+    @Override
+    protected void onMount(ComponentContext context, Object content) {
+        MatrixDrawable drawable = (MatrixDrawable) content;
 
-  private void setDrawableWidth(int drawableWidth) {
-    mDrawableWidth = drawableWidth;
-  }
+        drawable.mount(getDrawable());
+    }
 
-  private int getDrawableWidth() {
-    return mDrawableWidth;
-  }
+    @Override
+    protected void onBind(ComponentContext c, Object mountedContent) {
+        MatrixDrawable mountedDrawable = (MatrixDrawable) mountedContent;
 
-  private void setDrawableHeight(int drawableHeight) {
-    mDrawableHeight = drawableHeight;
-  }
+        mountedDrawable.bind(getDrawableWidth(), getDrawableHeight());
+    }
 
-  private int getDrawableHeight() {
-    return mDrawableHeight;
-  }
+    @Override
+    protected void onUnmount(ComponentContext context, Object mountedContent) {
+        MatrixDrawable<T> matrixDrawable = (MatrixDrawable<T>) mountedContent;
+        matrixDrawable.unmount();
+    }
+
+    @Override
+    protected boolean isPureRender() {
+        return true;
+    }
+
+    @Override
+    public MountType getMountType() {
+        return MountType.DRAWABLE;
+    }
+
+    public static DrawableComponent create(ComparableDrawable drawable) {
+        return new DrawableComponent<>(drawable);
+    }
+
+    @Override
+    protected boolean shouldUpdate(Component previous, Component next) {
+        ComparableDrawable previousDrawable = ((DrawableComponent) previous).getDrawable();
+        ComparableDrawable nextDrawable     = ((DrawableComponent) next).getDrawable();
+
+        return !previousDrawable.isEquivalentTo(nextDrawable);
+    }
+
+    private ComparableDrawable getDrawable() {
+        return mDrawable;
+    }
+
+    @Override
+    public boolean isEquivalentTo(Component o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        DrawableComponent drawableComponent = (DrawableComponent) o;
+
+        return mDrawable.equals(drawableComponent.mDrawable);
+    }
+
+    private void setDrawableWidth(int drawableWidth) {
+        mDrawableWidth = drawableWidth;
+    }
+
+    private int getDrawableWidth() {
+        return mDrawableWidth;
+    }
+
+    private void setDrawableHeight(int drawableHeight) {
+        mDrawableHeight = drawableHeight;
+    }
+
+    private int getDrawableHeight() {
+        return mDrawableHeight;
+    }
 }

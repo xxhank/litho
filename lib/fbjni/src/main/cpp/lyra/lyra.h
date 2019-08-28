@@ -20,74 +20,74 @@
 #include <vector>
 
 namespace facebook {
-namespace lyra {
+    namespace lyra {
 
-constexpr size_t kDefaultLimit = 64;
+        constexpr size_t kDefaultLimit = 64;
 
-using InstructionPointer = const void*;
+        using InstructionPointer = const void *;
 
-class StackTraceElement {
- public:
-  StackTraceElement(InstructionPointer absoluteProgramCounter,
-                    InstructionPointer libraryBase,
-                    InstructionPointer functionAddress,
-                    std::string libraryName,
-                    std::string functionName)
-      : absoluteProgramCounter_{absoluteProgramCounter},
-        libraryBase_{libraryBase},
-        functionAddress_{functionAddress},
-        libraryName_{std::move(libraryName)},
-        functionName_{std::move(functionName)},
-        hasBuildId_{false},
-        buildId_{}
-  {}
+        class StackTraceElement {
+            public:
+            StackTraceElement(InstructionPointer absoluteProgramCounter,
+                              InstructionPointer libraryBase,
+                              InstructionPointer functionAddress,
+                              std::string libraryName,
+                              std::string functionName)
+                : absoluteProgramCounter_{absoluteProgramCounter},
+                  libraryBase_{libraryBase},
+                  functionAddress_{functionAddress},
+                  libraryName_{std::move(libraryName)},
+                  functionName_{std::move(functionName)},
+                  hasBuildId_{false},
+                  buildId_{} {}
 
-  InstructionPointer libraryBase() const noexcept { return libraryBase_; }
+            InstructionPointer libraryBase() const noexcept { return libraryBase_; }
 
-  InstructionPointer functionAddress() const noexcept {
-    return functionAddress_;
-  }
+            InstructionPointer functionAddress() const noexcept {
+                return functionAddress_;
+            }
 
-  InstructionPointer absoluteProgramCounter() const noexcept {
-    return absoluteProgramCounter_;
-  }
+            InstructionPointer absoluteProgramCounter() const noexcept {
+                return absoluteProgramCounter_;
+            }
 
-  const std::string& libraryName() const noexcept { return libraryName_; }
+            const std::string &libraryName() const noexcept { return libraryName_; }
 
-  const std::string& functionName() const noexcept { return functionName_; }
+            const std::string &functionName() const noexcept { return functionName_; }
 
-  /**
-   * The offset of the program counter to the base of the library (i.e. the
-   * address that addr2line takes as input>
-   */
-  std::ptrdiff_t libraryOffset() const noexcept {
-    auto absoluteLibrary = static_cast<const char*>(libraryBase_);
-    auto absoluteabsoluteProgramCounter =
-        static_cast<const char*>(absoluteProgramCounter_);
-    return absoluteabsoluteProgramCounter - absoluteLibrary;
-  }
+            /**
+             * The offset of the program counter to the base of the library (i.e. the
+             * address that addr2line takes as input>
+             */
+            std::ptrdiff_t libraryOffset() const noexcept {
+                auto absoluteLibrary = static_cast<const char *>(libraryBase_);
+                auto absoluteabsoluteProgramCounter =
+                    static_cast<const char *>(absoluteProgramCounter_);
+                return absoluteabsoluteProgramCounter - absoluteLibrary;
+            }
 
-  /**
-   * The offset within the current function
-   */
-  int functionOffset() const noexcept {
-    auto absoluteSymbol = static_cast<const char*>(functionAddress_);
-    auto absoluteabsoluteProgramCounter =
-        static_cast<const char*>(absoluteProgramCounter_);
-    return absoluteabsoluteProgramCounter - absoluteSymbol;
-  }
+            /**
+             * The offset within the current function
+             */
+            int functionOffset() const noexcept {
+                auto absoluteSymbol = static_cast<const char *>(functionAddress_);
+                auto absoluteabsoluteProgramCounter =
+                    static_cast<const char *>(absoluteProgramCounter_);
+                return absoluteabsoluteProgramCounter - absoluteSymbol;
+            }
 
-  std::string buildId() const;
- private:
-  const InstructionPointer absoluteProgramCounter_;
-  const InstructionPointer libraryBase_;
-  const InstructionPointer functionAddress_;
-  const std::string libraryName_;
-  const std::string functionName_;
+            std::string buildId() const;
 
-  mutable bool hasBuildId_;
-  mutable std::string buildId_;
-};
+            private:
+            const InstructionPointer absoluteProgramCounter_;
+            const InstructionPointer libraryBase_;
+            const InstructionPointer functionAddress_;
+            const std::string libraryName_;
+            const std::string functionName_;
+
+            mutable bool hasBuildId_;
+            mutable std::string buildId_;
+        };
 
 /**
  * If a library identifier function is set, it is passed a libraryName
@@ -95,9 +95,9 @@ class StackTraceElement {
  * included in the logged stack trace.  The most common use for this
  * will be correlating stack traces with breakpad identifiers.
  */
-typedef std::string (*LibraryIdentifierFunctionType)(const std::string&);
+        typedef std::string (*LibraryIdentifierFunctionType)(const std::string &);
 
-void setLibraryIdentifierFunction(LibraryIdentifierFunctionType func);
+        void setLibraryIdentifierFunction(LibraryIdentifierFunctionType func);
 
 /**
  * Populate the vector with the current stack trace
@@ -115,7 +115,7 @@ void setLibraryIdentifierFunction(LibraryIdentifierFunctionType func);
  *
  * @param skip The number of frames to skip before capturing the trace
  */
-void getStackTrace(std::vector<InstructionPointer>& stackTrace, size_t skip = 0);
+        void getStackTrace(std::vector<InstructionPointer> &stackTrace, size_t skip = 0);
 
 /**
  * Creates a vector and populates it with the current stack trace
@@ -131,14 +131,14 @@ void getStackTrace(std::vector<InstructionPointer>& stackTrace, size_t skip = 0)
  *
  * @limit The maximum number of frames captured
  */
-inline std::vector<InstructionPointer> getStackTrace(
-    size_t skip = 0,
-    size_t limit = kDefaultLimit) {
-  auto stackTrace = std::vector<InstructionPointer>{};
-  stackTrace.reserve(limit);
-  getStackTrace(stackTrace, skip + 1);
-  return stackTrace;
-}
+        inline std::vector<InstructionPointer> getStackTrace(
+            size_t skip = 0,
+            size_t limit = kDefaultLimit) {
+            auto stackTrace = std::vector<InstructionPointer>{};
+            stackTrace.reserve(limit);
+            getStackTrace(stackTrace, skip + 1);
+            return stackTrace;
+        }
 
 /**
  * Symbolicates a stack trace into a given vector
@@ -148,20 +148,20 @@ inline std::vector<InstructionPointer> getStackTrace(
  *
  * @param stackTrace The input stack trace
  */
-void getStackTraceSymbols(std::vector<StackTraceElement>& symbols,
-                          const std::vector<InstructionPointer>& trace);
+        void getStackTraceSymbols(std::vector<StackTraceElement> &symbols,
+                                  const std::vector<InstructionPointer> &trace);
 
 /**
  * Symbolicates a stack trace into a new vector
  *
  * @param stackTrace The input stack trace
  */
-inline std::vector<StackTraceElement> getStackTraceSymbols(
-    const std::vector<InstructionPointer>& trace) {
-  auto symbols = std::vector<StackTraceElement>{};
-  getStackTraceSymbols(symbols, trace);
-  return symbols;
-}
+        inline std::vector<StackTraceElement> getStackTraceSymbols(
+            const std::vector<InstructionPointer> &trace) {
+            auto symbols = std::vector<StackTraceElement>{};
+            getStackTraceSymbols(symbols, trace);
+            return symbols;
+        }
 
 
 /**
@@ -175,22 +175,22 @@ inline std::vector<StackTraceElement> getStackTraceSymbols(
  *
  * @param limit The maximum number of frames captured
  */
-inline std::vector<StackTraceElement> getStackTraceSymbols(
-    size_t skip = 0,
-    size_t limit = kDefaultLimit) {
-  return getStackTraceSymbols(getStackTrace(skip + 1, limit));
-}
+        inline std::vector<StackTraceElement> getStackTraceSymbols(
+            size_t skip = 0,
+            size_t limit = kDefaultLimit) {
+            return getStackTraceSymbols(getStackTrace(skip + 1, limit));
+        }
 
 /**
  * Formatting a stack trace element
  */
-std::ostream& operator<<(std::ostream& out, const StackTraceElement& elm);
+        std::ostream &operator<<(std::ostream &out, const StackTraceElement &elm);
 
 /**
  * Formatting a stack trace
  */
-std::ostream& operator<<(std::ostream& out,
-                         const std::vector<StackTraceElement>& trace);
+        std::ostream &operator<<(std::ostream &out,
+                                 const std::vector<StackTraceElement> &trace);
 
 /**
  * Log stack trace
@@ -198,7 +198,7 @@ std::ostream& operator<<(std::ostream& out,
  * Makes it possible to log a trace without using a temporary stream when the
  * underlying log API is not stream based.
  */
-void logStackTrace(const std::vector<StackTraceElement>& trace);
+        void logStackTrace(const std::vector<StackTraceElement> &trace);
 
-}
+    }
 }

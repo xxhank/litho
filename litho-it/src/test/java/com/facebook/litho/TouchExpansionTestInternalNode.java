@@ -16,6 +16,8 @@
 
 package com.facebook.litho;
 
+import com.facebook.litho.component.ComponentContext;
+
 /** Used by the {@link com.facebook.litho.ViewNodeInfoTest}. */
 public class TouchExpansionTestInternalNode extends DefaultInternalNode {
 

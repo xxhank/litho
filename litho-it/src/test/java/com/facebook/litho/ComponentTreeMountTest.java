@@ -24,6 +24,8 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.robolectric.Shadows.shadowOf;
 
 import android.graphics.drawable.ColorDrawable;
+
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;

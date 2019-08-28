@@ -26,7 +26,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.os.Looper;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.specmodels.internal.ImmutableList;
 import com.facebook.litho.testing.Whitebox;

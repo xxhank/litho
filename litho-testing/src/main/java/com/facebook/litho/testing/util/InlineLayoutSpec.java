@@ -16,10 +16,10 @@
 
 package com.facebook.litho.testing.util;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Transition;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.transition.Transition;
 
 public abstract class InlineLayoutSpec extends Component {
 

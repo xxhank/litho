@@ -21,6 +21,22 @@ import android.view.ViewOutlineProvider;
 import androidx.annotation.Nullable;
 import com.facebook.infer.annotation.ThreadConfined;
 import com.facebook.litho.AccessibilityRole.AccessibilityRoleType;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.event.DispatchPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.FocusChangedEvent;
+import com.facebook.litho.event.InterceptTouchEvent;
+import com.facebook.litho.event.LongClickEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityEventEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityNodeInfoEvent;
+import com.facebook.litho.event.OnPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.OnRequestSendAccessibilityEventEvent;
+import com.facebook.litho.event.PerformAccessibilityActionEvent;
+import com.facebook.litho.event.SendAccessibilityEventEvent;
+import com.facebook.litho.event.SendAccessibilityEventUncheckedEvent;
+import com.facebook.litho.event.TouchEvent;
+import com.facebook.litho.mount.MountItem;
+import com.facebook.litho.mount.MountState;
 
 /**
  * NodeInfo holds information that are set to the {@link InternalNode} and needs to be used while
@@ -79,31 +95,31 @@ class DefaultNodeInfo implements NodeInfo {
   private static final int PFLAG_ROTATION_Y_IS_SET = 1 << 26;
 
   private @Nullable CharSequence mContentDescription;
-  private @Nullable Object mViewTag;
-  private @Nullable SparseArray<Object> mViewTags;
-  private float mShadowElevation;
-  private @Nullable ViewOutlineProvider mOutlineProvider;
-  private boolean mClipToOutline;
+  private @Nullable Object                            mViewTag;
+  private @Nullable SparseArray<Object>               mViewTags;
+  private float                                       mShadowElevation;
+  private @Nullable ViewOutlineProvider               mOutlineProvider;
+  private boolean                                     mClipToOutline;
   // Default value for ViewGroup
-  private boolean mClipChildren = true;
-  private float mScale = 1;
-  private float mAlpha = 1;
-  private float mRotation = 0;
-  private float mRotationX = 0;
-  private float mRotationY = 0;
-  private @Nullable EventHandler<ClickEvent> mClickHandler;
-  private @Nullable EventHandler<FocusChangedEvent> mFocusChangeHandler;
-  private @Nullable EventHandler<LongClickEvent> mLongClickHandler;
-  private @Nullable EventHandler<TouchEvent> mTouchHandler;
+  private boolean                                     mClipChildren = true;
+  private float                                       mScale = 1;
+  private float                                       mAlpha = 1;
+  private float                                       mRotation = 0;
+  private float                                       mRotationX = 0;
+  private float                                       mRotationY = 0;
+  private @Nullable EventHandler<ClickEvent>          mClickHandler;
+  private @Nullable EventHandler<FocusChangedEvent>   mFocusChangeHandler;
+  private @Nullable EventHandler<LongClickEvent>      mLongClickHandler;
+  private @Nullable EventHandler<TouchEvent>          mTouchHandler;
   private @Nullable EventHandler<InterceptTouchEvent> mInterceptTouchHandler;
-  private @Nullable @AccessibilityRoleType String mAccessibilityRole;
-  private @Nullable CharSequence mAccessibilityRoleDescription;
+  private @Nullable @AccessibilityRoleType String     mAccessibilityRole;
+  private @Nullable CharSequence                      mAccessibilityRoleDescription;
   private @Nullable EventHandler<DispatchPopulateAccessibilityEventEvent>
-      mDispatchPopulateAccessibilityEventHandler;
+                                                      mDispatchPopulateAccessibilityEventHandler;
   private @Nullable EventHandler<OnInitializeAccessibilityEventEvent>
-      mOnInitializeAccessibilityEventHandler;
+                                                      mOnInitializeAccessibilityEventHandler;
   private @Nullable EventHandler<OnPopulateAccessibilityEventEvent>
-      mOnPopulateAccessibilityEventHandler;
+                                                      mOnPopulateAccessibilityEventHandler;
   private @Nullable EventHandler<OnInitializeAccessibilityNodeInfoEvent>
       mOnInitializeAccessibilityNodeInfoHandler;
   private @Nullable EventHandler<OnRequestSendAccessibilityEventEvent>

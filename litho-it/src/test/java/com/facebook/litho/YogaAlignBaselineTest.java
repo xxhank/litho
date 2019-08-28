@@ -21,6 +21,11 @@ import static com.facebook.yoga.YogaAlign.BASELINE;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.view.View;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;
 import org.junit.Before;

@@ -24,6 +24,11 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.graphics.Rect;
 import android.view.View;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentHost;
 import com.facebook.litho.testing.TestViewComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;

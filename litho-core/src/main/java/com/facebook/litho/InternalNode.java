@@ -20,11 +20,30 @@ import android.animation.StateListAnimator;
 import android.content.res.TypedArray;
 import android.graphics.PathEffect;
 import android.graphics.drawable.Drawable;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Px;
+
 import com.facebook.infer.annotation.ThreadConfined;
+import com.facebook.litho.WorkingRange.WorkingRangeContainer;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.debug.DebugComponent;
 import com.facebook.litho.drawable.ComparableDrawable;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.FocusedVisibleEvent;
+import com.facebook.litho.event.FullImpressionVisibleEvent;
+import com.facebook.litho.event.InvisibleEvent;
+import com.facebook.litho.event.UnfocusedVisibleEvent;
+import com.facebook.litho.event.VisibilityChangedEvent;
+import com.facebook.litho.event.VisibleEvent;
+import com.facebook.litho.geometry.Border;
+import com.facebook.litho.geometry.Edges;
+import com.facebook.litho.layout.LayoutProps;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.transition.Transition;
 import com.facebook.yoga.YogaAlign;
 import com.facebook.yoga.YogaDirection;
 import com.facebook.yoga.YogaEdge;
@@ -33,389 +52,403 @@ import com.facebook.yoga.YogaJustify;
 import com.facebook.yoga.YogaMeasureFunction;
 import com.facebook.yoga.YogaNode;
 import com.facebook.yoga.YogaWrap;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Nullable;
 
-/** Internal class representing a {@link ComponentLayout}. */
+/**
+ * Internal class representing a {@link ComponentLayout}.
+ */
 @ThreadConfined(ThreadConfined.ANY)
 public interface InternalNode extends ComponentLayout, LayoutProps, Copyable<InternalNode> {
 
-  void addChildAt(InternalNode child, int index);
+    void addChildAt(InternalNode child, int index);
 
-  void addComponentNeedingPreviousRenderData(Component component);
+    void addComponentNeedingPreviousRenderData(Component component);
 
-  void addTransition(Transition transition);
+    void addTransition(Transition transition);
 
-  void addWorkingRanges(List<WorkingRangeContainer.Registration> registrations);
+    void addWorkingRanges(List<WorkingRangeContainer.Registration> registrations);
 
-  InternalNode alignContent(YogaAlign alignContent);
+    InternalNode alignContent(YogaAlign alignContent);
 
-  InternalNode alignItems(YogaAlign alignItems);
+    InternalNode alignItems(YogaAlign alignItems);
 
-  void appendComponent(Component component);
+    void appendComponent(Component component);
 
-  void appendUnresolvedComponent(Component component);
+    void appendUnresolvedComponent(Component component);
 
-  boolean areCachedMeasuresValid();
+    boolean areCachedMeasuresValid();
 
-  InternalNode background(@Nullable ComparableDrawable background);
+    InternalNode background(@Nullable ComparableDrawable background);
 
-  /**
-   * @deprecated use {@link #background(ComparableDrawable)} more efficient diffing of drawables.
-   */
-  @Deprecated
-  InternalNode background(@Nullable Drawable background);
+    /**
+     * @deprecated use {@link #background(ComparableDrawable)} more efficient diffing of drawables.
+     */
+    @Deprecated
+    InternalNode background(@Nullable Drawable background);
 
-  InternalNode backgroundColor(@ColorInt int backgroundColor);
+    InternalNode backgroundColor(@ColorInt int backgroundColor);
 
-  InternalNode backgroundRes(@DrawableRes int resId);
+    InternalNode backgroundRes(@DrawableRes int resId);
 
-  InternalNode border(Border border);
+    InternalNode border(Border border);
 
-  void border(Edges width, int[] colors, float[] radii);
+    void border(Edges width, int[] colors, float[] radii);
 
-  void calculateLayout(float width, float height);
+    void calculateLayout(float width, float height);
 
-  void calculateLayout();
+    void calculateLayout();
 
-  InternalNode child(Component child);
+    InternalNode child(Component child);
 
-  InternalNode child(Component.Builder<?> child);
+    InternalNode child(Component.Builder<?> child);
 
-  InternalNode child(InternalNode child);
+    InternalNode child(InternalNode child);
 
-  InternalNode duplicateParentState(boolean duplicateParentState);
+    InternalNode duplicateParentState(boolean duplicateParentState);
 
-  /** Used by stetho to re-set auto value */
-  InternalNode flexBasisAuto();
+    /**
+     * Used by stetho to re-set auto value
+     */
+    InternalNode flexBasisAuto();
 
-  InternalNode flexDirection(YogaFlexDirection direction);
+    InternalNode flexDirection(YogaFlexDirection direction);
 
-  InternalNode focusedHandler(@Nullable EventHandler<FocusedVisibleEvent> focusedHandler);
+    InternalNode focusedHandler(@Nullable EventHandler<FocusedVisibleEvent> focusedHandler);
 
-  /**
-   * @deprecated use {@link #foreground(ComparableDrawable)} more efficient diffing of drawables.
-   */
-  @Deprecated
-  InternalNode foreground(@Nullable Drawable foreground);
+    /**
+     * @deprecated use {@link #foreground(ComparableDrawable)} more efficient diffing of drawables.
+     */
+    @Deprecated
+    InternalNode foreground(@Nullable Drawable foreground);
 
-  InternalNode foreground(@Nullable ComparableDrawable foreground);
+    InternalNode foreground(@Nullable ComparableDrawable foreground);
 
-  InternalNode foregroundColor(@ColorInt int foregroundColor);
+    InternalNode foregroundColor(@ColorInt int foregroundColor);
 
-  InternalNode foregroundRes(@DrawableRes int resId);
+    InternalNode foregroundRes(@DrawableRes int resId);
 
-  InternalNode fullImpressionHandler(
-      @Nullable EventHandler<FullImpressionVisibleEvent> fullImpressionHandler);
+    InternalNode fullImpressionHandler(
+        @Nullable EventHandler<FullImpressionVisibleEvent> fullImpressionHandler);
 
-  int[] getBorderColors();
+    int[] getBorderColors();
 
-  @Nullable
-  PathEffect getBorderPathEffect();
+    @Nullable
+    PathEffect getBorderPathEffect();
 
-  float[] getBorderRadius();
+    float[] getBorderRadius();
 
-  @Nullable
-  InternalNode getChildAt(int index);
+    @Nullable
+    InternalNode getChildAt(int index);
 
-  int getChildCount();
+    int getChildCount();
 
-  int getChildIndex(InternalNode child);
+    int getChildIndex(InternalNode child);
 
-  /**
-   * Return the list of components contributing to this InternalNode. We have no need for this in
-   * production but it is useful information to have while debugging. Therefor this list will only
-   * contain the root component if running in production mode.
-   */
-  List<Component> getComponents();
+    /**
+     * Return the list of components contributing to this InternalNode. We have no need for this in
+     * production but it is useful information to have while debugging. Therefor this list will only
+     * contain the root component if running in production mode.
+     */
+    List<Component> getComponents();
 
-  @Nullable
-  List<Component> getUnresolvedComponents();
+    @Nullable
+    List<Component> getUnresolvedComponents();
 
-  @Nullable
-  ArrayList<Component> getComponentsNeedingPreviousRenderData();
+    @Nullable
+    ArrayList<Component> getComponentsNeedingPreviousRenderData();
 
-  ComponentContext getContext();
+    ComponentContext getContext();
 
-  @Nullable
-  DiffNode getDiffNode();
+    @Nullable
+    DiffNode getDiffNode();
 
-  void setDiffNode(@Nullable DiffNode diffNode);
+    void setDiffNode(@Nullable DiffNode diffNode);
 
-  @Nullable
-  EventHandler<FocusedVisibleEvent> getFocusedHandler();
+    @Nullable
+    EventHandler<FocusedVisibleEvent> getFocusedHandler();
 
-  @Nullable
-  ComparableDrawable getForeground();
+    @Nullable
+    ComparableDrawable getForeground();
 
-  @Nullable
-  EventHandler<FullImpressionVisibleEvent> getFullImpressionHandler();
+    @Nullable
+    EventHandler<FullImpressionVisibleEvent> getFullImpressionHandler();
 
-  @Nullable
-  Component getHeadComponent();
+    @Nullable
+    Component getHeadComponent();
 
-  int getImportantForAccessibility();
+    int getImportantForAccessibility();
 
-  @Nullable
-  EventHandler<InvisibleEvent> getInvisibleHandler();
+    @Nullable
+    EventHandler<InvisibleEvent> getInvisibleHandler();
 
-  int getLastHeightSpec();
+    int getLastHeightSpec();
 
-  void setLastHeightSpec(int heightSpec);
+    void setLastHeightSpec(int heightSpec);
 
-  /**
-   * The last value the measure funcion associated with this node {@link Component} returned for the
-   * height. This is used together with {@link InternalNode#getLastHeightSpec()} to implement
-   * measure caching.
-   */
-  float getLastMeasuredHeight();
+    /**
+     * The last value the measure funcion associated with this node {@link Component} returned for the
+     * height. This is used together with {@link InternalNode#getLastHeightSpec()} to implement
+     * measure caching.
+     */
+    float getLastMeasuredHeight();
 
-  /**
-   * Sets the last value the measure funcion associated with this node {@link Component} returned
-   * for the height.
-   */
-  void setLastMeasuredHeight(float lastMeasuredHeight);
+    /**
+     * Sets the last value the measure funcion associated with this node {@link Component} returned
+     * for the height.
+     */
+    void setLastMeasuredHeight(float lastMeasuredHeight);
 
-  /**
-   * The last value the measure funcion associated with this node {@link Component} returned for the
-   * width. This is used together with {@link InternalNode#getLastWidthSpec()} to implement measure
-   * caching.
-   */
-  float getLastMeasuredWidth();
+    /**
+     * The last value the measure funcion associated with this node {@link Component} returned for the
+     * width. This is used together with {@link InternalNode#getLastWidthSpec()} to implement measure
+     * caching.
+     */
+    float getLastMeasuredWidth();
 
-  /**
-   * Sets the last value the measure funcion associated with this node {@link Component} returned
-   * for the width.
-   */
-  void setLastMeasuredWidth(float lastMeasuredWidth);
+    /**
+     * Sets the last value the measure funcion associated with this node {@link Component} returned
+     * for the width.
+     */
+    void setLastMeasuredWidth(float lastMeasuredWidth);
 
-  int getLastWidthSpec();
+    int getLastWidthSpec();
 
-  void setLastWidthSpec(int widthSpec);
+    void setLastWidthSpec(int widthSpec);
 
-  int getLayoutBorder(YogaEdge edge);
+    int getLayoutBorder(YogaEdge edge);
 
-  float getMaxHeight();
+    float getMaxHeight();
 
-  float getMaxWidth();
+    float getMaxWidth();
 
-  float getMinHeight();
+    float getMinHeight();
 
-  float getMinWidth();
+    float getMinWidth();
 
-  @Nullable
-  InternalNode getNestedTree();
+    @Nullable
+    InternalNode getNestedTree();
 
-  /**
-   * Set the nested tree before measuring it in order to transfer over important information such as
-   * layout direction needed during measurement.
-   */
-  void setNestedTree(InternalNode nestedTree);
+    /**
+     * Set the nested tree before measuring it in order to transfer over important information such as
+     * layout direction needed during measurement.
+     */
+    void setNestedTree(InternalNode nestedTree);
 
-  @Nullable
-  InternalNode getNestedTreeHolder();
+    @Nullable
+    InternalNode getNestedTreeHolder();
 
-  @Nullable
-  NodeInfo getNodeInfo();
+    @Nullable
+    NodeInfo getNodeInfo();
 
-  void setNodeInfo(NodeInfo nodeInfo);
+    void setNodeInfo(NodeInfo nodeInfo);
 
-  NestedTreeProps getOrCreateNestedTreeProps();
+    NestedTreeProps getOrCreateNestedTreeProps();
 
-  NodeInfo getOrCreateNodeInfo();
+    NodeInfo getOrCreateNodeInfo();
 
-  @Nullable
-  InternalNode getParent();
+    @Nullable
+    InternalNode getParent();
 
-  @Nullable
-  TreeProps getPendingTreeProps();
+    @Nullable
+    TreeProps getPendingTreeProps();
 
-  @Nullable
-  Component getTailComponent();
+    @Nullable
+    Component getTailComponent();
 
-  void setRootComponent(Component component);
+    void setRootComponent(Component component);
 
-  @Nullable
-  StateListAnimator getStateListAnimator();
+    @Nullable
+    StateListAnimator getStateListAnimator();
 
-  @DrawableRes
-  int getStateListAnimatorRes();
+    @DrawableRes
+    int getStateListAnimatorRes();
 
-  YogaDirection getStyleDirection();
+    YogaDirection getStyleDirection();
 
-  float getStyleHeight();
+    float getStyleHeight();
 
-  float getStyleWidth();
+    float getStyleWidth();
 
-  /**
-   * A unique identifier which may be set for retrieving a component and its bounds when testing.
-   */
-  @Nullable
-  String getTestKey();
+    /**
+     * A unique identifier which may be set for retrieving a component and its bounds when testing.
+     */
+    @Nullable
+    String getTestKey();
 
-  @Nullable
-  Edges getTouchExpansion();
+    @Nullable
+    Edges getTouchExpansion();
 
-  int getTouchExpansionBottom();
+    int getTouchExpansionBottom();
 
-  int getTouchExpansionLeft();
+    int getTouchExpansionLeft();
 
-  int getTouchExpansionRight();
+    int getTouchExpansionRight();
 
-  int getTouchExpansionTop();
+    int getTouchExpansionTop();
 
-  @Nullable
-  String getTransitionKey();
+    @Nullable
+    String getTransitionKey();
 
-  @Nullable
-  Transition.TransitionKeyType getTransitionKeyType();
+    @Nullable
+    Transition.TransitionKeyType getTransitionKeyType();
 
-  @Nullable
-  ArrayList<Transition> getTransitions();
+    @Nullable
+    ArrayList<Transition> getTransitions();
 
-  @Nullable
-  EventHandler<UnfocusedVisibleEvent> getUnfocusedHandler();
+    @Nullable
+    EventHandler<UnfocusedVisibleEvent> getUnfocusedHandler();
 
-  @Nullable
-  EventHandler<VisibilityChangedEvent> getVisibilityChangedHandler();
+    @Nullable
+    EventHandler<VisibilityChangedEvent> getVisibilityChangedHandler();
 
-  @Nullable
-  EventHandler<VisibleEvent> getVisibleHandler();
+    @Nullable
+    EventHandler<VisibleEvent> getVisibleHandler();
 
-  float getVisibleHeightRatio();
+    float getVisibleHeightRatio();
 
-  float getVisibleWidthRatio();
+    float getVisibleWidthRatio();
 
-  @Nullable
-  ArrayList<WorkingRangeContainer.Registration> getWorkingRangeRegistrations();
+    @Nullable
+    ArrayList<WorkingRangeContainer.Registration> getWorkingRangeRegistrations();
 
-  YogaNode getYogaNode();
+    YogaNode getYogaNode();
 
-  boolean hasBorderColor();
+    boolean hasBorderColor();
 
-  boolean hasNestedTree();
+    boolean hasNestedTree();
 
-  boolean hasNewLayout();
+    boolean hasNewLayout();
 
-  boolean hasStateListAnimatorResSet();
+    boolean hasStateListAnimatorResSet();
 
-  boolean hasTouchExpansion();
+    boolean hasTouchExpansion();
 
-  boolean hasTransitionKey();
+    boolean hasTransitionKey();
 
-  boolean hasVisibilityHandlers();
+    boolean hasVisibilityHandlers();
 
-  /** Used by stetho to re-set auto value */
-  InternalNode heightAuto();
+    /**
+     * Used by stetho to re-set auto value
+     */
+    InternalNode heightAuto();
 
-  InternalNode importantForAccessibility(int importantForAccessibility);
+    InternalNode importantForAccessibility(int importantForAccessibility);
 
-  InternalNode invisibleHandler(@Nullable EventHandler<InvisibleEvent> invisibleHandler);
+    InternalNode invisibleHandler(@Nullable EventHandler<InvisibleEvent> invisibleHandler);
 
-  boolean isDuplicateParentStateEnabled();
+    boolean isDuplicateParentStateEnabled();
 
-  boolean isForceViewWrapping();
+    boolean isForceViewWrapping();
 
-  boolean isImportantForAccessibilityIsSet();
+    boolean isImportantForAccessibilityIsSet();
 
-  /**
-   * For testing and debugging purposes only where initialization may have not occurred. For any
-   * production use, this should never be necessary.
-   */
-  boolean isInitialized();
+    /**
+     * For testing and debugging purposes only where initialization may have not occurred. For any
+     * production use, this should never be necessary.
+     */
+    boolean isInitialized();
 
-  boolean isLayoutDirectionInherit();
+    boolean isLayoutDirectionInherit();
 
-  /**
-   * @return Whether this node is holding a nested tree or not. The decision was made during tree
-   *     creation {@link LayoutState#createLayout(ComponentContext, Component, boolean)}.
-   */
-  boolean isNestedTreeHolder();
+    /**
+     * @return Whether this node is holding a nested tree or not. The decision was made during tree
+     * creation {@link LayoutState#createLayout(ComponentContext, Component, boolean)}.
+     */
+    boolean isNestedTreeHolder();
 
-  InternalNode justifyContent(YogaJustify justifyContent);
+    InternalNode justifyContent(YogaJustify justifyContent);
 
-  /** Mark this node as a nested tree root holder. */
-  void markIsNestedTreeHolder(TreeProps currentTreeProps);
+    /**
+     * Mark this node as a nested tree root holder.
+     */
+    void markIsNestedTreeHolder(TreeProps currentTreeProps);
 
-  void markLayoutSeen();
+    void markLayoutSeen();
 
-  /** Continually walks the node hierarchy until a node returns a non inherited layout direction */
-  YogaDirection recursivelyResolveLayoutDirection();
+    /**
+     * Continually walks the node hierarchy until a node returns a non inherited layout direction
+     */
+    YogaDirection recursivelyResolveLayoutDirection();
 
-  void registerDebugComponent(DebugComponent debugComponent);
+    void registerDebugComponent(DebugComponent debugComponent);
 
-  InternalNode removeChildAt(int index);
+    InternalNode removeChildAt(int index);
 
-  /** This method marks all resolved layout property values to undefined. */
-  void resetResolvedLayoutProperties();
+    /**
+     * This method marks all resolved layout property values to undefined.
+     */
+    void resetResolvedLayoutProperties();
 
-  void setBorderWidth(YogaEdge edge, @Px int borderWidth);
+    void setBorderWidth(YogaEdge edge, @Px int borderWidth);
 
-  void setCachedMeasuresValid(boolean valid);
+    void setCachedMeasuresValid(boolean valid);
 
-  void setMeasureFunction(YogaMeasureFunction measureFunction);
+    void setMeasureFunction(YogaMeasureFunction measureFunction);
 
-  void setStyleHeightFromSpec(int heightSpec);
+    void setStyleHeightFromSpec(int heightSpec);
 
-  void setStyleWidthFromSpec(int widthSpec);
+    void setStyleWidthFromSpec(int widthSpec);
 
-  boolean shouldDrawBorders();
+    boolean shouldDrawBorders();
 
-  InternalNode stateListAnimator(@Nullable StateListAnimator stateListAnimator);
+    InternalNode stateListAnimator(@Nullable StateListAnimator stateListAnimator);
 
-  InternalNode stateListAnimatorRes(@DrawableRes int resId);
+    InternalNode stateListAnimatorRes(@DrawableRes int resId);
 
-  InternalNode testKey(@Nullable String testKey);
+    InternalNode testKey(@Nullable String testKey);
 
-  InternalNode touchExpansionPx(YogaEdge edge, @Px int touchExpansion);
+    InternalNode touchExpansionPx(YogaEdge edge, @Px int touchExpansion);
 
-  InternalNode transitionKey(@Nullable String key);
+    InternalNode transitionKey(@Nullable String key);
 
-  InternalNode transitionKeyType(@Nullable Transition.TransitionKeyType type);
+    InternalNode transitionKeyType(@Nullable Transition.TransitionKeyType type);
 
-  InternalNode unfocusedHandler(@Nullable EventHandler<UnfocusedVisibleEvent> unfocusedHandler);
+    InternalNode unfocusedHandler(@Nullable EventHandler<UnfocusedVisibleEvent> unfocusedHandler);
 
-  InternalNode visibilityChangedHandler(
-      @Nullable EventHandler<VisibilityChangedEvent> visibilityChangedHandler);
+    InternalNode visibilityChangedHandler(
+        @Nullable EventHandler<VisibilityChangedEvent> visibilityChangedHandler);
 
-  InternalNode visibleHandler(@Nullable EventHandler<VisibleEvent> visibleHandler);
+    InternalNode visibleHandler(@Nullable EventHandler<VisibleEvent> visibleHandler);
 
-  InternalNode visibleHeightRatio(float visibleHeightRatio);
+    InternalNode visibleHeightRatio(float visibleHeightRatio);
 
-  InternalNode visibleWidthRatio(float visibleWidthRatio);
+    InternalNode visibleWidthRatio(float visibleWidthRatio);
 
-  // Used by stetho to re-set auto value
-  InternalNode widthAuto();
+    // Used by stetho to re-set auto value
+    InternalNode widthAuto();
 
-  InternalNode wrap(YogaWrap wrap);
+    InternalNode wrap(YogaWrap wrap);
 
-  InternalNode wrapInView();
+    InternalNode wrapInView();
 
-  void applyAttributes(TypedArray a);
+    void applyAttributes(TypedArray a);
 
-  void assertContextSpecificStyleNotSet();
+    void assertContextSpecificStyleNotSet();
 
-  InternalNode deepClone();
+    InternalNode deepClone();
 
-  String getSimpleName();
+    String getSimpleName();
 
-  /**
-   * Reconcile returns a new InternalNode tree where only mutated sub-trees are recreated and all
-   * other sub-trees are copied. The returned InternalNode tree represents the updated layout tree.
-   *
-   * @param c The new ComponentContext.
-   * @param next The new component to reconcile against.
-   * @return The reconciled InternalNode which represents {@param next}.
-   */
-  InternalNode reconcile(ComponentContext c, Component next);
+    /**
+     * Reconcile returns a new InternalNode tree where only mutated sub-trees are recreated and all
+     * other sub-trees are copied. The returned InternalNode tree represents the updated layout tree.
+     *
+     * @param c    The new ComponentContext.
+     * @param next The new component to reconcile against.
+     * @return The reconciled InternalNode which represents {@param next}.
+     */
+    InternalNode reconcile(ComponentContext c, Component next);
 
-  class NestedTreeProps {
-    boolean mIsNestedTreeHolder;
-    @Nullable InternalNode mNestedTree;
-    @Nullable InternalNode mNestedTreeHolder;
-    @Nullable Edges mNestedTreePadding;
-    @Nullable Edges mNestedTreeBorderWidth;
-    @Nullable TreeProps mPendingTreeProps;
-  }
+    class NestedTreeProps {
+        boolean mIsNestedTreeHolder;
+        @Nullable InternalNode mNestedTree;
+        @Nullable InternalNode mNestedTreeHolder;
+        @Nullable Edges        mNestedTreePadding;
+        @Nullable Edges        mNestedTreeBorderWidth;
+        @Nullable TreeProps    mPendingTreeProps;
+    }
 }

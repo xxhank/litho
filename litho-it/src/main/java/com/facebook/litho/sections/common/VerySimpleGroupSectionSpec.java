@@ -17,7 +17,7 @@
 package com.facebook.litho.sections.common;
 
 import android.graphics.drawable.ColorDrawable;
-import com.facebook.litho.ClickEvent;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.OnCreateInitialState;
 import com.facebook.litho.annotations.OnEvent;

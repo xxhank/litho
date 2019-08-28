@@ -20,17 +20,22 @@
 #include <jni.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-namespace detail {
+        namespace detail {
 
-void utf8ToModifiedUTF8(const uint8_t* bytes, size_t len, uint8_t* modified, size_t modifiedLength);
-size_t modifiedLength(const std::string& str);
-size_t modifiedLength(const uint8_t* str, size_t* length);
-std::string modifiedUTF8ToUTF8(const uint8_t* modified, size_t len) noexcept;
-std::string utf16toUTF8(const uint16_t* utf16Bytes, size_t len) noexcept;
+            void
+            utf8ToModifiedUTF8(const uint8_t *bytes, size_t len, uint8_t *modified, size_t modifiedLength);
 
-}
+            size_t modifiedLength(const std::string &str);
+
+            size_t modifiedLength(const uint8_t *str, size_t *length);
+
+            std::string modifiedUTF8ToUTF8(const uint8_t *modified, size_t len) noexcept;
+
+            std::string utf16toUTF8(const uint16_t *utf16Bytes, size_t len) noexcept;
+
+        }
 
 // JNI represents strings encoded with modified version of UTF-8.  The difference between UTF-8 and
 // Modified UTF-8 is that the latter support only 1-byte, 2-byte, and 3-byte formats. Supplementary
@@ -52,39 +57,36 @@ std::string utf16toUTF8(const uint16_t* utf16Bytes, size_t len) noexcept;
 // JString to UTF16 extractor using RAII idiom. Note that the
 // ctor/dtor use GetStringCritical/ReleaseStringCritical, so this
 // class is subject to the restrictions imposed by those functions.
-class JStringUtf16Extractor {
-public:
-  JStringUtf16Extractor(JNIEnv* env, jstring javaString)
-  : env_(env)
-  , javaString_(javaString)
-  , length_(0)
-  , utf16String_(nullptr) {
-    if (env_ && javaString_) {
-      length_ = env_->GetStringLength(javaString_);
-      utf16String_ = env_->GetStringCritical(javaString_, nullptr);
+        class JStringUtf16Extractor {
+            public:
+            JStringUtf16Extractor(JNIEnv *env, jstring javaString)
+                : env_(env), javaString_(javaString), length_(0), utf16String_(nullptr) {
+                if (env_ && javaString_) {
+                    length_ = env_->GetStringLength(javaString_);
+                    utf16String_ = env_->GetStringCritical(javaString_, nullptr);
+                }
+            }
+
+            ~JStringUtf16Extractor() {
+                if (utf16String_) {
+                    env_->ReleaseStringCritical(javaString_, utf16String_);
+                }
+            }
+
+            const jsize length() const {
+                return length_;
+            }
+
+            const jchar *chars() const {
+                return utf16String_;
+            }
+
+            private:
+            JNIEnv *env_;
+            jstring javaString_;
+            jsize length_;
+            const jchar *utf16String_;
+        };
+
     }
-  }
-
-  ~JStringUtf16Extractor() {
-    if (utf16String_) {
-      env_->ReleaseStringCritical(javaString_, utf16String_);
-    }
-  }
-
-  const jsize length() const {
-    return length_;
-  }
-
-  const jchar* chars() const {
-    return utf16String_;
-  }
-
-private:
-  JNIEnv* env_;
-  jstring javaString_;
-  jsize length_;
-  const jchar* utf16String_;
-};
-
-}
 }

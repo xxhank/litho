@@ -19,6 +19,9 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.event.EventHandler;
 import com.facebook.litho.testing.subcomponents.InspectableComponent;
 import org.assertj.core.api.Condition;
 import org.hamcrest.core.IsNull;
@@ -32,7 +35,7 @@ import org.mockito.MockitoAnnotations;
 @RunWith(JUnit4.class)
 public class BaseMatcherTest {
   @Mock InspectableComponent mInspectableComponent;
-  @Mock Component mComponent;
+  @Mock Component            mComponent;
 
   @Before
   public void setUp() {

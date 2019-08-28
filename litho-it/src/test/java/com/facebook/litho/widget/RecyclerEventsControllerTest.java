@@ -24,8 +24,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ThreadUtils;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.thread.ThreadUtils;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.After;
 import org.junit.Before;

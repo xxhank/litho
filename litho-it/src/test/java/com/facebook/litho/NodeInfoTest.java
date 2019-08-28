@@ -32,6 +32,20 @@ import static com.facebook.litho.testing.Whitebox.getInternalState;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.util.SparseArray;
+
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.event.DispatchPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.FocusChangedEvent;
+import com.facebook.litho.event.InterceptTouchEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityEventEvent;
+import com.facebook.litho.event.OnInitializeAccessibilityNodeInfoEvent;
+import com.facebook.litho.event.OnPopulateAccessibilityEventEvent;
+import com.facebook.litho.event.OnRequestSendAccessibilityEventEvent;
+import com.facebook.litho.event.PerformAccessibilityActionEvent;
+import com.facebook.litho.event.SendAccessibilityEventEvent;
+import com.facebook.litho.event.SendAccessibilityEventUncheckedEvent;
+import com.facebook.litho.event.TouchEvent;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;

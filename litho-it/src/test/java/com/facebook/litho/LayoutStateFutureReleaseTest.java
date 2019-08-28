@@ -15,8 +15,8 @@
  */
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -27,9 +27,20 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import android.os.Looper;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.layout.LayoutThreadPoolConfigurationImpl;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
+import com.facebook.litho.thread.ThreadPoolLayoutHandler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -543,7 +554,7 @@ public class LayoutStateFutureReleaseTest {
     final TestChildComponent child1 = new TestChildComponent();
 
     final Column column_0 = Column.create(mContext).child(new TestChildComponent()).build();
-    final Column column = Column.create(mContext).child(child1).build();
+    final Column column   = Column.create(mContext).child(child1).build();
 
     ThreadPoolLayoutHandler handler =
         new ThreadPoolLayoutHandler(new LayoutThreadPoolConfigurationImpl(1, 1, 5));

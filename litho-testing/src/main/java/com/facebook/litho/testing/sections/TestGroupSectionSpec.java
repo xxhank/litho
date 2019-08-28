@@ -16,7 +16,7 @@
 
 package com.facebook.litho.testing.sections;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.OnEvent;
 import com.facebook.litho.annotations.Param;

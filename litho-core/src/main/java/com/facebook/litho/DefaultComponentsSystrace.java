@@ -18,6 +18,8 @@ package com.facebook.litho;
 
 import android.os.Build;
 import android.os.Trace;
+
+import com.facebook.litho.component.ComponentsSystrace;
 import com.facebook.litho.config.ComponentsConfiguration;
 
 public class DefaultComponentsSystrace implements ComponentsSystrace.Systrace {

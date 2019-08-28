@@ -13,7 +13,7 @@ package com.fblitho.lithoktsample.logging
 
 import android.app.Activity
 import android.os.Bundle
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.LithoView
 
 class LoggingActivity : Activity() {

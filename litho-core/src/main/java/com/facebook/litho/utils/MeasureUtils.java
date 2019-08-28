@@ -16,16 +16,16 @@
 
 package com.facebook.litho.utils;
 
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
-import static com.facebook.litho.SizeSpec.getMode;
-import static com.facebook.litho.SizeSpec.getSize;
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.getMode;
+import static com.facebook.litho.geometry.SizeSpec.getSize;
 
 import android.util.Log;
 import android.view.View.MeasureSpec;
-import com.facebook.litho.Size;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 import com.facebook.litho.config.ComponentsConfiguration;
 
 public final class MeasureUtils {

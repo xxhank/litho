@@ -18,9 +18,9 @@ package com.facebook.litho.testing.logging;
 
 import android.util.Pair;
 import com.facebook.litho.BaseComponentsLogger;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.FrameworkLogEvents;
-import com.facebook.litho.PerfEvent;
+import com.facebook.litho.event.PerfEvent;
 import com.facebook.litho.TestPerfEvent;
 import java.util.LinkedList;
 import java.util.List;

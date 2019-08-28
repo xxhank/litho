@@ -19,47 +19,48 @@
 #include <fb/NativeRunnable.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-class JThread : public JavaClass<JThread> {
- public:
-  static constexpr const char* kJavaDescriptor = "Ljava/lang/Thread;";
+        class JThread : public JavaClass<JThread> {
+            public:
+            static constexpr const char *kJavaDescriptor = "Ljava/lang/Thread;";
 
-  void start() {
-    static const auto method = javaClassStatic()->getMethod<void()>("start");
-    method(self());
-  }
+            void start() {
+                static const auto method = javaClassStatic()->getMethod<void()>("start");
+                method(self());
+            }
 
-  void join() {
-    static const auto method = javaClassStatic()->getMethod<void()>("join");
-    method(self());
-  }
+            void join() {
+                static const auto method = javaClassStatic()->getMethod<void()>("join");
+                method(self());
+            }
 
-  static local_ref<JThread> create(std::function<void()>&& runnable) {
-    auto jrunnable = JNativeRunnable::newObjectCxxArgs(std::move(runnable));
-    return newInstance(static_ref_cast<JRunnable::javaobject>(jrunnable));
-  }
+            static local_ref <JThread> create(std::function<void()> &&runnable) {
+                auto jrunnable = JNativeRunnable::newObjectCxxArgs(std::move(runnable));
+                return newInstance(static_ref_cast<JRunnable::javaobject>(jrunnable));
+            }
 
-  static local_ref<JThread> create(std::function<void()>&& runnable, std::string&& name) {
-    auto jrunnable = JNativeRunnable::newObjectCxxArgs(std::move(runnable));
-    return newInstance(static_ref_cast<JRunnable::javaobject>(jrunnable), make_jstring(std::move(name)));
-  }
+            static local_ref <JThread>
+            create(std::function<void()> &&runnable, std::string &&name) {
+                auto jrunnable = JNativeRunnable::newObjectCxxArgs(std::move(runnable));
+                return newInstance(static_ref_cast<JRunnable::javaobject>(jrunnable), make_jstring(std::move(name)));
+            }
 
-  static local_ref<JThread> getCurrent() {
-    static const auto method = javaClassStatic()->getStaticMethod<local_ref<JThread>()>("currentThread");
-    return method(javaClassStatic());
-  }
+            static local_ref <JThread> getCurrent() {
+                static const auto method = javaClassStatic()->getStaticMethod<local_ref<JThread>()>("currentThread");
+                return method(javaClassStatic());
+            }
 
-  int getPriority() {
-    static const auto method = getClass()->getMethod<jint()>("getPriority");
-    return method(self());
-  }
+            int getPriority() {
+                static const auto method = getClass()->getMethod<jint()>("getPriority");
+                return method(self());
+            }
 
-  void setPriority(int priority) {
-    static const auto method = getClass()->getMethod<void(int)>("setPriority");
-    method(self(), priority);
-  }
-};
+            void setPriority(int priority) {
+                static const auto method = getClass()->getMethod<void(int)>("setPriority");
+                method(self(), priority);
+            }
+        };
 
-}
+    }
 }

@@ -13,8 +13,8 @@
 package com.fblitho.lithoktsample.lithography.components
 
 import com.facebook.drawee.backends.pipeline.Fresco
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
 import com.facebook.litho.annotations.Prop
@@ -29,9 +29,9 @@ object SingleImageComponentSpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @Prop image: String,
-      @Prop(optional = true) imageAspectRatio: Float): Component =
+          c: ComponentContext,
+          @Prop image: String,
+          @Prop(optional = true) imageAspectRatio: Float): Component =
       Fresco.newDraweeControllerBuilder()
           .setUri(image)
           .build().let {

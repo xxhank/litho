@@ -18,8 +18,8 @@ package com.facebook.litho.sections.processor.integration.resources;
 
 import android.view.View;
 import android.widget.TextView;
-import com.facebook.litho.ClickEvent;
-import com.facebook.litho.Component;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.Diff;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.CachedValue;

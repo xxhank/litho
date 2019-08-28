@@ -19,7 +19,7 @@ package com.facebook.litho.sections.common;
 import static com.facebook.litho.widget.RenderInfoDebugInfoRegistry.SONAR_SECTIONS_DEBUG_INFO_TAG;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.Diff;
 import com.facebook.litho.annotations.Prop;
 import com.facebook.litho.config.ComponentsConfiguration;

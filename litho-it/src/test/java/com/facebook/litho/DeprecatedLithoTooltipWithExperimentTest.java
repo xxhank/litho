@@ -20,6 +20,11 @@ import static org.mockito.Mockito.verify;
 
 import android.view.View;
 import com.facebook.litho.annotations.OnCreateLayout;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentKeyUtils;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.Whitebox;
@@ -46,12 +51,12 @@ public class DeprecatedLithoTooltipWithExperimentTest {
 
   private static final String KEY_ANCHOR = "anchor";
 
-  private ComponentContext mContext;
-  private Component mComponent;
+  private      ComponentContext       mContext;
+  private      Component              mComponent;
   @Mock public DeprecatedLithoTooltip mLithoTooltip;
-  private ComponentTree mComponentTree;
-  private LithoView mLithoView;
-  private String mAnchorGlobalKey;
+  private      ComponentTree          mComponentTree;
+  private      LithoView              mLithoView;
+  private      String                 mAnchorGlobalKey;
 
   @Before
   public void setup() {

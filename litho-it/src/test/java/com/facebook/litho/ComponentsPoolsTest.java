@@ -16,9 +16,9 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.ComponentsPools.acquireMountContent;
-import static com.facebook.litho.ComponentsPools.maybePreallocateContent;
-import static com.facebook.litho.ComponentsPools.release;
+import static com.facebook.litho.component.ComponentsPools.acquireMountContent;
+import static com.facebook.litho.component.ComponentsPools.maybePreallocateContent;
+import static com.facebook.litho.component.ComponentsPools.release;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.app.Activity;
@@ -27,6 +27,9 @@ import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentsPools;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.After;
 import org.junit.Before;

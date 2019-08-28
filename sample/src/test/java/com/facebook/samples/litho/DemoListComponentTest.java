@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assume.assumeThat;
 
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.sections.widget.RecyclerCollectionComponent;
 import com.facebook.litho.testing.ComponentsRule;

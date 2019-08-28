@@ -22,8 +22,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.ComponentsLogger;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsLogger;
 import com.facebook.litho.LithoView;
 
 /**

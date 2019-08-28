@@ -22,7 +22,15 @@ import static org.mockito.Mockito.verify;
 
 import android.graphics.Color;
 import android.os.Looper;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsLogger;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.helper.ComponentTestHelper;
 import com.facebook.litho.testing.logging.TestComponentsLogger;
@@ -45,10 +53,10 @@ public class NestedComponentStateUpdatesWithReconciliationTest {
   private static final String mLogTag = "logTag";
 
   private ComponentContext c;
-  private ShadowLooper mLayoutThreadShadowLooper;
-  private ComponentTree mComponentTree;
+  private ShadowLooper     mLayoutThreadShadowLooper;
+  private ComponentTree    mComponentTree;
   private ComponentsLogger mComponentsLogger;
-  private LithoView mLithoView;
+  private LithoView        mLithoView;
 
   private static final int STATE_VALUE_INITIAL_COUNT = 4;
 
@@ -84,8 +92,8 @@ public class NestedComponentStateUpdatesWithReconciliationTest {
   @Test
   public void noStateUpdates() {
     measureAndLayoutComponent(createSimpleTree());
-    LayoutState current = mComponentTree.getMainThreadLayoutState();
-    DefaultInternalNode layout = (DefaultInternalNode) current.getLayoutRoot();
+    LayoutState         current = mComponentTree.getMainThreadLayoutState();
+    DefaultInternalNode layout  = (DefaultInternalNode) current.getLayoutRoot();
     assertCloneCalledForOnly(layout, null);
   }
 

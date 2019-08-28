@@ -18,11 +18,11 @@ package com.facebook.litho.widget;
 import static org.mockito.Mockito.mock;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoHandler;
-import com.facebook.litho.Size;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 
 public class TestComponentTreeHolder extends ComponentTreeHolder {
 

@@ -17,33 +17,35 @@
 package com.facebook.litho;
 
 import android.content.res.Configuration;
+
 import androidx.collection.LruCache;
+
 import javax.annotation.Nullable;
 
 class LruResourceCache extends ResourceCache {
-  private final LruCache<Integer, Object> mCache =
-      new LruCache<Integer, Object>(500) {
-        @Override
-        protected int sizeOf(Integer key, Object value) {
-          if (value instanceof String) {
-            return ((String) value).length();
-          }
-          return 1;
-        }
-      };
+    private final LruCache<Integer, Object> mCache =
+        new LruCache<Integer, Object>(500) {
+            @Override
+            protected int sizeOf(Integer key, Object value) {
+                if (value instanceof String) {
+                    return ((String) value).length();
+                }
+                return 1;
+            }
+        };
 
-  LruResourceCache(Configuration configuration) {
-    super(configuration);
-  }
+    LruResourceCache(Configuration configuration) {
+        super(configuration);
+    }
 
-  @Override
-  @Nullable
-  <T> T get(int key) {
-    return (T) mCache.get(key);
-  }
+    @Override
+    @Nullable
+    public <T> T get(int key) {
+        return (T) mCache.get(key);
+    }
 
-  @Override
-  void put(int key, Object object) {
-    mCache.put(key, object);
-  }
+    @Override
+    public void put(int key, Object object) {
+        mCache.put(key, object);
+    }
 }

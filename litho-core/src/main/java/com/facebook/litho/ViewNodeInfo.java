@@ -19,178 +19,182 @@ package com.facebook.litho;
 import android.animation.StateListAnimator;
 import android.graphics.Rect;
 import android.view.View;
+
 import androidx.annotation.DrawableRes;
+
 import com.facebook.litho.drawable.ComparableDrawable;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.mount.MountState;
 import com.facebook.yoga.YogaDirection;
+
 import javax.annotation.Nullable;
 
 /**
  * Additional information passed between {@link LayoutState} and {@link MountState} used on a {@link
  * View}.
  */
-class ViewNodeInfo {
+public class ViewNodeInfo {
 
-  private ComparableDrawable mBackground;
-  private ComparableDrawable mForeground;
-  private Rect mPadding;
-  private Rect mExpandedTouchBounds;
-  private YogaDirection mLayoutDirection;
-  private @Nullable StateListAnimator mStateListAnimator;
-  private @DrawableRes int mStateListAnimatorRes;
+    private              ComparableDrawable mBackground;
+    private              ComparableDrawable mForeground;
+    private              Rect               mPadding;
+    private              Rect               mExpandedTouchBounds;
+    private              YogaDirection      mLayoutDirection;
+    private @Nullable    StateListAnimator  mStateListAnimator;
+    private @DrawableRes int                mStateListAnimatorRes;
 
-  void setBackground(ComparableDrawable background) {
-    mBackground = background;
-  }
-
-  ComparableDrawable getBackground() {
-    return mBackground;
-  }
-
-  void setForeground(ComparableDrawable foreground) {
-    mForeground = foreground;
-  }
-
-  ComparableDrawable getForeground() {
-    return mForeground;
-  }
-
-  int getPaddingLeft() {
-    return (mPadding != null) ? mPadding.left : 0;
-  }
-
-  int getPaddingTop() {
-    return (mPadding != null) ? mPadding.top : 0;
-  }
-
-  int getPaddingRight() {
-    return (mPadding != null) ? mPadding.right : 0;
-  }
-
-  int getPaddingBottom() {
-    return (mPadding != null) ? mPadding.bottom : 0;
-  }
-
-  void setPadding(int l, int t, int r, int b) {
-    if (mPadding != null) {
-      throw new IllegalStateException("Padding already initialized for this " + "ViewNodeInfo.");
+    public void setBackground(ComparableDrawable background) {
+        mBackground = background;
     }
 
-    mPadding = new Rect();
-    mPadding.set(l, t, r, b);
-  }
-
-  boolean hasPadding() {
-    return (mPadding != null);
-  }
-
-  void setLayoutDirection(YogaDirection layoutDirection) {
-    mLayoutDirection = layoutDirection;
-  }
-
-  YogaDirection getLayoutDirection() {
-    return mLayoutDirection;
-  }
-
-  void setExpandedTouchBounds(InternalNode node, int l, int t, int r, int b) {
-    if (!node.hasTouchExpansion()) {
-      return;
+    public ComparableDrawable getBackground() {
+        return mBackground;
     }
 
-    final int touchExpansionLeft = node.getTouchExpansionLeft();
-    final int touchExpansionTop = node.getTouchExpansionTop();
-    final int touchExpansionRight = node.getTouchExpansionRight();
-    final int touchExpansionBottom = node.getTouchExpansionBottom();
-    if (touchExpansionLeft == 0
-        && touchExpansionTop == 0
-        && touchExpansionRight == 0
-        && touchExpansionBottom == 0) {
-      return;
+    public void setForeground(ComparableDrawable foreground) {
+        mForeground = foreground;
     }
 
-    if (mExpandedTouchBounds != null) {
-      throw new IllegalStateException(
-          "ExpandedTouchBounds already initialized for this " + "ViewNodeInfo.");
+    public ComparableDrawable getForeground() {
+        return mForeground;
     }
 
-    mExpandedTouchBounds = new Rect();
-    mExpandedTouchBounds.set(
-        l - touchExpansionLeft,
-        t - touchExpansionTop,
-        r + touchExpansionRight,
-        b + touchExpansionBottom);
-  }
-
-  @Nullable
-  Rect getExpandedTouchBounds() {
-    if (mExpandedTouchBounds == null || mExpandedTouchBounds.isEmpty()) {
-      return null;
+    public int getPaddingLeft() {
+        return (mPadding != null) ? mPadding.left : 0;
     }
 
-    return mExpandedTouchBounds;
-  }
-
-  @Nullable
-  StateListAnimator getStateListAnimator() {
-    return mStateListAnimator;
-  }
-
-  void setStateListAnimator(StateListAnimator stateListAnimator) {
-    mStateListAnimator = stateListAnimator;
-  }
-
-  @DrawableRes
-  int getStateListAnimatorRes() {
-    return mStateListAnimatorRes;
-  }
-
-  void setStateListAnimatorRes(@DrawableRes int resId) {
-    mStateListAnimatorRes = resId;
-  }
-
-  /**
-   * Checks if this ViewNodeInfo is equal to the {@param other}
-   *
-   * @param other the other ViewNodeInfo
-   * @return {@code true} iff this NodeInfo is equal to the {@param other}.
-   */
-  public boolean isEquivalentTo(ViewNodeInfo other) {
-    if (this == other) {
-      return true;
+    public int getPaddingTop() {
+        return (mPadding != null) ? mPadding.top : 0;
     }
 
-    if (other == null) {
-      return false;
+    public int getPaddingRight() {
+        return (mPadding != null) ? mPadding.right : 0;
     }
 
-    if (!ComparableDrawable.isEquivalentTo(mBackground, other.mBackground)) {
-      return false;
+    public int getPaddingBottom() {
+        return (mPadding != null) ? mPadding.bottom : 0;
     }
 
-    if (!ComparableDrawable.isEquivalentTo(mForeground, other.mForeground)) {
-      return false;
+    public void setPadding(int l, int t, int r, int b) {
+        if (mPadding != null) {
+            throw new IllegalStateException("Padding already initialized for this " + "ViewNodeInfo.");
+        }
+
+        mPadding = new Rect();
+        mPadding.set(l, t, r, b);
     }
 
-    if (!CommonUtils.equals(mPadding, other.mPadding)) {
-      return false;
+    public boolean hasPadding() {
+        return (mPadding != null);
     }
 
-    if (!CommonUtils.equals(mExpandedTouchBounds, other.mExpandedTouchBounds)) {
-      return false;
+    public void setLayoutDirection(YogaDirection layoutDirection) {
+        mLayoutDirection = layoutDirection;
     }
 
-    if (!CommonUtils.equals(mLayoutDirection, other.mLayoutDirection)) {
-      return false;
+    public YogaDirection getLayoutDirection() {
+        return mLayoutDirection;
     }
 
-    if (mStateListAnimatorRes != other.mStateListAnimatorRes) {
-      return false;
+    public void setExpandedTouchBounds(InternalNode node, int l, int t, int r, int b) {
+        if (!node.hasTouchExpansion()) {
+            return;
+        }
+
+        int touchExpansionLeft   = node.getTouchExpansionLeft();
+        int touchExpansionTop    = node.getTouchExpansionTop();
+        int touchExpansionRight  = node.getTouchExpansionRight();
+        int touchExpansionBottom = node.getTouchExpansionBottom();
+        if (touchExpansionLeft == 0
+            && touchExpansionTop == 0
+            && touchExpansionRight == 0
+            && touchExpansionBottom == 0) {
+            return;
+        }
+
+        if (mExpandedTouchBounds != null) {
+            throw new IllegalStateException(
+                "ExpandedTouchBounds already initialized for this " + "ViewNodeInfo.");
+        }
+
+        mExpandedTouchBounds = new Rect();
+        mExpandedTouchBounds.set(
+            l - touchExpansionLeft,
+            t - touchExpansionTop,
+            r + touchExpansionRight,
+            b + touchExpansionBottom);
     }
 
-    // TODO: (T33421916) We need compare StateListAnimators more accurately
-    if (!CommonUtils.equals(mStateListAnimator, other.mStateListAnimator)) {
-      return false;
+    @Nullable public Rect getExpandedTouchBounds() {
+        if (mExpandedTouchBounds == null || mExpandedTouchBounds.isEmpty()) {
+            return null;
+        }
+
+        return mExpandedTouchBounds;
     }
 
-    return true;
-  }
+    @Nullable
+    public StateListAnimator getStateListAnimator() {
+        return mStateListAnimator;
+    }
+
+    public void setStateListAnimator(StateListAnimator stateListAnimator) {
+        mStateListAnimator = stateListAnimator;
+    }
+
+    @DrawableRes
+    public int getStateListAnimatorRes() {
+        return mStateListAnimatorRes;
+    }
+
+    public void setStateListAnimatorRes(@DrawableRes int resId) {
+        mStateListAnimatorRes = resId;
+    }
+
+    /**
+     * Checks if this ViewNodeInfo is equal to the {@param other}
+     *
+     * @param other the other ViewNodeInfo
+     * @return {@code true} iff this NodeInfo is equal to the {@param other}.
+     */
+    public boolean isEquivalentTo(ViewNodeInfo other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (other == null) {
+            return false;
+        }
+
+        if (!ComparableDrawable.isEquivalentTo(mBackground, other.mBackground)) {
+            return false;
+        }
+
+        if (!ComparableDrawable.isEquivalentTo(mForeground, other.mForeground)) {
+            return false;
+        }
+
+        if (!CommonUtils.equals(mPadding, other.mPadding)) {
+            return false;
+        }
+
+        if (!CommonUtils.equals(mExpandedTouchBounds, other.mExpandedTouchBounds)) {
+            return false;
+        }
+
+        if (!CommonUtils.equals(mLayoutDirection, other.mLayoutDirection)) {
+            return false;
+        }
+
+        if (mStateListAnimatorRes != other.mStateListAnimatorRes) {
+            return false;
+        }
+
+        // TODO: (T33421916) We need compare StateListAnimators more accurately
+        if (!CommonUtils.equals(mStateListAnimator, other.mStateListAnimator)) {
+            return false;
+        }
+
+        return true;
+    }
 }

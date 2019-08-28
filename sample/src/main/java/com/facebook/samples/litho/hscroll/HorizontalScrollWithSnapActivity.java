@@ -15,7 +15,7 @@ package com.facebook.samples.litho.hscroll;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.sections.widget.RecyclerCollectionEventsController;
 import com.facebook.samples.litho.NavigatableDemoActivity;

@@ -16,21 +16,21 @@
 
 package com.facebook.litho.widget;
 
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView.ScaleType;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLayout;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
 import com.facebook.litho.Diff;
 import com.facebook.litho.DrawableMatrix;
 import com.facebook.litho.MatrixDrawable;
 import com.facebook.litho.Output;
 import com.facebook.litho.R;
-import com.facebook.litho.Size;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 import com.facebook.litho.annotations.FromBoundsDefined;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnBind;

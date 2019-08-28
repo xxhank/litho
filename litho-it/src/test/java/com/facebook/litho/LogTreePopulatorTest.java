@@ -23,6 +23,11 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import androidx.annotation.Nullable;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentsLogger;
+import com.facebook.litho.event.PerfEvent;
 import com.facebook.litho.testing.logging.TestComponentsLogger;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.HashMap;
@@ -85,7 +90,7 @@ public class LogTreePopulatorTest {
           }
         };
 
-    final PerfEvent event = mock(PerfEvent.class);
+    final PerfEvent event     = mock(PerfEvent.class);
     final TreeProps treeProps = new TreeProps();
     treeProps.put(MyKey.class, 1337);
     mContext.setTreeProps(treeProps);

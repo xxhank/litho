@@ -28,6 +28,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Rect;
 import androidx.viewpager.widget.ViewPager;
+
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.mount.MountState;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
@@ -150,7 +155,7 @@ public class ComponentTreeIncrementalMountLocalVisibleBoundsTest {
       super(context);
     }
 
-    protected void mount(
+    @Override protected void mount(
         LayoutState layoutState, Rect currentVisibleArea, boolean processVisibilityOutputs) {
       super.mount(layoutState, currentVisibleArea, processVisibilityOutputs);
     }

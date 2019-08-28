@@ -16,10 +16,10 @@ import static android.R.drawable.star_off;
 import static android.R.drawable.star_on;
 
 import android.view.View;
-import com.facebook.litho.ClickEvent;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.Row;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.LayoutSpec;

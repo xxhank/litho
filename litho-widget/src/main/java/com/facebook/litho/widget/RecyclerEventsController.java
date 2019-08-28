@@ -18,7 +18,7 @@ package com.facebook.litho.widget;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.litho.ThreadUtils;
+import com.facebook.litho.thread.ThreadUtils;
 
 /**
  * An controller that can be passed as {@link com.facebook.litho.annotations.Prop} to a Recycler

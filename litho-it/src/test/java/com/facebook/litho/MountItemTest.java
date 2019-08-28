@@ -25,6 +25,13 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import android.graphics.Rect;
 import android.util.SparseArray;
 import android.view.View;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentHost;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.layout.LayoutOutput;
+import com.facebook.litho.mount.MountItem;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;
@@ -36,21 +43,21 @@ import org.robolectric.RuntimeEnvironment;
 /** Tests {@link MountItem} */
 @RunWith(ComponentsTestRunner.class)
 public class MountItemTest {
-  private MountItem mMountItem;
-  private Component mComponent;
-  private ComponentHost mComponentHost;
-  private Object mContent;
-  private CharSequence mContentDescription;
-  private Object mViewTag;
+  private MountItem           mMountItem;
+  private Component           mComponent;
+  private ComponentHost       mComponentHost;
+  private Object              mContent;
+  private CharSequence        mContentDescription;
+  private Object              mViewTag;
   private SparseArray<Object> mViewTags;
-  private EventHandler mClickHandler;
-  private EventHandler mLongClickHandler;
-  private EventHandler mFocusChangeHandler;
-  private EventHandler mTouchHandler;
-  private EventHandler mDispatchPopulateAccessibilityEventHandler;
-  private int mFlags;
-  private ComponentContext mContext;
-  private NodeInfo mNodeInfo;
+  private EventHandler        mClickHandler;
+  private EventHandler        mLongClickHandler;
+  private EventHandler        mFocusChangeHandler;
+  private EventHandler        mTouchHandler;
+  private EventHandler        mDispatchPopulateAccessibilityEventHandler;
+  private int                 mFlags;
+  private ComponentContext    mContext;
+  private NodeInfo            mNodeInfo;
 
   @Before
   public void setup() throws Exception {

@@ -19,8 +19,8 @@ import com.facebook.jni.annotations.DoNotStrip;
 
 @DoNotStrip
 public class CppException extends RuntimeException {
-  @DoNotStrip
-  public CppException(String message) {
-    super(message);
-  }
+    @DoNotStrip
+    public CppException(String message) {
+        super(message);
+    }
 }

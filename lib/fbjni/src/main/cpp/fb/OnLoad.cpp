@@ -18,10 +18,10 @@
 
 using namespace facebook::jni;
 
-JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
-  return facebook::jni::initialize(vm, [] {
-    HybridDataOnLoad();
-    JNativeRunnable::OnLoad();
-    ThreadScope::OnLoad();
-  });
+JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    return facebook::jni::initialize(vm, [] {
+        HybridDataOnLoad();
+        JNativeRunnable::OnLoad();
+        ThreadScope::OnLoad();
+    });
 }

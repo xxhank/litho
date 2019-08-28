@@ -16,10 +16,11 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.ComponentContext.NULL_LAYOUT;
+import static com.facebook.litho.component.ComponentContext.NULL_LAYOUT;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.robolectric.RuntimeEnvironment.application;
 
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;

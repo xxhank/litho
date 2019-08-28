@@ -15,6 +15,11 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsPools;
+
 /** Helper class to access Litho internals for benchmark testing. */
 public class BenchmarkTestHelper {
   private static final int[] LAYOUT_SIZE_OUT = new int[2];
@@ -22,7 +27,7 @@ public class BenchmarkTestHelper {
   public static LithoView createAndMeasureLithoView(
       ComponentContext c, Component component, int widthSpec, int heightSpec) {
     final ComponentTree componentTree = ComponentTree.create(c, component).build();
-    final LithoView lithoView = new LithoView(c);
+    final LithoView     lithoView     = new LithoView(c);
     lithoView.setComponentTree(componentTree);
     lithoView.onAttachedToWindow();
     lithoView.measure(widthSpec, heightSpec);

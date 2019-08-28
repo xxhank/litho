@@ -12,9 +12,9 @@
 
 package com.fblitho.lithoktsample.errors
 
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.StateValue
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateInitialState
@@ -32,9 +32,9 @@ object ErrorBoundarySpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @Prop child: Component,
-      @State error: Optional<Exception>
+          c: ComponentContext,
+          @Prop child: Component,
+          @State error: Optional<Exception>
   ): Component = if (error.isPresent) {
     Column.create(c)
         .marginDip(YogaEdge.ALL, 16f)

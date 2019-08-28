@@ -17,6 +17,9 @@
 package com.facebook.litho;
 
 import androidx.annotation.Nullable;
+
+import com.facebook.litho.component.ComponentsLogger;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;

@@ -12,8 +12,8 @@
 
 package com.fblitho.lithoktsample.errors
 
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 
 data class ListRow(val title: String, val subtitle: String) {
   fun createComponent(c: ComponentContext): Component =

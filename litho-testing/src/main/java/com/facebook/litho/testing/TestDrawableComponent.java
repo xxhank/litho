@@ -21,11 +21,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import androidx.annotation.AttrRes;
 import androidx.annotation.StyleRes;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLayout;
-import com.facebook.litho.Size;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 
 public class TestDrawableComponent extends TestComponent {
 
@@ -251,7 +251,7 @@ public class TestDrawableComponent extends TestComponent {
     return false;
   }
 
-  public static class Builder extends com.facebook.litho.Component.Builder<Builder> {
+  public static class Builder extends Component.Builder<Builder> {
     TestDrawableComponent mComponent;
 
     private void init(

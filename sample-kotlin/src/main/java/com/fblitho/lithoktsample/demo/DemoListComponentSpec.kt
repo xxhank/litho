@@ -12,8 +12,8 @@
 
 package com.fblitho.lithoktsample.demo
 
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.annotations.FromEvent
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
@@ -50,10 +50,10 @@ object DemoListComponentSpec {
 
   @OnEvent(RenderEvent::class)
   fun onRender(
-      c: ComponentContext,
-      @Prop parentIndices: IntArray?,
-      @FromEvent model: DemoListDataModel,
-      @FromEvent index: Int
+          c: ComponentContext,
+          @Prop parentIndices: IntArray?,
+          @FromEvent model: DemoListDataModel,
+          @FromEvent index: Int
   ): RenderInfo =
       ComponentRenderInfo.create()
           .component(
@@ -80,9 +80,9 @@ object DemoListComponentSpec {
    */
   @OnEvent(OnCheckIsSameItemEvent::class)
   fun isSameItem(
-      c: ComponentContext,
-      @FromEvent previousItem: DemoListDataModel,
-      @FromEvent nextItem: DemoListDataModel
+          c: ComponentContext,
+          @FromEvent previousItem: DemoListDataModel,
+          @FromEvent nextItem: DemoListDataModel
   ): Boolean = previousItem === nextItem
 
   /**
@@ -93,9 +93,9 @@ object DemoListComponentSpec {
    */
   @OnEvent(OnCheckIsSameContentEvent::class)
   fun isSameContent(
-      c: ComponentContext,
-      @FromEvent previousItem: DemoListDataModel?,
-      @FromEvent nextItem: DemoListDataModel?
+          c: ComponentContext,
+          @FromEvent previousItem: DemoListDataModel?,
+          @FromEvent nextItem: DemoListDataModel?
   ): Boolean =
   // We're only displaying the name so checking if that's equal here is enough for our use case.
       if (previousItem == null) {

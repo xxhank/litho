@@ -16,9 +16,9 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.LayoutState.createAndMeasureTreeForComponent;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.layout.LayoutState.createAndMeasureTreeForComponent;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.yoga.YogaDirection.LTR;
 import static com.facebook.yoga.YogaDirection.RTL;
 import static com.facebook.yoga.YogaEdge.END;
@@ -27,6 +27,8 @@ import static com.facebook.yoga.YogaEdge.RIGHT;
 import static com.facebook.yoga.YogaEdge.START;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.yoga.YogaDirection;
 import org.junit.Before;

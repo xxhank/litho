@@ -12,7 +12,7 @@
 package com.facebook.samples.litho.animations.pageindicators;
 
 import android.os.Bundle;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.samples.litho.NavigatableDemoActivity;
 

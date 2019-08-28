@@ -18,6 +18,10 @@ package com.facebook.litho;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.geometry.SizeSpec;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.TestLayoutComponent;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
@@ -31,10 +35,10 @@ public class LayoutStateSpecTest {
 
   private static final int COMPONENT_ID = 37;
 
-  private int mWidthSpec;
-  private int mHeightSpec;
-  private LayoutState mLayoutState;
-  private Component mComponent;
+  private int              mWidthSpec;
+  private int              mHeightSpec;
+  private LayoutState      mLayoutState;
+  private Component        mComponent;
   private ComponentContext mContext;
 
   @Before

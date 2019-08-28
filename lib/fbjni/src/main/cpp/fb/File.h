@@ -18,19 +18,19 @@
 #include <fb/fbjni.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-class JFile : public JavaClass<JFile> {
- public:
-  static constexpr const char* kJavaDescriptor = "Ljava/io/File;";
+        class JFile : public JavaClass<JFile> {
+            public:
+            static constexpr const char *kJavaDescriptor = "Ljava/io/File;";
 
-  // Define a method that calls into the represented Java class
-  std::string getAbsolutePath() {
-    static const auto method = getClass()->getMethod<jstring()>("getAbsolutePath");
-    return method(self())->toStdString();
-  }
+            // Define a method that calls into the represented Java class
+            std::string getAbsolutePath() {
+                static const auto method = getClass()->getMethod<jstring()>("getAbsolutePath");
+                return method(self())->toStdString();
+            }
 
-};
+        };
 
-}
+    }
 }

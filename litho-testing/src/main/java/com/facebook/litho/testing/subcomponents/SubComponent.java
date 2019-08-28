@@ -16,7 +16,7 @@
 
 package com.facebook.litho.testing.subcomponents;
 
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import org.assertj.core.api.Condition;
 
 /**

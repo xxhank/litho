@@ -103,7 +103,7 @@ var activeTableTab = "activeTableTab";
 <li>ViewGroup</li>
 <li>
 <ul class="inheritance">
-<li>com.facebook.litho.ComponentHost</li>
+<li>com.facebook.litho.component.ComponentHost</li>
 </ul>
 </li>
 </ul>
@@ -141,7 +141,7 @@ extends ViewGroup</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#ComponentHost-com.facebook.litho.ComponentContext-AttributeSet-">ComponentHost</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;context,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#ComponentHost-com.facebook.litho.component.ComponentContext-AttributeSet-">ComponentHost</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;context,
              AttributeSet&nbsp;attrs)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -232,7 +232,7 @@ extends ViewGroup</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#getClipChildren--">getClipChildren</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>com.facebook.litho.ComponentTouchListener</code></td>
+<td class="colFirst"><code>com.facebook.litho.component.ComponentTouchListener</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#getComponentTouchListener--">getComponentTouchListener</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
@@ -296,8 +296,8 @@ extends ViewGroup</pre>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#mount-int-com.facebook.litho.MountItem-Rect-">mount</a></span>(int&nbsp;index,
-     com.facebook.litho.MountItem&nbsp;mountItem,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#mount-int-com.facebook.litho.mount.MountItem-Rect-">mount</a></span>(int&nbsp;index,
+     com.facebook.litho.mount.MountItem&nbsp;mountItem,
      Rect&nbsp;bounds)</code>
 <div class="block">Mounts the given <code>MountItem</code> with unique index.</div>
 </td>
@@ -429,8 +429,8 @@ extends ViewGroup</pre>
 </tr>
 <tr id="i49" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#unmount-int-com.facebook.litho.MountItem-">unmount</a></span>(int&nbsp;index,
-       com.facebook.litho.MountItem&nbsp;mountItem)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentHost.html#unmount-int-com.facebook.litho.mount.MountItem-">unmount</a></span>(int&nbsp;index,
+       com.facebook.litho.mount.MountItem&nbsp;mountItem)</code>
 <div class="block">Unmounts the given <code>MountItem</code> with unique index.</div>
 </td>
 </tr>
@@ -479,7 +479,7 @@ extends ViewGroup</pre>
                      AttributeSet&nbsp;attrs)</pre>
 </li>
 </ul>
-<a name="ComponentHost-com.facebook.litho.ComponentContext-AttributeSet-">
+<a name="ComponentHost-com.facebook.litho.component.ComponentContext-AttributeSet-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -497,14 +497,14 @@ extends ViewGroup</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="mount-int-com.facebook.litho.MountItem-Rect-">
+<a name="mount-int-com.facebook.litho.mount.MountItem-Rect-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>mount</h4>
 <pre>public&nbsp;void&nbsp;mount(int&nbsp;index,
-                  com.facebook.litho.MountItem&nbsp;mountItem,
+                  com.facebook.litho.mount.MountItem&nbsp;mountItem,
                   Rect&nbsp;bounds)</pre>
 <div class="block">Mounts the given <code>MountItem</code> with unique index.</div>
 <dl>
@@ -516,14 +516,14 @@ extends ViewGroup</pre>
 </dl>
 </li>
 </ul>
-<a name="unmount-int-com.facebook.litho.MountItem-">
+<a name="unmount-int-com.facebook.litho.mount.MountItem-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>unmount</h4>
 <pre>public&nbsp;void&nbsp;unmount(int&nbsp;index,
-                    com.facebook.litho.MountItem&nbsp;mountItem)</pre>
+                    com.facebook.litho.mount.MountItem&nbsp;mountItem)</pre>
 <div class="block">Unmounts the given <code>MountItem</code> with unique index.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -666,7 +666,7 @@ extends ViewGroup</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getComponentTouchListener</h4>
-<pre>public&nbsp;com.facebook.litho.ComponentTouchListener&nbsp;getComponentTouchListener()</pre>
+<pre>public&nbsp;com.facebook.litho.component.ComponentTouchListener&nbsp;getComponentTouchListener()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The previous set touch listener.</dd>

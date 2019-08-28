@@ -17,17 +17,17 @@
 package com.facebook.litho.widget;
 
 import static android.view.View.MeasureSpec.UNSPECIFIED;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.litho.widget.RecyclerBinderTest.NO_OP_CHANGE_SET_COMPLETE_CALLBACK;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 import androidx.recyclerview.widget.OrientationHelper;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Size;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.ArrayList;

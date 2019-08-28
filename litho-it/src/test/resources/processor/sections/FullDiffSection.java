@@ -17,13 +17,13 @@ package com.facebook.litho.sections.processor.integration.resources;
 
 import android.view.View;
 import androidx.annotation.VisibleForTesting;
-import com.facebook.litho.ClickEvent;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.CommonUtils;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.Diff;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.Comparable;
@@ -43,7 +43,7 @@ import java.util.List;
  * @prop-required data java.util.List<T>
  * @prop-required prop1 java.lang.Integer
  * @prop-optional prop2 java.lang.String
- * @prop-required prop3 com.facebook.litho.Component
+ * @prop-required prop3 com.facebook.litho.component.Component
  * @see com.facebook.litho.sections.processor.integration.resources.FullDiffSectionSpec
  */
 public final class FullDiffSection<T> extends Section implements TestTag {

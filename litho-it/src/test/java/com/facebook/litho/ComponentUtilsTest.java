@@ -16,10 +16,12 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.ComponentUtils.hasEquivalentFields;
+import static com.facebook.litho.component.ComponentUtils.hasEquivalentFields;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import com.facebook.litho.annotations.Comparable;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.Arrays;
 import java.util.Collection;

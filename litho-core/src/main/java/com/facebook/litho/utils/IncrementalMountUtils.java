@@ -16,7 +16,7 @@
 
 package com.facebook.litho.utils;
 
-import static com.facebook.litho.ThreadUtils.assertMainThread;
+import static com.facebook.litho.thread.ThreadUtils.assertMainThread;
 
 import android.graphics.Rect;
 import android.view.View;

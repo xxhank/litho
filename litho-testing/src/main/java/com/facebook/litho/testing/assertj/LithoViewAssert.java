@@ -21,7 +21,7 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.DrawableRes;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.LithoViewTestHelper;
-import com.facebook.litho.TestItem;
+import com.facebook.litho.test.TestItem;
 import com.facebook.litho.testing.viewtree.ViewTree;
 import com.facebook.litho.testing.viewtree.ViewTreeAssert;
 import java.util.Deque;

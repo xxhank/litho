@@ -13,8 +13,8 @@ package com.facebook.samples.lithocodelab.examples;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import javax.annotation.Nullable;
 

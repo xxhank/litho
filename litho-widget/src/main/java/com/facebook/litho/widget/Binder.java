@@ -18,11 +18,12 @@ package com.facebook.litho.widget;
 
 import android.view.View;
 import android.view.ViewGroup;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Size;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLifecycle;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.geometry.Size;
 import javax.annotation.Nullable;
 
 /**
@@ -53,7 +54,7 @@ public interface Binder<V extends ViewGroup> {
 
   /**
    * Call this method before the {@link View} is mounted, i.e. within {@link
-   * com.facebook.litho.ComponentLifecycle#onMount(ComponentContext, Object)})}
+   * ComponentLifecycle#onMount(ComponentContext, Object)})}
    */
   void mount(V view);
 

@@ -87,128 +87,138 @@
 #include "References-forward.h"
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
 /// Convenience function to wrap an existing local reference
-template<typename T>
-local_ref<T> adopt_local(T ref) noexcept;
+        template<typename T>
+        local_ref<T> adopt_local(T ref) noexcept;
 
 /// Convenience function to wrap an existing global reference
-template<typename T>
-global_ref<T> adopt_global(T ref) noexcept;
+        template<typename T>
+        global_ref<T> adopt_global(T ref) noexcept;
 
 /// Convenience function to wrap an existing weak reference
-template<typename T>
-weak_ref<T> adopt_weak_global(T ref) noexcept;
+        template<typename T>
+        weak_ref<T> adopt_weak_global(T ref) noexcept;
 
 
 /// Swaps two owning references of the same type
-template<typename T>
-void swap(weak_ref<T>& a, weak_ref<T>& b) noexcept;
+        template<typename T>
+        void swap(weak_ref<T> &a, weak_ref<T> &b) noexcept;
 
 /// Swaps two owning references of the same type
-template<typename T, typename Alloc>
-void swap(basic_strong_ref<T, Alloc>& a, basic_strong_ref<T, Alloc>& b) noexcept;
+        template<typename T, typename Alloc>
+        void swap(basic_strong_ref<T, Alloc> &a, basic_strong_ref<T, Alloc> &b) noexcept;
 
 /**
  * Retrieve the plain reference from a plain reference.
  */
-template<typename T>
-enable_if_t<IsPlainJniReference<T>(), T> getPlainJniReference(T ref);
+        template<typename T>
+        enable_if_t<IsPlainJniReference<T>(), T> getPlainJniReference(T ref);
 
 /**
  * Retrieve the plain reference from an alias reference.
  */
-template<typename T>
-JniType<T> getPlainJniReference(alias_ref<T> ref);
+        template<typename T>
+        JniType<T> getPlainJniReference(alias_ref<T> ref);
 
 /**
  * Retrieve the plain JNI reference from any reference owned reference.
  */
-template<typename T, typename Alloc>
-JniType<T> getPlainJniReference(const base_owned_ref<T, Alloc>& ref);
+        template<typename T, typename Alloc>
+        JniType<T> getPlainJniReference(const base_owned_ref<T, Alloc> &ref);
 
-class JObject;
-class JClass;
+        class JObject;
 
-namespace detail {
+        class JClass;
 
-template <typename T, typename Enable = void>
-struct HasJniRefRepr : std::false_type {};
+        namespace detail {
 
-template <typename T>
-struct HasJniRefRepr<T, typename std::enable_if<!std::is_same<typename T::JniRefRepr, void>::value, void>::type> : std::true_type {
-  using type = typename T::JniRefRepr;
-};
+            template<typename T, typename Enable = void>
+            struct HasJniRefRepr : std::false_type {
+            };
 
-template <typename T>
-struct RefReprType<T*> {
-  using type = typename std::conditional<HasJniRefRepr<T>::value, typename HasJniRefRepr<T>::type, JObjectWrapper<T*>>::type;
-  static_assert(std::is_base_of<JObject, type>::value,
-      "Repr type missing JObject base.");
-  static_assert(std::is_same<type, typename RefReprType<type>::type>::value,
-      "RefReprType<T> not idempotent");
-};
+            template<typename T>
+            struct HasJniRefRepr<T, typename std::enable_if<!std::is_same<typename T::JniRefRepr, void>::value, void>::type>
+                : std::true_type {
+                using type = typename T::JniRefRepr;
+            };
 
-template <typename T>
-struct RefReprType<T, typename std::enable_if<std::is_base_of<JObject, T>::value, void>::type> {
-  using type = T;
-  static_assert(std::is_base_of<JObject, type>::value,
-      "Repr type missing JObject base.");
-  static_assert(std::is_same<type, typename RefReprType<type>::type>::value,
-      "RefReprType<T> not idempotent");
-};
+            template<typename T>
+            struct RefReprType<T *> {
+                using type = typename std::conditional<HasJniRefRepr<T>::value, typename HasJniRefRepr<T>::type, JObjectWrapper<T *>>::type;
+                static_assert(std::is_base_of<JObject, type>::value,
+                              "Repr type missing JObject base.");
+                static_assert(std::is_same<type, typename RefReprType<type>::type>::value,
+                              "RefReprType<T> not idempotent");
+            };
 
-template <typename T>
-struct JavaObjectType {
-  using type = typename RefReprType<T>::type::javaobject;
-  static_assert(IsPlainJniReference<type>(),
-      "JavaObjectType<T> not a plain jni reference");
-  static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
-      "JavaObjectType<T> not idempotent");
-};
+            template<typename T>
+            struct RefReprType<T, typename std::enable_if<std::is_base_of<JObject, T>::value, void>::type> {
+                using type = T;
+                static_assert(std::is_base_of<JObject, type>::value,
+                              "Repr type missing JObject base.");
+                static_assert(std::is_same<type, typename RefReprType<type>::type>::value,
+                              "RefReprType<T> not idempotent");
+            };
 
-template <typename T>
-struct JavaObjectType<JObjectWrapper<T>> {
-  using type = T;
-  static_assert(IsPlainJniReference<type>(),
-      "JavaObjectType<T> not a plain jni reference");
-  static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
-      "JavaObjectType<T> not idempotent");
-};
+            template<typename T>
+            struct JavaObjectType {
+                using type = typename RefReprType<T>::type::javaobject;
+                static_assert(IsPlainJniReference<type>(),
+                              "JavaObjectType<T> not a plain jni reference");
+                static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
+                              "JavaObjectType<T> not idempotent");
+            };
 
-template <typename T>
-struct JavaObjectType<T*> {
-  using type = T*;
-  static_assert(IsPlainJniReference<type>(),
-      "JavaObjectType<T> not a plain jni reference");
-  static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
-      "JavaObjectType<T> not idempotent");
-};
+            template<typename T>
+            struct JavaObjectType<JObjectWrapper<T>> {
+                using type = T;
+                static_assert(IsPlainJniReference<type>(),
+                              "JavaObjectType<T> not a plain jni reference");
+                static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
+                              "JavaObjectType<T> not idempotent");
+            };
 
-template <typename Repr>
-struct ReprStorage {
-  explicit ReprStorage(JniType<Repr> obj) noexcept;
+            template<typename T>
+            struct JavaObjectType<T *> {
+                using type = T *;
+                static_assert(IsPlainJniReference<type>(),
+                              "JavaObjectType<T> not a plain jni reference");
+                static_assert(std::is_same<type, typename JavaObjectType<type>::type>::value,
+                              "JavaObjectType<T> not idempotent");
+            };
 
-  void set(JniType<Repr> obj) noexcept;
+            template<typename Repr>
+            struct ReprStorage {
+                explicit ReprStorage(JniType<Repr> obj) noexcept;
 
-  Repr& get() noexcept;
-  const Repr& get() const noexcept;
-  JniType<Repr> jobj() const noexcept;
+                void set(JniType<Repr> obj) noexcept;
 
-  void swap(ReprStorage& other) noexcept;
- private:
-  ReprStorage() = delete;
-  ReprStorage(const ReprStorage&) = delete;
-  ReprStorage(ReprStorage&&) = delete;
-  ReprStorage& operator=(const ReprStorage&) = delete;
-  ReprStorage& operator=(ReprStorage&&) = delete;
+                Repr &get() noexcept;
 
-  using Storage = typename std::aligned_storage<sizeof(JObjectBase), alignof(JObjectBase)>::type;
-  Storage storage_;
-};
+                const Repr &get() const noexcept;
 
-} // namespace detail
+                JniType<Repr> jobj() const noexcept;
+
+                void swap(ReprStorage &other) noexcept;
+
+                private:
+                ReprStorage() = delete;
+
+                ReprStorage(const ReprStorage &) = delete;
+
+                ReprStorage(ReprStorage &&) = delete;
+
+                ReprStorage &operator=(const ReprStorage &) = delete;
+
+                ReprStorage &operator=(ReprStorage &&) = delete;
+
+                using Storage = typename std::aligned_storage<sizeof(JObjectBase), alignof(JObjectBase)>::type;
+                Storage storage_;
+            };
+
+        } // namespace detail
 
 /**
  * Create a new local reference from an existing reference
@@ -217,9 +227,9 @@ struct ReprStorage {
  * @return an owned local reference (referring to null if the input does)
  * @throws std::bad_alloc if the JNI reference could not be created
  */
-template<typename T>
-enable_if_t<IsNonWeakReference<T>(), local_ref<plain_jni_reference_t<T>>>
-make_local(const T& r);
+        template<typename T>
+        enable_if_t<IsNonWeakReference<T>(), local_ref<plain_jni_reference_t<T>>>
+        make_local(const T &r);
 
 /**
  * Create a new global reference from an existing reference
@@ -228,9 +238,9 @@ make_local(const T& r);
  * @return an owned global reference (referring to null if the input does)
  * @throws std::bad_alloc if the JNI reference could not be created
  */
-template<typename T>
-enable_if_t<IsNonWeakReference<T>(), global_ref<plain_jni_reference_t<T>>>
-make_global(const T& r);
+        template<typename T>
+        enable_if_t<IsNonWeakReference<T>(), global_ref<plain_jni_reference_t<T>>>
+        make_global(const T &r);
 
 /**
  * Create a new weak global reference from an existing reference
@@ -239,106 +249,110 @@ make_global(const T& r);
  * @return an owned weak global reference (referring to null if the input does)
  * @throws std::bad_alloc if the returned reference is null
  */
-template<typename T>
-enable_if_t<IsNonWeakReference<T>(), weak_ref<plain_jni_reference_t<T>>>
-make_weak(const T& r);
+        template<typename T>
+        enable_if_t<IsNonWeakReference<T>(), weak_ref<plain_jni_reference_t<T>>>
+        make_weak(const T &r);
 
 /**
  * Compare two references to see if they refer to the same object
  */
-template<typename T1, typename T2>
-enable_if_t<IsNonWeakReference<T1>() && IsNonWeakReference<T2>(), bool>
-operator==(const T1& a, const T2& b);
+        template<typename T1, typename T2>
+        enable_if_t<IsNonWeakReference<T1>() && IsNonWeakReference<T2>(), bool>
+        operator==(const T1 &a, const T2 &b);
 
 /**
  * Compare two references to see if they don't refer to the same object
  */
-template<typename T1, typename T2>
-enable_if_t<IsNonWeakReference<T1>() && IsNonWeakReference<T2>(), bool>
-operator!=(const T1& a, const T2& b);
+        template<typename T1, typename T2>
+        enable_if_t<IsNonWeakReference<T1>() && IsNonWeakReference<T2>(), bool>
+        operator!=(const T1 &a, const T2 &b);
 
 /**
  * Compare references against nullptr
  */
-template<typename T1>
-enable_if_t<IsNonWeakReference<T1>(), bool>
-operator==(const T1& a, std::nullptr_t);
+        template<typename T1>
+        enable_if_t<IsNonWeakReference<T1>(), bool>
+        operator==(const T1 &a, std::nullptr_t);
 
-template<typename T1>
-enable_if_t<IsNonWeakReference<T1>(), bool>
-operator==(std::nullptr_t, const T1& a);
+        template<typename T1>
+        enable_if_t<IsNonWeakReference<T1>(), bool>
+        operator==(std::nullptr_t, const T1 &a);
 
-template<typename T1>
-enable_if_t<IsNonWeakReference<T1>(), bool>
-operator!=(const T1& a, std::nullptr_t);
+        template<typename T1>
+        enable_if_t<IsNonWeakReference<T1>(), bool>
+        operator!=(const T1 &a, std::nullptr_t);
 
-template<typename T1>
-enable_if_t<IsNonWeakReference<T1>(), bool>
-operator!=(std::nullptr_t, const T1& a);
-
-
-template<typename T, typename Alloc>
-class base_owned_ref {
- public:
-  using javaobject = JniType<T>;
-
-  /**
-   * Release the ownership and set the reference to null. Thus no deleter is invoked.
-   * @return Returns the reference
-   */
-  javaobject release() noexcept;
-
-  /**
-   * Reset the reference to refer to nullptr.
-   */
-  void reset() noexcept;
-
- protected:
-  using Repr = ReprType<T>;
-  detail::ReprStorage<Repr> storage_;
-
-  javaobject get() const noexcept;
-  void set(javaobject ref) noexcept;
-
-  /*
-   * Wrap an existing reference and transfers its ownership to the newly created unique reference.
-   * NB! Does not create a new reference
-   */
-  explicit base_owned_ref(javaobject reference) noexcept;
-
-  /// Create a null reference
-  base_owned_ref() noexcept;
-
-  /// Create a null reference
-  explicit base_owned_ref(std::nullptr_t) noexcept;
-
-  /// Copy constructor (note creates a new reference)
-  base_owned_ref(const base_owned_ref& other);
-  template<typename U>
-  base_owned_ref(const base_owned_ref<U, Alloc>& other);
-
-  /// Transfers ownership of an underlying reference from one unique reference to another
-  base_owned_ref(base_owned_ref&& other) noexcept;
-  template<typename U>
-  base_owned_ref(base_owned_ref<U, Alloc>&& other) noexcept;
-
-  /// The delete the underlying reference if applicable
-  ~base_owned_ref() noexcept;
+        template<typename T1>
+        enable_if_t<IsNonWeakReference<T1>(), bool>
+        operator!=(std::nullptr_t, const T1 &a);
 
 
-  /// Assignment operator (note creates a new reference)
-  base_owned_ref& operator=(const base_owned_ref& other);
+        template<typename T, typename Alloc>
+        class base_owned_ref {
+            public:
+            using javaobject = JniType<T>;
 
-  /// Assignment by moving a reference thus not creating a new reference
-  base_owned_ref& operator=(base_owned_ref&& rhs) noexcept;
+            /**
+             * Release the ownership and set the reference to null. Thus no deleter is invoked.
+             * @return Returns the reference
+             */
+            javaobject release() noexcept;
 
-  void reset(javaobject reference) noexcept;
+            /**
+             * Reset the reference to refer to nullptr.
+             */
+            void reset() noexcept;
 
-  friend javaobject jni::getPlainJniReference<>(const base_owned_ref& ref);
+            protected:
+            using Repr = ReprType<T>;
+            detail::ReprStorage<Repr> storage_;
 
-  template<typename U, typename UAlloc>
-  friend class base_owned_ref;
-};
+            javaobject get() const noexcept;
+
+            void set(javaobject ref) noexcept;
+
+            /*
+             * Wrap an existing reference and transfers its ownership to the newly created unique reference.
+             * NB! Does not create a new reference
+             */
+            explicit base_owned_ref(javaobject reference) noexcept;
+
+            /// Create a null reference
+            base_owned_ref() noexcept;
+
+            /// Create a null reference
+            explicit base_owned_ref(std::nullptr_t) noexcept;
+
+            /// Copy constructor (note creates a new reference)
+            base_owned_ref(const base_owned_ref &other);
+
+            template<typename U>
+            base_owned_ref(const base_owned_ref<U, Alloc> &other);
+
+            /// Transfers ownership of an underlying reference from one unique reference to another
+            base_owned_ref(base_owned_ref &&other) noexcept;
+
+            template<typename U>
+            base_owned_ref(base_owned_ref<U, Alloc> &&other) noexcept;
+
+            /// The delete the underlying reference if applicable
+            ~base_owned_ref() noexcept;
+
+
+            /// Assignment operator (note creates a new reference)
+            base_owned_ref &operator=(const base_owned_ref &other);
+
+            /// Assignment by moving a reference thus not creating a new reference
+            base_owned_ref &operator=(base_owned_ref &&rhs) noexcept;
+
+            void reset(javaobject reference) noexcept;
+
+            friend javaobject jni::getPlainJniReference<>(const base_owned_ref &ref);
+
+            template<typename U, typename UAlloc>
+            friend
+            class base_owned_ref;
+        };
 
 
 /**
@@ -348,158 +362,164 @@ class base_owned_ref {
  * semantics should be basically the same. This class should not be used directly, instead use
  * @ref weak_ref
  */
-template<typename T>
-class weak_ref : public base_owned_ref<T, WeakGlobalReferenceAllocator> {
- public:
-  using javaobject = JniType<T>;
+        template<typename T>
+        class weak_ref : public base_owned_ref<T, WeakGlobalReferenceAllocator> {
+            public:
+            using javaobject = JniType<T>;
 
-  using Allocator = WeakGlobalReferenceAllocator;
+            using Allocator = WeakGlobalReferenceAllocator;
 
-  // This inherits non-default, non-copy, non-move ctors.
-  using base_owned_ref<T, Allocator>::base_owned_ref;
+            // This inherits non-default, non-copy, non-move ctors.
+            using base_owned_ref<T, Allocator>::base_owned_ref;
 
-  /// Create a null reference
-  weak_ref() noexcept
-    : base_owned_ref<T, Allocator>{} {}
+            /// Create a null reference
+            weak_ref() noexcept
+                : base_owned_ref<T, Allocator>{} {}
 
-  /// Create a null reference
-  /* implicit */ weak_ref(std::nullptr_t) noexcept
-    : base_owned_ref<T, Allocator>{nullptr} {}
+            /// Create a null reference
+            /* implicit */ weak_ref(std::nullptr_t) noexcept
+                : base_owned_ref<T, Allocator>{nullptr} {}
 
-  /// Copy constructor (note creates a new reference)
-  weak_ref(const weak_ref& other)
-    : base_owned_ref<T, Allocator>{other} {}
+            /// Copy constructor (note creates a new reference)
+            weak_ref(const weak_ref &other)
+                : base_owned_ref<T, Allocator>{other} {}
 
-  // This needs to be explicit to change its visibility.
-  template<typename U>
-  weak_ref(const weak_ref<U>& other)
-    : base_owned_ref<T, Allocator>{other} {}
+            // This needs to be explicit to change its visibility.
+            template<typename U>
+            weak_ref(const weak_ref<U> &other)
+                : base_owned_ref<T, Allocator>{other} {}
 
-  /// Transfers ownership of an underlying reference from one unique reference to another
-  weak_ref(weak_ref&& other) noexcept
-    : base_owned_ref<T, Allocator>{std::move(other)} {}
+            /// Transfers ownership of an underlying reference from one unique reference to another
+            weak_ref(weak_ref &&other) noexcept
+                : base_owned_ref<T, Allocator>{std::move(other)} {}
 
 
-  /// Assignment operator (note creates a new reference)
-  weak_ref& operator=(const weak_ref& other);
+            /// Assignment operator (note creates a new reference)
+            weak_ref &operator=(const weak_ref &other);
 
-  /// Assignment by moving a reference thus not creating a new reference
-  weak_ref& operator=(weak_ref&& rhs) noexcept;
+            /// Assignment by moving a reference thus not creating a new reference
+            weak_ref &operator=(weak_ref &&rhs) noexcept;
 
-  // Creates an owned local reference to the referred object or to null if the object is reclaimed
-  local_ref<T> lockLocal() const;
+            // Creates an owned local reference to the referred object or to null if the object is reclaimed
+            local_ref<T> lockLocal() const;
 
-  // Creates an owned global reference to the referred object or to null if the object is reclaimed
-  global_ref<T> lockGlobal() const;
+            // Creates an owned global reference to the referred object or to null if the object is reclaimed
+            global_ref<T> lockGlobal() const;
 
- private:
-  // get/release/reset on weak_ref are not exposed to users.
-  using base_owned_ref<T, Allocator>::get;
-  using base_owned_ref<T, Allocator>::release;
-  using base_owned_ref<T, Allocator>::reset;
-  /*
-   * Wrap an existing reference and transfers its ownership to the newly created unique reference.
-   * NB! Does not create a new reference
-   */
-  explicit weak_ref(javaobject reference) noexcept
-    : base_owned_ref<T, Allocator>{reference} {}
+            private:
+            // get/release/reset on weak_ref are not exposed to users.
+            using base_owned_ref<T, Allocator>::get;
+            using base_owned_ref<T, Allocator>::release;
+            using base_owned_ref<T, Allocator>::reset;
 
-  template<typename T2> friend class weak_ref;
-  friend weak_ref<javaobject> adopt_weak_global<javaobject>(javaobject ref) noexcept;
-  friend void swap<T>(weak_ref& a, weak_ref& b) noexcept;
-};
+            /*
+             * Wrap an existing reference and transfers its ownership to the newly created unique reference.
+             * NB! Does not create a new reference
+             */
+            explicit weak_ref(javaobject reference) noexcept
+                : base_owned_ref<T, Allocator>{reference} {}
+
+            template<typename T2> friend
+            class weak_ref;
+
+            friend weak_ref<javaobject> adopt_weak_global<javaobject>(javaobject ref) noexcept;
+
+            friend void swap<T>(weak_ref &a, weak_ref &b) noexcept;
+        };
 
 
 /**
  * A class representing owned strong references to Java objects. This class
  * should not be used directly, instead use @ref local_ref, or @ref global_ref.
  */
-template<typename T, typename Alloc>
-class basic_strong_ref : public base_owned_ref<T, Alloc> {
-  using typename base_owned_ref<T, Alloc>::Repr;
- public:
-  using javaobject = JniType<T>;
+        template<typename T, typename Alloc>
+        class basic_strong_ref : public base_owned_ref<T, Alloc> {
+            using typename base_owned_ref<T, Alloc>::Repr;
+            public:
+            using javaobject = JniType<T>;
 
-  using Allocator = Alloc;
+            using Allocator = Alloc;
 
-  // This inherits non-default, non-copy, non-move ctors.
-  using base_owned_ref<T, Alloc>::base_owned_ref;
-  using base_owned_ref<T, Alloc>::release;
-  using base_owned_ref<T, Alloc>::reset;
+            // This inherits non-default, non-copy, non-move ctors.
+            using base_owned_ref<T, Alloc>::base_owned_ref;
+            using base_owned_ref<T, Alloc>::release;
+            using base_owned_ref<T, Alloc>::reset;
 
-  /// Create a null reference
-  basic_strong_ref() noexcept
-    : base_owned_ref<T, Alloc>{} {}
+            /// Create a null reference
+            basic_strong_ref() noexcept
+                : base_owned_ref<T, Alloc>{} {}
 
-  /// Create a null reference
-  /* implicit */ basic_strong_ref(std::nullptr_t) noexcept
-    : base_owned_ref<T, Alloc>{nullptr} {}
+            /// Create a null reference
+            /* implicit */ basic_strong_ref(std::nullptr_t) noexcept
+                : base_owned_ref<T, Alloc>{nullptr} {}
 
-  /// Copy constructor (note creates a new reference)
-  basic_strong_ref(const basic_strong_ref& other)
-    : base_owned_ref<T, Alloc>{other} {}
+            /// Copy constructor (note creates a new reference)
+            basic_strong_ref(const basic_strong_ref &other)
+                : base_owned_ref<T, Alloc>{other} {}
 
-  // This needs to be explicit to change its visibility.
-  template<typename U>
-  basic_strong_ref(const basic_strong_ref<U, Alloc>& other)
-    : base_owned_ref<T, Alloc>{other} {}
+            // This needs to be explicit to change its visibility.
+            template<typename U>
+            basic_strong_ref(const basic_strong_ref<U, Alloc> &other)
+                : base_owned_ref<T, Alloc>{other} {}
 
-  /// Transfers ownership of an underlying reference from one unique reference to another
-  basic_strong_ref(basic_strong_ref&& other) noexcept
-    : base_owned_ref<T, Alloc>{std::move(other)} {}
+            /// Transfers ownership of an underlying reference from one unique reference to another
+            basic_strong_ref(basic_strong_ref &&other) noexcept
+                : base_owned_ref<T, Alloc>{std::move(other)} {}
 
-  /// Assignment operator (note creates a new reference)
-  basic_strong_ref& operator=(const basic_strong_ref& other);
+            /// Assignment operator (note creates a new reference)
+            basic_strong_ref &operator=(const basic_strong_ref &other);
 
-  /// Assignment by moving a reference thus not creating a new reference
-  basic_strong_ref& operator=(basic_strong_ref&& rhs) noexcept;
+            /// Assignment by moving a reference thus not creating a new reference
+            basic_strong_ref &operator=(basic_strong_ref &&rhs) noexcept;
 
-  /// Get the plain JNI reference
-  using base_owned_ref<T, Allocator>::get;
+            /// Get the plain JNI reference
+            using base_owned_ref<T, Allocator>::get;
 
-  /// Release the ownership of the reference and return the wrapped reference in an alias
-  alias_ref<T> releaseAlias() noexcept;
+            /// Release the ownership of the reference and return the wrapped reference in an alias
+            alias_ref<T> releaseAlias() noexcept;
 
-  /// Checks if the reference points to a non-null object
-  explicit operator bool() const noexcept;
+            /// Checks if the reference points to a non-null object
+            explicit operator bool() const noexcept;
 
-  /// Access the functionality provided by the object wrappers
-  Repr* operator->() noexcept;
+            /// Access the functionality provided by the object wrappers
+            Repr *operator->() noexcept;
 
-  /// Access the functionality provided by the object wrappers
-  const Repr* operator->() const noexcept;
+            /// Access the functionality provided by the object wrappers
+            const Repr *operator->() const noexcept;
 
-  /// Provide a reference to the underlying wrapper (be sure that it is non-null before invoking)
-  Repr& operator*() noexcept;
+            /// Provide a reference to the underlying wrapper (be sure that it is non-null before invoking)
+            Repr &operator*() noexcept;
 
-  /// Provide a const reference to the underlying wrapper (be sure that it is non-null
-  /// before invoking)
-  const Repr& operator*() const noexcept;
+            /// Provide a const reference to the underlying wrapper (be sure that it is non-null
+            /// before invoking)
+            const Repr &operator*() const noexcept;
 
- private:
+            private:
 
-  using base_owned_ref<T, Alloc>::storage_;
+            using base_owned_ref<T, Alloc>::storage_;
 
-  /*
-   * Wrap an existing reference and transfers its ownership to the newly created unique reference.
-   * NB! Does not create a new reference
-   */
-  explicit basic_strong_ref(javaobject reference) noexcept
-    : base_owned_ref<T, Alloc>{reference} {}
-
-
-  friend local_ref<T> adopt_local<T>(T ref) noexcept;
-  friend global_ref<T> adopt_global<T>(T ref) noexcept;
-  friend void swap<T, Alloc>(basic_strong_ref& a, basic_strong_ref& b) noexcept;
-};
+            /*
+             * Wrap an existing reference and transfers its ownership to the newly created unique reference.
+             * NB! Does not create a new reference
+             */
+            explicit basic_strong_ref(javaobject reference) noexcept
+                : base_owned_ref<T, Alloc>{reference} {}
 
 
-template<typename T>
-enable_if_t<IsPlainJniReference<T>(), alias_ref<T>> wrap_alias(T ref) noexcept;
+            friend local_ref<T> adopt_local<T>(T ref) noexcept;
+
+            friend global_ref<T> adopt_global<T>(T ref) noexcept;
+
+            friend void swap<T, Alloc>(basic_strong_ref &a, basic_strong_ref &b) noexcept;
+        };
+
+
+        template<typename T>
+        enable_if_t<IsPlainJniReference<T>(), alias_ref<T>> wrap_alias(T ref) noexcept;
 
 /// Swaps to alias reference of the same type
-template<typename T>
-void swap(alias_ref<T>& a, alias_ref<T>& b) noexcept;
+        template<typename T>
+        void swap(alias_ref<T> &a, alias_ref<T> &b) noexcept;
 
 /**
  * A non-owning variant of the smart references (a dumb reference). These references still provide
@@ -508,70 +528,70 @@ void swap(alias_ref<T>& a, alias_ref<T>& b) noexcept;
  * underlying reference (compare to using raw pointers instead of smart pointers.) For symmetry use
  * @ref alias_ref instead of this class.
  */
-template<typename T>
-class alias_ref {
-  using Repr = ReprType<T>;
+        template<typename T>
+        class alias_ref {
+            using Repr = ReprType<T>;
 
- public:
-  using javaobject = JniType<T>;
+            public:
+            using javaobject = JniType<T>;
 
-  /// Create a null reference
-  alias_ref() noexcept;
+            /// Create a null reference
+            alias_ref() noexcept;
 
-  /// Create a null reference
-  /* implicit */ alias_ref(std::nullptr_t) noexcept;
+            /// Create a null reference
+            /* implicit */ alias_ref(std::nullptr_t) noexcept;
 
-  /// Copy constructor
-  alias_ref(const alias_ref& other) noexcept;
+            /// Copy constructor
+            alias_ref(const alias_ref &other) noexcept;
 
-  /// Wrap an existing plain JNI reference
-  /* implicit */ alias_ref(javaobject ref) noexcept;
+            /// Wrap an existing plain JNI reference
+            /* implicit */ alias_ref(javaobject ref) noexcept;
 
-  /// Wrap an existing smart reference of any type convertible to T
-  template<
-    typename TOther,
-    typename = enable_if_t<
-      IsConvertible<JniType<TOther>, javaobject>(), T>
-    >
-  alias_ref(alias_ref<TOther> other) noexcept;
+            /// Wrap an existing smart reference of any type convertible to T
+            template<
+                typename TOther,
+                typename = enable_if_t<
+                    IsConvertible<JniType<TOther>, javaobject>(), T>
+            >
+            alias_ref(alias_ref<TOther> other) noexcept;
 
-  /// Wrap an existing alias reference of a type convertible to T
-  template<
-    typename TOther,
-    typename AOther,
-    typename = enable_if_t<
-      IsConvertible<JniType<TOther>, javaobject>(), T>
-    >
-  alias_ref(const basic_strong_ref<TOther, AOther>& other) noexcept;
+            /// Wrap an existing alias reference of a type convertible to T
+            template<
+                typename TOther,
+                typename AOther,
+                typename = enable_if_t<
+                    IsConvertible<JniType<TOther>, javaobject>(), T>
+            >
+            alias_ref(const basic_strong_ref<TOther, AOther> &other) noexcept;
 
-  /// Assignment operator
-  alias_ref& operator=(alias_ref other) noexcept;
+            /// Assignment operator
+            alias_ref &operator=(alias_ref other) noexcept;
 
-  /// Checks if the reference points to a non-null object
-  explicit operator bool() const noexcept;
+            /// Checks if the reference points to a non-null object
+            explicit operator bool() const noexcept;
 
-  /// Converts back to a plain JNI reference
-  javaobject get() const noexcept;
+            /// Converts back to a plain JNI reference
+            javaobject get() const noexcept;
 
-  /// Access the functionality provided by the object wrappers
-  Repr* operator->() noexcept;
+            /// Access the functionality provided by the object wrappers
+            Repr *operator->() noexcept;
 
-  /// Access the functionality provided by the object wrappers
-  const Repr* operator->() const noexcept;
+            /// Access the functionality provided by the object wrappers
+            const Repr *operator->() const noexcept;
 
-  /// Provide a guaranteed non-null reference (be sure that it is non-null before invoking)
-  Repr& operator*() noexcept;
+            /// Provide a guaranteed non-null reference (be sure that it is non-null before invoking)
+            Repr &operator*() noexcept;
 
-  /// Provide a guaranteed non-null reference (be sure that it is non-null before invoking)
-  const Repr& operator*() const noexcept;
+            /// Provide a guaranteed non-null reference (be sure that it is non-null before invoking)
+            const Repr &operator*() const noexcept;
 
- private:
-  void set(javaobject ref) noexcept;
+            private:
+            void set(javaobject ref) noexcept;
 
-  detail::ReprStorage<Repr> storage_;
+            detail::ReprStorage<Repr> storage_;
 
-  friend void swap<T>(alias_ref& a, alias_ref& b) noexcept;
-};
+            friend void swap<T>(alias_ref &a, alias_ref &b) noexcept;
+        };
 
 
 /**
@@ -580,32 +600,34 @@ class alias_ref {
  * This is useful when you have a call which is initiated from C++-land, and therefore
  * doesn't automatically get a local JNI frame managed for you by the JNI framework.
  */
-class JniLocalScope {
-public:
-  JniLocalScope(JNIEnv* p_env, jint capacity);
-  ~JniLocalScope();
+        class JniLocalScope {
+            public:
+            JniLocalScope(JNIEnv *p_env, jint capacity);
 
-private:
-  JNIEnv* env_;
-  bool hasFrame_;
-};
+            ~JniLocalScope();
 
-template<typename T, typename U>
-enable_if_t<IsPlainJniReference<T>(), local_ref<T>>
-static_ref_cast(const local_ref<U>& ref) noexcept;
+            private:
+            JNIEnv *env_;
+            bool hasFrame_;
+        };
 
-template<typename T, typename U>
-enable_if_t<IsPlainJniReference<T>(), global_ref<T>>
-static_ref_cast(const global_ref<U>& ref) noexcept;
+        template<typename T, typename U>
+        enable_if_t<IsPlainJniReference<T>(), local_ref<T>>
+        static_ref_cast(const local_ref<U> &ref) noexcept;
 
-template<typename T, typename U>
-enable_if_t<IsPlainJniReference<T>(), alias_ref<T>>
-static_ref_cast(const alias_ref<U>& ref) noexcept;
+        template<typename T, typename U>
+        enable_if_t<IsPlainJniReference<T>(), global_ref<T>>
+        static_ref_cast(const global_ref<U> &ref) noexcept;
 
-template<typename T, typename RefType>
-auto dynamic_ref_cast(const RefType& ref) ->
-enable_if_t<IsPlainJniReference<T>(), decltype(static_ref_cast<T>(ref))> ;
+        template<typename T, typename U>
+        enable_if_t<IsPlainJniReference<T>(), alias_ref<T>>
+        static_ref_cast(const alias_ref<U> &ref) noexcept;
 
-}}
+        template<typename T, typename RefType>
+        auto dynamic_ref_cast(const RefType &ref) ->
+        enable_if_t<IsPlainJniReference<T>(), decltype(static_ref_cast<T>(ref))>;
+
+    }
+}
 
 #include "References-inl.h"

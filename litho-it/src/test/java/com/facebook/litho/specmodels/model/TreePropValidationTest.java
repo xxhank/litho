@@ -88,6 +88,6 @@ public class TreePropValidationTest {
     assertThat(validationErrors.get(1).message)
         .isEqualTo(
             "The first argument of an @OnCreateTreeProp method should be "
-                + "com.facebook.litho.ComponentContext.");
+                + "com.facebook.litho.component.ComponentContext.");
   }
 }

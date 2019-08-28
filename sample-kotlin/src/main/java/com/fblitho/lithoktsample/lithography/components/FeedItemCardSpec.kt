@@ -12,9 +12,9 @@
 
 package com.fblitho.lithoktsample.lithography.components
 
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
 import com.facebook.litho.annotations.Prop
@@ -29,8 +29,8 @@ object FeedItemCardSpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @Prop artist: Artist): Component =
+          c: ComponentContext,
+          @Prop artist: Artist): Component =
       Column.create(c)
           .paddingDip(VERTICAL, 8f)
           .paddingDip(HORIZONTAL, 16f)

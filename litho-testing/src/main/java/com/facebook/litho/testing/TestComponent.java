@@ -17,8 +17,8 @@
 package com.facebook.litho.testing;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.Component;
-import com.facebook.litho.EventHandler;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;

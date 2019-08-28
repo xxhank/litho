@@ -19,23 +19,23 @@
 #include <fb/File.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-class AContext : public JavaClass<AContext> {
- public:
-  static constexpr const char* kJavaDescriptor = "Landroid/content/Context;";
+        class AContext : public JavaClass<AContext> {
+            public:
+            static constexpr const char *kJavaDescriptor = "Landroid/content/Context;";
 
-  // Define a method that calls into the represented Java class
-  local_ref<JFile::javaobject> getCacheDir() {
-    static const auto method = getClass()->getMethod<JFile::javaobject()>("getCacheDir");
-    return method(self());
-  }
+            // Define a method that calls into the represented Java class
+            local_ref <JFile::javaobject> getCacheDir() {
+                static const auto method = getClass()->getMethod<JFile::javaobject()>("getCacheDir");
+                return method(self());
+            }
 
-  local_ref<JFile::javaobject> getFilesDir() {
-    static const auto method = getClass()->getMethod<JFile::javaobject()>("getFilesDir");
-    return method(self());
-  }
-};
+            local_ref <JFile::javaobject> getFilesDir() {
+                static const auto method = getClass()->getMethod<JFile::javaobject()>("getFilesDir");
+                return method(self());
+            }
+        };
 
-}
+    }
 }

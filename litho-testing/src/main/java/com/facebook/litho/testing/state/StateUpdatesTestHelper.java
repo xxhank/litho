@@ -16,9 +16,9 @@
 
 package com.facebook.litho.testing.state;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.LithoViewTestHelper;
 import com.facebook.litho.testing.Whitebox;

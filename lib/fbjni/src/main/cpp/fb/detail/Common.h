@@ -46,15 +46,19 @@
 /// @cond INTERNAL
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-void throwPendingJniExceptionAsCppException();
-void throwCppExceptionIf(bool condition);
+        void throwPendingJniExceptionAsCppException();
 
-[[noreturn]] void throwNewJavaException(jthrowable);
-[[noreturn]] void throwNewJavaException(const char* throwableName, const char* msg);
-template<typename... Args>
-[[noreturn]] void throwNewJavaException(const char* throwableName, const char* fmt, Args... args);
+        void throwCppExceptionIf(bool condition);
+
+        [[noreturn]] void throwNewJavaException(jthrowable);
+
+        [[noreturn]] void throwNewJavaException(const char *throwableName, const char *msg);
+
+        template<typename... Args>
+        [[noreturn]] void
+        throwNewJavaException(const char *throwableName, const char *fmt, Args... args);
 
 
 /**
@@ -71,29 +75,31 @@ template<typename... Args>
  * unhelpful way (typically a segfault) while trying to handle an exception
  * which occurs later.
  */
-jint initialize(JavaVM*, std::function<void()>&&) noexcept;
+        jint initialize(JavaVM *, std::function<void()> &&) noexcept;
 
-namespace internal {
+        namespace internal {
 
 // Define to get extremely verbose logging of references and to enable reference stats
 #ifdef FBJNI_DEBUG_REFS
-template<typename... Args>
-inline void dbglog(const char* msg, Args... args) {
+            template<typename... Args>
+            inline void dbglog(const char* msg, Args... args) {
 # ifdef __ANDROID__
-  __android_log_print(ANDROID_LOG_VERBOSE, "fbjni_dbg", msg, args...);
+              __android_log_print(ANDROID_LOG_VERBOSE, "fbjni_dbg", msg, args...);
 # else
-  std::fprintf(stderr, msg, args...);
+              std::fprintf(stderr, msg, args...);
 # endif
-}
+            }
 
 #else
 
-template<typename... Args>
-inline void dbglog(const char*, Args...) {
-}
+            template<typename... Args>
+            inline void dbglog(const char *, Args...) {
+            }
 
 #endif
 
-}}}
+        }
+    }
+}
 
 /// @endcond

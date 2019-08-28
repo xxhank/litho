@@ -25,7 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;

@@ -19,7 +19,7 @@ package com.facebook.litho.sections;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.sections.annotations.DiffSectionSpec;
 import com.facebook.litho.widget.ComponentRenderInfo;
 import com.facebook.litho.widget.RenderInfo;

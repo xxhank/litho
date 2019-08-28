@@ -21,8 +21,8 @@ import static com.facebook.litho.testing.assertj.SubComponentExtractor.subCompon
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assume.assumeThat;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.testing.assertj.LithoAssertions;
 import com.facebook.litho.testing.assertj.LithoRepresentation;

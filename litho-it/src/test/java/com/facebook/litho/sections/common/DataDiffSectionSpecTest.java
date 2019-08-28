@@ -26,8 +26,8 @@ import static com.facebook.litho.testing.sections.TestTarget.UPDATE_RANGE;
 import static junit.framework.Assert.assertEquals;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.sections.SectionContext;
 import com.facebook.litho.sections.SectionTree;
 import com.facebook.litho.specmodels.internal.ImmutableList;

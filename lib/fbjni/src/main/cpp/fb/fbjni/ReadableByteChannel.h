@@ -19,13 +19,14 @@
 #include <fb/fbjni/ByteBuffer.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-class JReadableByteChannel : public JavaClass<JReadableByteChannel> {
-public:
-  static constexpr const char* kJavaDescriptor = "Ljava/nio/channels/ReadableByteChannel;";
+        class JReadableByteChannel : public JavaClass<JReadableByteChannel> {
+            public:
+            static constexpr const char *kJavaDescriptor = "Ljava/nio/channels/ReadableByteChannel;";
 
-  int read(alias_ref<JByteBuffer> dest) const;
-};
+            int read(alias_ref<JByteBuffer> dest) const;
+        };
 
-}}
+    }
+}

@@ -26,8 +26,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentsReporter;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentsReporter;
 import com.facebook.litho.DefaultComponentsReporter;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.ArrayList;

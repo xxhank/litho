@@ -28,9 +28,9 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({CONTENT, BACKGROUND, FOREGROUND, HOST, BORDER})
 @Retention(RetentionPolicy.SOURCE)
 public @interface OutputUnitType {
-  int CONTENT = 0;
-  int BACKGROUND = 1;
-  int FOREGROUND = 2;
-  int HOST = 3;
-  int BORDER = 4;
+    int CONTENT = 0;
+    int BACKGROUND = 1;
+    int FOREGROUND = 2;
+    int HOST = 3;
+    int BORDER = 4;
 }

@@ -258,7 +258,7 @@ public class EventValidationTest {
     assertThat(validationErrors.get(0).message)
         .isEqualTo(
             "The first parameter for a method annotated with @OnEvent should be of type "
-                + "com.facebook.litho.ComponentContext.");
+                + "com.facebook.litho.component.ComponentContext.");
 
     assertThat(validationErrors.get(1).element).isEqualTo(mRepresentedObject3);
     assertThat(validationErrors.get(1).message)

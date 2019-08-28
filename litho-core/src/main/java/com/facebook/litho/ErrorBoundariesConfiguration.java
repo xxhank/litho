@@ -15,6 +15,8 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.ComponentTree;
+
 import javax.annotation.Nullable;
 
 /**

@@ -20,7 +20,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 import com.facebook.litho.StateValue;
-import com.facebook.litho.Transition;
+import com.facebook.litho.transition.Transition;
 import com.facebook.litho.animation.AnimatedProperties;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateInitialState;
@@ -350,7 +350,7 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "private TestWithStateStateContainer getStateContainerWithLazyStateUpdatesApplied(com.facebook.litho.ComponentContext c,\n"
+            "private TestWithStateStateContainer getStateContainerWithLazyStateUpdatesApplied(com.facebook.litho.component.ComponentContext c,\n"
                 + "    com.facebook.litho.specmodels.generator.StateGeneratorTest.TestWithState component) {\n"
                 + "  TestWithStateStateContainer _stateContainer = new TestWithStateStateContainer();\n"
                 + "  transferState(component.mStateContainer, _stateContainer);\n"
@@ -368,8 +368,8 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "protected static void updateCurrentState(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+            "protected static void updateCurrentState(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -379,8 +379,8 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "protected static void updateCurrentStateAsync(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+            "protected static void updateCurrentStateAsync(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -390,8 +390,8 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(2).toString())
         .isEqualTo(
-            "protected static void updateCurrentStateSync(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+            "protected static void updateCurrentStateSync(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -409,8 +409,8 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "protected static void updateCurrentStateWithTransition(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+            "protected static void updateCurrentStateWithTransition(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -428,9 +428,9 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "protected static void lazyUpdateArg4(com.facebook.litho.ComponentContext c,\n"
+            "protected static void lazyUpdateArg4(com.facebook.litho.component.ComponentContext c,\n"
                 + "    final boolean lazyUpdateValue) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -448,9 +448,9 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "protected static <T extends java.lang.CharSequence> void lazyUpdateArg0(com.facebook.litho.ComponentContext c,\n"
+            "protected static <T extends java.lang.CharSequence> void lazyUpdateArg0(com.facebook.litho.component.ComponentContext c,\n"
                 + "    final T lazyUpdateValue) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"
@@ -468,9 +468,9 @@ public class StateGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "protected static <T> void lazyUpdateArg1(com.facebook.litho.ComponentContext c,\n"
+            "protected static <T> void lazyUpdateArg1(com.facebook.litho.component.ComponentContext c,\n"
                 + "    final T lazyUpdateValue) {\n"
-                + "  com.facebook.litho.Component _component = c.getComponentScope();\n"
+                + "  com.facebook.litho.component.Component _component = c.getComponentScope();\n"
                 + "  if (_component == null) {\n"
                 + "    return;\n"
                 + "  }\n"

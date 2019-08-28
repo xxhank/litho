@@ -20,6 +20,8 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.facebook.litho.WorkingRange.WorkingRangeStatusHandler;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +33,7 @@ public class WorkingRangeStatusHandlerTest {
   private static final String GLOBAL_KEY = "globalKey";
 
   private WorkingRangeStatusHandler mWorkingRangeStateHandler;
-  private Component mComponent;
+  private Component                 mComponent;
 
   @Before
   public void setup() {

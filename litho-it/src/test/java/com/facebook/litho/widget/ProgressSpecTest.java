@@ -19,7 +19,7 @@ package com.facebook.litho.widget;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.view.View;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.helper.ComponentTestHelper;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;

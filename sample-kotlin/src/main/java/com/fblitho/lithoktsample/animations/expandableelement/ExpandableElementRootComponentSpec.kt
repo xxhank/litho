@@ -14,11 +14,11 @@ package com.fblitho.lithoktsample.animations.expandableelement
 
 import android.graphics.Color
 import android.text.Layout
-import com.facebook.litho.ClickEvent
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.Row
+import com.facebook.litho.event.ClickEvent
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.component.Row
 import com.facebook.litho.StateValue
 import com.facebook.litho.annotations.FromEvent
 import com.facebook.litho.annotations.LayoutSpec
@@ -46,10 +46,10 @@ object ExpandableElementRootComponentSpec {
 
   @OnCreateInitialState
   fun onCreateInitialState(
-      c: ComponentContext,
-      messages: StateValue<List<Message>>,
-      counter: StateValue<Int>,
-      @Prop initialMessages: List<Message>
+          c: ComponentContext,
+          messages: StateValue<List<Message>>,
+          counter: StateValue<Int>,
+          @Prop initialMessages: List<Message>
   ) {
     messages.set(initialMessages)
     counter.set(1)
@@ -57,9 +57,9 @@ object ExpandableElementRootComponentSpec {
 
   @OnCreateLayout
   internal fun onCreateLayout(
-      c: ComponentContext,
-      @State messages: List<Message>,
-      @State counter: Int
+          c: ComponentContext,
+          @State messages: List<Message>,
+          @State counter: Int
   ): Component = Column.create(c)
       .child(
           Row.create(c)
@@ -98,9 +98,9 @@ object ExpandableElementRootComponentSpec {
 
   @OnEvent(ClickEvent::class)
   fun onClick(
-      c: ComponentContext,
-      @Prop initialMessages: List<Message>,
-      @Param adding: Boolean
+          c: ComponentContext,
+          @Prop initialMessages: List<Message>,
+          @Param adding: Boolean
   ) {
     ExpandableElementRootComponent.onUpdateList(c, adding, initialMessages.size)
   }

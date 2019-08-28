@@ -16,9 +16,11 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
+import com.facebook.litho.geometry.SizeSpec;
+
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
 
 /**
  * An utility class to verify that an old measured size is still compatible to be used with a new

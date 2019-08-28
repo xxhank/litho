@@ -18,9 +18,9 @@ package com.facebook.litho.sections.widget;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Size;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.sections.SectionTree.Target;
 import com.facebook.litho.sections.config.SectionsConfiguration;
 import com.facebook.litho.widget.Binder;

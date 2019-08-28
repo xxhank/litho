@@ -24,104 +24,106 @@ import androidx.annotation.Nullable;
  */
 public final class WorkContinuationInstrumenter {
 
-  /** Allows to record work being stolen across threads. */
-  public interface Instrumenter {
+    /**
+     * Allows to record work being stolen across threads.
+     */
+    public interface Instrumenter {
+
+        /**
+         * Allows to know in advance if the custom instrumenter desires to receive continuation updates.
+         *
+         * @return true to specify interest in handling the updates, false otherwise.
+         */
+        boolean isTracing();
+
+        /**
+         * Captures when asking for work to be stolen.
+         *
+         * @param tag name.
+         * @return a token object that allows to track the continuation.
+         */
+        @Nullable
+        Object onAskForWorkToContinue(String tag);
+
+        /**
+         * Tracks when some work is ready to be stolen.
+         *
+         * @param tag   name (optional).
+         * @param token returned by {@link Instrumenter#onAskForWorkToContinue}.
+         * @return a token object that allows to track the continuation.
+         */
+        @Nullable
+        Object onOfferWorkForContinuation(String tag, Object token);
+
+        /**
+         * Captures the beginning of the continuation for stolen work.
+         *
+         * @param tag   name (optional).
+         * @param token returned by {@link Instrumenter#onOfferWorkForContinuation}.
+         * @return a token object that allows to track the continuation.
+         */
+        @Nullable
+        Object onBeginWorkContinuation(String tag, Object token);
+
+        /**
+         * Captures the end of the continuation for stolen work.
+         *
+         * @param token returned by {@link Instrumenter#onBeginWorkContinuation}.
+         */
+        void onEndWorkContinuation(Object token);
+    }
+
+    @Nullable private static volatile Instrumenter sInstance;
 
     /**
-     * Allows to know in advance if the custom instrumenter desires to receive continuation updates.
+     * Allows to provide an instrumenter that will receive work continuation updates.
      *
-     * @return true to specify interest in handling the updates, false otherwise.
+     * @param instrumenter that will receive the updates or null to reset.
      */
-    boolean isTracing();
+    public static void provide(@Nullable Instrumenter instrumenter) {
+        sInstance = instrumenter;
+    }
 
-    /**
-     * Captures when asking for work to be stolen.
-     *
-     * @param tag name.
-     * @return a token object that allows to track the continuation.
-     */
+    public static boolean isTracing() {
+        Instrumenter instrumenter = sInstance;
+        if (instrumenter == null) {
+            return false;
+        }
+        return instrumenter.isTracing();
+    }
+
     @Nullable
-    Object onAskForWorkToContinue(String tag);
+    public static Object onAskForWorkToContinue(String tag) {
+        Instrumenter instrumenter = sInstance;
+        if (instrumenter == null) {
+            return null;
+        }
+        return instrumenter.onAskForWorkToContinue(tag);
+    }
 
-    /**
-     * Tracks when some work is ready to be stolen.
-     *
-     * @param tag name (optional).
-     * @param token returned by {@link Instrumenter#onAskForWorkToContinue}.
-     * @return a token object that allows to track the continuation.
-     */
     @Nullable
-    Object onOfferWorkForContinuation(String tag, Object token);
+    public static Object onOfferWorkForContinuation(String tag, @Nullable Object token) {
+        Instrumenter instrumenter = sInstance;
+        if (instrumenter == null || token == null) {
+            return null;
+        }
+        return instrumenter.onOfferWorkForContinuation(tag, token);
+    }
 
-    /**
-     * Captures the beginning of the continuation for stolen work.
-     *
-     * @param tag name (optional).
-     * @param token returned by {@link Instrumenter#onOfferWorkForContinuation}.
-     * @return a token object that allows to track the continuation.
-     */
     @Nullable
-    Object onBeginWorkContinuation(String tag, Object token);
-
-    /**
-     * Captures the end of the continuation for stolen work.
-     *
-     * @param token returned by {@link Instrumenter#onBeginWorkContinuation}.
-     */
-    void onEndWorkContinuation(Object token);
-  }
-
-  @Nullable private static volatile Instrumenter sInstance;
-
-  /**
-   * Allows to provide an instrumenter that will receive work continuation updates.
-   *
-   * @param instrumenter that will receive the updates or null to reset.
-   */
-  public static void provide(@Nullable Instrumenter instrumenter) {
-    sInstance = instrumenter;
-  }
-
-  static boolean isTracing() {
-    final Instrumenter instrumenter = sInstance;
-    if (instrumenter == null) {
-      return false;
+    public static Object onBeginWorkContinuation(String tag, @Nullable Object token) {
+        Instrumenter instrumenter = sInstance;
+        if (instrumenter == null || token == null) {
+            return null;
+        }
+        return instrumenter.onBeginWorkContinuation(tag, token);
     }
-    return instrumenter.isTracing();
-  }
 
-  @Nullable
-  static Object onAskForWorkToContinue(String tag) {
-    final Instrumenter instrumenter = sInstance;
-    if (instrumenter == null) {
-      return null;
+    public static void onEndWorkContinuation(@Nullable Object token) {
+        Instrumenter instrumenter = sInstance;
+        if (instrumenter == null || token == null) {
+            return;
+        }
+        instrumenter.onEndWorkContinuation(token);
     }
-    return instrumenter.onAskForWorkToContinue(tag);
-  }
-
-  @Nullable
-  static Object onOfferWorkForContinuation(String tag, @Nullable Object token) {
-    final Instrumenter instrumenter = sInstance;
-    if (instrumenter == null || token == null) {
-      return null;
-    }
-    return instrumenter.onOfferWorkForContinuation(tag, token);
-  }
-
-  @Nullable
-  static Object onBeginWorkContinuation(String tag, @Nullable Object token) {
-    final Instrumenter instrumenter = sInstance;
-    if (instrumenter == null || token == null) {
-      return null;
-    }
-    return instrumenter.onBeginWorkContinuation(tag, token);
-  }
-
-  static void onEndWorkContinuation(@Nullable Object token) {
-    final Instrumenter instrumenter = sInstance;
-    if (instrumenter == null || token == null) {
-      return;
-    }
-    instrumenter.onEndWorkContinuation(token);
-  }
 }

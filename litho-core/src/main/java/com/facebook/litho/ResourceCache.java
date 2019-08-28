@@ -20,23 +20,23 @@ import android.content.res.Configuration;
 import javax.annotation.Nullable;
 
 public abstract class ResourceCache {
-  private static ResourceCache latest;
+    private static ResourceCache latest;
 
-  static synchronized ResourceCache getLatest(Configuration configuration) {
-    if (latest == null || !latest.mConfiguration.equals(configuration)) {
-      latest = new LruResourceCache(new Configuration(configuration));
+    public  static synchronized ResourceCache getLatest(Configuration configuration) {
+        if (latest == null || !latest.mConfiguration.equals(configuration)) {
+            latest = new LruResourceCache(new Configuration(configuration));
+        }
+        return latest;
     }
-    return latest;
-  }
 
-  private final Configuration mConfiguration;
+    private final Configuration mConfiguration;
 
-  protected ResourceCache(Configuration configuration) {
-    mConfiguration = configuration;
-  }
+    protected ResourceCache(Configuration configuration) {
+        mConfiguration = configuration;
+    }
 
-  @Nullable
-  abstract <T> T get(int key);
+    @Nullable
+    public abstract <T> T get(int key);
 
-  abstract void put(int key, Object object);
+    public abstract void put(int key, Object object);
 }

@@ -103,7 +103,7 @@ var activeTableTab = "activeTableTab";
 <li>ViewGroup</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../com/facebook/litho/ComponentHost.html" title="class in com.facebook.litho">com.facebook.litho.ComponentHost</a></li>
+<li><a href="../../../com/facebook/litho/ComponentHost.html" title="class in com.facebook.litho">com.facebook.litho.component.ComponentHost</a></li>
 <li>
 <ul class="inheritance">
 <li>com.facebook.litho.LithoView</li>
@@ -192,7 +192,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#LithoView-com.facebook.litho.ComponentContext-AttributeSet-">LithoView</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;context,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#LithoView-com.facebook.litho.component.ComponentContext-AttributeSet-">LithoView</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;context,
          AttributeSet&nbsp;attrs)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -219,7 +219,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="../../../com/facebook/litho/LithoView.html" title="class in com.facebook.litho">LithoView</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#create-Context-com.facebook.litho.Component-">create</a></span>(Context&nbsp;context,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#create-Context-com.facebook.litho.component.Component-">create</a></span>(Context&nbsp;context,
       <a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;component)</code>
 <div class="block">Create a new <a href="../../../com/facebook/litho/LithoView.html" title="class in com.facebook.litho"><code>LithoView</code></a> instance and initialize it with the given <a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho"><code>Component</code></a>
  root.</div>
@@ -329,19 +329,19 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponent-com.facebook.litho.Component-">setComponent</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;component)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponent-com.facebook.litho.component.Component-">setComponent</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;component)</code>
 <div class="block">Change the root component synchronously.</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponentAsync-com.facebook.litho.Component-">setComponentAsync</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;component)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponentAsync-com.facebook.litho.component.Component-">setComponentAsync</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;component)</code>
 <div class="block">Change the root component measuring it on a background thread before updating the UI.</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponentTree-com.facebook.litho.ComponentTree-">setComponentTree</a></span>(<a href="../../../com/facebook/litho/ComponentTree.html" title="class in com.facebook.litho">ComponentTree</a>&nbsp;componentTree)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/LithoView.html#setComponentTree-com.facebook.litho.component.ComponentTree-">setComponentTree</a></span>(<a href="../../../com/facebook/litho/ComponentTree.html" title="class in com.facebook.litho">ComponentTree</a>&nbsp;componentTree)</code>&nbsp;</td>
 </tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -413,11 +413,11 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.ComponentHost">
+<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.component.ComponentHost">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.facebook.litho.<a href="../../../com/facebook/litho/ComponentHost.html" title="class in com.facebook.litho">ComponentHost</a></h3>
-<code><a href="../../../com/facebook/litho/ComponentHost.html#addView-View-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addView-View-int-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addView-View-int-ViewGroup.LayoutParams-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addViewForTest-View-">addViewForTest</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addViewInLayout-View-int-ViewGroup.LayoutParams-boolean-">addViewInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#attachViewToParent-View-int-ViewGroup.LayoutParams-">attachViewToParent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#dispatchDraw-Canvas-">dispatchDraw</a>, <a href="../../../com/facebook/litho/ComponentHost.html#dispatchHoverEvent-MotionEvent-">dispatchHoverEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#drawableStateChanged--">drawableStateChanged</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getChildDrawingOrder-int-int-">getChildDrawingOrder</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getClipChildren--">getClipChildren</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getComponentTouchListener--">getComponentTouchListener</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentDescription--">getContentDescription</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentDescriptions--">getContentDescriptions</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentNames--">getContentNames</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getDrawables--">getDrawables</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getImageContent--">getImageContent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getLinkedDrawablesForAnimation--">getLinkedDrawablesForAnimation</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTag--">getTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTag-int-">getTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTextContent--">getTextContent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate--">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate-int-int-int-int-">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate-Rect-">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#jumpDrawablesToCurrentState--">jumpDrawablesToCurrentState</a>, <a href="../../../com/facebook/litho/ComponentHost.html#mount-int-com.facebook.litho.MountItem-Rect-">mount</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onInterceptTouchEvent-MotionEvent-">onInterceptTouchEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onLayout-boolean-int-int-int-int-">onLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onTouchEvent-MotionEvent-">onTouchEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#performAccessibilityAction-int-Bundle-">performAccessibilityAction</a>, <a href="../../../com/facebook/litho/ComponentHost.html#refreshAccessibilityDelegatesIfNeeded-boolean-">refreshAccessibilityDelegatesIfNeeded</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeAllViewsInLayout--">removeAllViewsInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeDetachedView-View-boolean-">removeDetachedView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeView-View-">removeView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewAt-int-">removeViewAt</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewInLayout-View-">removeViewInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViews-int-int-">removeViews</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewsInLayout-int-int-">removeViewsInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#requestFocus-int-Rect-">requestFocus</a>, <a href="../../../com/facebook/litho/ComponentHost.html#requestLayout--">requestLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setAccessibilityDelegate-View.AccessibilityDelegate-">setAccessibilityDelegate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setClipChildren-boolean-">setClipChildren</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setContentDescription-java.lang.CharSequence-">setContentDescription</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setTag-int-java.lang.Object-">setTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setViewTag-java.lang.Object-">setViewTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setViewTags--">setViewTags</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setVisibility-int-">setVisibility</a>, <a href="../../../com/facebook/litho/ComponentHost.html#shouldDelayChildPressedState--">shouldDelayChildPressedState</a>, <a href="../../../com/facebook/litho/ComponentHost.html#unmount-int-com.facebook.litho.MountItem-">unmount</a>, <a href="../../../com/facebook/litho/ComponentHost.html#verifyDrawable-Drawable-">verifyDrawable</a></code></li>
+<code><a href="../../../com/facebook/litho/ComponentHost.html#addView-View-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addView-View-int-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addView-View-int-ViewGroup.LayoutParams-">addView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addViewForTest-View-">addViewForTest</a>, <a href="../../../com/facebook/litho/ComponentHost.html#addViewInLayout-View-int-ViewGroup.LayoutParams-boolean-">addViewInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#attachViewToParent-View-int-ViewGroup.LayoutParams-">attachViewToParent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#dispatchDraw-Canvas-">dispatchDraw</a>, <a href="../../../com/facebook/litho/ComponentHost.html#dispatchHoverEvent-MotionEvent-">dispatchHoverEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#drawableStateChanged--">drawableStateChanged</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getChildDrawingOrder-int-int-">getChildDrawingOrder</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getClipChildren--">getClipChildren</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getComponentTouchListener--">getComponentTouchListener</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentDescription--">getContentDescription</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentDescriptions--">getContentDescriptions</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getContentNames--">getContentNames</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getDrawables--">getDrawables</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getImageContent--">getImageContent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getLinkedDrawablesForAnimation--">getLinkedDrawablesForAnimation</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTag--">getTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTag-int-">getTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#getTextContent--">getTextContent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate--">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate-int-int-int-int-">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#invalidate-Rect-">invalidate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#jumpDrawablesToCurrentState--">jumpDrawablesToCurrentState</a>, <a href="../../../com/facebook/litho/ComponentHost.html#mount-int-com.facebook.litho.mount.MountItem-Rect-">mount</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onInterceptTouchEvent-MotionEvent-">onInterceptTouchEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onLayout-boolean-int-int-int-int-">onLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#onTouchEvent-MotionEvent-">onTouchEvent</a>, <a href="../../../com/facebook/litho/ComponentHost.html#performAccessibilityAction-int-Bundle-">performAccessibilityAction</a>, <a href="../../../com/facebook/litho/ComponentHost.html#refreshAccessibilityDelegatesIfNeeded-boolean-">refreshAccessibilityDelegatesIfNeeded</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeAllViewsInLayout--">removeAllViewsInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeDetachedView-View-boolean-">removeDetachedView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeView-View-">removeView</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewAt-int-">removeViewAt</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewInLayout-View-">removeViewInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViews-int-int-">removeViews</a>, <a href="../../../com/facebook/litho/ComponentHost.html#removeViewsInLayout-int-int-">removeViewsInLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#requestFocus-int-Rect-">requestFocus</a>, <a href="../../../com/facebook/litho/ComponentHost.html#requestLayout--">requestLayout</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setAccessibilityDelegate-View.AccessibilityDelegate-">setAccessibilityDelegate</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setClipChildren-boolean-">setClipChildren</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setContentDescription-java.lang.CharSequence-">setContentDescription</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setTag-int-java.lang.Object-">setTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setViewTag-java.lang.Object-">setViewTag</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setViewTags--">setViewTags</a>, <a href="../../../com/facebook/litho/ComponentHost.html#setVisibility-int-">setVisibility</a>, <a href="../../../com/facebook/litho/ComponentHost.html#shouldDelayChildPressedState--">shouldDelayChildPressedState</a>, <a href="../../../com/facebook/litho/ComponentHost.html#unmount-int-com.facebook.litho.mount.MountItem-">unmount</a>, <a href="../../../com/facebook/litho/ComponentHost.html#verifyDrawable-Drawable-">verifyDrawable</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -493,7 +493,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
                  AttributeSet&nbsp;attrs)</pre>
 </li>
 </ul>
-<a name="LithoView-com.facebook.litho.ComponentContext-AttributeSet-">
+<a name="LithoView-com.facebook.litho.component.ComponentContext-AttributeSet-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -511,7 +511,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="create-Context-com.facebook.litho.Component-">
+<a name="create-Context-com.facebook.litho.component.Component-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -715,7 +715,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 <pre>public&nbsp;void&nbsp;setOnPostDrawListener(<a href="../../../com/facebook/litho/LithoView.OnPostDrawListener.html" title="interface in com.facebook.litho">LithoView.OnPostDrawListener</a>&nbsp;onPostDrawListener)</pre>
 </li>
 </ul>
-<a name="setComponentTree-com.facebook.litho.ComponentTree-">
+<a name="setComponentTree-com.facebook.litho.component.ComponentTree-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -724,7 +724,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 <pre>public&nbsp;void&nbsp;setComponentTree(<a href="../../../com/facebook/litho/ComponentTree.html" title="class in com.facebook.litho">ComponentTree</a>&nbsp;componentTree)</pre>
 </li>
 </ul>
-<a name="setComponent-com.facebook.litho.Component-">
+<a name="setComponent-com.facebook.litho.component.Component-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -734,7 +734,7 @@ extends <a href="../../../com/facebook/litho/ComponentHost.html" title="class in
 <div class="block">Change the root component synchronously.</div>
 </li>
 </ul>
-<a name="setComponentAsync-com.facebook.litho.Component-">
+<a name="setComponentAsync-com.facebook.litho.component.Component-">
 <!--   -->
 </a>
 <ul class="blockList">

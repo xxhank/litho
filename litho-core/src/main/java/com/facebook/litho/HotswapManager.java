@@ -18,55 +18,62 @@ package com.facebook.litho;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
+
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.config.ComponentsConfiguration;
+
 import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-/** A manager for Litho's hotswap capability. */
+/**
+ * A manager for Litho's hotswap capability.
+ */
 public final class HotswapManager {
 
-  @GuardedBy("this")
-  @Nullable
-  private static ClassLoader sSpecClassLoader;
+    @GuardedBy("this")
+    @Nullable
+    private static ClassLoader sSpecClassLoader;
 
-  @GuardedBy("this")
-  private static final Set<ComponentTree> sComponentTrees =
-      Collections.newSetFromMap(new WeakHashMap<ComponentTree, Boolean>());
+    @GuardedBy("this")
+    private static final Set<ComponentTree> sComponentTrees =
+        Collections.newSetFromMap(new WeakHashMap<ComponentTree, Boolean>());
 
-  /**
-   * This method should be called in the {@link android.app.Application} to ensure that the correct
-   * class loader is set up when we load the Litho spec classes.
-   */
-  public static synchronized void init(ClassLoader classLoader) {
-    sSpecClassLoader = classLoader;
-  }
-
-  /** Gets the class loader that should be used to load Litho spec classes. */
-  @Nullable
-  public static synchronized ClassLoader getClassLoader() {
-    if (!ComponentsConfiguration.IS_INTERNAL_BUILD) {
-      throw new RuntimeException("Hotswap ClassLoader should only be accessed in debug mode.");
+    /**
+     * This method should be called in the {@link android.app.Application} to ensure that the correct
+     * class loader is set up when we load the Litho spec classes.
+     */
+    public static synchronized void init(ClassLoader classLoader) {
+        sSpecClassLoader = classLoader;
     }
 
-    return sSpecClassLoader;
-  }
+    /**
+     * Gets the class loader that should be used to load Litho spec classes.
+     */
+    @Nullable
+    public static synchronized ClassLoader getClassLoader() {
+        if (!ComponentsConfiguration.IS_INTERNAL_BUILD) {
+            throw new RuntimeException("Hotswap ClassLoader should only be accessed in debug mode.");
+        }
 
-  /**
-   * Adds a {@link ComponentTree} to the manager. This ComponentTree will be informed when hotswap
-   * has occurred.
-   */
-  static synchronized void addComponentTree(ComponentTree componentTree) {
-    sComponentTrees.add(componentTree);
-  }
-
-  /**
-   * Call this method when hotswap occurs in order to inform all {@link ComponentTree}s that they
-   * need to update.
-   */
-  public static synchronized void onHotswap() {
-    for (ComponentTree componentTree : sComponentTrees) {
-      componentTree.forceMainThreadLayout();
+        return sSpecClassLoader;
     }
-  }
+
+    /**
+     * Adds a {@link ComponentTree} to the manager. This ComponentTree will be informed when hotswap
+     * has occurred.
+     */
+    public static synchronized void addComponentTree(ComponentTree componentTree) {
+        sComponentTrees.add(componentTree);
+    }
+
+    /**
+     * Call this method when hotswap occurs in order to inform all {@link ComponentTree}s that they
+     * need to update.
+     */
+    public static synchronized void onHotswap() {
+        for (ComponentTree componentTree : sComponentTrees) {
+            componentTree.forceMainThreadLayout();
+        }
+    }
 }

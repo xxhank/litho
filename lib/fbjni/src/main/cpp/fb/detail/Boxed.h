@@ -18,27 +18,29 @@
 #include "CoreClasses.h"
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-namespace detail {
-template <typename T, typename jprim>
-struct JPrimitive : JavaClass<T> {
-  using typename JavaClass<T>::javaobject;
-  using JavaClass<T>::javaClassStatic;
-  static local_ref<javaobject> valueOf(jprim val) {
-    static const auto cls = javaClassStatic();
-    static const auto method =
-      cls->template getStaticMethod<javaobject(jprim)>("valueOf");
-    return method(cls, val);
-  }
-  jprim value() const {
-    static const auto method =
-      javaClassStatic()->template getMethod<jprim()>(T::kValueMethod);
-    return method(this->self());
-  }
-};
+        namespace detail {
+            template<typename T, typename jprim>
+            struct JPrimitive : JavaClass<T> {
+                using typename JavaClass<T>::javaobject;
+                using JavaClass<T>::javaClassStatic;
 
-} // namespace detail
+                static local_ref <javaobject> valueOf(jprim val) {
+                    static const auto cls = javaClassStatic();
+                    static const auto method =
+                        cls->template getStaticMethod<javaobject(jprim)>("valueOf");
+                    return method(cls, val);
+                }
+
+                jprim value() const {
+                    static const auto method =
+                        javaClassStatic()->template getMethod<jprim()>(T::kValueMethod);
+                    return method(this->self());
+                }
+            };
+
+        } // namespace detail
 
 
 #define DEFINE_BOXED_PRIMITIVE(LITTLE, BIG)                          \
@@ -53,23 +55,31 @@ struct JPrimitive : JavaClass<T> {
     return J ## BIG::valueOf(val);                                   \
   }
 
-DEFINE_BOXED_PRIMITIVE(boolean, Boolean)
-DEFINE_BOXED_PRIMITIVE(byte, Byte)
-DEFINE_BOXED_PRIMITIVE(char, Character)
-DEFINE_BOXED_PRIMITIVE(short, Short)
-DEFINE_BOXED_PRIMITIVE(int, Integer)
-DEFINE_BOXED_PRIMITIVE(long, Long)
-DEFINE_BOXED_PRIMITIVE(float, Float)
-DEFINE_BOXED_PRIMITIVE(double, Double)
+        DEFINE_BOXED_PRIMITIVE(boolean, Boolean)
+
+        DEFINE_BOXED_PRIMITIVE(byte, Byte)
+
+        DEFINE_BOXED_PRIMITIVE(char, Character)
+
+        DEFINE_BOXED_PRIMITIVE(short, Short)
+
+        DEFINE_BOXED_PRIMITIVE(int, Integer)
+
+        DEFINE_BOXED_PRIMITIVE(long, Long)
+
+        DEFINE_BOXED_PRIMITIVE(float, Float)
+
+        DEFINE_BOXED_PRIMITIVE(double, Double)
 
 #undef DEFINE_BOXED_PRIMITIVE
 
-struct JVoid : public jni::JavaClass<JVoid> {
-  static auto constexpr kJavaDescriptor = "Ljava/lang/Void;";
-};
+        struct JVoid : public jni::JavaClass<JVoid> {
+            static auto constexpr kJavaDescriptor = "Ljava/lang/Void;";
+        };
 
-inline local_ref<jobject> autobox(alias_ref<jobject> val) {
-  return make_local(val);
+        inline local_ref <jobject> autobox(alias_ref <jobject> val) {
+            return make_local(val);
+        }
+
+    }
 }
-
-}}

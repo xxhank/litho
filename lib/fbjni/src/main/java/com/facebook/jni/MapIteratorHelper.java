@@ -16,8 +16,10 @@
 package com.facebook.jni;
 
 import com.facebook.jni.annotations.DoNotStrip;
+
 import java.util.Iterator;
 import java.util.Map;
+
 import javax.annotation.Nullable;
 
 /**
@@ -28,30 +30,30 @@ import javax.annotation.Nullable;
  */
 @DoNotStrip
 public class MapIteratorHelper {
-  @DoNotStrip private final Iterator<Map.Entry> mIterator;
-  @DoNotStrip private @Nullable Object mKey;
-  @DoNotStrip private @Nullable Object mValue;
+    @DoNotStrip private final     Iterator<Map.Entry> mIterator;
+    @DoNotStrip private @Nullable Object              mKey;
+    @DoNotStrip private @Nullable Object              mValue;
 
-  @DoNotStrip
-  public MapIteratorHelper(Map map) {
-    mIterator = map.entrySet().iterator();
-  }
-
-  /**
-   * Moves the helper to the next entry in the map, if any. Returns true iff there is an entry to
-   * read.
-   */
-  @DoNotStrip
-  boolean hasNext() {
-    if (mIterator.hasNext()) {
-      Map.Entry entry = mIterator.next();
-      mKey = entry.getKey();
-      mValue = entry.getValue();
-      return true;
-    } else {
-      mKey = null;
-      mValue = null;
-      return false;
+    @DoNotStrip
+    public MapIteratorHelper(Map map) {
+        mIterator = map.entrySet().iterator();
     }
-  }
+
+    /**
+     * Moves the helper to the next entry in the map, if any. Returns true iff there is an entry to
+     * read.
+     */
+    @DoNotStrip
+    boolean hasNext() {
+        if (mIterator.hasNext()) {
+            Map.Entry entry = mIterator.next();
+            mKey = entry.getKey();
+            mValue = entry.getValue();
+            return true;
+        } else {
+            mKey = null;
+            mValue = null;
+            return false;
+        }
+    }
 }

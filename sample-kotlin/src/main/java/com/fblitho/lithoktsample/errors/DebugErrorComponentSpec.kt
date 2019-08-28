@@ -15,10 +15,10 @@ package com.fblitho.lithoktsample.errors
 import android.graphics.Typeface
 import androidx.annotation.ColorInt
 import android.util.Log
-import com.facebook.litho.ClickEvent
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.event.ClickEvent
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
 import com.facebook.litho.annotations.OnEvent
@@ -48,9 +48,9 @@ object DebugErrorComponentSpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @Prop message: String,
-      @Prop throwable: Throwable
+          c: ComponentContext,
+          @Prop message: String,
+          @Prop throwable: Throwable
   ): Component {
     Log.e(TAG, message, throwable)
 

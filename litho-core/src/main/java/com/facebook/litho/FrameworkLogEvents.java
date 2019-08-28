@@ -17,6 +17,10 @@
 package com.facebook.litho;
 
 import androidx.annotation.IntDef;
+
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentsLogger;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 

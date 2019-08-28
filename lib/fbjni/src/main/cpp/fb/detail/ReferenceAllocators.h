@@ -24,31 +24,38 @@
 
 #include "Common.h"
 
-namespace facebook { namespace jni {
+namespace facebook {
+    namespace jni {
 
 /// Allocator that handles local references
-class LocalReferenceAllocator {
- public:
-  jobject newReference(jobject original) const;
-  void deleteReference(jobject reference) const noexcept;
-  bool verifyReference(jobject reference) const noexcept;
-};
+        class LocalReferenceAllocator {
+            public:
+            jobject newReference(jobject original) const;
+
+            void deleteReference(jobject reference) const noexcept;
+
+            bool verifyReference(jobject reference) const noexcept;
+        };
 
 /// Allocator that handles global references
-class GlobalReferenceAllocator {
- public:
-  jobject newReference(jobject original) const;
-  void deleteReference(jobject reference) const noexcept;
-  bool verifyReference(jobject reference) const noexcept;
-};
+        class GlobalReferenceAllocator {
+            public:
+            jobject newReference(jobject original) const;
+
+            void deleteReference(jobject reference) const noexcept;
+
+            bool verifyReference(jobject reference) const noexcept;
+        };
 
 /// Allocator that handles weak global references
-class WeakGlobalReferenceAllocator {
- public:
-  jobject newReference(jobject original) const;
-  void deleteReference(jobject reference) const noexcept;
-  bool verifyReference(jobject reference) const noexcept;
-};
+        class WeakGlobalReferenceAllocator {
+            public:
+            jobject newReference(jobject original) const;
+
+            void deleteReference(jobject reference) const noexcept;
+
+            bool verifyReference(jobject reference) const noexcept;
+        };
 
 /**
  * @return Helper based on GetObjectRefType.  Since this isn't defined
@@ -56,8 +63,9 @@ class WeakGlobalReferenceAllocator {
  * determined, this returns true.  If reference is nullptr, returns
  * true.
  */
-bool isObjectRefType(jobject reference, jobjectRefType refType);
+        bool isObjectRefType(jobject reference, jobjectRefType refType);
 
-}}
+    }
+}
 
 #include "ReferenceAllocators-inl.h"

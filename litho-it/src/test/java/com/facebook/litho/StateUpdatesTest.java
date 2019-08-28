@@ -16,8 +16,8 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.litho.StateContainer.StateUpdate;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -31,6 +31,12 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.os.Looper;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsLogger;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.stats.LithoStats;
 import com.facebook.litho.testing.Whitebox;
@@ -179,12 +185,12 @@ public class StateUpdatesTest {
 
   private static final String mLogTag = "logTag";
 
-  private ShadowLooper mLayoutThreadShadowLooper;
+  private ShadowLooper     mLayoutThreadShadowLooper;
   private ComponentContext mContext;
-  private TestComponent mTestComponent;
-  private ComponentTree mComponentTree;
+  private TestComponent    mTestComponent;
+  private ComponentTree    mComponentTree;
   private ComponentsLogger mComponentsLogger;
-  private LithoView mLithoView;
+  private LithoView        mLithoView;
 
   @Before
   public void setup() {

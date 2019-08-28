@@ -16,12 +16,12 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.Column.create;
-import static com.facebook.litho.LayoutState.sBottomsComparator;
-import static com.facebook.litho.LayoutState.sTopsComparator;
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.component.Column.create;
+import static com.facebook.litho.layout.LayoutState.sBottomsComparator;
+import static com.facebook.litho.layout.LayoutState.sTopsComparator;
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.yoga.YogaEdge.BOTTOM;
 import static com.facebook.yoga.YogaEdge.TOP;
 import static com.facebook.yoga.YogaPositionType.ABSOLUTE;
@@ -30,6 +30,11 @@ import static org.robolectric.RuntimeEnvironment.application;
 
 import android.content.Context;
 import android.graphics.Rect;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.layout.LayoutOutput;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;

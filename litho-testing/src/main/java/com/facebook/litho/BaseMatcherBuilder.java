@@ -15,6 +15,7 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
 import com.facebook.litho.testing.subcomponents.InspectableComponent;
 import org.assertj.core.api.Condition;
 import org.assertj.core.description.TextDescription;
@@ -26,8 +27,8 @@ public final class BaseMatcherBuilder {
     return new Condition<InspectableComponent>() {
       @Override
       public boolean matches(InspectableComponent component) {
-        final Component underlyingComponent = component.getComponent();
-        final CommonProps commonProps = underlyingComponent.getCommonProps();
+        final Component   underlyingComponent = component.getComponent();
+        final CommonProps commonProps         = underlyingComponent.getCommonProps();
         if (matcher.mClickHandlerMatcher != null
             && commonProps != null
             && !matcher.mClickHandlerMatcher.matches(commonProps.getClickHandler())) {

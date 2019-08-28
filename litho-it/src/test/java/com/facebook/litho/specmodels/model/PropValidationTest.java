@@ -198,7 +198,7 @@ public class PropValidationTest {
     assertThat(validationErrors.get(0).element).isEqualTo(mRepresentedObject1);
     assertThat(validationErrors.get(0).message)
         .isEqualTo(
-            "Props may not be declared with argument type: com.facebook.litho.Component.Builder or its inherited types.");
+            "Props may not be declared with argument type: com.facebook.litho.component.Component.Builder or its inherited types.");
   }
 
   @Test
@@ -225,8 +225,8 @@ public class PropValidationTest {
     assertThat(validationErrors.get(0).element).isEqualTo(mRepresentedObject1);
     assertThat(validationErrors.get(0).message)
         .isEqualTo(
-            "Props may not be declared with argument type: com.facebook.litho.Component.Builder or its inherited types. "
-                + "com.facebook.litho.Text.Builder is an inherited type of com.facebook.litho.Component.Builder");
+            "Props may not be declared with argument type: com.facebook.litho.component.Component.Builder or its inherited types. "
+                + "com.facebook.litho.Text.Builder is an inherited type of com.facebook.litho.component.Component.Builder");
   }
 
   @Test

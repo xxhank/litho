@@ -20,17 +20,20 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+import com.facebook.litho.event.DelegatingEventHandler;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(ComponentsTestRunner.class)
 public class DelegatingEventHandlerTest {
-  private final HasEventDispatcher mHasEventDispatcher = mock(HasEventDispatcher.class);
-  private final EventHandler<Object> mEventHandler1 = new EventHandler<>(mHasEventDispatcher, 1);
-  private final EventHandler<Object> mEventHandler2 = new EventHandler<>(mHasEventDispatcher, 2);
-  private final EventHandler<Object> mMockEventHandler1 = mock(EventHandler.class);
-  private final EventHandler<Object> mMockEventHandler2 = mock(EventHandler.class);
+  private final HasEventDispatcher   mHasEventDispatcher = mock(HasEventDispatcher.class);
+  private final EventHandler<Object> mEventHandler1      = new EventHandler<>(mHasEventDispatcher, 1);
+  private final EventHandler<Object> mEventHandler2      = new EventHandler<>(mHasEventDispatcher, 2);
+  private final EventHandler<Object> mMockEventHandler1  = mock(EventHandler.class);
+  private final EventHandler<Object> mMockEventHandler2  = mock(EventHandler.class);
 
   @Test
   public void testDispatchEvent() {

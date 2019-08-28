@@ -16,9 +16,9 @@
 
 package com.facebook.litho.testing;
 
-import com.facebook.litho.Column;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.yoga.YogaEdge;
 
 public class TestSizeDependentComponent extends Component {
@@ -92,7 +92,7 @@ public class TestSizeDependentComponent extends Component {
     return true;
   }
 
-  public static class Builder extends com.facebook.litho.Component.Builder<Builder> {
+  public static class Builder extends Component.Builder<Builder> {
 
     TestSizeDependentComponent mTestSizeDependentComponent;
 

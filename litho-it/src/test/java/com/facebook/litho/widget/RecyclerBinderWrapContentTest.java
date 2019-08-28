@@ -16,9 +16,9 @@
 
 package com.facebook.litho.widget;
 
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.litho.widget.RecyclerBinderTest.NO_OP_CHANGE_SET_COMPLETE_CALLBACK;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Matchers.anyLong;
@@ -29,11 +29,11 @@ import static org.mockito.Mockito.verify;
 
 import android.os.Looper;
 import androidx.recyclerview.widget.OrientationHelper;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Size;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;

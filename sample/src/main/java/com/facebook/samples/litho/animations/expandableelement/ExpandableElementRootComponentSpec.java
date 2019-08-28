@@ -14,11 +14,11 @@ package com.facebook.samples.litho.animations.expandableelement;
 
 import android.graphics.Color;
 import android.text.Layout;
-import com.facebook.litho.ClickEvent;
-import com.facebook.litho.Column;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.Row;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.LayoutSpec;

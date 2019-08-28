@@ -13,11 +13,11 @@
 package com.fblitho.lithoktsample.bordereffects
 
 import android.graphics.Color
-import com.facebook.litho.Border
-import com.facebook.litho.Border.Corner
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.Row
+import com.facebook.litho.geometry.Border
+import com.facebook.litho.geometry.Border.Corner
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.component.Row
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
 import com.facebook.litho.widget.Text

@@ -18,8 +18,8 @@ package com.facebook.litho.testing.assertj;
 
 import android.graphics.drawable.Drawable;
 import androidx.annotation.DrawableRes;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.helper.ComponentTestHelper;

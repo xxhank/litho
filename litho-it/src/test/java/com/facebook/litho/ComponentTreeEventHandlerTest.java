@@ -20,6 +20,11 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventHandlersController;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,8 +43,8 @@ public class ComponentTreeEventHandlerTest {
 
   @Test
   public void testNoDuplicateWhenEventHandlerIsReplacedInEventHandlerWrapper() {
-    Component component = mock(Component.class);
-    ComponentTree componentTree = ComponentTree.create(mContext, component).build();
+    Component               component               = mock(Component.class);
+    ComponentTree           componentTree           = ComponentTree.create(mContext, component).build();
     EventHandlersController eventHandlersController = componentTree.getEventHandlersController();
 
     EventHandler eventHandler1 = mContext.newEventHandler(1);

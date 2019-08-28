@@ -147,13 +147,13 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#cancelPerfEvent-com.facebook.litho.PerfEvent-">cancelPerfEvent</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#cancelPerfEvent-com.facebook.litho.event.PerfEvent-">cancelPerfEvent</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;event)</code>
 <div class="block">Release a previously obtained <a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho"><code>PerfEvent</code></a> without logging it.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#emitMessage-com.facebook.litho.ComponentsLogger.LogLevel-java.lang.String-">emitMessage</a></span>(<a href="../../../com/facebook/litho/ComponentsLogger.LogLevel.html" title="enum in com.facebook.litho">ComponentsLogger.LogLevel</a>&nbsp;level,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#emitMessage-com.facebook.litho.component.ComponentsLogger.LogLevel-java.lang.String-">emitMessage</a></span>(<a href="../../../com/facebook/litho/ComponentsLogger.LogLevel.html" title="enum in com.facebook.litho">ComponentsLogger.LogLevel</a>&nbsp;level,
            <a href="https://d.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
 <div class="block"><span class="deprecationComment">Use <a href="../../../com/facebook/litho/ComponentsReporter.Reporter.html" title="interface in com.facebook.litho"><code>ComponentsReporter.Reporter</code></a> instead</span></div>
@@ -162,7 +162,7 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#emitMessage-com.facebook.litho.ComponentsLogger.LogLevel-java.lang.String-int-">emitMessage</a></span>(<a href="../../../com/facebook/litho/ComponentsLogger.LogLevel.html" title="enum in com.facebook.litho">ComponentsLogger.LogLevel</a>&nbsp;level,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#emitMessage-com.facebook.litho.component.ComponentsLogger.LogLevel-java.lang.String-int-">emitMessage</a></span>(<a href="../../../com/facebook/litho/ComponentsLogger.LogLevel.html" title="enum in com.facebook.litho">ComponentsLogger.LogLevel</a>&nbsp;level,
            <a href="https://d.android.com/reference/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;message,
            int&nbsp;samplingFrequency)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
@@ -193,17 +193,17 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#isTracing-com.facebook.litho.PerfEvent-">isTracing</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;logEvent)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#isTracing-com.facebook.litho.event.PerfEvent-">isTracing</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;logEvent)</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#logPerfEvent-com.facebook.litho.PerfEvent-">logPerfEvent</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#logPerfEvent-com.facebook.litho.event.PerfEvent-">logPerfEvent</a></span>(<a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a>&nbsp;event)</code>
 <div class="block">Write a <a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho"><code>PerfEvent</code></a> to storage.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho">PerfEvent</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#newPerformanceEvent-com.facebook.litho.ComponentContext-int-">newPerformanceEvent</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;c,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/ComponentsLogger.html#newPerformanceEvent-com.facebook.litho.component.ComponentContext-int-">newPerformanceEvent</a></span>(<a href="../../../com/facebook/litho/ComponentContext.html" title="class in com.facebook.litho">ComponentContext</a>&nbsp;c,
                    int&nbsp;eventId)</code>
 <div class="block">Create a new performance event with the given event id and start counting the time.</div>
 </td>
@@ -223,7 +223,7 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="newPerformanceEvent-com.facebook.litho.ComponentContext-int-">
+<a name="newPerformanceEvent-com.facebook.litho.component.ComponentContext-int-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -235,7 +235,7 @@ var activeTableTab = "activeTableTab";
  logger doesn't care about this event id, it may return null.</div>
 </li>
 </ul>
-<a name="logPerfEvent-com.facebook.litho.PerfEvent-">
+<a name="logPerfEvent-com.facebook.litho.event.PerfEvent-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -245,7 +245,7 @@ var activeTableTab = "activeTableTab";
 <div class="block">Write a <a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho"><code>PerfEvent</code></a> to storage. This also marks the end of the event.</div>
 </li>
 </ul>
-<a name="cancelPerfEvent-com.facebook.litho.PerfEvent-">
+<a name="cancelPerfEvent-com.facebook.litho.event.PerfEvent-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -255,7 +255,7 @@ var activeTableTab = "activeTableTab";
 <div class="block">Release a previously obtained <a href="../../../com/facebook/litho/PerfEvent.html" title="interface in com.facebook.litho"><code>PerfEvent</code></a> without logging it.</div>
 </li>
 </ul>
-<a name="emitMessage-com.facebook.litho.ComponentsLogger.LogLevel-java.lang.String-">
+<a name="emitMessage-com.facebook.litho.component.ComponentsLogger.LogLevel-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -273,7 +273,7 @@ void&nbsp;emitMessage(<a href="../../../com/facebook/litho/ComponentsLogger.LogL
 </dl>
 </li>
 </ul>
-<a name="emitMessage-com.facebook.litho.ComponentsLogger.LogLevel-java.lang.String-int-">
+<a name="emitMessage-com.facebook.litho.component.ComponentsLogger.LogLevel-java.lang.String-int-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -337,7 +337,7 @@ void&nbsp;emitMessage(<a href="../../../com/facebook/litho/ComponentsLogger.LogL
 </dl>
 </li>
 </ul>
-<a name="isTracing-com.facebook.litho.PerfEvent-">
+<a name="isTracing-com.facebook.litho.event.PerfEvent-">
 <!--   -->
 </a>
 <ul class="blockListLast">

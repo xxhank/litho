@@ -13,14 +13,14 @@
 package com.fblitho.lithoktsample.animations.expandableelement
 
 import android.graphics.Color
-import com.facebook.litho.ClickEvent
-import com.facebook.litho.Column
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.Row
+import com.facebook.litho.event.ClickEvent
+import com.facebook.litho.component.Column
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.component.Row
 import com.facebook.litho.StateValue
-import com.facebook.litho.Transition
-import com.facebook.litho.Transition.BaseTransitionUnitsBuilder
+import com.facebook.litho.transition.Transition
+import com.facebook.litho.transition.Transition.BaseTransitionUnitsBuilder
 import com.facebook.litho.animation.AnimatedProperties
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
@@ -40,11 +40,11 @@ object ExpandableElementMeSpec {
 
   @OnCreateLayout
   fun onCreateLayout(
-      c: ComponentContext,
-      @Prop messageText: String,
-      @Prop timestamp: String,
-      @Prop(optional = true) seen: Boolean,
-      @State expanded: Boolean?
+          c: ComponentContext,
+          @Prop messageText: String,
+          @Prop timestamp: String,
+          @Prop(optional = true) seen: Boolean,
+          @State expanded: Boolean?
   ): Component {
     val isExpanded = expanded ?: false
 
@@ -81,9 +81,9 @@ object ExpandableElementMeSpec {
 
   @OnCreateTransition
   fun onCreateTransition(
-      c: ComponentContext,
-      @State expanded: Boolean?,
-      @Prop(optional = true) forceAnimateOnAppear: Boolean
+          c: ComponentContext,
+          @State expanded: Boolean?,
+          @Prop(optional = true) forceAnimateOnAppear: Boolean
   ): Transition? = if (!forceAnimateOnAppear && expanded == null) {
     null
   } else {

@@ -19,7 +19,7 @@ package com.facebook.litho.specmodels.generator;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.Prop;
@@ -84,7 +84,7 @@ public class SimpleNameDelegateGeneratorTest {
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
             "@java.lang.Override\n"
-                + "protected com.facebook.litho.Component getSimpleNameDelegate() {\n"
+                + "protected com.facebook.litho.component.Component getSimpleNameDelegate() {\n"
                 + "  return delegate;\n"
                 + "}\n");
   }

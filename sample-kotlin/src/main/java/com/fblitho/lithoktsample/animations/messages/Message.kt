@@ -11,7 +11,7 @@
  */
 package com.fblitho.lithoktsample.animations.messages
 
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.widget.ComponentRenderInfo
 import com.facebook.litho.widget.RenderInfo
 import com.fblitho.lithoktsample.animations.expandableelement.ExpandableElementMe

@@ -16,70 +16,70 @@
 #include "References.h"
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-JniLocalScope::JniLocalScope(JNIEnv* env, jint capacity)
-    : env_(env) {
-  hasFrame_ = false;
-  auto pushResult = env->PushLocalFrame(capacity);
-  FACEBOOK_JNI_THROW_EXCEPTION_IF(pushResult < 0);
-  hasFrame_ = true;
-}
+        JniLocalScope::JniLocalScope(JNIEnv *env, jint capacity)
+            : env_(env) {
+            hasFrame_ = false;
+            auto pushResult = env->PushLocalFrame(capacity);
+            FACEBOOK_JNI_THROW_EXCEPTION_IF(pushResult < 0);
+            hasFrame_ = true;
+        }
 
-JniLocalScope::~JniLocalScope() {
-  if (hasFrame_) {
-    env_->PopLocalFrame(nullptr);
-  }
-}
+        JniLocalScope::~JniLocalScope() {
+            if (hasFrame_) {
+                env_->PopLocalFrame(nullptr);
+            }
+        }
 
-namespace {
+        namespace {
 
 #ifdef __ANDROID__
 
-int32_t getAndroidApiLevel() {
-  // This is called from the static local initializer in
-  // isObjectRefType(), and creating fbjni references can call
-  // isObjectRefType().  So, to avoid recursively entering the block
-  // where the static is initialized (which is undefined behavior), we
-  // avoid using standard fbjni references here.
+            int32_t getAndroidApiLevel() {
+                // This is called from the static local initializer in
+                // isObjectRefType(), and creating fbjni references can call
+                // isObjectRefType().  So, to avoid recursively entering the block
+                // where the static is initialized (which is undefined behavior), we
+                // avoid using standard fbjni references here.
 
-  JNIEnv* env = Environment::current();
-  jclass cls = detail::findClass(env, "android/os/Build$VERSION");
-  jfieldID field = env->GetStaticFieldID(cls, "SDK_INT",
-                                         jtype_traits<jint>::descriptor().c_str());
-  if (!field) {
-    env->DeleteLocalRef(cls);
-  }
-  FACEBOOK_JNI_THROW_EXCEPTION_IF(!field);
-  int32_t ret = env->GetStaticIntField(cls, field);
-  env->DeleteLocalRef(cls);
-  return ret;
-}
+                JNIEnv *env = Environment::current();
+                jclass cls = detail::findClass(env, "android/os/Build$VERSION");
+                jfieldID field = env->GetStaticFieldID(cls, "SDK_INT",
+                                                       jtype_traits<jint>::descriptor().c_str());
+                if (!field) {
+                    env->DeleteLocalRef(cls);
+                }
+                FACEBOOK_JNI_THROW_EXCEPTION_IF(!field);
+                int32_t ret = env->GetStaticIntField(cls, field);
+                env->DeleteLocalRef(cls);
+                return ret;
+            }
 
-bool doesGetObjectRefTypeWork() {
-  auto level = getAndroidApiLevel();
-  return level >= 14;
-}
+            bool doesGetObjectRefTypeWork() {
+                auto level = getAndroidApiLevel();
+                return level >= 14;
+            }
 
 #else
 
-bool doesGetObjectRefTypeWork() {
-  auto jni_version = Environment::current()->GetVersion();
-  return jni_version >= JNI_VERSION_1_6;
-}
+            bool doesGetObjectRefTypeWork() {
+              auto jni_version = Environment::current()->GetVersion();
+              return jni_version >= JNI_VERSION_1_6;
+            }
 
 #endif
 
-}
+        }
 
-bool isObjectRefType(jobject reference, jobjectRefType refType) {
-  static bool getObjectRefTypeWorks = doesGetObjectRefTypeWork();
+        bool isObjectRefType(jobject reference, jobjectRefType refType) {
+            static bool getObjectRefTypeWorks = doesGetObjectRefTypeWork();
 
-  return
-    !reference ||
-    !getObjectRefTypeWorks ||
-    Environment::current()->GetObjectRefType(reference) == refType;
-}
+            return
+                !reference ||
+                !getObjectRefTypeWorks ||
+                Environment::current()->GetObjectRefType(reference) == refType;
+        }
 
-}
+    }
 }

@@ -18,7 +18,7 @@ package com.facebook.litho.sections.common;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.facebook.litho.ClickEvent;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.sections.Section;
 import com.facebook.litho.testing.sections.SectionsTestHelper;
 import com.facebook.litho.testing.sections.SubSection;

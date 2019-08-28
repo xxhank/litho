@@ -14,72 +14,79 @@
  * limitations under the License.
  */
 #pragma once
+
 #include <functional>
 #include <string>
 #include <jni.h>
 
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
 // Keeps a thread-local reference to the current thread's JNIEnv.
-struct Environment {
-  // Throws a std::runtime_error if this thread isn't attached to the JVM
-  // TODO(T6594868) Benchmark against raw JNI access
-  static JNIEnv* current();
-  static void initialize(JavaVM* vm);
+        struct Environment {
+            // Throws a std::runtime_error if this thread isn't attached to the JVM
+            // TODO(T6594868) Benchmark against raw JNI access
+            static JNIEnv *current();
 
-  // There are subtle issues with calling the next functions directly. It is
-  // much better to always use a ThreadScope to manage attaching/detaching for
-  // you.
-  static JNIEnv* ensureCurrentThreadIsAttached();
-};
+            static void initialize(JavaVM *vm);
 
-namespace detail {
+            // There are subtle issues with calling the next functions directly. It is
+            // much better to always use a ThreadScope to manage attaching/detaching for
+            // you.
+            static JNIEnv *ensureCurrentThreadIsAttached();
+        };
+
+        namespace detail {
 
 // This will return null the thread isn't attached to the VM, or if
 // fbjni has never been initialized with a VM at all.  You probably
 // shouldn't be using this.
-JNIEnv* currentOrNull();
+            JNIEnv *currentOrNull();
 
 /**
  * If there's thread-local data, it's a pointer to one of these.  The
  * instance is a member of JniEnvCacher or ThreadScope, and lives on
  * the stack.
  */
-struct TLData {
-  // This is modified only by JniEnvCacher, and is guaranteed to be
-  // valid if set, and refer to an env which originated from a JNI
-  // call into C++.
-  JNIEnv* env;
-  // This is modified only by ThreadScope, and is set only if an
-  // instance of ThreadScope which attached is on the stack.
-  bool attached;
-};
+            struct TLData {
+                // This is modified only by JniEnvCacher, and is guaranteed to be
+                // valid if set, and refer to an env which originated from a JNI
+                // call into C++.
+                JNIEnv *env;
+                // This is modified only by ThreadScope, and is set only if an
+                // instance of ThreadScope which attached is on the stack.
+                bool attached;
+            };
 
 /**
  * RAII object which manages a cached JNIEnv* value.  A Value is only
  * cached if it is guaranteed safe, which means when C++ is called
  * from a registered fbjni function.
  */
-class JniEnvCacher {
-public:
-  JniEnvCacher(JNIEnv* env);
-  JniEnvCacher(JniEnvCacher&) = delete;
-  JniEnvCacher(JniEnvCacher&&) = default;
-  JniEnvCacher& operator=(JniEnvCacher&) = delete;
-  JniEnvCacher& operator=(JniEnvCacher&&) = delete;
-  ~JniEnvCacher();
+            class JniEnvCacher {
+                public:
+                JniEnvCacher(JNIEnv *env);
 
-private:
-  // If this flag is set, then, this object needs to clear the cache.
-  bool thisCached_;
+                JniEnvCacher(JniEnvCacher &) = delete;
 
-  // The thread local pointer may point here.
-  detail::TLData data_;
-};
+                JniEnvCacher(JniEnvCacher &&) = default;
 
-}
+                JniEnvCacher &operator=(JniEnvCacher &) = delete;
+
+                JniEnvCacher &operator=(JniEnvCacher &&) = delete;
+
+                ~JniEnvCacher();
+
+                private:
+                // If this flag is set, then, this object needs to clear the cache.
+                bool thisCached_;
+
+                // The thread local pointer may point here.
+                detail::TLData data_;
+            };
+
+        }
 
 /**
  * RAII Object that attaches a thread to the JVM. Failing to detach from a thread before it
@@ -106,32 +113,37 @@ private:
  *    In that case, a std::runtime_error will be thrown.  This is only likely to happen in a
  *    standalone C++ application, or if Environment::initialize is not used.
  */
-class ThreadScope {
- public:
-  ThreadScope();
-  ThreadScope(ThreadScope&) = delete;
-  ThreadScope(ThreadScope&&) = default;
-  ThreadScope& operator=(ThreadScope&) = delete;
-  ThreadScope& operator=(ThreadScope&&) = delete;
-  ~ThreadScope();
+        class ThreadScope {
+            public:
+            ThreadScope();
 
-  /**
-   * This runs the closure in a scope with fbjni's classloader. This should be
-   * the same classloader as the rest of the application and thus anything
-   * running in the closure will have access to the same classes as in a normal
-   * java-create thread.
-   */
-  static void WithClassLoader(std::function<void()>&& runnable);
+            ThreadScope(ThreadScope &) = delete;
 
-  static void OnLoad();
+            ThreadScope(ThreadScope &&) = default;
 
- private:
-  // If this flag is set, then this object needs to detach.
-  bool thisAttached_;
+            ThreadScope &operator=(ThreadScope &) = delete;
 
-  // The thread local pointer may point here.
-  detail::TLData data_;
-};
+            ThreadScope &operator=(ThreadScope &&) = delete;
 
-}
+            ~ThreadScope();
+
+            /**
+             * This runs the closure in a scope with fbjni's classloader. This should be
+             * the same classloader as the rest of the application and thus anything
+             * running in the closure will have access to the same classes as in a normal
+             * java-create thread.
+             */
+            static void WithClassLoader(std::function<void()> &&runnable);
+
+            static void OnLoad();
+
+            private:
+            // If this flag is set, then this object needs to detach.
+            bool thisAttached_;
+
+            // The thread local pointer may point here.
+            detail::TLData data_;
+        };
+
+    }
 }

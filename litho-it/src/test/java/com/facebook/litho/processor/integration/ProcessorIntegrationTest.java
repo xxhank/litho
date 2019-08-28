@@ -52,7 +52,7 @@ public class ProcessorIntegrationTest {
         .withErrorContaining(
             "Parameter in position 0 of a method annotated with interface "
                 + "com.facebook.litho.annotations.OnCreateLayout should be of type "
-                + "com.facebook.litho.ComponentContext")
+                + "com.facebook.litho.component.ComponentContext")
         .in(javaFileObject)
         .onLine(28);
   }

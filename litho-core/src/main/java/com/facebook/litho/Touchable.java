@@ -19,6 +19,8 @@ package com.facebook.litho;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.facebook.litho.component.ComponentHost;
+
 /**
  * Any interface for mounted items that need to capture motion events from its {@link
  * ComponentHost}.

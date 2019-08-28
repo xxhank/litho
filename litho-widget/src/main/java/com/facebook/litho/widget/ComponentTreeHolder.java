@@ -18,12 +18,12 @@ package com.facebook.litho.widget;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.VisibleForTesting;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.ComponentTree.MeasureListener;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentTree.MeasureListener;
 import com.facebook.litho.LithoHandler;
-import com.facebook.litho.Size;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.StateHandler;
 import com.facebook.litho.TreeProps;
 import java.util.concurrent.atomic.AtomicInteger;

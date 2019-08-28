@@ -17,6 +17,8 @@ package com.facebook.litho;
 
 import android.util.Log;
 
+import com.facebook.litho.component.ComponentsReporter;
+
 public class DefaultComponentsReporter implements ComponentsReporter.Reporter {
   private static final String CATEGORY = "Components";
 

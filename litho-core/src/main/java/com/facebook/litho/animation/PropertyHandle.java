@@ -15,7 +15,7 @@
  */
 package com.facebook.litho.animation;
 
-import com.facebook.litho.TransitionId;
+import com.facebook.litho.transition.TransitionId;
 
 /**
  * A pair of transition key and {@link AnimatedProperty} which can be used to identify a single

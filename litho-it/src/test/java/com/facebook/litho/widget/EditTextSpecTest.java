@@ -18,7 +18,7 @@ package com.facebook.litho.widget;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.helper.ComponentTestHelper;

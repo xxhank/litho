@@ -19,52 +19,53 @@
 #include "References.h"
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-namespace detail {
+        namespace detail {
 
 // This uses the real JNI function as a non-type template parameter to
 // cause a (static member) function to exist with the same signature,
 // but with try/catch exception translation.
-template<typename F, F func, typename C, typename R, typename... Args>
-NativeMethodWrapper* exceptionWrapJNIMethod(R (*func0)(JNIEnv*, jobject, Args... args));
+            template<typename F, F func, typename C, typename R, typename... Args>
+            NativeMethodWrapper *
+            exceptionWrapJNIMethod(R (*func0)(JNIEnv *, jobject, Args... args));
 
 // Automatically wrap object argument, and don't take env explicitly.
-template<typename F, F func, typename C, typename R, typename... Args>
-NativeMethodWrapper* exceptionWrapJNIMethod(R (*func0)(alias_ref<C>, Args... args));
+            template<typename F, F func, typename C, typename R, typename... Args>
+            NativeMethodWrapper *exceptionWrapJNIMethod(R (*func0)(alias_ref<C>, Args... args));
 
 // Extract C++ instance from object, and invoke given method on it,
-template<typename M, M method, typename C, typename R, typename... Args>
-NativeMethodWrapper* exceptionWrapJNIMethod(R (C::*method0)(Args... args));
+            template<typename M, M method, typename C, typename R, typename... Args>
+            NativeMethodWrapper *exceptionWrapJNIMethod(R (C::*method0)(Args... args));
 
 // This uses deduction to figure out the descriptor name if the types
 // are primitive or have JObjectWrapper specializations.
-template<typename R, typename C, typename... Args>
-std::string makeDescriptor(R (*func)(JNIEnv*, C, Args... args));
+            template<typename R, typename C, typename... Args>
+            std::string makeDescriptor(R (*func)(JNIEnv *, C, Args... args));
 
 // This uses deduction to figure out the descriptor name if the types
 // are primitive or have JObjectWrapper specializations.
-template<typename R, typename C, typename... Args>
-std::string makeDescriptor(R (*func)(alias_ref<C>, Args... args));
+            template<typename R, typename C, typename... Args>
+            std::string makeDescriptor(R (*func)(alias_ref<C>, Args... args));
 
 // This uses deduction to figure out the descriptor name if the types
 // are primitive or have JObjectWrapper specializations.
-template<typename R, typename C, typename... Args>
-std::string makeDescriptor(R (C::*method0)(Args... args));
+            template<typename R, typename C, typename... Args>
+            std::string makeDescriptor(R (C::*method0)(Args... args));
 
-template<typename F>
-struct CriticalMethod;
+            template<typename F>
+            struct CriticalMethod;
 
-template<typename R, typename ...Args>
-struct CriticalMethod<R(*)(Args...)> {
-  template<R(*func)(Args...)>
-  static R call(alias_ref<jclass>, Args... args);
+            template<typename R, typename ...Args>
+            struct CriticalMethod<R(*)(Args...)> {
+                template<R(*func)(Args...)>
+                static R call(alias_ref<jclass>, Args... args);
 
-  template<R(*func)(Args...)>
-  inline static std::string desc();
-};
+                template<R(*func)(Args...)>
+                inline static std::string desc();
+            };
 
-}
+        }
 
 // We have to use macros here, because the func needs to be used
 // as both a decltype expression argument and as a non-type template
@@ -171,6 +172,7 @@ struct CriticalMethod<R(*)(Args...)> {
 // See above for an explanation.
 #define makeCriticalNativeMethod_DO_NOT_USE_OR_YOU_WILL_BE_FIRED(...) makeCriticalNativeMethodN(__VA_ARGS__, 3, 2)(__VA_ARGS__)
 
-}}
+    }
+}
 
 #include "Registration-inl.h"

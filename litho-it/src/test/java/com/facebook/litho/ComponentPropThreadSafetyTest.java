@@ -15,13 +15,17 @@
  */
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.content.ContextWrapper;
 import android.os.Looper;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.TestWrappedComponentProp;
 import com.facebook.litho.testing.TestWrappedComponentPropSpec;
@@ -41,7 +45,7 @@ import org.robolectric.shadows.ShadowLooper;
 public class ComponentPropThreadSafetyTest {
 
   private ComponentContext mContext;
-  private ShadowLooper mLayoutThreadShadowLooper;
+  private ShadowLooper     mLayoutThreadShadowLooper;
 
   @Before
   public void setup() throws Exception {

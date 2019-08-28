@@ -19,9 +19,9 @@ package com.facebook.litho.testing;
 import androidx.annotation.AttrRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.Row;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
 
 public class TestAttachDetachComponent extends TestComponent {
 
@@ -114,7 +114,7 @@ public class TestAttachDetachComponent extends TestComponent {
     return builder;
   }
 
-  public static class Builder extends com.facebook.litho.Component.Builder<Builder> {
+  public static class Builder extends Component.Builder<Builder> {
     private TestAttachDetachComponent mState;
 
     private void init(

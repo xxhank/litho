@@ -17,9 +17,9 @@
 package com.facebook.litho.widget;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.Component;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.RenderCompleteEvent;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.RenderCompleteEvent;
 import com.facebook.litho.TreeProps;
 import com.facebook.litho.viewcompat.ViewBinder;
 import com.facebook.litho.viewcompat.ViewCreator;

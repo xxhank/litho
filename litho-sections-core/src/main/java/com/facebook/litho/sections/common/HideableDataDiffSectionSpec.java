@@ -17,8 +17,8 @@
 package com.facebook.litho.sections.common;
 
 import android.os.Bundle;
-import com.facebook.litho.Component;
-import com.facebook.litho.EventHandler;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.OnCreateInitialState;

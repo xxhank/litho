@@ -16,7 +16,9 @@
 package com.facebook.jni;
 
 import com.facebook.jni.annotations.DoNotStrip;
+
 import java.util.Iterator;
+
 import javax.annotation.Nullable;
 
 /**
@@ -26,33 +28,33 @@ import javax.annotation.Nullable;
  */
 @DoNotStrip
 public class IteratorHelper {
-  private final Iterator mIterator;
+    private final Iterator mIterator;
 
-  // This is private, but accessed via JNI.
-  @DoNotStrip private @Nullable Object mElement;
+    // This is private, but accessed via JNI.
+    @DoNotStrip private @Nullable Object mElement;
 
-  @DoNotStrip
-  public IteratorHelper(Iterator iterator) {
-    mIterator = iterator;
-  }
-
-  @DoNotStrip
-  public IteratorHelper(Iterable iterable) {
-    mIterator = iterable.iterator();
-  }
-
-  /**
-   * Moves the helper to the next entry in the map, if any. Returns true iff there is an entry to
-   * read.
-   */
-  @DoNotStrip
-  boolean hasNext() {
-    if (mIterator.hasNext()) {
-      mElement = mIterator.next();
-      return true;
-    } else {
-      mElement = null;
-      return false;
+    @DoNotStrip
+    public IteratorHelper(Iterator iterator) {
+        mIterator = iterator;
     }
-  }
+
+    @DoNotStrip
+    public IteratorHelper(Iterable iterable) {
+        mIterator = iterable.iterator();
+    }
+
+    /**
+     * Moves the helper to the next entry in the map, if any. Returns true iff there is an entry to
+     * read.
+     */
+    @DoNotStrip
+    boolean hasNext() {
+        if (mIterator.hasNext()) {
+            mElement = mIterator.next();
+            return true;
+        } else {
+            mElement = null;
+            return false;
+        }
+    }
 }

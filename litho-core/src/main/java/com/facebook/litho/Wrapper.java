@@ -17,7 +17,12 @@
 package com.facebook.litho;
 
 import com.facebook.litho.annotations.Prop;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+
 import java.util.BitSet;
+
 import javax.annotation.Nullable;
 
 /**
@@ -26,93 +31,93 @@ import javax.annotation.Nullable;
  */
 public final class Wrapper extends Component {
 
-  @Nullable @Prop Component delegate;
+    @Nullable @Prop Component delegate;
 
-  private Wrapper() {
-    super("Wrapper");
-  }
-
-  @Override
-  protected boolean canResolve() {
-    return true;
-  }
-
-  public static Builder create(ComponentContext context) {
-    return create(context, 0, 0);
-  }
-
-  public static Builder create(ComponentContext context, int defStyleAttr, int defStyleRes) {
-    final Builder builder = new Builder();
-    builder.init(context, defStyleAttr, defStyleRes, new Wrapper());
-    return builder;
-  }
-
-  @Override
-  protected Component onCreateLayout(ComponentContext c) {
-    return this;
-  }
-
-  @Override
-  protected ComponentLayout resolve(ComponentContext c) {
-    if (delegate == null) {
-      return ComponentContext.NULL_LAYOUT;
-    }
-
-    return c.newLayoutBuilder(delegate, 0, 0);
-  }
-
-  @Override
-  public boolean isEquivalentTo(Component other) {
-    if (this == other) {
-      return true;
-    }
-    if (other == null || getClass() != other.getClass()) {
-      return false;
-    }
-    Wrapper wrapper = (Wrapper) other;
-    if (this.getId() == wrapper.getId()) {
-      return true;
-    }
-    if (delegate != null ? !delegate.equals(wrapper.delegate) : wrapper.delegate != null) {
-      return false;
-    }
-    return true;
-  }
-
-  @Override
-  protected Component getSimpleNameDelegate() {
-    return delegate;
-  }
-
-  public static class Builder extends Component.Builder<Builder> {
-    private static final String[] REQUIRED_PROPS_NAMES = new String[] {"delegate"};
-    private static final int REQUIRED_PROPS_COUNT = 1;
-
-    private final BitSet mRequired = new BitSet(REQUIRED_PROPS_COUNT);
-    private Wrapper mWrapper;
-
-    private void init(
-        ComponentContext context, int defStyleAttr, int defStyleRes, Wrapper wrapper) {
-      super.init(context, defStyleAttr, defStyleRes, wrapper);
-      mWrapper = wrapper;
-    }
-
-    public Builder delegate(@Nullable Component delegate) {
-      mRequired.set(0);
-      this.mWrapper.delegate = delegate;
-
-      return this;
+    private Wrapper() {
+        super("Wrapper");
     }
 
     @Override
-    public Builder getThis() {
-      return this;
+    public boolean canResolve() {
+        return true;
+    }
+
+    public static Builder create(ComponentContext context) {
+        return create(context, 0, 0);
+    }
+
+    public static Builder create(ComponentContext context, int defStyleAttr, int defStyleRes) {
+        Builder builder = new Builder();
+        builder.init(context, defStyleAttr, defStyleRes, new Wrapper());
+        return builder;
     }
 
     @Override
-    public Wrapper build() {
-      checkArgs(REQUIRED_PROPS_COUNT, mRequired, REQUIRED_PROPS_NAMES);
-      return mWrapper;
+    protected Component onCreateLayout(ComponentContext c) {
+        return this;
     }
-  }
+
+    @Override
+    public ComponentLayout resolve(ComponentContext c) {
+        if (delegate == null) {
+            return ComponentContext.NULL_LAYOUT;
+        }
+
+        return c.newLayoutBuilder(delegate, 0, 0);
+    }
+
+    @Override
+    public boolean isEquivalentTo(Component other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        Wrapper wrapper = (Wrapper) other;
+        if (getId() == wrapper.getId()) {
+            return true;
+        }
+        if (delegate != null ? !delegate.equals(wrapper.delegate) : wrapper.delegate != null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    protected Component getSimpleNameDelegate() {
+        return delegate;
+    }
+
+    public static class Builder extends Component.Builder<Builder> {
+        private static final String[] REQUIRED_PROPS_NAMES = new String[]{"delegate"};
+        private static final int      REQUIRED_PROPS_COUNT = 1;
+
+        private final BitSet  mRequired = new BitSet(REQUIRED_PROPS_COUNT);
+        private       Wrapper mWrapper;
+
+        private void init(
+            ComponentContext context, int defStyleAttr, int defStyleRes, Wrapper wrapper) {
+            super.init(context, defStyleAttr, defStyleRes, wrapper);
+            mWrapper = wrapper;
+        }
+
+        public Builder delegate(@Nullable Component delegate) {
+            mRequired.set(0);
+            mWrapper.delegate = delegate;
+
+            return this;
+        }
+
+        @Override
+        public Builder getThis() {
+            return this;
+        }
+
+        @Override
+        public Wrapper build() {
+            checkArgs(REQUIRED_PROPS_COUNT, mRequired, REQUIRED_PROPS_NAMES);
+            return mWrapper;
+        }
+    }
 }

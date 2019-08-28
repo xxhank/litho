@@ -17,6 +17,11 @@ import static com.facebook.samples.litho.animations.pageindicators.PageIndicator
 
 import com.facebook.litho.*;
 import com.facebook.litho.annotations.*;
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.widget.Text;
 import com.facebook.yoga.YogaAlign;
 import com.facebook.yoga.YogaEdge;

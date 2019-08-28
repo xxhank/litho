@@ -23,22 +23,23 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
-import com.facebook.litho.ClickEvent;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.CommonUtils;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLayout;
-import com.facebook.litho.ComponentLifecycle;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentLifecycle;
 import com.facebook.litho.Diff;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.EventTrigger;
-import com.facebook.litho.EventTriggerTarget;
-import com.facebook.litho.EventTriggersContainer;
-import com.facebook.litho.HasEventDispatcher;
-import com.facebook.litho.MountContentPool;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.ErrorEvent;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventTrigger;
+import com.facebook.litho.event.EventTriggerTarget;
+import com.facebook.litho.event.EventTriggersContainer;
+import com.facebook.litho.event.HasEventDispatcher;
+import com.facebook.litho.mount.MountContentPool;
 import com.facebook.litho.Output;
-import com.facebook.litho.Size;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.TreeProps;
@@ -457,8 +458,8 @@ public final class TestMount<S extends View> extends Component implements TestTa
       case -1048037474:
         {
           dispatchErrorEvent(
-              (com.facebook.litho.ComponentContext) eventHandler.params[0],
-              (com.facebook.litho.ErrorEvent) eventState);
+              (ComponentContext) eventHandler.params[0],
+              (ErrorEvent) eventState);
           return null;
         }
       default:
@@ -747,7 +748,7 @@ public final class TestMount<S extends View> extends Component implements TestTa
     }
 
     private void onClickEventTriggerTrigger(String key) {
-      com.facebook.litho.EventTrigger onClickEventTriggerTrigger =
+      EventTrigger onClickEventTriggerTrigger =
           this.mTestMount.onClickEventTriggerTrigger;
       if (onClickEventTriggerTrigger == null) {
         onClickEventTriggerTrigger = TestMount.onClickEventTriggerTrigger(this.mContext, key);

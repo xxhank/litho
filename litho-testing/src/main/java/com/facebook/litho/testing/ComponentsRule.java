@@ -17,7 +17,7 @@
 package com.facebook.litho.testing;
 
 import android.app.Activity;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.R;
 import com.facebook.litho.testing.assertj.LithoRepresentation;
 import org.assertj.core.api.Assertions;

@@ -17,10 +17,10 @@
 package com.facebook.litho;
 
 import static androidx.core.view.ViewCompat.IMPORTANT_FOR_ACCESSIBILITY_AUTO;
-import static com.facebook.litho.LayoutState.createAndMeasureTreeForComponent;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.layout.LayoutState.createAndMeasureTreeForComponent;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.litho.it.R.drawable.background_with_padding;
 import static com.facebook.litho.it.R.drawable.background_without_padding;
 import static com.facebook.litho.testing.Whitebox.getInternalState;
@@ -43,6 +43,14 @@ import static org.robolectric.RuntimeEnvironment.application;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentsLogger;
+import com.facebook.litho.component.Row;
+import com.facebook.litho.event.PerfEvent;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.widget.SolidColor;
@@ -386,11 +394,11 @@ public class InternalNodeTest {
 
   @Test
   public void testComponentCreateAndRetrieveCachedLayout() {
-    final ComponentContext c = new ComponentContext(application);
-    final int unspecifiedSizeSpec = makeSizeSpec(0, UNSPECIFIED);
-    final int exactSizeSpec = makeSizeSpec(50, EXACTLY);
-    final Component textComponent = Text.create(c).textSizePx(16).text("test").build();
-    final Size textSize = new Size();
+    final ComponentContext c                   = new ComponentContext(application);
+    final int              unspecifiedSizeSpec = makeSizeSpec(0, UNSPECIFIED);
+    final int              exactSizeSpec       = makeSizeSpec(50, EXACTLY);
+    final Component        textComponent       = Text.create(c).textSizePx(16).text("test").build();
+    final Size             textSize            = new Size();
     textComponent.measure(c, exactSizeSpec, unspecifiedSizeSpec, textSize);
 
     assertThat(textComponent.getCachedLayout()).isNotNull();
@@ -411,7 +419,7 @@ public class InternalNodeTest {
   @Test
   public void testContextSpecificComponentAssertionFailFormatting() {
     final ComponentsLogger componentsLogger = mock(ComponentsLogger.class);
-    final PerfEvent perfEvent = mock(PerfEvent.class);
+    final PerfEvent        perfEvent        = mock(PerfEvent.class);
     when(componentsLogger.newPerformanceEvent(any(ComponentContext.class), anyInt()))
         .thenReturn(perfEvent);
 

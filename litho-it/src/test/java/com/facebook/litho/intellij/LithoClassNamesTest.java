@@ -15,8 +15,8 @@
  */
 package com.facebook.litho.intellij;
 
-import com.facebook.litho.ClickEvent;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.event.ClickEvent;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.sections.Section;
 import com.facebook.litho.sections.SectionContext;
 import org.junit.Assert;

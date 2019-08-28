@@ -130,10 +130,10 @@ public class DelegateMethodGeneratorTest {
     assertThat(typeSpecDataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
             "@java.lang.Override\n"
-                + "protected com.facebook.litho.Component onCreateLayout(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _result;\n"
-                + "  _result = (com.facebook.litho.Component) TestSpec.onCreateLayout(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "protected com.facebook.litho.component.Component onCreateLayout(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _result;\n"
+                + "  _result = (com.facebook.litho.component.Component) TestSpec.onCreateLayout(\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (boolean) prop,\n"
                 + "    (int) state);\n"
                 + "  return _result;\n"
@@ -204,10 +204,10 @@ public class DelegateMethodGeneratorTest {
     assertThat(typeSpecDataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
             "@java.lang.Override\n"
-                + "protected com.facebook.litho.Component onCreateLayout(com.facebook.litho.ComponentContext c) {\n"
-                + "  com.facebook.litho.Component _result;\n"
-                + "  _result = (com.facebook.litho.Component) TestSpec.onCreateLayout(\n"
-                + "    (com.facebook.litho.ComponentContext) c,\n"
+                + "protected com.facebook.litho.component.Component onCreateLayout(com.facebook.litho.component.ComponentContext c) {\n"
+                + "  com.facebook.litho.component.Component _result;\n"
+                + "  _result = (com.facebook.litho.component.Component) TestSpec.onCreateLayout(\n"
+                + "    (com.facebook.litho.component.ComponentContext) c,\n"
                 + "    (char) optionalParam,\n"
                 + "    (boolean) prop);\n"
                 + "  return _result;\n"

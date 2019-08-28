@@ -9,6 +9,4 @@
   of patent rights can be found in the PATENTS file in the same directory.
 -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.facebook.libfb">
-</manifest>
+<manifest package="com.facebook.libfb"></manifest>

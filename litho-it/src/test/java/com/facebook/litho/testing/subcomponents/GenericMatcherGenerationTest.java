@@ -21,10 +21,10 @@ import static com.facebook.litho.testing.assertj.SubComponentDeepExtractor.deepS
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assume.assumeThat;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.testing.ComponentsRule;
 import com.facebook.litho.testing.specmodels.MyGeneric;

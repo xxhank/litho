@@ -19,13 +19,14 @@ package com.facebook.litho.sections;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.util.Pair;
 import com.facebook.litho.Equivalence;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.EventTriggersContainer;
-import com.facebook.litho.HasEventDispatcher;
-import com.facebook.litho.HasEventTrigger;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventTriggersContainer;
+import com.facebook.litho.event.HasEventDispatcher;
+import com.facebook.litho.event.HasEventTrigger;
 import com.facebook.litho.ResourceResolver;
 import com.facebook.litho.StateContainer;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.sections.annotations.DiffSectionSpec;
 import com.facebook.litho.sections.annotations.GroupSectionSpec;
 import com.facebook.litho.sections.annotations.OnDiff;
@@ -179,7 +180,7 @@ public abstract class Section extends SectionLifecycle
   }
 
   /**
-   * @return te total number of {@link com.facebook.litho.Component} that the subtree of {@link
+   * @return te total number of {@link Component} that the subtree of {@link
    *     Section}s having its root in this {@link Section} generated.
    */
   @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
@@ -188,7 +189,7 @@ public abstract class Section extends SectionLifecycle
   }
 
   /**
-   * Sets the total number of {@link com.facebook.litho.Component} that the subtree of {@link
+   * Sets the total number of {@link Component} that the subtree of {@link
    * Section}s having its root in this {@link Section} generated.
    */
   @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)

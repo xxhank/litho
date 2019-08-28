@@ -12,10 +12,10 @@
 package com.facebook.samples.litho.animations.pageindicators;
 
 import android.graphics.Color;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.Row;
-import com.facebook.litho.Transition;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.Row;
+import com.facebook.litho.transition.Transition;
 import com.facebook.litho.animation.AnimatedProperties;
 import com.facebook.litho.animation.DimensionValue;
 import com.facebook.litho.annotations.LayoutSpec;

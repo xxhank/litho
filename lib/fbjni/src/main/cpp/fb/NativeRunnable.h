@@ -20,32 +20,32 @@
 #include <functional>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-struct JRunnable : public JavaClass<JRunnable> {
-  static auto constexpr kJavaDescriptor = "Ljava/lang/Runnable;";
-};
+        struct JRunnable : public JavaClass<JRunnable> {
+            static auto constexpr kJavaDescriptor = "Ljava/lang/Runnable;";
+        };
 
-struct JNativeRunnable : public HybridClass<JNativeRunnable, JRunnable> {
- public:
-  static auto constexpr kJavaDescriptor = "Lcom/facebook/jni/NativeRunnable;";
+        struct JNativeRunnable : public HybridClass<JNativeRunnable, JRunnable> {
+            public:
+            static auto constexpr kJavaDescriptor = "Lcom/facebook/jni/NativeRunnable;";
 
-  JNativeRunnable(std::function<void()>&& runnable) : runnable_(std::move(runnable)) {}
+            JNativeRunnable(std::function<void()> &&runnable) : runnable_(std::move(runnable)) {}
 
-  static void OnLoad() {
-    registerHybrid({
-        makeNativeMethod("run", JNativeRunnable::run),
-      });
-  }
+            static void OnLoad() {
+                registerHybrid({
+                                   makeNativeMethod("run", JNativeRunnable::run),
+                               });
+            }
 
-  void run() {
-    runnable_();
-  }
+            void run() {
+                runnable_();
+            }
 
- private:
-  std::function<void()> runnable_;
-};
+            private:
+            std::function<void()> runnable_;
+        };
 
 
-} // namespace jni
+    } // namespace jni
 } // namespace facebook

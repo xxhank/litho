@@ -24,7 +24,7 @@ import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.facebook.litho.ComponentHost;
+import com.facebook.litho.component.ComponentHost;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import java.lang.reflect.InvocationTargetException;

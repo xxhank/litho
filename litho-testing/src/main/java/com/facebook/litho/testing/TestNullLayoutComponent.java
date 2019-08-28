@@ -16,8 +16,8 @@
 
 package com.facebook.litho.testing;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 
 public class TestNullLayoutComponent extends Component {
 

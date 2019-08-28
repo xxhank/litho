@@ -24,6 +24,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+
+import com.facebook.litho.debug.DebugOverlayDrawable;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.ArrayList;
 import java.util.List;

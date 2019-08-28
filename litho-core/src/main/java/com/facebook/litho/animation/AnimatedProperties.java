@@ -20,7 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import com.facebook.litho.AnimatableItem;
 import com.facebook.litho.BoundsHelper;
-import com.facebook.litho.ComponentHost;
+import com.facebook.litho.component.ComponentHost;
 import com.facebook.litho.LithoView;
 import java.util.List;
 import javax.annotation.Nullable;

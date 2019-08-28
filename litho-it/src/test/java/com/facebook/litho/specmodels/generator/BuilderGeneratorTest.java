@@ -18,8 +18,8 @@ package com.facebook.litho.specmodels.generator;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.OnEvent;
@@ -159,12 +159,12 @@ public class BuilderGeneratorTest {
     assertThat(dataHolder.getMethodSpecs()).hasSize(2);
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "public static Builder create(com.facebook.litho.ComponentContext context) {\n"
+            "public static Builder create(com.facebook.litho.component.ComponentContext context) {\n"
                 + "  return create(context, 0, 0);\n"
                 + "}\n");
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "public static Builder create(com.facebook.litho.ComponentContext context, int defStyleAttr,\n"
+            "public static Builder create(com.facebook.litho.component.ComponentContext context, int defStyleAttr,\n"
                 + "    int defStyleRes) {\n"
                 + "  final Builder builder = new Builder();\n"
                 + "  Test instance = new Test();\n"
@@ -176,10 +176,10 @@ public class BuilderGeneratorTest {
     assertThat(dataHolder.getTypeSpecs()).hasSize(1);
     assertThat(dataHolder.getTypeSpecs().get(0).toString())
         .isEqualTo(
-            "public static final class Builder extends com.facebook.litho.Component.Builder<Builder> {\n"
+            "public static final class Builder extends com.facebook.litho.component.Component.Builder<Builder> {\n"
                 + "  Test mTest;\n"
                 + "\n"
-                + "  com.facebook.litho.ComponentContext mContext;\n"
+                + "  com.facebook.litho.component.ComponentContext mContext;\n"
                 + "\n"
                 + "  private final java.lang.String[] REQUIRED_PROPS_NAMES = new String[] {\"arg0\", \"names\", \"section\"};\n"
                 + "\n"
@@ -187,7 +187,7 @@ public class BuilderGeneratorTest {
                 + "\n"
                 + "  private final java.util.BitSet mRequired = new java.util.BitSet(REQUIRED_PROPS_COUNT);\n"
                 + "\n"
-                + "  private void init(com.facebook.litho.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
+                + "  private void init(com.facebook.litho.component.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
                 + "      Test testRef) {\n"
                 + "    super.init(context, defStyleAttr, defStyleRes, testRef);\n"
                 + "    mTest = testRef;\n"
@@ -272,10 +272,10 @@ public class BuilderGeneratorTest {
     assertThat(dataHolder.getTypeSpecs()).hasSize(1);
     assertThat(dataHolder.getTypeSpecs().get(0).toString())
         .isEqualTo(
-            "public static final class Builder extends com.facebook.litho.Component.Builder<Builder> {\n"
+            "public static final class Builder extends com.facebook.litho.component.Component.Builder<Builder> {\n"
                 + "  TestResTypeWithVarArgs mTestResTypeWithVarArgs;\n"
                 + "\n"
-                + "  com.facebook.litho.ComponentContext mContext;\n"
+                + "  com.facebook.litho.component.ComponentContext mContext;\n"
                 + "\n"
                 + "  private final java.lang.String[] REQUIRED_PROPS_NAMES = new String[] {\"sizes\"};\n"
                 + "\n"
@@ -283,7 +283,7 @@ public class BuilderGeneratorTest {
                 + "\n"
                 + "  private final java.util.BitSet mRequired = new java.util.BitSet(REQUIRED_PROPS_COUNT);\n"
                 + "\n"
-                + "  private void init(com.facebook.litho.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
+                + "  private void init(com.facebook.litho.component.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
                 + "      TestResTypeWithVarArgs testResTypeWithVarArgsRef) {\n"
                 + "    super.init(context, defStyleAttr, defStyleRes, testResTypeWithVarArgsRef);\n"
                 + "    mTestResTypeWithVarArgs = testResTypeWithVarArgsRef;\n"
@@ -463,10 +463,10 @@ public class BuilderGeneratorTest {
     assertThat(dataHolder.getTypeSpecs()).hasSize(1);
     assertThat(dataHolder.getTypeSpecs().get(0).toString())
         .isEqualTo(
-            "public static final class Builder extends com.facebook.litho.Component.Builder<Builder> {\n"
+            "public static final class Builder extends com.facebook.litho.component.Component.Builder<Builder> {\n"
                 + "  TestDimenResTypeWithBoxFloatArg mTestDimenResTypeWithBoxFloatArg;\n"
                 + "\n"
-                + "  com.facebook.litho.ComponentContext mContext;\n"
+                + "  com.facebook.litho.component.ComponentContext mContext;\n"
                 + "\n"
                 + "  private final java.lang.String[] REQUIRED_PROPS_NAMES = new String[] {\"size\"};\n"
                 + "\n"
@@ -474,7 +474,7 @@ public class BuilderGeneratorTest {
                 + "\n"
                 + "  private final java.util.BitSet mRequired = new java.util.BitSet(REQUIRED_PROPS_COUNT);\n"
                 + "\n"
-                + "  private void init(com.facebook.litho.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
+                + "  private void init(com.facebook.litho.component.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
                 + "      TestDimenResTypeWithBoxFloatArg testDimenResTypeWithBoxFloatArgRef) {\n"
                 + "    super.init(context, defStyleAttr, defStyleRes, testDimenResTypeWithBoxFloatArgRef);\n"
                 + "    mTestDimenResTypeWithBoxFloatArg = testDimenResTypeWithBoxFloatArgRef;\n"
@@ -539,10 +539,10 @@ public class BuilderGeneratorTest {
     assertThat(dataHolder.getTypeSpecs()).hasSize(1);
     assertThat(dataHolder.getTypeSpecs().get(0).toString())
         .isEqualTo(
-            "public static final class Builder extends com.facebook.litho.Component.Builder<Builder> {\n"
+            "public static final class Builder extends com.facebook.litho.component.Component.Builder<Builder> {\n"
                 + "  TestKotlinVarArg mTestKotlinVarArg;\n"
                 + "\n"
-                + "  com.facebook.litho.ComponentContext mContext;\n"
+                + "  com.facebook.litho.component.ComponentContext mContext;\n"
                 + "\n"
                 + "  private final java.lang.String[] REQUIRED_PROPS_NAMES = new String[] {\"numbers\"};\n"
                 + "\n"
@@ -550,7 +550,7 @@ public class BuilderGeneratorTest {
                 + "\n"
                 + "  private final java.util.BitSet mRequired = new java.util.BitSet(REQUIRED_PROPS_COUNT);\n"
                 + "\n"
-                + "  private void init(com.facebook.litho.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
+                + "  private void init(com.facebook.litho.component.ComponentContext context, int defStyleAttr, int defStyleRes,\n"
                 + "      TestKotlinVarArg testKotlinVarArgRef) {\n"
                 + "    super.init(context, defStyleAttr, defStyleRes, testKotlinVarArgRef);\n"
                 + "    mTestKotlinVarArg = testKotlinVarArgRef;\n"

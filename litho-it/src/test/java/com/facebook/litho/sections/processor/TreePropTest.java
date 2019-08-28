@@ -22,8 +22,8 @@ import static android.view.View.MeasureSpec.makeMeasureSpec;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.app.Activity;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.treeprop.TreePropNumberType;

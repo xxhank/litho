@@ -21,7 +21,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.facebook.litho.ComponentHost;
+import com.facebook.litho.component.ComponentHost;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;

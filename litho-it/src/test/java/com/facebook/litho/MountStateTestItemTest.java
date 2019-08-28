@@ -20,7 +20,12 @@ import static com.facebook.litho.testing.assertj.LithoViewAssert.times;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.test.TestItem;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.assertj.LithoViewAssert;
 import com.facebook.litho.testing.helper.ComponentTestHelper;

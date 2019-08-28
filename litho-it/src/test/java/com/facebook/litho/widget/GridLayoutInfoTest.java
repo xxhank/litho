@@ -18,14 +18,14 @@ package com.facebook.litho.widget;
 
 import static androidx.recyclerview.widget.OrientationHelper.HORIZONTAL;
 import static androidx.recyclerview.widget.OrientationHelper.VERTICAL;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.geometry.SizeSpec;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.ArrayList;
 import java.util.List;

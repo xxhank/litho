@@ -19,8 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.EventHandlersController;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventHandlersController;
 import com.facebook.litho.testing.sections.TestTarget;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;

@@ -16,14 +16,20 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.Column.create;
-import static com.facebook.litho.MountState.getComponentClickListener;
-import static com.facebook.litho.MountState.getComponentFocusChangeListener;
-import static com.facebook.litho.MountState.getComponentLongClickListener;
-import static com.facebook.litho.MountState.getComponentTouchListener;
+import static com.facebook.litho.component.Column.create;
+import static com.facebook.litho.mount.MountState.getComponentClickListener;
+import static com.facebook.litho.mount.MountState.getComponentFocusChangeListener;
+import static com.facebook.litho.mount.MountState.getComponentLongClickListener;
+import static com.facebook.litho.mount.MountState.getComponentTouchListener;
 import static com.facebook.litho.testing.helper.ComponentTestHelper.mountComponent;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentClickListener;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentFocusChangeListener;
+import com.facebook.litho.component.ComponentLongClickListener;
+import com.facebook.litho.component.ComponentTouchListener;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;

@@ -25,34 +25,34 @@
 #include <android/log.h>
 
 namespace facebook {
-namespace jni {
-namespace log_ {
+    namespace jni {
+        namespace log_ {
 // the weird name of this namespace is to avoid a conflict with the
 // function named log.
 
-inline void loge(const char* tag, const char* msg) noexcept {
-  __android_log_write(ANDROID_LOG_ERROR, tag, msg);
-}
+            inline void loge(const char *tag, const char *msg) noexcept {
+                __android_log_write(ANDROID_LOG_ERROR, tag, msg);
+            }
 
-template<typename... ARGS>
-inline void loge(const char* tag, const char* msg, ARGS... args) noexcept {
-  __android_log_print(ANDROID_LOG_ERROR, tag, msg, args...);
-}
+            template<typename... ARGS>
+            inline void loge(const char *tag, const char *msg, ARGS... args) noexcept {
+                __android_log_print(ANDROID_LOG_ERROR, tag, msg, args...);
+            }
 
-inline void logf(const char* tag, const char* msg) noexcept {
-  __android_log_write(ANDROID_LOG_FATAL, tag, msg);
-}
+            inline void logf(const char *tag, const char *msg) noexcept {
+                __android_log_write(ANDROID_LOG_FATAL, tag, msg);
+            }
 
-template<typename... ARGS>
-inline void logf(const char* tag, const char* msg, ARGS... args) noexcept {
-  __android_log_print(ANDROID_LOG_FATAL, tag, msg, args...);
-}
+            template<typename... ARGS>
+            inline void logf(const char *tag, const char *msg, ARGS... args) noexcept {
+                __android_log_print(ANDROID_LOG_FATAL, tag, msg, args...);
+            }
 
-template<typename... ARGS>
-[[noreturn]]
-inline void logassert(const char* tag, const char* msg, ARGS... args) noexcept {
-  __android_log_assert(0, tag, msg, args...);
-}
+            template<typename... ARGS>
+            [[noreturn]]
+            inline void logassert(const char *tag, const char *msg, ARGS... args) noexcept {
+                __android_log_assert(0, tag, msg, args...);
+            }
 
 
 #ifdef LOG_TAG
@@ -65,7 +65,9 @@ inline void logassert(const char* tag, const char* msg, ARGS... args) noexcept {
 # define FBJNI_ASSERT(cond) do { if (!(cond)) ::facebook::jni::log_::logassert("log", "%s", #cond); } while(0)
 #endif
 
-}}}
+        }
+    }
+}
 
 #else
 #include <stdlib.h>

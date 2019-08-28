@@ -16,6 +16,12 @@
 package com.facebook.litho;
 
 import androidx.annotation.Nullable;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentsLogger;
+import com.facebook.litho.event.PerfEvent;
+
 import java.util.Map;
 import javax.annotation.CheckReturnValue;
 

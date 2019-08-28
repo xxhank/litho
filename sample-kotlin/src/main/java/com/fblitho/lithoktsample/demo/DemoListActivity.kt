@@ -13,7 +13,7 @@
 package com.fblitho.lithoktsample.demo
 
 import android.os.Bundle
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.LithoView
 import com.fblitho.lithoktsample.NavigatableDemoActivity
 

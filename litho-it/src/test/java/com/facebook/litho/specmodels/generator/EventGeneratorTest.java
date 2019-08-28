@@ -111,7 +111,7 @@ public class EventGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "private void testEventMethod1(com.facebook.litho.HasEventDispatcher _abstract,\n"
+            "private void testEventMethod1(com.facebook.litho.event.HasEventDispatcher _abstract,\n"
                 + "    java.lang.Object arg2, T arg3) {\n"
                 + "  Test _ref = (Test) _abstract;\n"
                 + "  TestSpec.testEventMethod1(\n"
@@ -124,7 +124,7 @@ public class EventGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "private void testEventMethod2(com.facebook.litho.HasEventDispatcher _abstract) {\n"
+            "private void testEventMethod2(com.facebook.litho.event.HasEventDispatcher _abstract) {\n"
                 + "  Test _ref = (Test) _abstract;\n"
                 + "  TestStateContainer stateContainer = getStateContainerWithLazyStateUpdatesApplied(c, _ref);\n"
                 + "  TestSpec.testEventMethod2(\n"
@@ -142,7 +142,7 @@ public class EventGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "public static <T extends java.lang.CharSequence> com.facebook.litho.EventHandler<java.lang.Object> testEventMethod1(com.facebook.litho.ComponentContext c,\n"
+            "public static <T extends java.lang.CharSequence> com.facebook.litho.event.EventHandler<java.lang.Object> testEventMethod1(com.facebook.litho.component.ComponentContext c,\n"
                 + "    java.lang.Object arg2, T arg3) {\n"
                 + "  return newEventHandler(c, -1400079064, new Object[] {\n"
                 + "        c,\n"
@@ -153,7 +153,7 @@ public class EventGeneratorTest {
 
     assertThat(dataHolder.getMethodSpecs().get(1).toString())
         .isEqualTo(
-            "public static com.facebook.litho.EventHandler<java.lang.Object> testEventMethod2(com.facebook.litho.ComponentContext c) {\n"
+            "public static com.facebook.litho.event.EventHandler<java.lang.Object> testEventMethod2(com.facebook.litho.component.ComponentContext c) {\n"
                 + "  return newEventHandler(c, -1400079063, new Object[] {\n"
                 + "        c,\n"
                 + "      });\n"
@@ -165,7 +165,7 @@ public class EventGeneratorTest {
     assertThat(EventGenerator.generateDispatchOnEvent(mSpecModel).toString())
         .isEqualTo(
             "@java.lang.Override\n"
-                + "public java.lang.Object dispatchOnEvent(final com.facebook.litho.EventHandler eventHandler,\n"
+                + "public java.lang.Object dispatchOnEvent(final com.facebook.litho.event.EventHandler eventHandler,\n"
                 + "    final java.lang.Object eventState) {\n"
                 + "  int id = eventHandler.id;\n"
                 + "  switch (id) {\n"
@@ -184,7 +184,7 @@ public class EventGeneratorTest {
                 + "      return null;\n"
                 + "    }\n"
                 + "    case -1048037474: {\n"
-                + "      dispatchErrorEvent((com.facebook.litho.ComponentContext) eventHandler.params[0], (com.facebook.litho.ErrorEvent) eventState);\n"
+                + "      dispatchErrorEvent((com.facebook.litho.component.ComponentContext) eventHandler.params[0], (com.facebook.litho.event.ErrorEvent) eventState);\n"
                 + "      return null;\n"
                 + "    }\n"
                 + "    default:\n"
@@ -200,7 +200,7 @@ public class EventGeneratorTest {
     assertThat(dataHolder.getMethodSpecs()).hasSize(1);
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "public static com.facebook.litho.EventHandler getObjectHandler(com.facebook.litho.ComponentContext context) {\n"
+            "public static com.facebook.litho.event.EventHandler getObjectHandler(com.facebook.litho.component.ComponentContext context) {\n"
                 + "  if (context.getComponentScope() == null) {\n"
                 + "    return null;\n"
                 + "  }\n"
@@ -215,12 +215,12 @@ public class EventGeneratorTest {
     assertThat(dataHolder.getMethodSpecs()).hasSize(1);
     assertThat(dataHolder.getMethodSpecs().get(0).toString())
         .isEqualTo(
-            "static java.lang.Object dispatchObject(com.facebook.litho.EventHandler _eventHandler, int field1,\n"
+            "static java.lang.Object dispatchObject(com.facebook.litho.event.EventHandler _eventHandler, int field1,\n"
                 + "    int field2) {\n"
                 + "  final java.lang.Object _eventState = new java.lang.Object();\n"
                 + "  _eventState.field1 = field1;\n"
                 + "  _eventState.field2 = field2;\n"
-                + "  com.facebook.litho.EventDispatcher _lifecycle = _eventHandler.mHasEventDispatcher.getEventDispatcher();\n"
+                + "  com.facebook.litho.event.EventDispatcher _lifecycle = _eventHandler.mHasEventDispatcher.getEventDispatcher();\n"
                 + "  return (java.lang.Object) _lifecycle.dispatchOnEvent(_eventHandler, _eventState);\n"
                 + "}\n");
   }

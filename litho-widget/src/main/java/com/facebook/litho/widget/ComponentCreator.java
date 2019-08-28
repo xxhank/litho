@@ -16,7 +16,7 @@
 
 package com.facebook.litho.widget;
 
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 
 /** A provider function for a {@link Component}. */
 public interface ComponentCreator {

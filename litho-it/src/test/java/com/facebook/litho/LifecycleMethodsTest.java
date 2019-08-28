@@ -23,6 +23,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,8 +50,8 @@ public class LifecycleMethodsTest {
     ON_UNMOUNT
   }
 
-  private LithoView mLithoView;
-  private ComponentTree mComponentTree;
+  private LithoView                 mLithoView;
+  private ComponentTree             mComponentTree;
   private LifecycleMethodsComponent mComponent;
 
   @Before

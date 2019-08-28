@@ -15,6 +15,9 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentLifecycle;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,63 +31,63 @@ import java.util.Set;
  */
 public class RenderState {
 
-  private final Map<String, ComponentLifecycle.RenderData> mRenderData = new HashMap<>();
-  private final Set<String> mSeenGlobalKeys = new HashSet<>();
+    private final Map<String, ComponentLifecycle.RenderData> mRenderData     = new HashMap<>();
+    private final Set<String>                                mSeenGlobalKeys = new HashSet<>();
 
-  void recordRenderData(List<Component> components) {
-    if (components == null) {
-      return;
+    public void recordRenderData(List<Component> components) {
+        if (components == null) {
+            return;
+        }
+
+        for (int i = 0, size = components.size(); i < size; i++) {
+            recordRenderData(components.get(i));
+        }
+        mSeenGlobalKeys.clear();
     }
 
-    for (int i = 0, size = components.size(); i < size; i++) {
-      recordRenderData(components.get(i));
-    }
-    mSeenGlobalKeys.clear();
-  }
+    public void applyPreviousRenderData(List<Component> components) {
+        if (components == null) {
+            return;
+        }
 
-  void applyPreviousRenderData(List<Component> components) {
-    if (components == null) {
-      return;
-    }
-
-    for (int i = 0, size = components.size(); i < size; i++) {
-      applyPreviousRenderData(components.get(i));
-    }
-  }
-
-  private void recordRenderData(Component component) {
-    if (!component.needsPreviousRenderData()) {
-      throw new RuntimeException(
-          "Trying to record previous render data for component that doesn't support it");
+        for (int i = 0, size = components.size(); i < size; i++) {
+            applyPreviousRenderData(components.get(i));
+        }
     }
 
-    final String key = component.getGlobalKey();
+    private void recordRenderData(Component component) {
+        if (!component.needsPreviousRenderData()) {
+            throw new RuntimeException(
+                "Trying to record previous render data for component that doesn't support it");
+        }
 
-    // Sanity check like in StateHandler
-    if (mSeenGlobalKeys.contains(key)) {
-      // We found two components with the same global key.
-      throw new RuntimeException(
-          "Cannot record previous render data for "
-              + component.getSimpleName()
-              + ", found another Component with the same key: "
-              + key);
+        String key = component.getGlobalKey();
+
+        // Sanity check like in StateHandler
+        if (mSeenGlobalKeys.contains(key)) {
+            // We found two components with the same global key.
+            throw new RuntimeException(
+                "Cannot record previous render data for "
+                    + component.getSimpleName()
+                    + ", found another Component with the same key: "
+                    + key);
+        }
+        mSeenGlobalKeys.add(key);
+
+        ComponentLifecycle.RenderData existingInfo = mRenderData.get(key);
+        ComponentLifecycle.RenderData newInfo      = component.recordRenderData(existingInfo);
+
+        mRenderData.put(key, newInfo);
     }
-    mSeenGlobalKeys.add(key);
 
-    final ComponentLifecycle.RenderData existingInfo = mRenderData.get(key);
-    final ComponentLifecycle.RenderData newInfo = component.recordRenderData(existingInfo);
+    private void applyPreviousRenderData(Component component) {
+        if (!component.needsPreviousRenderData()) {
+            throw new RuntimeException(
+                "Trying to apply previous render data to component that doesn't support it");
+        }
 
-    mRenderData.put(key, newInfo);
-  }
-
-  private void applyPreviousRenderData(Component component) {
-    if (!component.needsPreviousRenderData()) {
-      throw new RuntimeException(
-          "Trying to apply previous render data to component that doesn't support it");
+        String                        key                = component.getGlobalKey();
+        ComponentLifecycle.RenderData previousRenderData = mRenderData.get(key);
+        component.applyPreviousRenderData(previousRenderData);
     }
-
-    final String key = component.getGlobalKey();
-    final ComponentLifecycle.RenderData previousRenderData = mRenderData.get(key);
-    component.applyPreviousRenderData(previousRenderData);
-  }
 }

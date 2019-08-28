@@ -25,8 +25,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutParams;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.geometry.SizeSpec;
 import java.util.List;
 
 /**

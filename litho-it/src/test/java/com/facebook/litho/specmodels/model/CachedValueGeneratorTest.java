@@ -19,8 +19,8 @@ package com.facebook.litho.specmodels.model;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.Component;
-import com.facebook.litho.Row;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCalculateCachedValue;
 import com.facebook.litho.annotations.OnCreateLayout;

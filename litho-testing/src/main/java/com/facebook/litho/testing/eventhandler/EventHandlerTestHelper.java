@@ -20,9 +20,9 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 

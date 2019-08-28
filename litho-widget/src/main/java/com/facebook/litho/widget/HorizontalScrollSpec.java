@@ -16,23 +16,23 @@
 
 package com.facebook.litho.widget;
 
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.UNSPECIFIED;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.UNSPECIFIED;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.HorizontalScrollView;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLayout;
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.Output;
 import com.facebook.litho.R;
-import com.facebook.litho.Size;
-import com.facebook.litho.SizeSpec;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.annotations.FromBoundsDefined;
 import com.facebook.litho.annotations.FromMeasure;

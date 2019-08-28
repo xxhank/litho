@@ -2,8 +2,8 @@
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.widget.Text;
 

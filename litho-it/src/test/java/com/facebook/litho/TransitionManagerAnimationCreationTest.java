@@ -28,7 +28,16 @@ import com.facebook.litho.animation.PropertyAnimation;
 import com.facebook.litho.animation.PropertyHandle;
 import com.facebook.litho.animation.SpringTransition;
 import com.facebook.litho.animation.TransitionAnimationBinding;
+import com.facebook.litho.layout.LayoutOutput;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.layout.LayoutStateOutputIdCalculator;
+import com.facebook.litho.mount.MountState;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
+import com.facebook.litho.transition.Transition;
+import com.facebook.litho.transition.TransitionId;
+import com.facebook.litho.transition.TransitionManager;
+import com.facebook.litho.transition.TransitionSet;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;

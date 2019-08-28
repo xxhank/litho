@@ -100,10 +100,10 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://d.android.com/reference/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="class in com.facebook.litho">com.facebook.litho.ComponentTree.Builder</a></li>
+<li><a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="class in com.facebook.litho">com.facebook.litho.component.ComponentTree.Builder</a></li>
 <li>
 <ul class="inheritance">
-<li>com.facebook.litho.TestComponentTree.Builder</li>
+<li>com.facebook.litho.test.TestComponentTree.Builder</li>
 </ul>
 </li>
 </ul>
@@ -164,17 +164,17 @@ extends <a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../com/facebook/litho/TestComponentTree.Builder.html" title="class in com.facebook.litho">TestComponentTree.Builder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/TestComponentTree.Builder.html#withRoot-com.facebook.litho.Component-">withRoot</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;root)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/TestComponentTree.Builder.html#withRoot-com.facebook.litho.component.Component-">withRoot</a></span>(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;root)</code>
 <div class="block">Specify root for the component tree</div>
 </td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.ComponentTree.Builder">
+<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.component.ComponentTree.Builder">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.facebook.litho.<a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="class in com.facebook.litho">ComponentTree.Builder</a></h3>
-<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#asyncStateUpdates-boolean-">asyncStateUpdates</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#canInterruptAndMoveLayoutsBetweenThreads-boolean-">canInterruptAndMoveLayoutsBetweenThreads</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#hasMounted-boolean-">hasMounted</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#isReconciliationEnabled-boolean-">isReconciliationEnabled</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#layoutThreadHandler-com.facebook.litho.LithoHandler-">layoutThreadHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#logger-com.facebook.litho.ComponentsLogger-java.lang.String-">logger</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#measureListener-com.facebook.litho.ComponentTree.MeasureListener-">measureListener</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#overrideComponentTreeId-int-">overrideComponentTreeId</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#preAllocateMountContentHandler-com.facebook.litho.LithoHandler-">preAllocateMountContentHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#preallocateOnDefaultHandler-boolean-">preallocateOnDefaultHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#previousRenderState-com.facebook.litho.RenderState-">previousRenderState</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#shouldPreallocateMountContentPerMountSpec-boolean-">shouldPreallocateMountContentPerMountSpec</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#stateHandler-com.facebook.litho.StateHandler-">stateHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#useCancelableLayoutFutures-boolean-">useCancelableLayoutFutures</a></code></li>
+<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#asyncStateUpdates-boolean-">asyncStateUpdates</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#canInterruptAndMoveLayoutsBetweenThreads-boolean-">canInterruptAndMoveLayoutsBetweenThreads</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#hasMounted-boolean-">hasMounted</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#isReconciliationEnabled-boolean-">isReconciliationEnabled</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#layoutThreadHandler-com.facebook.litho.LithoHandler-">layoutThreadHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#logger-com.facebook.litho.component.ComponentsLogger-java.lang.String-">logger</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#measureListener-com.facebook.litho.component.ComponentTree.MeasureListener-">measureListener</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#overrideComponentTreeId-int-">overrideComponentTreeId</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#preAllocateMountContentHandler-com.facebook.litho.LithoHandler-">preAllocateMountContentHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#preallocateOnDefaultHandler-boolean-">preallocateOnDefaultHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#previousRenderState-com.facebook.litho.RenderState-">previousRenderState</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#shouldPreallocateMountContentPerMountSpec-boolean-">shouldPreallocateMountContentPerMountSpec</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#stateHandler-com.facebook.litho.StateHandler-">stateHandler</a>, <a href="../../../com/facebook/litho/ComponentTree.Builder.html#useCancelableLayoutFutures-boolean-">useCancelableLayoutFutures</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -197,21 +197,21 @@ extends <a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="withRoot-com.facebook.litho.Component-">
+<a name="withRoot-com.facebook.litho.component.Component-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>withRoot</h4>
 <pre>public&nbsp;<a href="../../../com/facebook/litho/TestComponentTree.Builder.html" title="class in com.facebook.litho">TestComponentTree.Builder</a>&nbsp;withRoot(<a href="../../../com/facebook/litho/Component.html" title="class in com.facebook.litho">Component</a>&nbsp;root)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#withRoot-com.facebook.litho.Component-">ComponentTree.Builder</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#withRoot-com.facebook.litho.component.Component-">ComponentTree.Builder</a></code></span></div>
 <div class="block">Specify root for the component tree
 
  <p>IMPORTANT: If you do not set this, a default root will be set and you can reset root after
  build and attach of the component tree</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#withRoot-com.facebook.litho.Component-">withRoot</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="class in com.facebook.litho">ComponentTree.Builder</a></code></dd>
+<dd><code><a href="../../../com/facebook/litho/ComponentTree.Builder.html#withRoot-com.facebook.litho.component.Component-">withRoot</a></code>&nbsp;in class&nbsp;<code><a href="../../../com/facebook/litho/ComponentTree.Builder.html" title="class in com.facebook.litho">ComponentTree.Builder</a></code></dd>
 </dl>
 </li>
 </ul>

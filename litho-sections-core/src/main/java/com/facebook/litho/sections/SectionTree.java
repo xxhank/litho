@@ -16,7 +16,7 @@
 
 package com.facebook.litho.sections;
 
-import static com.facebook.litho.ComponentsLogger.LogLevel.ERROR;
+import static com.facebook.litho.component.ComponentsLogger.LogLevel.ERROR;
 import static com.facebook.litho.FrameworkLogEvents.EVENT_SECTIONS_CREATE_NEW_TREE;
 import static com.facebook.litho.FrameworkLogEvents.EVENT_SECTIONS_ON_CREATE_CHILDREN;
 import static com.facebook.litho.FrameworkLogEvents.EVENT_SECTIONS_SET_ROOT;
@@ -24,8 +24,8 @@ import static com.facebook.litho.FrameworkLogEvents.PARAM_ATTRIBUTION;
 import static com.facebook.litho.FrameworkLogEvents.PARAM_SECTION_SET_ROOT_SOURCE;
 import static com.facebook.litho.FrameworkLogEvents.PARAM_SET_ROOT_ON_BG_THREAD;
 import static com.facebook.litho.HandlerInstrumenter.instrumentLithoHandler;
-import static com.facebook.litho.ThreadUtils.assertMainThread;
-import static com.facebook.litho.ThreadUtils.isMainThread;
+import static com.facebook.litho.thread.ThreadUtils.assertMainThread;
+import static com.facebook.litho.thread.ThreadUtils.isMainThread;
 
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -35,19 +35,19 @@ import androidx.annotation.UiThread;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.util.Pair;
 import com.facebook.infer.annotation.ThreadConfined;
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentsLogger;
-import com.facebook.litho.ComponentsSystrace;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.EventHandlersController;
-import com.facebook.litho.EventTrigger;
-import com.facebook.litho.EventTriggersContainer;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentsLogger;
+import com.facebook.litho.component.ComponentsSystrace;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventHandlersController;
+import com.facebook.litho.event.EventTrigger;
+import com.facebook.litho.event.EventTriggersContainer;
 import com.facebook.litho.LithoHandler;
 import com.facebook.litho.LithoHandler.DefaultLithoHandler;
-import com.facebook.litho.PerfEvent;
+import com.facebook.litho.event.PerfEvent;
 import com.facebook.litho.StateContainer;
-import com.facebook.litho.ThreadTracingRunnable;
-import com.facebook.litho.ThreadUtils;
+import com.facebook.litho.thread.ThreadTracingRunnable;
+import com.facebook.litho.thread.ThreadUtils;
 import com.facebook.litho.TreeProps;
 import com.facebook.litho.config.ComponentsConfiguration;
 import com.facebook.litho.sections.ChangesetDebugConfiguration.ChangesetDebugListener;
@@ -322,7 +322,7 @@ public class SectionTree {
    * Create a {@link Builder} that can be used to configure a {@link SectionTree}.
    *
    * @param context The {@link SectionContext} taht will be used to create the child {@link
-   *     com.facebook.litho.Component}s
+   *     Component}s
    * @param target The {@link Target} that will be responsible to apply the {@link ChangeSet} to the
    *     UI.
    */

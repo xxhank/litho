@@ -22,8 +22,8 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
 import android.content.Context;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.sections.Children;
 import com.facebook.litho.sections.Section;

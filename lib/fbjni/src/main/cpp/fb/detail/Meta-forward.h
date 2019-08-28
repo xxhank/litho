@@ -16,27 +16,33 @@
 #pragma once
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-template<typename F>
-class JMethod;
-template<typename F>
-class JStaticMethod;
-template<typename F>
-class JNonvirtualMethod;
-template<typename F>
-struct JConstructor;
-template<typename F>
-class JField;
-template<typename F>
-class JStaticField;
+        template<typename F>
+        class JMethod;
+
+        template<typename F>
+        class JStaticMethod;
+
+        template<typename F>
+        class JNonvirtualMethod;
+
+        template<typename F>
+        struct JConstructor;
+
+        template<typename F>
+        class JField;
+
+        template<typename F>
+        class JStaticField;
 
 /// Type traits for Java types (currently providing Java type descriptors)
-template<typename T>
-struct jtype_traits;
+        template<typename T>
+        struct jtype_traits;
 
 /// Type traits for Java methods (currently providing Java type descriptors)
-template<typename F>
-struct jmethod_traits;
+        template<typename F>
+        struct jmethod_traits;
 
-}}
+    }
+}

@@ -17,6 +17,9 @@ package com.facebook.litho;
 
 import com.facebook.litho.animation.AnimationBinding;
 import com.facebook.litho.animation.DelayBinding;
+import com.facebook.litho.transition.Transition;
+import com.facebook.litho.transition.TransitionSet;
+
 import java.util.List;
 
 /**

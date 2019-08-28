@@ -15,7 +15,7 @@
  */
 package com.facebook.litho.testing.logging;
 
-import com.facebook.litho.ComponentsReporter;
+import com.facebook.litho.component.ComponentsReporter;
 import com.facebook.litho.DefaultComponentsReporter;
 
 public class TestComponentsReporter extends DefaultComponentsReporter {

@@ -18,7 +18,7 @@ package com.facebook.litho.testing.treeprop;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnCreateMountContent;
 import com.facebook.litho.annotations.OnPrepare;

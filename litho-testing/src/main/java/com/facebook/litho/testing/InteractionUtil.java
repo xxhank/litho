@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.InstrumentationRegistry;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.LithoViewTestHelper;
-import com.facebook.litho.TestItem;
+import com.facebook.litho.test.TestItem;
 
 /** Utilities for interacting with an app. */
 public class InteractionUtil {

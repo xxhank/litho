@@ -32,7 +32,7 @@ import android.text.Layout.Alignment;
 import android.text.TextUtils.TruncateAt;
 import android.view.Gravity;
 import android.view.View;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.Output;
 import com.facebook.litho.R;
 import com.facebook.litho.config.ComponentsConfiguration;

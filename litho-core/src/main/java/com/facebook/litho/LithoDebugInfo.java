@@ -16,6 +16,8 @@
 
 package com.facebook.litho;
 
+import com.facebook.litho.component.ComponentsPools;
+
 import java.util.ArrayList;
 import java.util.List;
 

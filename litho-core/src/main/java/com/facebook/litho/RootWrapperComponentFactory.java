@@ -15,6 +15,10 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+
 /**
  * Takes a component and returns a new component that it is wrapped in. Used to create a common root
  * wrapper in {@link ComponentTree}.

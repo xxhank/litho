@@ -23,7 +23,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.After;
 import org.junit.Before;

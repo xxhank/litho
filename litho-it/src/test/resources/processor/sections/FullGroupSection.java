@@ -19,13 +19,13 @@ import android.widget.TextView;
 import androidx.annotation.AttrRes;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
-import com.facebook.litho.ClickEvent;
+import com.facebook.litho.event.ClickEvent;
 import com.facebook.litho.CommonUtils;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.Diff;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.HasEventDispatcher;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.HasEventDispatcher;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.StateValue;
 import com.facebook.litho.TreeProps;
@@ -49,7 +49,7 @@ import java.util.BitSet;
  *
  * @prop-required prop1 int
  * @prop-optional prop2 java.lang.String
- * @prop-required prop3 com.facebook.litho.Component
+ * @prop-required prop3 com.facebook.litho.component.Component
  * @prop-required prop4 java.lang.String
  * @prop-required prop5 com.facebook.litho.sections.Section
  * @see com.facebook.litho.sections.processor.integration.resources.FullGroupSectionSpec

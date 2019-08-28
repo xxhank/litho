@@ -17,7 +17,7 @@
 package com.facebook.litho.processor.integration.resources;
 
 import android.content.Context;
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 
@@ -25,7 +25,7 @@ import com.facebook.litho.annotations.OnCreateLayout;
 public class IncorrectOnCreateLayoutArgsComponentSpec {
   @OnCreateLayout
   static Component onCreateLayout(
-      Context context /* error: Expected com.facebook.litho.ComponentContext */) {
+      Context context /* error: Expected com.facebook.litho.component.ComponentContext */) {
     return null;
   }
 }

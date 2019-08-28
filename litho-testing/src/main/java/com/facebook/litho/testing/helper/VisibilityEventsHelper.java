@@ -15,12 +15,12 @@
  */
 package com.facebook.litho.testing.helper;
 
-import com.facebook.litho.ComponentTree;
-import com.facebook.litho.FocusedVisibleEvent;
-import com.facebook.litho.FullImpressionVisibleEvent;
-import com.facebook.litho.InvisibleEvent;
-import com.facebook.litho.UnfocusedVisibleEvent;
-import com.facebook.litho.VisibleEvent;
+import com.facebook.litho.event.FocusedVisibleEvent;
+import com.facebook.litho.event.FullImpressionVisibleEvent;
+import com.facebook.litho.event.InvisibleEvent;
+import com.facebook.litho.event.UnfocusedVisibleEvent;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.event.VisibleEvent;
 import com.facebook.litho.testing.Whitebox;
 
 /**
@@ -31,70 +31,70 @@ import com.facebook.litho.testing.Whitebox;
  */
 public class VisibilityEventsHelper {
 
-  /**
-   * Tries to trigger the requested visibility event on the given component tree on the first
-   * matching visibility output
-   *
-   * @param componentTree the component tree to search
-   * @param visibilityEventType the event to trigger
-   * @return true if a matching object to trigger the event on was found
-   */
-  public static boolean triggerVisibilityEvent(
-      ComponentTree componentTree, Class<?> visibilityEventType) {
-    try {
-      final Object layoutState = getGetMainThreadLayoutState(componentTree);
-      for (int i = 0, size = getVisibilityOutputCount(layoutState); i < size; i++) {
-        final Object visibilityOutput = getVisibilityOutputAt(layoutState, i);
-        if (visibilityEventType == VisibleEvent.class
-            && getEventHandler(visibilityOutput, "Visible") != null) {
-          dispatch(getEventHandler(visibilityOutput, "Visible"), "Visible");
-          return true;
-        } else if (visibilityEventType == InvisibleEvent.class
-            && getEventHandler(visibilityOutput, "Invisible") != null) {
-          dispatch(getEventHandler(visibilityOutput, "Invisible"), "Invisible");
-          return true;
-        } else if (visibilityEventType == FocusedVisibleEvent.class
-            && getEventHandler(visibilityOutput, "Focused") != null) {
-          dispatch(getEventHandler(visibilityOutput, "Focused"), "Focused");
-          return true;
-        } else if (visibilityEventType == UnfocusedVisibleEvent.class
-            && getEventHandler(visibilityOutput, "Unfocused") != null) {
-          dispatch(getEventHandler(visibilityOutput, "Unfocused"), "Unfocused");
-          return true;
-        } else if (visibilityEventType == FullImpressionVisibleEvent.class
-            && getEventHandler(visibilityOutput, "FullImpression") != null) {
-          dispatch(getEventHandler(visibilityOutput, "FullImpression"), "FullImpression");
-          return true;
-        } else {
-          throw new RuntimeException("Unexpected visibility event type: " + visibilityEventType);
+    /**
+     * Tries to trigger the requested visibility event on the given component tree on the first
+     * matching visibility output
+     *
+     * @param componentTree       the component tree to search
+     * @param visibilityEventType the event to trigger
+     * @return true if a matching object to trigger the event on was found
+     */
+    public static boolean triggerVisibilityEvent(
+        ComponentTree componentTree, Class<?> visibilityEventType) {
+        try {
+            Object layoutState = getGetMainThreadLayoutState(componentTree);
+            for (int i = 0, size = getVisibilityOutputCount(layoutState); i < size; i++) {
+                Object visibilityOutput = getVisibilityOutputAt(layoutState, i);
+                if (visibilityEventType == VisibleEvent.class
+                    && getEventHandler(visibilityOutput, "Visible") != null) {
+                    dispatch(getEventHandler(visibilityOutput, "Visible"), "Visible");
+                    return true;
+                } else if (visibilityEventType == InvisibleEvent.class
+                    && getEventHandler(visibilityOutput, "Invisible") != null) {
+                    dispatch(getEventHandler(visibilityOutput, "Invisible"), "Invisible");
+                    return true;
+                } else if (visibilityEventType == FocusedVisibleEvent.class
+                    && getEventHandler(visibilityOutput, "Focused") != null) {
+                    dispatch(getEventHandler(visibilityOutput, "Focused"), "Focused");
+                    return true;
+                } else if (visibilityEventType == UnfocusedVisibleEvent.class
+                    && getEventHandler(visibilityOutput, "Unfocused") != null) {
+                    dispatch(getEventHandler(visibilityOutput, "Unfocused"), "Unfocused");
+                    return true;
+                } else if (visibilityEventType == FullImpressionVisibleEvent.class
+                    && getEventHandler(visibilityOutput, "FullImpression") != null) {
+                    dispatch(getEventHandler(visibilityOutput, "FullImpression"), "FullImpression");
+                    return true;
+                } else {
+                    throw new RuntimeException("Unexpected visibility event type: " + visibilityEventType);
+                }
+            }
+            return false;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-      }
-      return false;
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
     }
-  }
 
-  private static Object getGetMainThreadLayoutState(ComponentTree componentTree) {
-    return Whitebox.invokeMethod(componentTree, "getMainThreadLayoutState");
-  }
+    private static Object getGetMainThreadLayoutState(ComponentTree componentTree) {
+        return Whitebox.invokeMethod(componentTree, "getMainThreadLayoutState");
+    }
 
-  private static int getVisibilityOutputCount(Object layoutState) {
-    return (int) Whitebox.invokeMethod(layoutState, "getVisibilityOutputCount");
-  }
+    private static int getVisibilityOutputCount(Object layoutState) {
+        return (int) Whitebox.invokeMethod(layoutState, "getVisibilityOutputCount");
+    }
 
-  private static Object getVisibilityOutputAt(Object layoutState, int i) {
-    return Whitebox.invokeMethod(layoutState, "getVisibilityOutputAt", i);
-  }
+    private static Object getVisibilityOutputAt(Object layoutState, int i) {
+        return Whitebox.invokeMethod(layoutState, "getVisibilityOutputAt", i);
+    }
 
-  private static Object getEventHandler(Object layoutState, String name) {
-    return Whitebox.invokeMethod(layoutState, "get" + name + "EventHandler");
-  }
+    private static Object getEventHandler(Object layoutState, String name) {
+        return Whitebox.invokeMethod(layoutState, "get" + name + "EventHandler");
+    }
 
-  private static void dispatch(Object visibilityOutput, String name) throws ClassNotFoundException {
-    Whitebox.invokeMethod(
-        Class.forName("com.facebook.litho.EventDispatcherUtils"),
-        "dispatchOn" + name,
-        visibilityOutput);
-  }
+    private static void dispatch(Object visibilityOutput, String name) throws ClassNotFoundException {
+        Whitebox.invokeMethod(
+            Class.forName("com.facebook.litho.event.EventDispatcherUtils"),
+            "dispatchOn" + name,
+            visibilityOutput);
+    }
 }

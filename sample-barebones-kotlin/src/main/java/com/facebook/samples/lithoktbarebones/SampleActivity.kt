@@ -16,7 +16,7 @@ import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import androidx.recyclerview.widget.OrientationHelper
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.LithoView
 import com.facebook.litho.widget.ComponentRenderInfo
 import com.facebook.litho.widget.LinearLayoutInfo

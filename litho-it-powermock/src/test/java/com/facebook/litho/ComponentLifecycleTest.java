@@ -33,8 +33,15 @@ import static org.powermock.api.mockito.PowerMockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import com.facebook.infer.annotation.OkToExtend;
-import com.facebook.litho.ComponentLifecycle.MountType;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.component.ComponentLifecycle;
+import com.facebook.litho.component.ComponentLifecycle.MountType;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.yoga.YogaMeasureFunction;
 import com.facebook.yoga.YogaMeasureOutput;

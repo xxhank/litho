@@ -12,8 +12,8 @@
 
 package com.fblitho.lithoktsample.animations.animationcomposition
 
-import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
+import com.facebook.litho.component.Component
+import com.facebook.litho.component.ComponentContext
 import com.facebook.litho.annotations.FromEvent
 import com.facebook.litho.annotations.LayoutSpec
 import com.facebook.litho.annotations.OnCreateLayout
@@ -58,9 +58,9 @@ object ComposedAnimationsComponentSpec {
 
   @OnEvent(OnCheckIsSameItemEvent::class)
   fun isSameItem(
-      c: ComponentContext,
-      @FromEvent previousItem: Data,
-      @FromEvent nextItem: Data
+          c: ComponentContext,
+          @FromEvent previousItem: Data,
+          @FromEvent nextItem: Data
   ): Boolean = previousItem.number == nextItem.number
 
   private fun generateData(number: Int): List<Data> {

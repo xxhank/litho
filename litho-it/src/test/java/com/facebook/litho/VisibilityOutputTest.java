@@ -16,13 +16,17 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.LayoutStateOutputIdCalculator.calculateVisibilityOutputId;
-import static com.facebook.litho.LayoutStateOutputIdCalculator.getLevelFromId;
-import static com.facebook.litho.LayoutStateOutputIdCalculator.getSequenceFromId;
+import static com.facebook.litho.layout.LayoutStateOutputIdCalculator.calculateVisibilityOutputId;
+import static com.facebook.litho.layout.LayoutStateOutputIdCalculator.getLevelFromId;
+import static com.facebook.litho.layout.LayoutStateOutputIdCalculator.getSequenceFromId;
 import static java.lang.Long.toBinaryString;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import android.graphics.Rect;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.layout.LayoutStateOutputIdCalculator;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +41,7 @@ public class VisibilityOutputTest {
   private static final int MAX_LEVEL_TEST = 255;
   private static final int MAX_SEQ_TEST = 65535;
 
-  private Component mComponent;
+  private Component        mComponent;
   private VisibilityOutput mVisibilityOutput;
 
   @Before

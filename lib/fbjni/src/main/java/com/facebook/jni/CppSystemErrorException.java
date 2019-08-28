@@ -19,15 +19,15 @@ import com.facebook.jni.annotations.DoNotStrip;
 
 @DoNotStrip
 public class CppSystemErrorException extends CppException {
-  int errorCode;
+    int errorCode;
 
-  @DoNotStrip
-  public CppSystemErrorException(String message, int errorCode) {
-    super(message);
-    this.errorCode = errorCode;
-  }
+    @DoNotStrip
+    public CppSystemErrorException(String message, int errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
 
-  public int getErrorCode() {
-    return errorCode;
-  }
+    public int getErrorCode() {
+        return errorCode;
+    }
 }

@@ -24,7 +24,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.facebook.litho.WorkingRangeContainer.RangeTuple;
+import com.facebook.litho.WorkingRange.WorkingRange;
+import com.facebook.litho.WorkingRange.WorkingRangeContainer;
+import com.facebook.litho.WorkingRange.WorkingRangeContainer.RangeTuple;
+import com.facebook.litho.WorkingRange.WorkingRangeStatusHandler;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import java.util.Map;
 import org.junit.Before;
@@ -36,9 +40,9 @@ public class WorkingRangeContainerTest {
   private static final String NAME = "workingRangeName";
 
   private WorkingRangeContainer mWorkingRangeContainer;
-  private WorkingRange mWorkingRange;
-  private Component mComponent;
-  private Component mComponent2;
+  private WorkingRange          mWorkingRange;
+  private Component             mComponent;
+  private Component             mComponent2;
 
   @Before
   public void setup() {

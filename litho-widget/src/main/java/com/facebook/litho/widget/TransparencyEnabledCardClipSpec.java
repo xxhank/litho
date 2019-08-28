@@ -17,7 +17,7 @@ package com.facebook.litho.widget;
 
 import android.content.Context;
 import android.graphics.Color;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnCreateMountContent;
 import com.facebook.litho.annotations.OnMount;

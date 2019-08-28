@@ -18,8 +18,8 @@ package com.facebook.litho.testing.assertj;
 
 import static org.hamcrest.core.Is.is;
 
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLifecycle;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLifecycle;
 import com.facebook.litho.testing.subcomponents.InspectableComponent;
 import org.assertj.core.api.Condition;
 import org.assertj.core.description.TextDescription;

@@ -16,7 +16,7 @@
 package com.facebook.litho.sections.tti;
 
 import android.widget.Toast;
-import com.facebook.litho.RenderCompleteEvent;
+import com.facebook.litho.event.RenderCompleteEvent;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.OnEvent;
 import com.facebook.litho.annotations.Param;

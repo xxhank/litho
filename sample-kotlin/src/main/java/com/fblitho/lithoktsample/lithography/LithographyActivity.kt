@@ -15,7 +15,7 @@ package com.fblitho.lithoktsample.lithography
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import com.facebook.litho.Component
+import com.facebook.litho.component.Component
 import com.facebook.litho.LithoView
 import com.facebook.litho.sections.SectionContext
 import com.facebook.litho.sections.widget.RecyclerCollectionComponent

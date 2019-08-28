@@ -13,7 +13,7 @@
 package com.facebook.samples.litho.animations.expandableelement;
 
 import android.os.Bundle;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.samples.litho.NavigatableDemoActivity;
 import java.util.Arrays;

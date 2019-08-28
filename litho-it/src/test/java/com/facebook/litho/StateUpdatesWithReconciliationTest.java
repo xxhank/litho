@@ -22,7 +22,13 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.os.Looper;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsLogger;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.helper.ComponentTestHelper;
 import com.facebook.litho.testing.logging.TestComponentsLogger;
@@ -40,12 +46,12 @@ public class StateUpdatesWithReconciliationTest {
 
   private static final String mLogTag = "logTag";
 
-  private ShadowLooper mLayoutThreadShadowLooper;
+  private ShadowLooper     mLayoutThreadShadowLooper;
   private ComponentContext mContext;
-  private DummyComponent mRootComponent;
-  private ComponentTree mComponentTree;
+  private DummyComponent   mRootComponent;
+  private ComponentTree    mComponentTree;
   private ComponentsLogger mComponentsLogger;
-  private LithoView mLithoView;
+  private LithoView        mLithoView;
 
   private static final int STATE_VALUE_INITIAL_COUNT = 4;
 
@@ -134,8 +140,8 @@ public class StateUpdatesWithReconciliationTest {
 
   @Test
   public void update_state_sync() {
-    LayoutState current = mComponentTree.getMainThreadLayoutState();
-    InternalNode layout = current.getLayoutRoot();
+    LayoutState  current = mComponentTree.getMainThreadLayoutState();
+    InternalNode layout  = current.getLayoutRoot();
 
     mComponentTree.updateStateSync(
         current.getRootComponent().getGlobalKey(), createStateUpdate(), "test");

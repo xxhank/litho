@@ -16,7 +16,7 @@
 
 package com.facebook.litho.sections;
 
-import com.facebook.litho.EventHandler;
+import com.facebook.litho.event.EventHandler;
 import java.lang.ref.WeakReference;
 
 public class SectionTreeLoadingEventHandler extends EventHandler<LoadingEvent> {

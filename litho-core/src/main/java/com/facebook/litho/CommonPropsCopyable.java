@@ -15,7 +15,9 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.ComponentContext;
+
 /** Describing a class which allows the transfer of props onto an {@link InternalNode}. */
-interface CommonPropsCopyable {
+public interface CommonPropsCopyable {
   void copyInto(ComponentContext c, InternalNode node);
 }

@@ -13,10 +13,10 @@ package com.fblitho.lithoktsample.logging
 
 import android.util.Log
 import com.facebook.litho.BaseComponentsLogger
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.ComponentsLogger
+import com.facebook.litho.component.ComponentContext
+import com.facebook.litho.component.ComponentsLogger
 import com.facebook.litho.FrameworkLogEvents
-import com.facebook.litho.PerfEvent
+import com.facebook.litho.event.PerfEvent
 import com.facebook.litho.TreeProps
 import java.util.concurrent.atomic.AtomicInteger
 

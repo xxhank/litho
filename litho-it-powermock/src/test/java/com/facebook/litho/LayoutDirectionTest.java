@@ -29,6 +29,12 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentHost;
+import com.facebook.litho.component.Row;
 import com.facebook.litho.testing.TestComponent;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.shadows.LayoutDirectionViewGroupShadow;

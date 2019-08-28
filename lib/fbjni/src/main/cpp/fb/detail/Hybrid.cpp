@@ -16,26 +16,27 @@
 #include <fb/fbjni.h>
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-namespace detail {
+        namespace detail {
 
-local_ref<HybridData> HybridData::create() {
-  return newInstance();
+            local_ref<HybridData> HybridData::create() {
+                return newInstance();
+            }
+
+        }
+
+        namespace {
+            void deleteNative(alias_ref<jclass>, jlong ptr) {
+                delete reinterpret_cast<detail::BaseHybridClass *>(ptr);
+            }
+        }
+
+        void HybridDataOnLoad() {
+            registerNatives("com/facebook/jni/HybridData$Destructor", {
+                makeNativeMethod("deleteNative", deleteNative),
+            });
+        }
+
+    }
 }
-
-}
-
-namespace {
-void deleteNative(alias_ref<jclass>, jlong ptr) {
-  delete reinterpret_cast<detail::BaseHybridClass*>(ptr);
-}
-}
-
-void HybridDataOnLoad() {
-  registerNatives("com/facebook/jni/HybridData$Destructor", {
-      makeNativeMethod("deleteNative", deleteNative),
-  });
-}
-
-}}

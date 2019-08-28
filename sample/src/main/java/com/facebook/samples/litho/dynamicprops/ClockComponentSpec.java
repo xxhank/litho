@@ -12,9 +12,9 @@
 package com.facebook.samples.litho.dynamicprops;
 
 import android.content.Context;
-import com.facebook.litho.ComponentContext;
-import com.facebook.litho.ComponentLayout;
-import com.facebook.litho.Size;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentLayout;
+import com.facebook.litho.geometry.Size;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnBindDynamicValue;
 import com.facebook.litho.annotations.OnCreateMountContent;

@@ -22,6 +22,11 @@ import static org.mockito.Mockito.mock;
 
 import android.os.Handler;
 import android.os.Looper;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.ComponentsLogger;
 import com.facebook.litho.testing.TestLayoutComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.junit.Before;
@@ -35,11 +40,11 @@ public class ComponentTreeBuilderTest {
   private static final String mLogTag = "logTag";
   private final Object mLayoutLock = new Object();
 
-  private ComponentContext mContext;
-  private Component mRoot;
+  private ComponentContext      mContext;
+  private Component             mRoot;
   private ComponentTree.Builder mComponentTreeBuilder;
-  private Looper mLooper;
-  private ComponentsLogger mComponentsLogger;
+  private Looper                mLooper;
+  private ComponentsLogger      mComponentsLogger;
 
   @Before
   public void setup() throws Exception {

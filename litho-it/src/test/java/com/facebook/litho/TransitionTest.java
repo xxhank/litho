@@ -23,9 +23,17 @@ import static org.mockito.Mockito.when;
 import android.graphics.Rect;
 import com.facebook.litho.animation.AnimatedProperties;
 import com.facebook.litho.animation.DimensionValue;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.layout.LayoutOutput;
+import com.facebook.litho.layout.LayoutState;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.testing.util.InlineLayoutSpec;
+import com.facebook.litho.transition.Transition;
+import com.facebook.litho.transition.TransitionId;
+import com.facebook.litho.transition.TransitionUtils;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

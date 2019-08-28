@@ -16,7 +16,7 @@
 
 package com.facebook.litho.widget;
 
-import com.facebook.litho.ComponentTree;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.LithoHandler;
 import javax.annotation.Nullable;
 

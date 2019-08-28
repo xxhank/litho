@@ -16,8 +16,8 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
 import static com.facebook.litho.testing.helper.ComponentTestHelper.mountComponent;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Matchers.any;
@@ -26,7 +26,13 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
 import com.facebook.litho.specmodels.internal.ImmutableList;
 import com.facebook.litho.testing.TestAttachDetachComponent;
 import com.facebook.litho.testing.TestWrappedComponentProp;
@@ -155,11 +161,11 @@ public class AttachDetachHandlerTest {
 
   @Test
   public void testReplaceRootWithDifferentComponent() {
-    final Component c3 = spy(TestAttachDetachComponent.create(mContext).build());
-    final Component c4 = spy(TestAttachDetachComponent.create(mContext).build());
-    final Component c1 = spy(TestAttachDetachComponent.create(mContext, c3, c4).build());
-    final Component c2 = spy(TestAttachDetachComponent.create(mContext).build());
-    final Component r1 = spy(TestAttachDetachComponent.create(mContext, c1, c2).build());
+    final Component c3        = spy(TestAttachDetachComponent.create(mContext).build());
+    final Component c4        = spy(TestAttachDetachComponent.create(mContext).build());
+    final Component c1        = spy(TestAttachDetachComponent.create(mContext, c3, c4).build());
+    final Component c2        = spy(TestAttachDetachComponent.create(mContext).build());
+    final Component r1        = spy(TestAttachDetachComponent.create(mContext, c1, c2).build());
     final LithoView lithoView = mountComponent(mContext, Column.create(mContext).child(r1).build());
     final AttachDetachHandler attachDetachHandler =
         lithoView.getComponentTree().getAttachDetachHandler();

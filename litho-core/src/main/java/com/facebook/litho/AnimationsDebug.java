@@ -18,6 +18,8 @@ package com.facebook.litho;
 
 import android.util.Log;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.layout.LayoutOutput;
+import com.facebook.litho.layout.LayoutState;
 
 /** Utilities for animations debug. */
 public class AnimationsDebug {

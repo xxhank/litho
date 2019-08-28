@@ -18,7 +18,7 @@ package com.facebook.litho.testing.viewtree;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.testing.helper.ComponentTestHelper;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;

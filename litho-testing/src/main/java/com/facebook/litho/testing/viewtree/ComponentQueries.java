@@ -18,7 +18,7 @@ package com.facebook.litho.testing.viewtree;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import com.facebook.litho.ComponentHost;
+import com.facebook.litho.component.ComponentHost;
 import com.facebook.litho.MatrixDrawable;
 import com.facebook.litho.drawable.ComparableDrawableWrapper;
 import com.google.common.base.Predicate;

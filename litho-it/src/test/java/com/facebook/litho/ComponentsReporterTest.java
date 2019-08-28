@@ -16,12 +16,13 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.ComponentsReporter.LogLevel.ERROR;
-import static com.facebook.litho.ComponentsReporter.LogLevel.FATAL;
-import static com.facebook.litho.ComponentsReporter.LogLevel.WARNING;
+import static com.facebook.litho.component.ComponentsReporter.LogLevel.ERROR;
+import static com.facebook.litho.component.ComponentsReporter.LogLevel.FATAL;
+import static com.facebook.litho.component.ComponentsReporter.LogLevel.WARNING;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
+import com.facebook.litho.component.ComponentsReporter;
 import com.facebook.litho.testing.logging.TestComponentsReporter;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import org.assertj.core.api.ThrowableAssert;

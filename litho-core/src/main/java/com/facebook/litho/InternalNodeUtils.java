@@ -15,23 +15,25 @@
  */
 package com.facebook.litho;
 
+import com.facebook.litho.component.ComponentContext;
+
 public class InternalNodeUtils {
 
-  static InternalNode create(ComponentContext context) {
-    NodeConfig.InternalNodeFactory factory = NodeConfig.sInternalNodeFactory;
-    if (factory != null) {
-      return factory.create(context);
-    } else {
-      return new DefaultInternalNode(context);
+    public static InternalNode create(ComponentContext context) {
+        NodeConfig.InternalNodeFactory factory = NodeConfig.sInternalNodeFactory;
+        if (factory != null) {
+            return factory.create(context);
+        } else {
+            return new DefaultInternalNode(context);
+        }
     }
-  }
 
-  /**
-   * Check that the root of the nested tree we are going to use, has valid layout directions with
-   * its main tree holder node.
-   */
-  static boolean hasValidLayoutDirectionInNestedTree(InternalNode holder, InternalNode nestedTree) {
-    return nestedTree.isLayoutDirectionInherit()
-        || (nestedTree.getResolvedLayoutDirection() == holder.getResolvedLayoutDirection());
-  }
+    /**
+     * Check that the root of the nested tree we are going to use, has valid layout directions with
+     * its main tree holder node.
+     */
+    public static boolean hasValidLayoutDirectionInNestedTree(InternalNode holder, InternalNode nestedTree) {
+        return nestedTree.isLayoutDirectionInherit()
+            || (nestedTree.getResolvedLayoutDirection() == holder.getResolvedLayoutDirection());
+    }
 }

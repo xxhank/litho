@@ -16,7 +16,7 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.Column.create;
+import static com.facebook.litho.component.Column.create;
 import static com.facebook.litho.testing.helper.ComponentTestHelper.mountComponent;
 import static com.facebook.yoga.YogaEdge.ALL;
 import static com.facebook.yoga.YogaEdge.BOTTOM;
@@ -30,6 +30,10 @@ import android.graphics.drawable.Drawable;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.drawable.ComparableDrawableWrapper;
 import com.facebook.litho.it.R;
 import com.facebook.litho.testing.TestComponent;

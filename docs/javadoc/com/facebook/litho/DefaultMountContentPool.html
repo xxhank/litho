@@ -103,7 +103,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../com/facebook/litho/RecyclePool.html" title="class in com.facebook.litho">com.facebook.litho.RecyclePool</a></li>
 <li>
 <ul class="inheritance">
-<li>com.facebook.litho.DefaultMountContentPool</li>
+<li>com.facebook.litho.mount.DefaultMountContentPool</li>
 </ul>
 </li>
 </ul>
@@ -166,7 +166,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://d.android.com/reference/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/DefaultMountContentPool.html#acquire-Context-com.facebook.litho.ComponentLifecycle-">acquire</a></span>(Context&nbsp;c,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/DefaultMountContentPool.html#acquire-Context-com.facebook.litho.component.ComponentLifecycle-">acquire</a></span>(Context&nbsp;c,
        <a href="../../../com/facebook/litho/ComponentLifecycle.html" title="class in com.facebook.litho">ComponentLifecycle</a>&nbsp;lifecycle)</code>
 <div class="block">Return a recycled mount content, or a newly acquired mount content if there isn't one to
  recycle.</div>
@@ -174,7 +174,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/DefaultMountContentPool.html#maybePreallocateContent-Context-com.facebook.litho.ComponentLifecycle-">maybePreallocateContent</a></span>(Context&nbsp;c,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../com/facebook/litho/DefaultMountContentPool.html#maybePreallocateContent-Context-com.facebook.litho.component.ComponentLifecycle-">maybePreallocateContent</a></span>(Context&nbsp;c,
                        <a href="../../../com/facebook/litho/ComponentLifecycle.html" title="class in com.facebook.litho">ComponentLifecycle</a>&nbsp;lifecycle)</code>
 <div class="block">Pre-allocates one item for the given ComponentLifecycle if the preallocation count is less than
  the pool size, otherwise does nothing.</div>
@@ -196,7 +196,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 <code><a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="https://d.android.com/reference/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.MountContentPool">
+<li class="blockList"><a name="methods.inherited.from.class.com.facebook.litho.mount.MountContentPool">
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;com.facebook.litho.<a href="../../../com/facebook/litho/MountContentPool.html" title="interface in com.facebook.litho">MountContentPool</a></h3>
@@ -242,7 +242,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="acquire-Context-com.facebook.litho.ComponentLifecycle-">
+<a name="acquire-Context-com.facebook.litho.component.ComponentLifecycle-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -250,14 +250,14 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 <h4>acquire</h4>
 <pre>public&nbsp;<a href="https://d.android.com/reference/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;acquire(Context&nbsp;c,
                       <a href="../../../com/facebook/litho/ComponentLifecycle.html" title="class in com.facebook.litho">ComponentLifecycle</a>&nbsp;lifecycle)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html#acquire-Context-com.facebook.litho.ComponentLifecycle-">MountContentPool</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html#acquire-Context-com.facebook.litho.component.ComponentLifecycle-">MountContentPool</a></code></span></div>
 <div class="block">Return a recycled mount content, or a newly acquired mount content if there isn't one to
  recycle. Should not return null.
 
  <p>NB: This can be called from multiple threads, possibly at the same time!</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../com/facebook/litho/MountContentPool.html#acquire-Context-com.facebook.litho.ComponentLifecycle-">acquire</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html" title="interface in com.facebook.litho">MountContentPool</a></code></dd>
+<dd><code><a href="../../../com/facebook/litho/MountContentPool.html#acquire-Context-com.facebook.litho.component.ComponentLifecycle-">acquire</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html" title="interface in com.facebook.litho">MountContentPool</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -274,7 +274,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
 </dl>
 </li>
 </ul>
-<a name="maybePreallocateContent-Context-com.facebook.litho.ComponentLifecycle-">
+<a name="maybePreallocateContent-Context-com.facebook.litho.component.ComponentLifecycle-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -286,7 +286,7 @@ implements <a href="../../../com/facebook/litho/MountContentPool.html" title="in
  the pool size, otherwise does nothing.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../com/facebook/litho/MountContentPool.html#maybePreallocateContent-Context-com.facebook.litho.ComponentLifecycle-">maybePreallocateContent</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html" title="interface in com.facebook.litho">MountContentPool</a></code></dd>
+<dd><code><a href="../../../com/facebook/litho/MountContentPool.html#maybePreallocateContent-Context-com.facebook.litho.component.ComponentLifecycle-">maybePreallocateContent</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/facebook/litho/MountContentPool.html" title="interface in com.facebook.litho">MountContentPool</a></code></dd>
 </dl>
 </li>
 </ul>

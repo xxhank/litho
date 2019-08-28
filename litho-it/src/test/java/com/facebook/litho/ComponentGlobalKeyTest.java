@@ -21,6 +21,11 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 import android.util.Pair;
 import android.view.View;
 import com.facebook.litho.annotations.OnCreateLayout;
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentKeyUtils;
+import com.facebook.litho.component.ComponentsLogger;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.TestViewComponent;
 import com.facebook.litho.testing.logging.TestComponentsLogger;
@@ -88,8 +93,8 @@ public class ComponentGlobalKeyTest {
     int layoutSpecId = component.getTypeId();
     int nestedLayoutSpecId = layoutSpecId - 1;
 
-    final Component column = Column.create(mContext).build();
-    final int columnSpecId = column.getTypeId();
+    final Component column       = Column.create(mContext).build();
+    final int       columnSpecId = column.getTypeId();
 
     final LithoView lithoView = getLithoView(component);
 

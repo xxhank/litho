@@ -18,6 +18,8 @@ package com.facebook.litho;
 
 import android.graphics.Rect;
 
+import com.facebook.litho.layout.LayoutOutput;
+
 /** Interface used to expose a limited API of {@link LayoutOutput} to the animations package. */
 public interface AnimatableItem {
 

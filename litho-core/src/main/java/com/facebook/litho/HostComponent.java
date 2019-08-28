@@ -19,103 +19,111 @@ package com.facebook.litho;
 import android.content.Context;
 import android.os.Build;
 import android.util.SparseArray;
+
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentHost;
 import com.facebook.litho.config.ComponentsConfiguration;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.mount.DisabledMountContentPool;
+import com.facebook.litho.mount.MountContentPool;
+
 import javax.annotation.Nullable;
 
-class HostComponent extends Component {
+public class HostComponent extends Component {
 
-  /**
-   * We duplicate mComponentDynamicProps here, in order to provide {@link
-   * #setCommonDynamicProps(SparseArray)} to HostComponent only, which is used in LayoutState to
-   * pass Common Dynamic Props from other Components that do not mount a view
-   */
-  @Nullable private SparseArray<DynamicValue<?>> mCommonDynamicProps;
+    /**
+     * We duplicate mComponentDynamicProps here, in order to provide {@link
+     * #setCommonDynamicProps(SparseArray)} to HostComponent only, which is used in LayoutState to
+     * pass Common Dynamic Props from other Components that do not mount a view
+     */
+    @Nullable private SparseArray<DynamicValue<?>> mCommonDynamicProps;
 
-  protected HostComponent() {
-    super("HostComponent");
-  }
-
-  @Override
-  protected MountContentPool onCreateMountContentPool() {
-    if (ComponentsConfiguration.disableComponentHostPool) {
-      return new DisabledMountContentPool();
+    protected HostComponent() {
+        super("HostComponent");
     }
-    return super.onCreateMountContentPool();
-  }
 
-  @Override
-  protected Object onCreateMountContent(Context c) {
-    return new ComponentHost(c);
-  }
-
-  @Override
-  protected void onMount(ComponentContext c, Object convertContent) {
-    final ComponentHost host = (ComponentHost) convertContent;
-
-    if (Build.VERSION.SDK_INT >= 11) {
-      // We need to do this in case an external user of this ComponentHost has manually set alpha
-      // to 0, which will mean that it won't draw anything.
-      host.setAlpha(1.0f);
+    @Override
+    protected MountContentPool onCreateMountContentPool() {
+        if (ComponentsConfiguration.disableComponentHostPool) {
+            return new DisabledMountContentPool();
+        }
+        return super.onCreateMountContentPool();
     }
-  }
 
-  @Override
-  protected void onUnmount(ComponentContext c, Object mountedContent) {
-    final ComponentHost host = (ComponentHost) mountedContent;
-
-    // Some hosts might be duplicating parent state which could be 'pressed' and under certain
-    // conditions that state might not be cleared from this host and carried to next reuse,
-    // therefore applying wrong drawable state. Particular case where this might happen is when
-    // host is unmounted as soon as click event is triggered, and host is unmounted before it has
-    // chance to reset its internal pressed state.
-    if (host.isPressed()) {
-      host.setPressed(false);
+    @Override
+    protected Object onCreateMountContent(Context c) {
+        return new ComponentHost(c);
     }
-  }
 
-  @Override
-  public MountType getMountType() {
-    return MountType.VIEW;
-  }
+    @Override
+    protected void onMount(ComponentContext c, Object convertContent) {
+        ComponentHost host = (ComponentHost) convertContent;
 
-  static HostComponent create() {
-    return new HostComponent();
-  }
+        if (Build.VERSION.SDK_INT >= 11) {
+            // We need to do this in case an external user of this ComponentHost has manually set alpha
+            // to 0, which will mean that it won't draw anything.
+            host.setAlpha(1.0f);
+        }
+    }
 
-  @Override
-  public boolean isEquivalentTo(Component other) {
-    return this == other;
-  }
+    @Override
+    protected void onUnmount(ComponentContext c, Object mountedContent) {
+        ComponentHost host = (ComponentHost) mountedContent;
 
-  @Override
-  protected int poolSize() {
-    return 45;
-  }
+        // Some hosts might be duplicating parent state which could be 'pressed' and under certain
+        // conditions that state might not be cleared from this host and carried to next reuse,
+        // therefore applying wrong drawable state. Particular case where this might happen is when
+        // host is unmounted as soon as click event is triggered, and host is unmounted before it has
+        // chance to reset its internal pressed state.
+        if (host.isPressed()) {
+            host.setPressed(false);
+        }
+    }
 
-  @Override
-  protected boolean shouldUpdate(Component previous, Component next) {
-    return true;
-  }
+    @Override
+    public MountType getMountType() {
+        return MountType.VIEW;
+    }
 
-  @Nullable
-  @Override
-  SparseArray<DynamicValue<?>> getCommonDynamicProps() {
-    return mCommonDynamicProps;
-  }
+    public static HostComponent create() {
+        return new HostComponent();
+    }
 
-  @Override
-  boolean hasCommonDynamicProps() {
-    return mCommonDynamicProps != null;
-  }
+    @Override
+    public boolean isEquivalentTo(Component other) {
+        return this == other;
+    }
 
-  /**
-   * Sets common dynamic Props. Used in {@link LayoutState} to pass dynamic props from a component,
-   * to the host, that's wrapping it
-   *
-   * @param commonDynamicProps common dynamic props to set.
-   * @see LayoutState#createHostLayoutOutput(LayoutState, InternalNode, boolean)
-   */
-  void setCommonDynamicProps(SparseArray<DynamicValue<?>> commonDynamicProps) {
-    mCommonDynamicProps = commonDynamicProps;
-  }
+    @Override
+    protected int poolSize() {
+        return 45;
+    }
+
+    @Override
+    protected boolean shouldUpdate(Component previous, Component next) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public SparseArray<DynamicValue<?>> getCommonDynamicProps() {
+        return mCommonDynamicProps;
+    }
+
+    @Override
+    public boolean hasCommonDynamicProps() {
+        return mCommonDynamicProps != null;
+    }
+
+    /**
+     * Sets common dynamic Props. Used in {@link LayoutState} to pass dynamic props from a component,
+     * to the host, that's wrapping it
+     *
+     * @param commonDynamicProps common dynamic props to set.
+     * @see LayoutState#createHostLayoutOutput(LayoutState, InternalNode, boolean)
+     */
+    public void setCommonDynamicProps(SparseArray<DynamicValue<?>> commonDynamicProps) {
+        mCommonDynamicProps = commonDynamicProps;
+    }
 }

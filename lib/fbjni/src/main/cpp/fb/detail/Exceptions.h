@@ -42,22 +42,22 @@
 #endif
 
 namespace facebook {
-namespace jni {
+    namespace jni {
 
-class JThrowable;
+        class JThrowable;
 
-class JCppException : public JavaClass<JCppException, JThrowable> {
- public:
-  static auto constexpr kJavaDescriptor = "Lcom/facebook/jni/CppException;";
+        class JCppException : public JavaClass<JCppException, JThrowable> {
+            public:
+            static auto constexpr kJavaDescriptor = "Lcom/facebook/jni/CppException;";
 
-  static local_ref<JCppException> create(const char* str) {
-    return newInstance(make_jstring(str));
-  }
+            static local_ref<JCppException> create(const char *str) {
+                return newInstance(make_jstring(str));
+            }
 
-  static local_ref<JCppException> create(const std::exception& ex) {
-    return newInstance(make_jstring(ex.what()));
-  }
-};
+            static local_ref<JCppException> create(const std::exception &ex) {
+                return newInstance(make_jstring(ex.what()));
+            }
+        };
 
 // JniException ////////////////////////////////////////////////////////////////////////////////////
 
@@ -69,37 +69,38 @@ class JCppException : public JavaClass<JCppException, JThrowable> {
  *
  * Note: the what() method of this class is not thread-safe (t6900503).
  */
-class JniException : public std::exception {
- public:
-  JniException();
-  ~JniException();
+        class JniException : public std::exception {
+            public:
+            JniException();
 
-  explicit JniException(alias_ref<jthrowable> throwable);
+            ~JniException();
 
-  JniException(JniException &&rhs);
+            explicit JniException(alias_ref<jthrowable> throwable);
 
-  JniException(const JniException &other);
+            JniException(JniException &&rhs);
 
-  local_ref<JThrowable> getThrowable() const noexcept;
+            JniException(const JniException &other);
 
-  virtual const char* what() const noexcept;
+            local_ref<JThrowable> getThrowable() const noexcept;
 
-  void setJavaException() const noexcept;
+            virtual const char *what() const noexcept;
 
- private:
-  global_ref<JThrowable> throwable_;
-  mutable std::string what_;
-  mutable bool isMessageExtracted_;
-  const static std::string kExceptionMessageFailure_;
+            void setJavaException() const noexcept;
 
-  void populateWhat() const noexcept;
-};
+            private:
+            global_ref<JThrowable> throwable_;
+            mutable std::string what_;
+            mutable bool isMessageExtracted_;
+            const static std::string kExceptionMessageFailure_;
+
+            void populateWhat() const noexcept;
+        };
 
 // Exception throwing & translating functions //////////////////////////////////////////////////////
 
 // Functions that throw C++ exceptions
 
-static const int kMaxExceptionMessageBufferSize = 512;
+        static const int kMaxExceptionMessageBufferSize = 512;
 
 // These methods are the preferred way to throw a Java exception from
 // a C++ function.  They create and throw a C++ exception which wraps
@@ -107,21 +108,24 @@ static const int kMaxExceptionMessageBufferSize = 512;
 // translatePendingCppExceptionToJavaException is called at the
 // topmost level of the native stack, the wrapped Java exception is
 // thrown to the java caller.
-template<typename... Args>
-[[noreturn]] void throwNewJavaException(const char* throwableName, const char* fmt, Args... args) {
-  int msgSize = snprintf(nullptr, 0, fmt, args...);
+        template<typename... Args>
+        [[noreturn]] void
+        throwNewJavaException(const char *throwableName, const char *fmt, Args... args) {
+            int msgSize = snprintf(nullptr, 0, fmt, args...);
 
-  char *msg = (char*) alloca(msgSize + 1);
-  snprintf(msg, kMaxExceptionMessageBufferSize, fmt, args...);
-  throwNewJavaException(throwableName, msg);
-}
+            char *msg = (char *) alloca(msgSize + 1);
+            snprintf(msg, kMaxExceptionMessageBufferSize, fmt, args...);
+            throwNewJavaException(throwableName, msg);
+        }
 
 // Identifies any pending C++ exception and throws it as a Java exception. If the exception can't
 // be thrown, it aborts the program.
-void translatePendingCppExceptionToJavaException();
+        void translatePendingCppExceptionToJavaException();
 
 #ifndef FBJNI_NO_EXCEPTION_PTR
-local_ref<JThrowable> getJavaExceptionForCppException(std::exception_ptr ptr);
+
+        local_ref<JThrowable> getJavaExceptionForCppException(std::exception_ptr ptr);
+
 #endif
 
 /***
@@ -129,11 +133,12 @@ local_ref<JThrowable> getJavaExceptionForCppException(std::exception_ptr ptr);
  * call lyra::setLibraryIdentifierFunction before calling this if
  * build ids are desirable.
  */
-local_ref<JThrowable> getJavaExceptionForCppBackTrace();
+        local_ref<JThrowable> getJavaExceptionForCppBackTrace();
 
-local_ref<JThrowable> getJavaExceptionForCppBackTrace(const char* msg);
+        local_ref<JThrowable> getJavaExceptionForCppBackTrace(const char *msg);
 
 // For convenience, some exception names in java.lang are available here.
-const char* const gJavaLangIllegalArgumentException = "java/lang/IllegalArgumentException";
+        const char *const gJavaLangIllegalArgumentException = "java/lang/IllegalArgumentException";
 
-}}
+    }
+}

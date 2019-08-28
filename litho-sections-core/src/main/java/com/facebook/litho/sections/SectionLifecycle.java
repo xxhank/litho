@@ -17,10 +17,10 @@
 package com.facebook.litho.sections;
 
 import androidx.annotation.Nullable;
-import com.facebook.litho.EventDispatcher;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.EventTrigger;
-import com.facebook.litho.EventTriggerTarget;
+import com.facebook.litho.event.EventDispatcher;
+import com.facebook.litho.event.EventHandler;
+import com.facebook.litho.event.EventTrigger;
+import com.facebook.litho.event.EventTriggerTarget;
 import com.facebook.litho.StateContainer;
 import com.facebook.litho.TreeProps;
 import com.facebook.litho.annotations.OnCreateTreeProp;

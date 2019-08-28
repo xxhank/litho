@@ -18,6 +18,7 @@ package com.facebook.litho;
 
 import static org.junit.Assert.assertTrue;
 
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.litho.widget.Text;
 import org.junit.Before;

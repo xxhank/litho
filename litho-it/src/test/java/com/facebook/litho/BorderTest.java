@@ -24,6 +24,9 @@ import android.graphics.DashPathEffect;
 import android.graphics.DiscretePathEffect;
 import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
+
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.geometry.Border;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
 import com.facebook.yoga.YogaEdge;
 import org.junit.Test;
@@ -201,8 +204,8 @@ public class BorderTest {
 
   @Test
   public void testEffectSetting() {
-    final ComponentContext c = new ComponentContext(application);
-    Border border = Border.create(c).dashEffect(new float[] {1f, 1f}, 0f).build();
+    final ComponentContext c      = new ComponentContext(application);
+    Border                 border = Border.create(c).dashEffect(new float[] {1f, 1f}, 0f).build();
     assertThat(border.mPathEffect).isInstanceOf(DashPathEffect.class);
 
     border = Border.create(c).discreteEffect(1f, 0f).build();

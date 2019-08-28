@@ -16,10 +16,10 @@
 
 package com.facebook.litho;
 
-import static com.facebook.litho.ComponentTree.create;
-import static com.facebook.litho.SizeSpec.AT_MOST;
-import static com.facebook.litho.SizeSpec.EXACTLY;
-import static com.facebook.litho.SizeSpec.makeSizeSpec;
+import static com.facebook.litho.component.ComponentTree.create;
+import static com.facebook.litho.geometry.SizeSpec.AT_MOST;
+import static com.facebook.litho.geometry.SizeSpec.EXACTLY;
+import static com.facebook.litho.geometry.SizeSpec.makeSizeSpec;
 import static com.facebook.litho.testing.Whitebox.getInternalState;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -29,10 +29,23 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
 import android.os.Looper;
+
+import com.facebook.litho.component.Column;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
+import com.facebook.litho.component.ComponentTree;
+import com.facebook.litho.component.Row;
+import com.facebook.litho.geometry.Size;
+import com.facebook.litho.geometry.SizeSpec;
+import com.facebook.litho.layout.LayoutState;
+import com.facebook.litho.layout.LayoutThreadPoolConfigurationImpl;
 import com.facebook.litho.testing.TestDrawableComponent;
 import com.facebook.litho.testing.TestLayoutComponent;
 import com.facebook.litho.testing.Whitebox;
 import com.facebook.litho.testing.testrunner.ComponentsTestRunner;
+import com.facebook.litho.thread.ThreadPoolLayoutHandler;
+import com.facebook.litho.thread.ThreadUtils;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
@@ -333,7 +346,7 @@ public class ComponentTreeTest {
   public void testSetRootAndSizeSpecWithTreeProps() {
     ComponentTree componentTree = create(mContext, mComponent).build();
 
-    final Size size = new Size();
+    final Size      size      = new Size();
     final TreeProps treeProps = new TreeProps();
     treeProps.put(Object.class, "hello world");
 
@@ -408,7 +421,7 @@ public class ComponentTreeTest {
 
   @Test
   public void testRootWrapperComponent() {
-    final Component component = TestLayoutComponent.create(mContext).build();
+    final Component component        = TestLayoutComponent.create(mContext).build();
     final Component wrapperComponent = TestLayoutComponent.create(mContext).build();
 
     ErrorBoundariesConfiguration.rootWrapperComponentFactory =

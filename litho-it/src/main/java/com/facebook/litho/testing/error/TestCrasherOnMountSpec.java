@@ -16,7 +16,7 @@
 package com.facebook.litho.testing.error;
 
 import android.content.Context;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.annotations.MountSpec;
 import com.facebook.litho.annotations.OnCreateMountContent;

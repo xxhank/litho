@@ -58,8 +58,8 @@ The reason is that, by default, transition keys are only visible within the scop
 
 There are two steps to take to change transition key type:
 
-1. Use [`Component.Builder#transitionKeyType()`](/javadoc/com/facebook/litho/Component.Builder.html#transitionKeyType-com.facebook.litho.Transition.TransitionKeyType-) when assigning a key to a `Component`.
-2. When creating a `Transition` use a version of [`Transition.create()`](/javadoc/com/facebook/litho/Transition.html#create-com.facebook.litho.Transition.TransitionKeyType-java.lang.String-) that takes `TransitionKeyType` argument along with the key itself.
+1. Use [`Component.Builder#transitionKeyType()`](/javadoc/com/facebook/litho/Component.Builder.html#transitionKeyType-com.facebook.litho.transition.Transition.TransitionKeyType-) when assigning a key to a `Component`.
+2. When creating a `Transition` use a version of [`Transition.create()`](/javadoc/com/facebook/litho/Transition.html#create-com.facebook.litho.transition.Transition.TransitionKeyType-java.lang.String-) that takes `TransitionKeyType` argument along with the key itself.
 
 Here is how we would fix the sample using `TransitionKeyType.GLOBAL` (*lines 14, 33*):
 

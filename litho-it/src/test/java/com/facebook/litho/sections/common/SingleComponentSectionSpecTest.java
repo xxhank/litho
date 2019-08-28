@@ -21,7 +21,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.facebook.litho.Component;
+import com.facebook.litho.component.Component;
 import com.facebook.litho.Diff;
 import com.facebook.litho.sections.Change;
 import com.facebook.litho.sections.ChangeSet;

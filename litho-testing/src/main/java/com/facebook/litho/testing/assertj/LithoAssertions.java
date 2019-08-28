@@ -16,8 +16,8 @@
 
 package com.facebook.litho.testing.assertj;
 
-import com.facebook.litho.Component;
-import com.facebook.litho.ComponentContext;
+import com.facebook.litho.component.Component;
+import com.facebook.litho.component.ComponentContext;
 import com.facebook.litho.LithoView;
 import com.facebook.litho.StateValue;
 import javax.annotation.CheckReturnValue;

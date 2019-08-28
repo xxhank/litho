@@ -24,5 +24,5 @@ import java.util.List;
  * this view itself.
  */
 public interface HasLithoViewChildren {
-  void obtainLithoViewChildren(List<LithoView> lithoViews);
+    void obtainLithoViewChildren(List<LithoView> lithoViews);
 }
