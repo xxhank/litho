@@ -1,6 +1,7 @@
 package com.le123.ysdq.ng.module.feed;
 
 import com.agx.scaffold.JxFunc;
+import com.agx.scaffold.JxTextUtils;
 import com.facebook.litho.Column;
 import com.facebook.litho.Component;
 import com.facebook.litho.EventHandler;
@@ -24,8 +25,14 @@ import com.facebook.litho.sections.annotations.OnCreateService;
 import com.facebook.litho.sections.annotations.OnRefresh;
 import com.facebook.litho.sections.annotations.OnUnbindService;
 import com.facebook.litho.sections.annotations.OnViewportChanged;
+import com.facebook.litho.sections.common.DataDiffSection;
+import com.facebook.litho.sections.common.OnCheckIsSameContentEvent;
+import com.facebook.litho.sections.common.OnCheckIsSameItemEvent;
+import com.facebook.litho.sections.common.RenderEvent;
 import com.facebook.litho.sections.common.SingleComponentSection;
+import com.facebook.litho.widget.ComponentRenderInfo;
 import com.facebook.litho.widget.Progress;
+import com.facebook.litho.widget.RenderInfo;
 import com.facebook.litho.widget.Text;
 import com.facebook.yoga.YogaAlign;
 import com.facebook.yoga.YogaEdge;
@@ -37,18 +44,43 @@ import lombok.Builder;
 import lombok.NonNull;
 
 @GroupSectionSpec class FeedListSpec {
+    @OnEvent(RenderEvent.class)
+    static RenderInfo onRender(SectionContext context, @FromEvent RowViewModel model) {
+        return ComponentRenderInfo.create()
+            .component(buildComponent(context, model))
+            .build();
+    }
+
+    @OnEvent(OnCheckIsSameItemEvent.class)
+    static boolean onCheckIsSameItem(SectionContext context, @FromEvent RowViewModel previousItem
+        , @FromEvent RowViewModel nextItem) {
+        return JxTextUtils.equals(previousItem.id, nextItem.id);
+    }
+
+    @OnEvent(OnCheckIsSameContentEvent.class)
+    static boolean onCheckIsSameContent(SectionContext context, @FromEvent RowViewModel previousItem
+        , @FromEvent RowViewModel nextItem) {
+        return JxTextUtils.equals(previousItem.id, nextItem.id);
+    }
+
     @OnCreateChildren static Children onCreateChildren(SectionContext context
         , @State List<RowViewModel> rowViewModels
         , @State boolean hasMore) {
 
         // JxLogger.i("%d", rowViewModels.size());
         Children.Builder builder = Children.create();
-        for (RowViewModel rowViewModel : rowViewModels) {
-            builder.child(SingleComponentSection.create(context)
-                .key(rowViewModel.id)
-                .component(buildComponent(context, rowViewModel))
-            );
-        }
+        builder.child(DataDiffSection.<RowViewModel>create(context)
+            .data(rowViewModels)
+            .renderEventHandler(FeedList.onRender(context))
+            .onCheckIsSameItemEventHandler(FeedList.onCheckIsSameItem(context))
+            .onCheckIsSameContentEventHandler(FeedList.onCheckIsSameContent(context)));
+
+//        for (RowViewModel rowViewModel : rowViewModels) {
+//            builder.child(SingleComponentSection.create(context)
+//                .key(rowViewModel.id)
+//                .component(buildComponent(context, rowViewModel))
+//            );
+//        }
         if (hasMore) {
             builder.child(SingleComponentSection.create(context)
                 .component(Column.create(context).child(

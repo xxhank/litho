@@ -57,13 +57,6 @@ public class FeedActivity extends AppCompatActivity {
                             // JxLogger.i("%s %d", rec.name, rec.data.size());
                             // JxLogger.i("style %s", rec.style);
                             switch (rec.style) {
-                                case ChannelPageFetcher.Response.Data.Rec.STYLE_SPECIAL:
-                                case ChannelPageFetcher.Response.Data.Rec.STYLE_FEED:
-                                case ChannelPageFetcher.Response.Data.Rec.STYLE_FEED_SHORT_VIDEO: {
-                                    List<ChannelPageFetcher.Response.Data.Rec.DataX> dataXList = rec.data;
-                                    buildRowData(dataXList.subList(0, 1), 1, true, model.rows, pageIndex);
-                                    break;
-                                }
                                 case ChannelPageFetcher.Response.Data.Rec.STYLE_TWO: {
                                     List<ChannelPageFetcher.Response.Data.Rec.DataX> dataXList = rec.data;
                                     buildRowData(dataXList, 2, true, model.rows, pageIndex);
@@ -86,6 +79,9 @@ public class FeedActivity extends AppCompatActivity {
                                     buildRowData(dataXList.subList(1, dataXList.size()), 3, false, model.rows, pageIndex);
                                     break;
                                 }
+                                case ChannelPageFetcher.Response.Data.Rec.STYLE_SPECIAL:
+                                case ChannelPageFetcher.Response.Data.Rec.STYLE_FEED:
+                                case ChannelPageFetcher.Response.Data.Rec.STYLE_FEED_SHORT_VIDEO:
                                 default: {
                                     List<ChannelPageFetcher.Response.Data.Rec.DataX> dataXList = rec.data;
                                     buildRowData(dataXList.subList(0, 1), 1, true, model.rows, pageIndex);
