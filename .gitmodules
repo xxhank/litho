@@ -1,3 +1,6 @@
 [submodule "ysdq-ng"]
 	path = ysdq-ng
 	url = https://wangchao%40aggrx.com@gitee.com/woxc/ysdq-ng.git
+[submodule "scaffold"]
+	path = scaffold
+	url = https://3400679421%40qq.com@gitee.com/alittledream/ascaffold.git
