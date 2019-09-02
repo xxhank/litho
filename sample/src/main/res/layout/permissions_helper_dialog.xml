@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="270dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_round_corner_white"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="帮助"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="26dp"
+        android:text="当前应用缺少必要权限 \n请点击 设置-权限 打开电话和存储 \n权限，以正常使用视频聚合极速版功能"
+        android:textColor="#99000000"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/set_tv"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rectangle_with_circle_45"
+        android:gravity="center"
+        android:text="设置"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</LinearLayout>

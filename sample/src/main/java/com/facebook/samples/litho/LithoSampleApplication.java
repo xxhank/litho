@@ -12,7 +12,8 @@
 
 package com.facebook.samples.litho;
 
-import android.app.Application;
+import androidx.multidex.MultiDexApplication;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -22,21 +23,27 @@ import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin;
 import com.facebook.flipper.plugins.litho.LithoFlipperDescriptors;
 import com.facebook.soloader.SoLoader;
 
-public class LithoSampleApplication extends Application {
+public class LithoSampleApplication extends MultiDexApplication {
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
+    @Override
+    public void onCreate() {
+        super.onCreate();
 
-    Fresco.initialize(this);
-    SoLoader.init(this, false);
+        Fresco.initialize(this);
+        SoLoader.init(this, false);
 
-    if (FlipperUtils.shouldEnableFlipper(this)) {
-      final FlipperClient client = AndroidFlipperClient.getInstance(this);
-      final DescriptorMapping descriptorMapping = DescriptorMapping.withDefaults();
-      LithoFlipperDescriptors.add(descriptorMapping);
-      client.addPlugin(new InspectorFlipperPlugin(this, descriptorMapping));
-      client.start();
+        if (FlipperUtils.shouldEnableFlipper(this)) {
+            FlipperClient     client            = AndroidFlipperClient.getInstance(this);
+            DescriptorMapping descriptorMapping = DescriptorMapping.withDefaults();
+            LithoFlipperDescriptors.add(descriptorMapping);
+            client.addPlugin(new InspectorFlipperPlugin(this, descriptorMapping));
+            client.start();
+        }
     }
-  }
+
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        MultiDex.install(this);
+//    }
 }

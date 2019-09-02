@@ -33,17 +33,47 @@ android {
     lintOptions {
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    signingConfigs {
+        debug {
+            storeFile file("ysdq.keystore")
+            storePassword 'le123apk'
+            keyAlias 'china'
+            keyPassword 'le123apk'
+            v2SigningEnabled false
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        demo {
+            dimension "default"
+            applicationId "com.le123.ysdq.ng"
+            versionName '3.1.5'
+            signingConfig signingConfigs.debug
+        }
+    }
 }
 
 dependencies {
+    implementation project(':scaffold')
+
+    //  implementation project(':blockcanary-analyzer')
+    implementation project(':blockcanary-android')
+
     implementation project(':litho-core')
     implementation project(':litho-widget')
     implementation project(':litho-fresco')
     implementation project(':litho-sections-core')
     implementation project(':litho-sections-widget')
+
     compileOnly project(':litho-sections-annotations')
     annotationProcessor project(':litho-processor')
     annotationProcessor project(':litho-sections-processor')
+
 
     // First-party
     implementation deps.soloader
@@ -60,6 +90,39 @@ dependencies {
     // Support Library
     implementation deps.supportAppCompat
     implementation deps.supportRecyclerView
+
+    // 显示fps
+    implementation 'jp.wasabeef:takt:2.0.1'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    // for FilenameUtility
+    implementation 'commons-io:commons-io:20030203.000550'
+
+    // 权限管理
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    // 简化代码书写
+    implementation 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    // 卡顿监控
+    // implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+    // debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
+    //  releaseImplementation 'com.github.markzhai:blockcanary-no-op:1.5.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    // 显示fps
+    implementation 'jp.wasabeef:takt:2.0.1'
 
     // Integration test only
     androidTestImplementation project(':litho-espresso')
