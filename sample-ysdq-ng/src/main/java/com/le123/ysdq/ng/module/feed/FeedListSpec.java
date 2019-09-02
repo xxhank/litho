@@ -78,7 +78,7 @@ import lombok.NonNull;
 //        for (RowViewModel rowViewModel : rowViewModels) {
 //            builder.child(SingleComponentSection.create(context)
 //                .key(rowViewModel.id)
-//                .component(buildComponent(context, rowViewModel))
+//                .component(createComponent(context, rowViewModel))
 //            );
 //        }
         if (hasMore) {
