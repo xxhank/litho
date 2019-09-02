@@ -28,11 +28,11 @@ import com.le123.ysdq.ng.module.graphy.item.parts.TitleComponent;
 public class GraphyItemComponentSpec {
 
     @OnCreateLayout
-    static Component onCreateLayout(ComponentContext c, @Prop GraphyListSpec.Album artist) {
+    static Component onCreateLayout(ComponentContext c, @Prop GraphyListSpec.Album artist, @Prop float imageRatio) {
         return Column.create(c)
             .child(
                 Column.create(c)
-                    .child(FeedImageComponent.create(c).images(new String[]{artist.url}))
+                    .child(FeedImageComponent.create(c).images(new String[]{artist.url}).imageRatio(imageRatio))
                     .child(TitleComponent.create(c).title(artist.title))
                     .child(ActionsComponent.create(c)))
             .child(FooterComponent.create(c).text(artist.subTitle))

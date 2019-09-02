@@ -32,23 +32,21 @@ import com.facebook.litho.sections.widget.RecyclerCollectionComponent;
 import com.facebook.litho.sections.widget.RecyclerConfiguration;
 import com.facebook.litho.widget.ComponentRenderInfo;
 import com.facebook.litho.widget.RenderInfo;
+import com.facebook.litho.widget.SnapUtil;
 import com.facebook.samples.litho.lithography.FeedImageComponent;
 
 import java.util.Arrays;
 
-import static androidx.recyclerview.widget.LinearSmoothScroller.SNAP_TO_START;
-
 @LayoutSpec
 public class FeedImageComponentSpec {
-
     private static final RecyclerConfiguration LIST_CONFIGURATION =
         new ListRecyclerConfiguration(
-            LinearLayoutManager.HORIZONTAL, /*reverseLayout*/ false, SNAP_TO_START);
+            LinearLayoutManager.HORIZONTAL, /*reverseLayout*/ false, SnapUtil.SNAP_TO_START);
 
     @OnCreateLayout
-    static Component onCreateLayout(ComponentContext c, @Prop String[] images) {
+    static Component onCreateLayout(ComponentContext c, @Prop String[] images, @Prop float imageRatio) {
         return images.length == 1
-               ? createImageComponent(c, images[0]).build()
+               ? createImageComponent(c, images[0], imageRatio).build()
                : RecyclerCollectionComponent.create(c)
                    .disablePTR(true)
                    .recyclerConfiguration(LIST_CONFIGURATION)
@@ -63,13 +61,13 @@ public class FeedImageComponentSpec {
     }
 
     @OnEvent(RenderEvent.class)
-    static RenderInfo onRender(ComponentContext c, @FromEvent String model) {
-        return ComponentRenderInfo.create().component(createImageComponent(c, model).build()).build();
+    static RenderInfo onRender(ComponentContext c, @FromEvent String model, @Prop float imageRatio) {
+        return ComponentRenderInfo.create().component(createImageComponent(c, model, imageRatio).build()).build();
     }
 
-    private static Component.Builder createImageComponent(ComponentContext c, String image) {
+    private static Component.Builder createImageComponent(ComponentContext c, String image, float imageRatio) {
         DraweeController controller = Fresco.newDraweeControllerBuilder().setUri(image).build();
 
-        return FrescoImage.create(c).controller(controller).imageAspectRatio(2f);
+        return FrescoImage.create(c).controller(controller).imageAspectRatio(imageRatio);
     }
 }

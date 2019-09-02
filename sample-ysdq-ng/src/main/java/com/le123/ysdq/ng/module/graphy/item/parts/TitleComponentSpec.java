@@ -19,7 +19,6 @@ import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.Prop;
 import com.facebook.litho.widget.Text;
 import com.facebook.yoga.YogaEdge;
-import com.facebook.yoga.YogaPositionType;
 
 import static android.graphics.Typeface.BOLD;
 import static com.facebook.litho.annotations.ResType.STRING;
@@ -33,10 +32,10 @@ public class TitleComponentSpec {
             .text(title)
             .textStyle(BOLD)
             .textSizeDip(14)
-            .backgroundColor(0xDDFFFFFF)
-            .positionType(YogaPositionType.ABSOLUTE)
-            .positionDip(YogaEdge.BOTTOM, 4)
-            .positionDip(YogaEdge.LEFT, 4)
+//            .backgroundColor(0xDDFFFFFF)
+//            .positionType(YogaPositionType.ABSOLUTE)
+//            .positionDip(YogaEdge.BOTTOM, 4)
+//            .positionDip(YogaEdge.LEFT, 4)
             .paddingDip(YogaEdge.HORIZONTAL, 6)
             .build();
     }
