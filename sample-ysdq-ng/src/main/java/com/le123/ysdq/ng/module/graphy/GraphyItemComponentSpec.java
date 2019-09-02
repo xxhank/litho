@@ -33,8 +33,8 @@ public class GraphyItemComponentSpec {
             .child(
                 Column.create(c)
                     .child(FeedImageComponent.create(c).images(new String[]{artist.url}).imageRatio(imageRatio))
-                    .child(TitleComponent.create(c).title(artist.title))
                     .child(ActionsComponent.create(c)))
+            .child(TitleComponent.create(c).title(artist.title))
             .child(FooterComponent.create(c).text(artist.subTitle))
             .build();
     }
