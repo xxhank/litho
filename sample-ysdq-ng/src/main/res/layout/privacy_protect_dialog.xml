@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/privacy_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_dialog">
+
+        <ImageView
+            android:id="@+id/dialog_content_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/privacy_content_sl"
+            android:background="#d9d9d9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/dialog_content_line"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/negative_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:text="不同意"
+                android:textColor="#99000000"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/positive_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:text="同意并继续"
+                android:textColor="#3599f8"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="#d9d9d9" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/privacy_content_sl"
+            android:layout_width="290dp"
+            android:layout_height="360dp"
+            android:layout_below="@id/iv_title"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="17dp"
+            android:scrollbarSize="2dp"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/privacy_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="7dp"
+                android:textSize="15sp" />
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/iv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="用户协议与隐私保护"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</RelativeLayout>

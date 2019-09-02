@@ -58,6 +58,13 @@ include ':yoga'
 include ':yogajni'
 include ':fbjni'
 
+// include ':ysdq-ng'
+include ':sample-ysdq-ng'
+
+include ':scaffold'
+include ':blockcanary-analyzer'
+include ':blockcanary-android'
+
 project(':yoga').projectDir = file('lib/yoga')
 project(':yogajni').projectDir = file('lib/yogajni')
 project(':fbjni').projectDir = file('lib/fbjni')
