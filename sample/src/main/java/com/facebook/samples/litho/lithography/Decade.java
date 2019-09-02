@@ -17,17 +17,17 @@ import com.facebook.litho.widget.ComponentRenderInfo;
 import com.facebook.litho.widget.RenderInfo;
 
 public class Decade implements Datum {
-  public int year;
+    public int year;
 
-  public Decade(int year) {
-    this.year = year;
-  }
+    public Decade(int year) {
+        this.year = year;
+    }
 
-  @Override
-  public RenderInfo createComponent(ComponentContext c) {
-    return ComponentRenderInfo.create()
-        .component(DecadeSeparator.create(c).decade(this).build())
-        .isSticky(true)
-        .build();
-  }
+    @Override
+    public RenderInfo createComponent(ComponentContext c) {
+        return ComponentRenderInfo.create()
+            .component(DecadeSeparator.create(c).decade(this).build())
+            .isSticky(true)
+            .build();
+    }
 }

@@ -12,10 +12,6 @@
 
 package com.facebook.samples.litho.lithography;
 
-import static android.graphics.Color.GRAY;
-import static android.graphics.Typeface.ITALIC;
-import static com.facebook.litho.annotations.ResType.STRING;
-
 import com.facebook.litho.Column;
 import com.facebook.litho.Component;
 import com.facebook.litho.ComponentContext;
@@ -25,14 +21,18 @@ import com.facebook.litho.annotations.Prop;
 import com.facebook.litho.widget.Text;
 import com.facebook.yoga.YogaEdge;
 
+import static android.graphics.Color.GRAY;
+import static android.graphics.Typeface.ITALIC;
+import static com.facebook.litho.annotations.ResType.STRING;
+
 @LayoutSpec
 public class FooterComponentSpec {
 
-  @OnCreateLayout
-  static Component onCreateLayout(ComponentContext c, @Prop(resType = STRING) String text) {
-    return Column.create(c)
-        .paddingDip(YogaEdge.ALL, 8)
-        .child(Text.create(c).text(text).textSizeDip(14).textColor(GRAY).textStyle(ITALIC))
-        .build();
-  }
+    @OnCreateLayout
+    static Component onCreateLayout(ComponentContext c, @Prop(resType = STRING) String text) {
+        return Column.create(c)
+            .paddingDip(YogaEdge.ALL, 8)
+            .child(Text.create(c).text(text).textSizeDip(14).textColor(GRAY).textStyle(ITALIC))
+            .build();
+    }
 }

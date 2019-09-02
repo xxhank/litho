@@ -21,6 +21,5 @@ import com.facebook.litho.widget.RenderInfo;
  * component.
  */
 public interface Datum {
-
-  RenderInfo createComponent(ComponentContext c);
+    RenderInfo createComponent(ComponentContext c);
 }
