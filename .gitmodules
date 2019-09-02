@@ -1,0 +1,3 @@
+[submodule "scaffold"]
+	path = scaffold
+	url = https://gitee.com/alittledream/ascaffold.git
