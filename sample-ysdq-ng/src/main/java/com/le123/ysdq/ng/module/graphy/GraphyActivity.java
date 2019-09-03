@@ -93,9 +93,9 @@ public class GraphyActivity extends AppCompatActivity {
 
     ChannelHeaderFetcher.Response.Channel channel = null;
 
-    GraphyListSpec.FetcherService service = new GraphyListSpec.FetcherService() {
-        @Override public List<GraphyListSpec.RowViewModel> fetch_(int pageIndex, JxFunc.Action<Boolean> callback) {
-            GraphyListSpec.AlbumViewModels model = new GraphyListSpec.AlbumViewModels();
+    FetcherService service = new FetcherService() {
+        @Override public List<AlbumViewModels.RowViewModel> fetch_(int pageIndex, JxFunc.Action<Boolean> callback) {
+            AlbumViewModels model = new AlbumViewModels();
             if (channel == null) {
                 ChannelHeaderFetcher.fetch(value -> value.ifPresent(value1 -> {
                     ChannelHeaderFetcher.Response response = value1.value;
@@ -115,7 +115,7 @@ public class GraphyActivity extends AppCompatActivity {
             return model.rows;
         }
 
-        void fetchPage(ChannelHeaderFetcher.Response.Channel channel, int pageIndex, GraphyListSpec.AlbumViewModels model, JxFunc.Action<Boolean> callback) {
+        void fetchPage(ChannelHeaderFetcher.Response.Channel channel, int pageIndex, AlbumViewModels model, JxFunc.Action<Boolean> callback) {
             ChannelPageFetcher.fetch(channel.page, pageIndex, pageValue -> pageValue.ifPresent(page -> {
                 model.rows = new ArrayList<>(10);
                 model.hasMore = page.value.data.hasMore == 1;
@@ -169,25 +169,25 @@ public class GraphyActivity extends AppCompatActivity {
             }));
         }
 
-        private void buildRowData(List<ChannelPageFetcher.Response.Data.Rec.DataX> dataXList, int colCount, boolean useHImage, List<GraphyListSpec.RowViewModel> rows, int pageIndex) {
+        private void buildRowData(List<ChannelPageFetcher.Response.Data.Rec.DataX> dataXList, int colCount, boolean useHImage, List<AlbumViewModels.RowViewModel> rows, int pageIndex) {
             int count = dataXList.size();
             for (int row = 0; row < count / colCount; row++) {
-                List<GraphyListSpec.Album> albums = new ArrayList<>(colCount);
-                StringBuilder              rowid  = new StringBuilder();
+                List<Album>   albums = new ArrayList<>(colCount);
+                StringBuilder rowid  = new StringBuilder();
                 for (int col = 0; col < colCount; col++) {
                     ChannelPageFetcher.Response.Data.Rec.DataX datum = dataXList.get(colCount * row + col);
                     rowid.append(datum.aid);
                     albums.add(buildAlbum(datum, useHImage));
                 }
-                rows.add(GraphyListSpec.RowViewModel.builder()
+                rows.add(AlbumViewModels.RowViewModel.builder()
                     .id(pageIndex + "_" + row + "_" + rowid.toString())
                     .albums(albums)
                     .build());
             }
         }
 
-        private GraphyListSpec.Album buildAlbum(ChannelPageFetcher.Response.Data.Rec.DataX datum, boolean useHImage) {
-            return GraphyListSpec.Album.builder()
+        private Album buildAlbum(ChannelPageFetcher.Response.Data.Rec.DataX datum, boolean useHImage) {
+            return Album.builder()
                 .id(datum.aid)
                 .title(datum.name)
                 .subTitle(datum.subname)
@@ -199,6 +199,7 @@ public class GraphyActivity extends AppCompatActivity {
                 .build();
         }
     };
+    public List<AlbumViewModels.RowViewModel> rowViewModels = new ArrayList<>(100);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,8 +212,9 @@ public class GraphyActivity extends AppCompatActivity {
 
         setContentView(
             LithoView.create(this,
-                GraphyView.create(new ComponentContext(this))
+                GraphyRoot.create(new ComponentContext(this))
                     .service(service)
+                    //.rowViewModels(rowViewModels)
                     .build()));
     }
 }

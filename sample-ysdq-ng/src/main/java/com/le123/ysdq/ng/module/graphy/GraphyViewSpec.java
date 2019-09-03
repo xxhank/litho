@@ -27,7 +27,7 @@ import com.facebook.yoga.YogaEdge;
 
     @OnCreateLayout
     static Component onCreateLayout(ComponentContext c
-        , @Prop GraphyListSpec.FetcherService service) {
+        , @Prop FetcherService service) {
 
         return RecyclerCollectionComponent.create(c)
             //.disablePTR(true)

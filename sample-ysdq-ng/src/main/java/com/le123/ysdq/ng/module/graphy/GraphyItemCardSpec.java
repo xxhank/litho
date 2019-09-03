@@ -26,7 +26,7 @@ import static com.facebook.yoga.YogaEdge.VERTICAL;
 public class GraphyItemCardSpec {
 
     @OnCreateLayout
-    static Component onCreateLayout(ComponentContext c, @Prop GraphyListSpec.Album artist, @Prop float imageRatio) {
+    static Component onCreateLayout(ComponentContext c, @Prop Album artist, @Prop float imageRatio) {
         return Column.create(c)
             .paddingDip(VERTICAL, 8)
 //            .paddingDip(HORIZONTAL, 16)

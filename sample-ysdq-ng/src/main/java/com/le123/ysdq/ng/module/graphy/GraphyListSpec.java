@@ -12,15 +12,10 @@
 
 package com.le123.ysdq.ng.module.graphy;
 
-import com.agx.scaffold.JxFunc;
 import com.agx.scaffold.JxLogger;
 import com.agx.scaffold.JxTextUtils;
 import com.facebook.litho.Column;
-import com.facebook.litho.Component;
-import com.facebook.litho.EventHandler;
-import com.facebook.litho.Row;
 import com.facebook.litho.StateValue;
-import com.facebook.litho.annotations.Event;
 import com.facebook.litho.annotations.FromEvent;
 import com.facebook.litho.annotations.OnCreateInitialState;
 import com.facebook.litho.annotations.OnEvent;
@@ -44,7 +39,6 @@ import com.facebook.litho.sections.common.OnCheckIsSameContentEvent;
 import com.facebook.litho.sections.common.OnCheckIsSameItemEvent;
 import com.facebook.litho.sections.common.RenderEvent;
 import com.facebook.litho.sections.common.SingleComponentSection;
-import com.facebook.litho.widget.ComponentRenderInfo;
 import com.facebook.litho.widget.Progress;
 import com.facebook.litho.widget.RenderInfo;
 import com.facebook.litho.widget.Text;
@@ -54,116 +48,14 @@ import com.facebook.yoga.YogaEdge;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Builder;
 import lombok.NonNull;
 
 @GroupSectionSpec class GraphyListSpec {
     private static final String MAIN_SCREEN = "main_screen";
 
-    @Event
-    static class AlbumViewModels {
-        boolean            hasMore = true;
-        List<RowViewModel> rows    = new ArrayList<>(1);
-    }
-
-    @Builder
-    static class RowViewModel {
-        String id;
-        @Builder.Default List<Album> albums = new ArrayList<>(1);
-
-        public RenderInfo createRenderInfo(SectionContext c) {
-            return ComponentRenderInfo.create()
-                .component(createComponent(c))
-                .build();
-        }
-
-        public Component createComponent(SectionContext c) {
-            switch (albums.size()) {
-                case 2:
-                    return Row.create(c)
-                        .child(GraphyItemCard.create(c)
-                            .imageRatio(16 / 9f)
-                            .artist(albums.get(0))
-                            .marginDip(YogaEdge.LEFT, 10)
-                            .marginDip(YogaEdge.RIGHT, 5)
-                        )
-                        .child(GraphyItemCard.create(c)
-                            .artist(albums.get(1))
-                            .imageRatio(16 / 9f)
-                            .marginDip(YogaEdge.LEFT, 5)
-                            .marginDip(YogaEdge.RIGHT, 10)
-                        )
-                        .build();
-                case 3:
-                    return Row.create(c)
-                        .child(GraphyItemCard.create(c).artist(albums.get(0))
-                            .imageRatio(3 / 4f)
-
-                            .marginDip(YogaEdge.LEFT, 10)
-                            .marginDip(YogaEdge.RIGHT, 5)
-                        )
-                        .child(GraphyItemCard.create(c).artist(albums.get(1))
-                            .imageRatio(3 / 4f)
-                            .marginDip(YogaEdge.LEFT, 5)
-                            .marginDip(YogaEdge.RIGHT, 5)
-                        )
-                        .child(GraphyItemCard.create(c).artist(albums.get(2))
-                            .imageRatio(3 / 4f)
-                            .marginDip(YogaEdge.LEFT, 5)
-                            .marginDip(YogaEdge.RIGHT, 10)
-                        )
-
-                        .build();
-                default:
-                    return Row.create(c)
-                        .child(GraphyItemCard.create(c).artist(albums.get(0))
-                            .imageRatio(16 / 9f)
-                            .marginDip(YogaEdge.LEFT, 10)
-                            .marginDip(YogaEdge.RIGHT, 10)
-                        )
-                        .build();
-            }
-            //return GraphyItemCard.create(c).artist(albums.get(0)).build();
-        }
-    }
-
-    @Builder
-    public static class Album {
-        String id;
-        public String url;
-        public String title;
-        public String subTitle;
-        public String description;
-        public String category;
-        public String tag;
-        public String tagColor;
-        public String episode;
-    }
-
-    static abstract class FetcherService {
-        EventHandler<AlbumViewModels> dataModelEventHandler;
-
-        void registerLoadingEvent(EventHandler<AlbumViewModels> dataModelEventHandler) {
-            this.dataModelEventHandler = dataModelEventHandler;
-        }
-
-        void unregisterLoadingEvent() {
-            dataModelEventHandler = null;
-        }
-
-        public List<RowViewModel> fetch(int pageIndex) {
-            return fetch_(pageIndex, new JxFunc.Action<Boolean>() {
-                @Override public void yield(@androidx.annotation.NonNull Boolean value) {
-                }
-            });
-        }
-
-        abstract public List<RowViewModel> fetch_(int pageIndex, JxFunc.Action<Boolean> callback);
-    }
-
     @OnCreateInitialState
     static void onCreateInitialState(SectionContext context
-        , StateValue<List<RowViewModel>> rowViewModels
+        , StateValue<List<AlbumViewModels.RowViewModel>> rowViewModels
         , StateValue<Boolean> fetching
         , StateValue<Integer> pageIndex
         , StateValue<Boolean> hasMore
@@ -174,22 +66,22 @@ import lombok.NonNull;
         rowViewModels.set(new ArrayList<>(1));
 
         fetching.set(true);
-        List<RowViewModel> rowViewModelList = service.fetch(1);
+        List<AlbumViewModels.RowViewModel> rowViewModelList = service.fetch(1);
         rowViewModels.set(rowViewModelList);
     }
 
     @OnUpdateState
-    static void updateAlbums(@NonNull StateValue<List<RowViewModel>> rowViewModels
+    static void updateAlbums(@NonNull StateValue<List<AlbumViewModels.RowViewModel>> rowViewModels
         , StateValue<Integer> pageIndex
-        , @Param List<RowViewModel> got) {
+        , @Param List<AlbumViewModels.RowViewModel> got) {
         JxLogger.i("");
 
         Integer value = pageIndex.get();
         if (value == null || value == 1) {
             rowViewModels.set(got);
         } else {
-            List<RowViewModel> rowViewModelsNew = new ArrayList<>();
-            List<RowViewModel> rowViewModelsOld = rowViewModels.get();
+            List<AlbumViewModels.RowViewModel> rowViewModelsNew = new ArrayList<>();
+            List<AlbumViewModels.RowViewModel> rowViewModelsOld = rowViewModels.get();
             if (rowViewModelsOld != null) {
                 rowViewModelsNew.addAll(rowViewModelsOld);
             } else {
@@ -245,7 +137,7 @@ import lombok.NonNull;
     @OnEvent(AlbumViewModels.class)
     static void onDataLoaded(SectionContext context
         , @State int pageIndex
-        , @FromEvent List<RowViewModel> rows
+        , @FromEvent List<AlbumViewModels.RowViewModel> rows
         , @FromEvent boolean hasMore) {
         JxLogger.i("%d %s", rows.size(), "" + hasMore);
         GraphyList.updateAlbums(context, rows);
@@ -256,36 +148,36 @@ import lombok.NonNull;
     }
 
     @OnEvent(RenderEvent.class)
-    static RenderInfo onRender(SectionContext context, @FromEvent RowViewModel model) {
+    static RenderInfo onRender(SectionContext context, @FromEvent AlbumViewModels.RowViewModel model) {
         return model.createRenderInfo(context);
     }
 
     @OnEvent(OnCheckIsSameItemEvent.class)
-    static boolean onCheckIsSameItem(SectionContext context, @FromEvent RowViewModel previousItem
-        , @FromEvent RowViewModel nextItem) {
+    static boolean onCheckIsSameItem(SectionContext context, @FromEvent AlbumViewModels.RowViewModel previousItem
+        , @FromEvent AlbumViewModels.RowViewModel nextItem) {
         return JxTextUtils.equals(previousItem.id, nextItem.id);
     }
 
     @OnEvent(OnCheckIsSameContentEvent.class)
-    static boolean onCheckIsSameContent(SectionContext context, @FromEvent RowViewModel previousItem
-        , @FromEvent RowViewModel nextItem) {
+    static boolean onCheckIsSameContent(SectionContext context, @FromEvent AlbumViewModels.RowViewModel previousItem
+        , @FromEvent AlbumViewModels.RowViewModel nextItem) {
         return JxTextUtils.equals(previousItem.id, nextItem.id);
     }
 
     @OnCreateChildren
     static Children onCreateChildren(SectionContext context
-        , @State List<RowViewModel> rowViewModels
+        , @State List<AlbumViewModels.RowViewModel> rowViewModels
         , @State int pageIndex
         , @State boolean fetching
         , @State boolean hasMore) {
         Children.Builder builder = Children.create();
-//        for (RowViewModel rowViewModel : rowViewModels) {
+//        for (AlbumViewModels.RowViewModel rowViewModel : rowViewModels) {
 //            builder.child(SingleComponentSection.create(context)
 //                .key(rowViewModel.id)
 //                .component(rowViewModel.createComponent(context))
 //            );
 //        }
-        builder.child(DataDiffSection.<RowViewModel>create(context)
+        builder.child(DataDiffSection.<AlbumViewModels.RowViewModel>create(context)
             .data(rowViewModels)
             .renderEventHandler(GraphyList.onRender(context))
             .onCheckIsSameItemEventHandler(GraphyList.onCheckIsSameItem(context))
@@ -317,7 +209,7 @@ import lombok.NonNull;
     @OnRefresh
     static void onRefresh(SectionContext context
         , FetcherService service
-        , @State List<RowViewModel> rowViewModels
+        , @State List<AlbumViewModels.RowViewModel> rowViewModels
         , @State int pageIndex
         , @State boolean fetching
     ) {
@@ -338,7 +230,7 @@ import lombok.NonNull;
         , int firstFullyVisibleIndex
         , int lastFullyVisibleIndex
         , @Prop FetcherService service
-        , @State List<RowViewModel> rowViewModels
+        , @State List<AlbumViewModels.RowViewModel> rowViewModels
         , @State int pageIndex
         , @State boolean fetching
         , @State boolean hasMore

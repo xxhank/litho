@@ -28,7 +28,7 @@ import com.le123.ysdq.ng.module.graphy.item.parts.TitleComponent;
 public class GraphyItemComponentSpec {
 
     @OnCreateLayout
-    static Component onCreateLayout(ComponentContext c, @Prop GraphyListSpec.Album artist, @Prop float imageRatio) {
+    static Component onCreateLayout(ComponentContext c, @Prop Album artist, @Prop float imageRatio) {
         return Column.create(c)
             .child(
                 Column.create(c)
