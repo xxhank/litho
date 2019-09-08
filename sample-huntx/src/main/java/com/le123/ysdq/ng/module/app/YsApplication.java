@@ -45,7 +45,6 @@ public class YsApplication extends MultiDexApplication {
             onCreateWithPermission();
         } else {
             JxLogger.w("not permission");
-            onCreateWithPermission();
         }
     }
 

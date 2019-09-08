@@ -2,19 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.facebook.samples.litho">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
     <application
         android:name="com.le123.ysdq.ng.module.app.YsApplication"
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/NoTitleBarWhiteBG">
-        <activity android:name="com.le123.ysdq.ng.module.graphy.GraphyActivity"></activity>
+
+        <activity android:name="com.le123.ysdq.ng.module.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.le123.ysdq.ng.module.graphy.GraphyActivity" />
         <activity android:name=".DemoListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".lithography.LithographyActivity" />
@@ -31,12 +41,8 @@
         <activity android:name=".animations.renderthread.RenderThreadAnimationActivity" />
         <activity android:name=".dynamicprops.DynamicPropsActivity" />
         <activity android:name=".fastscroll.FastScrollHandleActivity" />
+        <activity android:name="com.le123.ysdq.ng.module.privacy.CheckActivity" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <uses-sdk android:targetSdkVersion="28" />
 
 </manifest>
