@@ -1,0 +1,138 @@
+/*
+ * This file provided by Facebook is for non-commercial testing and evaluation
+ * purposes only.  Facebook reserves all rights not expressly granted.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    useLibrary 'org.apache.http.legacy'
+
+    targetCompatibility = targetCompatibilityVersion
+    sourceCompatibility = sourceCompatibilityVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        multiDexEnabled true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    // TODO(#62): Re-enable abort on error.
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    signingConfigs {
+        debug {
+            storeFile file("ysdq.keystore")
+            storePassword 'le123apk'
+            keyAlias 'china'
+            keyPassword 'le123apk'
+            v2SigningEnabled false
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        demo {
+            dimension "default"
+            applicationId "com.le123.ysdq.huntx"
+            versionName '3.1.5'
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation project(':scaffold')
+    implementation project(':blockcanary-android')
+
+    implementation project(':litho-core')
+    implementation project(':litho-widget')
+    implementation project(':litho-fresco')
+    implementation project(':litho-sections-core')
+    implementation project(':litho-sections-widget')
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    compileOnly project(':litho-sections-annotations')
+    annotationProcessor project(':litho-processor')
+    annotationProcessor project(':litho-sections-processor')
+
+    // First-party
+    implementation deps.soloader
+    implementation(deps.flipper) {
+        exclude group: 'com.facebook.flipper', module: 'fbjni'
+    }
+    implementation deps.fresco
+    implementation deps.guava
+
+    // Annotations
+    compileOnly deps.jsr305
+    compileOnly deps.inferAnnotations
+
+    // Support Library
+    implementation deps.supportAppCompat
+    implementation deps.supportRecyclerView
+
+    // Integration test only
+    androidTestImplementation project(':litho-espresso')
+    androidTestImplementation deps.supportEspresso
+    androidTestImplementation deps.supportEspressoIntents
+    androidTestImplementation deps.junit
+
+    // Unit test only
+    testImplementation project(':litho-testing')
+    testCompileOnly deps.jsr305
+    testAnnotationProcessor project(':litho-processor')
+    testImplementation deps.junit
+    testImplementation deps.hamcrestLibrary
+    testImplementation deps.robolectric
+    testImplementation deps.assertjCore
+    testImplementation deps.mockitoCore
+
+    // 显示fps
+    implementation 'jp.wasabeef:takt:2.0.1'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    // for FilenameUtility
+    implementation 'commons-io:commons-io:20030203.000550'
+
+    // 权限管理
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    // 简化代码书写
+    implementation 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    // 卡顿监控
+    // implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+    // debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
+    //  releaseImplementation 'com.github.markzhai:blockcanary-no-op:1.5.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+}

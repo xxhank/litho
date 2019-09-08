@@ -60,6 +60,7 @@ include ':fbjni'
 
 // include ':ysdq-ng'
 include ':sample-ysdq-ng'
+include ':sample-huntx'
 
 include ':scaffold'
 include ':blockcanary-analyzer'
