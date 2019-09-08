@@ -15,4 +15,24 @@ public class HuntHomeFragment extends Fragment {
     @Nullable @Override public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.hunt_home_products_fragment, container, false);
     }
+
+    @Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setupViewModel();
+        setupLitho();
+        setupListener();
+    }
+
+    private void setupViewModel() {
+
+    }
+
+    private void setupLitho() {
+
+    }
+
+    private void setupListener() {
+
+    }
 }

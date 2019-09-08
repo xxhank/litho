@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout>
 
-
-    <com.facebook.litho.LithoView
-        android:id="@+id/litho"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true" />
+        <com.facebook.litho.LithoView
+            android:id="@+id/lithoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <!--    <com.ctech.eaty.widget.ErrorView-->
-    <!--        android:id="@+id/vError"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:visibility="gone"-->
-    <!--        app:errorImage="@drawable/network_error"-->
-    <!--        app:retryButtonText="@string/retry" />-->
 
-</FrameLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+        <!--    <com.ctech.eaty.widget.ErrorView-->
+        <!--        android:id="@+id/vError"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_gravity="center"-->
+        <!--        android:visibility="gone"-->
+        <!--        app:errorImage="@drawable/network_error"-->
+        <!--        app:retryButtonText="@string/retry" />-->
+
+    </FrameLayout>
+</layout>
