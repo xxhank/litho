@@ -12,6 +12,16 @@
 
 package com.facebook.litho.sample;
 
+import androidx.test.espresso.intent.rule.IntentsTestRule;
+import androidx.test.filters.LargeTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import com.le123.ysdq.ng.module.feturelist.FeturesListActivity;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -27,31 +37,23 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
-import androidx.test.espresso.intent.rule.IntentsTestRule;
-import androidx.test.filters.LargeTest;
-import androidx.test.runner.AndroidJUnit4;
-import com.facebook.samples.litho.DemoListActivity;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class DemoListActivityIntentEspressoTest {
-  @Rule
-  public IntentsTestRule<DemoListActivity> mActivity =
-      new IntentsTestRule<>(DemoListActivity.class);
+    @Rule
+    public IntentsTestRule<FeturesListActivity> mActivity =
+        new IntentsTestRule<>(FeturesListActivity.class);
 
-  @Test
-  public void testPlaygroundLaunches() {
-    onView(componentHostWithText(containsString("Playground")))
-        .check(matches(isDisplayed()))
-        .perform(click());
+    @Test
+    public void testPlaygroundLaunches() {
+        onView(componentHostWithText(containsString("Playground")))
+            .check(matches(isDisplayed()))
+            .perform(click());
 
-    intended(
-        allOf(
-            toPackage("com.facebook.samples.litho"),
-            hasComponent(hasClassName(DemoListActivity.class.getName())),
-            hasExtras(hasEntry(equalTo("demoName"), equalTo("Playground")))));
-  }
+        intended(
+            allOf(
+                toPackage("com.facebook.samples.litho"),
+                hasComponent(hasClassName(FeturesListActivity.class.getName())),
+                hasExtras(hasEntry(equalTo("demoName"), equalTo("Playground")))));
+    }
 }

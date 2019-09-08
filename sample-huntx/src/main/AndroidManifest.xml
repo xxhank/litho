@@ -22,7 +22,7 @@
         </activity>
 
         <activity android:name="com.le123.ysdq.ng.module.graphy.GraphyActivity" />
-        <activity android:name=".DemoListActivity">
+        <activity android:name="com.le123.ysdq.ng.module.feturelist.FeturesListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -42,6 +42,7 @@
         <activity android:name=".dynamicprops.DynamicPropsActivity" />
         <activity android:name=".fastscroll.FastScrollHandleActivity" />
         <activity android:name="com.le123.ysdq.ng.module.privacy.CheckActivity" />
+        <activity android:name="com.le123.ysdq.ng.module.hunt.HuntHomeActivity" />
     </application>
 
 

@@ -24,7 +24,7 @@ import com.le123.ysdq.ng.Retrofits;
 import com.le123.ysdq.ng.WeakRefHandler;
 import com.le123.ysdq.ng.module.app.InitFetcher;
 import com.le123.ysdq.ng.module.app.YsApplication;
-import com.le123.ysdq.ng.module.graphy.GraphyActivity;
+import com.le123.ysdq.ng.module.feturelist.FeturesListActivity;
 import com.le123.ysdq.ng.module.privacy.CheckActivity;
 
 import java.util.UUID;
@@ -339,7 +339,7 @@ public class SplashActivity extends AppCompatActivity implements OnClickListener
                     value.ifPresent(value1 -> {
                         application.runOnUiThread(new Runnable() {
                             @Override public void run() {
-                                Intent intent = new Intent(application, GraphyActivity.class);
+                                Intent intent = new Intent(application, FeturesListActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -348,7 +348,7 @@ public class SplashActivity extends AppCompatActivity implements OnClickListener
                     }).orElse(value1 -> {
                         application.runOnUiThread(new Runnable() {
                             @Override public void run() {
-                                Intent intent = new Intent(application, GraphyActivity.class);
+                                Intent intent = new Intent(application, FeturesListActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

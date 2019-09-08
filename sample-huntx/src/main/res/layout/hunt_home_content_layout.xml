@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--        <android.support.v7.widget.Toolbar-->
+    <!--            android:id="@+id/toolbar"-->
+    <!--            android:clipToPadding="false"-->
+    <!--            android:clipChildren="false"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="?actionBarSize"-->
+    <!--            android:outlineProvider="none"-->
+    <!--            android:background="@color/colorPrimary"-->
+    <!--            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+
+
+    <!--            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+    <!--            app:title="@string/app_name">-->
+
+    <!--            <FrameLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_gravity="end"-->
+    <!--                android:clipToPadding="false"-->
+    <!--                android:clipChildren="false"-->
+    <!--                android:paddingTop="@dimen/content_padding_vertical"-->
+    <!--                android:paddingBottom="@dimen/content_padding_vertical"-->
+    <!--                android:paddingStart="@dimen/content_padding_horizontal"-->
+    <!--                android:paddingEnd="@dimen/content_padding_horizontal">-->
+
+    <!--                &lt;!&ndash;                <ImageView&ndash;&gt;-->
+    <!--                &lt;!&ndash;                    android:id="@+id/ivNoti"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                    android:layout_width="@dimen/noti_icon_width"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                    android:layout_height="@dimen/noti_icon_height"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                    android:foreground="?selectableItemBackgroundBorderless"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                    android:src="@drawable/ic_notification" />&ndash;&gt;-->
+
+    <!--                <TextView-->
+    <!--                    android:text="0"-->
+    <!--                    android:layout_gravity="end"-->
+    <!--                    android:id="@+id/tvIndicator"-->
+    <!--                    android:gravity="center"-->
+    <!--                    android:textSize="@dimen/noti_indicator_text_size"-->
+    <!--                    android:background="@drawable/noti_indicator_background"-->
+    <!--                    android:layout_width="@dimen/noti_indicator_size"-->
+    <!--                    android:layout_height="@dimen/noti_indicator_size" />-->
+
+    <!--            </FrameLayout>-->
+
+    <!--            &lt;!&ndash;            <ImageView&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:layout_gravity="end"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:id="@+id/ivSearch"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:layout_width="@dimen/noti_icon_width"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:layout_height="@dimen/noti_icon_height"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:foreground="?selectableItemBackgroundBorderless"&ndash;&gt;-->
+    <!--            &lt;!&ndash;                android:src="@drawable/ic_search" />&ndash;&gt;-->
+    <!--        </android.support.v7.widget.Toolbar>-->
+
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+</LinearLayout>

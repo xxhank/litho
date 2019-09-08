@@ -10,11 +10,12 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.facebook.samples.litho;
+package com.le123.ysdq.ng.module.feturelist;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.litho.ComponentContext;
 import com.facebook.litho.LithoView;
@@ -32,16 +33,18 @@ import com.facebook.samples.litho.hscroll.HorizontalScrollWithSnapActivity;
 import com.facebook.samples.litho.playground.PlaygroundActivity;
 import com.facebook.samples.litho.staticscroll.horizontalscroll.HorizontalScrollActivity;
 import com.le123.ysdq.ng.module.graphy.GraphyActivity;
+import com.le123.ysdq.ng.module.hunt.HuntHomeActivity;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class DemoListActivity extends NavigatableDemoActivity {
+public class FeturesListActivity extends AppCompatActivity {
 
     static final String                  INDICES     = "INDICES";
     static final List<DemoListDataModel> DATA_MODELS =
         Arrays.asList(
             new DemoListDataModel("Lithography", GraphyActivity.class),
+            new DemoListDataModel("HuntHomeActivity", HuntHomeActivity.class),
             new DemoListDataModel("Playground", PlaygroundActivity.class),
             new DemoListDataModel("Border effects", BorderEffectsActivity.class),
             new DemoListDataModel("Error boundaries", ErrorHandlingActivity.class),

@@ -12,60 +12,57 @@
 
 package com.facebook.samples.litho;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
-import java.util.Arrays;
-import java.util.List;
 
 public class NavigatableDemoActivity extends AppCompatActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    int[] indices = getIntent().getIntArrayExtra(DemoListActivity.INDICES);
-    if (indices != null) {
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      setTitleFromIndices(indices);
-    }
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-        // Respond to the action bar's Up/Home button
-      case android.R.id.home:
-        NavUtils.navigateUpFromSameTask(this);
-        return true;
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
-  @Override
-  public @Nullable Intent getParentActivityIntent() {
-    int[] indices = getIntent().getIntArrayExtra(DemoListActivity.INDICES);
-    if (indices == null) {
-      return null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        int[] indices = getIntent().getIntArrayExtra(FeturesListActivity.INDICES);
+//        if (indices != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            setTitleFromIndices(indices);
+//        }
     }
 
-    final Intent parentIntent = new Intent(this, DemoListActivity.class);
-    if (indices.length > 1) {
-      parentIntent.putExtra(DemoListActivity.INDICES, Arrays.copyOf(indices, indices.length - 1));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    return parentIntent;
-  }
+//    @Override
+//    public @Nullable Intent getParentActivityIntent() {
+//        int[] indices = getIntent().getIntArrayExtra(FeturesListActivity.INDICES);
+//        if (indices == null) {
+//            return null;
+//        }
+//
+//        Intent parentIntent = new Intent(this, FeturesListActivity.class);
+//        if (indices.length > 1) {
+//            parentIntent.putExtra(FeturesListActivity.INDICES, Arrays.copyOf(indices, indices.length - 1));
+//        }
+//
+//        return parentIntent;
+//    }
 
-  private void setTitleFromIndices(int[] indices) {
-    List<DemoListActivity.DemoListDataModel> dataModels = DemoListActivity.DATA_MODELS;
-    for (int i = 0; i < indices.length - 1; i++) {
-      dataModels = dataModels.get(indices[i]).datamodels;
+    private void setTitleFromIndices(int[] indices) {
+//        List<FeturesListActivity.DemoListDataModel> dataModels = FeturesListActivity.DATA_MODELS;
+//        for (int i = 0; i < indices.length - 1; i++) {
+//            dataModels = dataModels.get(indices[i]).datamodels;
+//        }
+//
+//        String title = dataModels.get(indices[indices.length - 1]).name;
+//        setTitle(title);
     }
-
-    final String title = dataModels.get(indices[indices.length - 1]).name;
-    setTitle(title);
-  }
 }

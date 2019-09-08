@@ -12,6 +12,16 @@
 
 package com.facebook.litho.sample;
 
+import androidx.test.filters.LargeTest;
+import androidx.test.runner.AndroidJUnit4;
+
+import com.facebook.litho.testing.espresso.LithoActivityTestRule;
+import com.le123.ysdq.ng.module.feturelist.FeturesListActivity;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
@@ -21,36 +31,28 @@ import static com.facebook.litho.testing.espresso.LithoViewMatchers.withTestKey;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 
-import androidx.test.filters.LargeTest;
-import androidx.test.runner.AndroidJUnit4;
-import com.facebook.litho.testing.espresso.LithoActivityTestRule;
-import com.facebook.samples.litho.DemoListActivity;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class DemoListActivityEspressoTest {
-  @Rule
-  public LithoActivityTestRule<DemoListActivity> mActivity =
-      new LithoActivityTestRule<>(DemoListActivity.class);
+    @Rule
+    public LithoActivityTestRule<FeturesListActivity> mActivity =
+        new LithoActivityTestRule<>(FeturesListActivity.class);
 
-  @Test
-  public void testLithographyIsVisibleAndClickable() {
-    onView(componentHostWithText(containsString("Lithography")))
-        .check(matches(allOf(isDisplayed(), isClickable())));
-  }
+    @Test
+    public void testLithographyIsVisibleAndClickable() {
+        onView(componentHostWithText(containsString("Lithography")))
+            .check(matches(allOf(isDisplayed(), isClickable())));
+    }
 
-  @Test
-  public void testTestKeyLookup() {
-    onView(withTestKey("main_screen")).check(matches(isDisplayed()));
-  }
+    @Test
+    public void testTestKeyLookup() {
+        onView(withTestKey("main_screen")).check(matches(isDisplayed()));
+    }
 
-  @Test
-  public void testPlaygroundIsVisibleAndClickable() {
-    onView(componentHostWithText(containsString("Playground")))
-        .check(matches(isDisplayed()))
-        .check(matches(isClickable()));
-  }
+    @Test
+    public void testPlaygroundIsVisibleAndClickable() {
+        onView(componentHostWithText(containsString("Playground")))
+            .check(matches(isDisplayed()))
+            .check(matches(isClickable()));
+    }
 }

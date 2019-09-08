@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="content_padding_horizontal">16dp</dimen>
+    <dimen name="content_padding_vertical">8dp</dimen>
+
+    <dimen name="artwork_avatar_size">64dp</dimen>
+    <dimen name="avatar_size">44dp</dimen>
+    <dimen name="drag_dismiss_distance">168dp</dimen>
+
+    <!-- Space -->
+    <dimen name="space_small">4dp</dimen>
+    <dimen name="space_medium">8dp</dimen>
+    <dimen name="space_large">16dp</dimen>
+    <dimen name="space_xlarge">32dp</dimen>
+
+    <!-- Common -->
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="elevation_clickable">0.5dp</dimen>
+    <dimen name="keyline_1">72dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="progressbar_size">40dp</dimen>
+    <dimen name="progress_stroke_width">4dp</dimen>
+
+    <!-- Ad -->
+    <dimen name="horizontal_ad_height">300dp</dimen>
+    <dimen name="single_ad_height">180dp</dimen>
+    <dimen name="button_radius">4dp</dimen>
+
+    <!-- Corner -->
+    <dimen name="dialog_corner">2dp</dimen>
+    <dimen name="draggable_background_corner">8dp</dimen>
+
+    <!-- Divider -->
+    <dimen name="divider_height">0.5dp</dimen>
+    <dimen name="divider_space">16dp</dimen>
+    <dimen name="divider_horizontal_space">16dp</dimen>
+    <dimen name="border_width">1dp</dimen>
+
+    <!-- Home -->
+    <dimen name="noti_indicator_size">14dp</dimen>
+    <dimen name="noti_icon_width">24dp</dimen>
+    <dimen name="noti_icon_height">32dp</dimen>
+    <dimen name="noti_indicator_text_size">10sp</dimen>
+    <dimen name="feed_footer_height">32dp</dimen>
+    <dimen name="feed_product_height">260dp</dimen>
+    <dimen name="data_saver_height">180dp</dimen>
+    <dimen name="feed_title_height">40dp</dimen>
+    <dimen name="home_header_margin_top">8dp</dimen>
+    <dimen name="home_header_margin_bottom">4dp</dimen>
+    <dimen name="network_error_footer_size">56dp</dimen>
+    <dimen name="navigation_header">220dp</dimen>
+
+    <!-- New product -->
+    <dimen name="feed_horizontal_product_height">256dp</dimen>
+    <dimen name="feed_horizontal_product_width">308dp</dimen>
+
+    <!-- Topic -->
+    <dimen name="feed_topic_height">128dp</dimen>
+    <dimen name="feed_topic_width">128dp</dimen>
+
+
+    <!-- Job -->
+    <dimen name="feed_job_size">96dp</dimen>
+
+    <!-- Collection -->
+    <dimen name="collection_product_width">112dp</dimen>
+    <dimen name="collection_product_height">@dimen/feed_job_size</dimen>
+
+
+    <!-- Upcoming Product -->
+    <dimen name="upcoming_product_height">164dp</dimen>
+    <dimen name="upcoming_foreground_product_size">96dp</dimen>
+    <dimen name="top_user_avatar_size">24dp</dimen>
+
+
+    <!--Collection Detail -->
+    <dimen name="collection_detail_background_height">160dp</dimen>
+
+    <!-- Product Detail -->
+    <dimen name="shot_collapsed_app_bar_height">168dp</dimen>
+    <dimen name="avatar_ripple_radius">20dp</dimen>
+    <dimen name="comment_actions_height">40dp</dimen>
+    <dimen name="comment_like_margin_adjustment">-8dp</dimen>
+    <dimen name="avatar_margin">12dp</dimen>
+    <dimen name="related_product_size">120dp</dimen>
+
+    <!--Radio -->
+    <dimen name="radio_artwork_height">240dp</dimen>
+    <dimen name="media_panel_height">64dp</dimen>
+    <dimen name="play_size">48dp</dimen>
+    <dimen name="media_progress_bar_height">2dp</dimen>
+
+    <!-- Gallery -->
+    <dimen name="play_large_size">64dp</dimen>
+    <dimen name="gallery_preview_height">84dp</dimen>
+    <dimen name="indicator_diameter">8dp</dimen>
+    <dimen name="indicator_gap">8dp</dimen>
+
+    <!-- User Detail -->
+    <dimen name="avatar_large_size">120dp</dimen>
+
+
+    <!-- Z-axis elevations -->
+    <dimen name="z_app_bar">4dp</dimen>
+    <dimen name="touch_raise">6dp</dimen>
+    <dimen name="z_fab">6dp</dimen>
+    <dimen name="z_fab_over_touchable_app_bar">8dp</dimen>
+    <dimen name="z_card">2dp</dimen>
+
+    <!-- Notification -->
+    <dimen name="noti_type_size">16dp</dimen>
+
+    <!-- Login -->
+    <dimen name="login_button_width">216dp</dimen>
+    <dimen name="login_logo_width">256dp</dimen>
+    <dimen name="login_logo_height">128dp</dimen>
+    <dimen name="login_logo_margin_top">84dp</dimen>
+
+    <!-- Search -->
+    <dimen name="searchback_image_width">48dp</dimen>
+    <dimen name="searchback_image_height">24dp</dimen>
+    <dimen name="search_progress_bar_margin_top">64dp</dimen>
+    <dimen name="search_empty_view_padding">64dp</dimen>
+    <dimen name="search_container_width">96dp</dimen>
+    <dimen name="home_footer_action_icon">20dp</dimen>
+    <dimen name="thumbnail_preview_size">8dp</dimen>
+
+    <!-- Collection -->
+    <dimen name="collection_background_height">160dp</dimen>
+
+    <!-- Upcoming Detail -->
+    <dimen name="upcoming_product_width">256dp</dimen>
+    <dimen name="upcoming_avatar_size">64dp</dimen>
+    <dimen name="upcoming_avatar_margin_bottom">84dp</dimen>
+    <dimen name="upcoming_logo_height">64dp</dimen>
+    <dimen name="upcoming_background_height">128dp</dimen>
+
+</resources>

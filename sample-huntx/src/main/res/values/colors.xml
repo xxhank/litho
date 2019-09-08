@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#03A9F4</color>
+    <color name="windowBackground">#eaeaea</color>
+
+    <color name="colorHighlight">#3203a9f4</color>
+
+    <color name="black_60">#99000000</color>
+    <color name="black_12">#1f000000</color>
+    <color name="black_25">#40000000</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_50">#fafafa</color>
+    <color name="white_100">#ffffff</color>
+
+    <color name="text_primary_dark">#de000000</color> <!-- 87% -->
+    <color name="text_secondary_dark">#8a000000</color> <!-- 54% -->
+    <color name="text_primary_light">@color/white_100</color>
+    <color name="text_tertiary_dark">#61000000</color> <!-- 38% -->
+
+    <color name="hunt">@color/colorAccent</color>
+    <color name="hunt_link_highlight">#b31976D2</color>
+    <color name="hunt_super_dark">#ff33292d</color>
+
+
+    <color name="scrim">#99323232</color>
+    <color name="immersive_bars">@color/black_60</color>
+    <color name="light_immersive_bars">@color/immersive_bars</color>
+    <color name="overlap_background_light">@color/gray_50</color>
+    <color name="ripple_light">#99ffffff</color>
+
+    <color name="background_dark">#333333</color>
+    <color name="background_super_dark">#292929</color>
+
+
+    <color name="divider_color">#50B6B6B6</color>
+
+    <color name="content_placeholder">#ffe0e0e0</color>
+
+    <color name="hint_disabled_dark">#43000000</color> <!-- 26% black -->
+
+    <!-- Product Detail -->
+    <color name="mid_grey">#40808080</color>
+    <color name="light_grey">#f5f5f5</color>
+
+    <!-- Comment -->
+    <color name="selected_comment_background">@color/white_100</color>
+    <color name="news_story_comment_background">@android:color/transparent</color>
+
+    <!-- Search -->
+    <color name="searchback_stroke_color">@color/white_100</color>
+
+
+</resources>
